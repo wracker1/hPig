@@ -1,0 +1,6 @@
+framework module Pods_hPig {
+  umbrella header "Pods-hPig-umbrella.h"
+
+  export *
+  module * { export * }
+}

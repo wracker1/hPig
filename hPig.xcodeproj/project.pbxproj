@@ -7,13 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83EC06F55AFF53AD4D40F4EE /* Pods_hPigTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E33491E5B2FDC71581ED77 /* Pods_hPigTests.framework */; };
 		88CDB9ED1D92BDA30058ECFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDB9EC1D92BDA30058ECFE /* AppDelegate.swift */; };
-		88CDB9EF1D92BDA30058ECFE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDB9EE1D92BDA30058ECFE /* ViewController.swift */; };
 		88CDB9F21D92BDA30058ECFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88CDB9F01D92BDA30058ECFE /* Main.storyboard */; };
 		88CDB9F51D92BDA30058ECFE /* hPig.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88CDB9F31D92BDA30058ECFE /* hPig.xcdatamodeld */; };
 		88CDB9F71D92BDA30058ECFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88CDB9F61D92BDA30058ECFE /* Assets.xcassets */; };
 		88CDB9FA1D92BDA30058ECFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88CDB9F81D92BDA30058ECFE /* LaunchScreen.storyboard */; };
 		88CDBA051D92BDA40058ECFE /* hPigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA041D92BDA40058ECFE /* hPigTests.swift */; };
+		88CDBA161D92CABA0058ECFE /* SessionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA111D92CABA0058ECFE /* SessionsController.swift */; };
+		88CDBA171D92CABA0058ECFE /* SessionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA111D92CABA0058ECFE /* SessionsController.swift */; };
+		88CDBA191D92CB350058ECFE /* WorkBookController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA181D92CB350058ECFE /* WorkBookController.swift */; };
+		88CDBA1A1D92CB350058ECFE /* WorkBookController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA181D92CB350058ECFE /* WorkBookController.swift */; };
+		88CDBA1C1D92CB4A0058ECFE /* MyInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA1B1D92CB4A0058ECFE /* MyInfoController.swift */; };
+		88CDBA1D1D92CB4A0058ECFE /* MyInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA1B1D92CB4A0058ECFE /* MyInfoController.swift */; };
+		88CDBA1F1D92CB670058ECFE /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA1E1D92CB670058ECFE /* SettingsController.swift */; };
+		88CDBA201D92CB670058ECFE /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA1E1D92CB670058ECFE /* SettingsController.swift */; };
+		88CDBA231D92D1FF0058ECFE /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA221D92D1FF0058ECFE /* Model.swift */; };
+		88CDBA241D92D1FF0058ECFE /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA221D92D1FF0058ECFE /* Model.swift */; };
+		88CDBA261D92D2340058ECFE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CDBA251D92D2340058ECFE /* Alamofire.framework */; };
+		88CDBA281D92D34F0058ECFE /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA271D92D34E0058ECFE /* Session.swift */; };
+		88CDBA291D92D34F0058ECFE /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA271D92D34E0058ECFE /* Session.swift */; };
+		88CDBA2B1D92D6EE0058ECFE /* NetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA2A1D92D6EE0058ECFE /* NetService.swift */; };
+		88CDBA2C1D92D6EE0058ECFE /* NetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA2A1D92D6EE0058ECFE /* NetService.swift */; };
+		CD60E31A6044EE444808C398 /* Pods_hPig.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A70A2A9D9760F243AC574B73 /* Pods_hPig.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,9 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1AFF7798F19E4360E943CCB5 /* Pods-hPigTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hPigTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hPigTests/Pods-hPigTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3F7DD837132F1D454EE2BA5F /* Pods-hPig.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hPig.release.xcconfig"; path = "Pods/Target Support Files/Pods-hPig/Pods-hPig.release.xcconfig"; sourceTree = "<group>"; };
 		88CDB9E91D92BDA30058ECFE /* hPig.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hPig.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88CDB9EC1D92BDA30058ECFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		88CDB9EE1D92BDA30058ECFE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		88CDB9F11D92BDA30058ECFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		88CDB9F41D92BDA30058ECFE /* hPig.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hPig.xcdatamodel; sourceTree = "<group>"; };
 		88CDB9F61D92BDA30058ECFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,6 +55,18 @@
 		88CDBA001D92BDA40058ECFE /* hPigTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hPigTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88CDBA041D92BDA40058ECFE /* hPigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hPigTests.swift; sourceTree = "<group>"; };
 		88CDBA061D92BDA40058ECFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88CDBA111D92CABA0058ECFE /* SessionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsController.swift; sourceTree = "<group>"; };
+		88CDBA181D92CB350058ECFE /* WorkBookController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkBookController.swift; sourceTree = "<group>"; };
+		88CDBA1B1D92CB4A0058ECFE /* MyInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoController.swift; sourceTree = "<group>"; };
+		88CDBA1E1D92CB670058ECFE /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		88CDBA221D92D1FF0058ECFE /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Model.swift; path = super/Model.swift; sourceTree = "<group>"; };
+		88CDBA251D92D2340058ECFE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../Library/Developer/Xcode/DerivedData/hPig-cgamwanqckhvsufhcxkvajblacum/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		88CDBA271D92D34E0058ECFE /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		88CDBA2A1D92D6EE0058ECFE /* NetService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetService.swift; sourceTree = "<group>"; };
+		A650F6275F6398383A681628 /* Pods-hPigTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hPigTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-hPigTests/Pods-hPigTests.release.xcconfig"; sourceTree = "<group>"; };
+		A70A2A9D9760F243AC574B73 /* Pods_hPig.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hPig.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3E33491E5B2FDC71581ED77 /* Pods_hPigTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hPigTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2A86E940BFA0A45487A0A06 /* Pods-hPig.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hPig.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hPig/Pods-hPig.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +74,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88CDBA261D92D2340058ECFE /* Alamofire.framework in Frameworks */,
+				CD60E31A6044EE444808C398 /* Pods_hPig.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,18 +83,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83EC06F55AFF53AD4D40F4EE /* Pods_hPigTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21B261A3D92EB5396488C94B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				88CDBA251D92D2340058ECFE /* Alamofire.framework */,
+				A70A2A9D9760F243AC574B73 /* Pods_hPig.framework */,
+				D3E33491E5B2FDC71581ED77 /* Pods_hPigTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		88CDB9E01D92BDA30058ECFE = {
 			isa = PBXGroup;
 			children = (
 				88CDB9EB1D92BDA30058ECFE /* hPig */,
 				88CDBA031D92BDA40058ECFE /* hPigTests */,
 				88CDB9EA1D92BDA30058ECFE /* Products */,
+				E4108440DBB5266D60FD8E5D /* Pods */,
+				21B261A3D92EB5396488C94B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,8 +123,8 @@
 		88CDB9EB1D92BDA30058ECFE /* hPig */ = {
 			isa = PBXGroup;
 			children = (
+				88CDBA0F1D92CABA0058ECFE /* app */,
 				88CDB9EC1D92BDA30058ECFE /* AppDelegate.swift */,
-				88CDB9EE1D92BDA30058ECFE /* ViewController.swift */,
 				88CDB9F01D92BDA30058ECFE /* Main.storyboard */,
 				88CDB9F61D92BDA30058ECFE /* Assets.xcassets */,
 				88CDB9F81D92BDA30058ECFE /* LaunchScreen.storyboard */,
@@ -99,6 +143,79 @@
 			path = hPigTests;
 			sourceTree = "<group>";
 		};
+		88CDBA0F1D92CABA0058ECFE /* app */ = {
+			isa = PBXGroup;
+			children = (
+				88CDBA101D92CABA0058ECFE /* controllers */,
+				88CDBA121D92CABA0058ECFE /* extensions */,
+				88CDBA131D92CABA0058ECFE /* models */,
+				88CDBA141D92CABA0058ECFE /* services */,
+				88CDBA151D92CABA0058ECFE /* views */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
+		88CDBA101D92CABA0058ECFE /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				88CDBA111D92CABA0058ECFE /* SessionsController.swift */,
+				88CDBA181D92CB350058ECFE /* WorkBookController.swift */,
+				88CDBA1B1D92CB4A0058ECFE /* MyInfoController.swift */,
+				88CDBA1E1D92CB670058ECFE /* SettingsController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		88CDBA121D92CABA0058ECFE /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
+		88CDBA131D92CABA0058ECFE /* models */ = {
+			isa = PBXGroup;
+			children = (
+				88CDBA211D92D1D10058ECFE /* super */,
+				88CDBA271D92D34E0058ECFE /* Session.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		88CDBA141D92CABA0058ECFE /* services */ = {
+			isa = PBXGroup;
+			children = (
+				88CDBA2A1D92D6EE0058ECFE /* NetService.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
+		88CDBA151D92CABA0058ECFE /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		88CDBA211D92D1D10058ECFE /* super */ = {
+			isa = PBXGroup;
+			children = (
+				88CDBA221D92D1FF0058ECFE /* Model.swift */,
+			);
+			name = super;
+			sourceTree = "<group>";
+		};
+		E4108440DBB5266D60FD8E5D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E2A86E940BFA0A45487A0A06 /* Pods-hPig.debug.xcconfig */,
+				3F7DD837132F1D454EE2BA5F /* Pods-hPig.release.xcconfig */,
+				1AFF7798F19E4360E943CCB5 /* Pods-hPigTests.debug.xcconfig */,
+				A650F6275F6398383A681628 /* Pods-hPigTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,9 +223,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 88CDBA091D92BDA40058ECFE /* Build configuration list for PBXNativeTarget "hPig" */;
 			buildPhases = (
+				B8284876B68DA097B5A72D36 /* [CP] Check Pods Manifest.lock */,
 				88CDB9E51D92BDA30058ECFE /* Sources */,
 				88CDB9E61D92BDA30058ECFE /* Frameworks */,
 				88CDB9E71D92BDA30058ECFE /* Resources */,
+				955595A85587B6E27083A090 /* [CP] Embed Pods Frameworks */,
+				845E55956050DBF70FCF3559 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -123,9 +243,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 88CDBA0C1D92BDA40058ECFE /* Build configuration list for PBXNativeTarget "hPigTests" */;
 			buildPhases = (
+				C95517C58B291669919CF1DE /* [CP] Check Pods Manifest.lock */,
 				88CDB9FC1D92BDA40058ECFE /* Sources */,
 				88CDB9FD1D92BDA40058ECFE /* Frameworks */,
 				88CDB9FE1D92BDA40058ECFE /* Resources */,
+				2AFBCBD13878746722684F35 /* [CP] Embed Pods Frameworks */,
+				E8D016F7B868B405DE4EA70E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -150,11 +273,13 @@
 					88CDB9E81D92BDA30058ECFE = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = FY7JU9WRTC;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					88CDB9FF1D92BDA40058ECFE = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = FY7JU9WRTC;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 88CDB9E81D92BDA30058ECFE;
 					};
@@ -199,14 +324,113 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2AFBCBD13878746722684F35 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hPigTests/Pods-hPigTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		845E55956050DBF70FCF3559 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hPig/Pods-hPig-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		955595A85587B6E27083A090 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hPig/Pods-hPig-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B8284876B68DA097B5A72D36 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C95517C58B291669919CF1DE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E8D016F7B868B405DE4EA70E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hPigTests/Pods-hPigTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		88CDB9E51D92BDA30058ECFE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88CDB9EF1D92BDA30058ECFE /* ViewController.swift in Sources */,
+				88CDBA231D92D1FF0058ECFE /* Model.swift in Sources */,
+				88CDBA1F1D92CB670058ECFE /* SettingsController.swift in Sources */,
+				88CDBA161D92CABA0058ECFE /* SessionsController.swift in Sources */,
+				88CDBA1C1D92CB4A0058ECFE /* MyInfoController.swift in Sources */,
+				88CDBA281D92D34F0058ECFE /* Session.swift in Sources */,
+				88CDBA191D92CB350058ECFE /* WorkBookController.swift in Sources */,
 				88CDB9F51D92BDA30058ECFE /* hPig.xcdatamodeld in Sources */,
 				88CDB9ED1D92BDA30058ECFE /* AppDelegate.swift in Sources */,
+				88CDBA2B1D92D6EE0058ECFE /* NetService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,7 +438,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88CDBA291D92D34F0058ECFE /* Session.swift in Sources */,
+				88CDBA171D92CABA0058ECFE /* SessionsController.swift in Sources */,
+				88CDBA201D92CB670058ECFE /* SettingsController.swift in Sources */,
+				88CDBA2C1D92D6EE0058ECFE /* NetService.swift in Sources */,
 				88CDBA051D92BDA40058ECFE /* hPigTests.swift in Sources */,
+				88CDBA241D92D1FF0058ECFE /* Model.swift in Sources */,
+				88CDBA1A1D92CB350058ECFE /* WorkBookController.swift in Sources */,
+				88CDBA1D1D92CB4A0058ECFE /* MyInfoController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +574,7 @@
 		};
 		88CDBA0A1D92BDA40058ECFE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2A86E940BFA0A45487A0A06 /* Pods-hPig.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FY7JU9WRTC;
@@ -356,6 +588,7 @@
 		};
 		88CDBA0B1D92BDA40058ECFE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F7DD837132F1D454EE2BA5F /* Pods-hPig.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FY7JU9WRTC;
@@ -369,6 +602,7 @@
 		};
 		88CDBA0D1D92BDA40058ECFE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AFF7798F19E4360E943CCB5 /* Pods-hPigTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -384,6 +618,7 @@
 		};
 		88CDBA0E1D92BDA40058ECFE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A650F6275F6398383A681628 /* Pods-hPigTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -416,6 +651,7 @@
 				88CDBA0B1D92BDA40058ECFE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		88CDBA0C1D92BDA40058ECFE /* Build configuration list for PBXNativeTarget "hPigTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +660,7 @@
 				88CDBA0E1D92BDA40058ECFE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
