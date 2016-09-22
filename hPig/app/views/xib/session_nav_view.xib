@@ -18,8 +18,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Vrw-d7-9pi">
-                    <frame key="frameInset" minY="279" width="375" height="45"/>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Vrw-d7-9pi">
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WVG-8i-NfN">
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -53,7 +52,7 @@
     </objects>
     <resources>
         <image name="btn_sub_next" width="75" height="43"/>
-        <image name="btn_sub_prev" width="74" height="43"/>
+        <image name="btn_sub_prev" width="62" height="20"/>
         <image name="btn_sub_repeat" width="43" height="43"/>
     </resources>
 </document>
