@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="hPickerView" customModule="hPig" customModuleProvider="target">
+            <connections>
+                <outlet property="closeButton" destination="EyJ-N4-PAy" id="hLZ-Xw-h6j"/>
+                <outlet property="confirmButton" destination="H50-Ol-qll" id="Zmx-yW-Q1M"/>
+                <outlet property="pickerView" destination="qjJ-2d-VDy" id="Ayk-DZ-gLW"/>
+                <outlet property="titleLabel" destination="7NC-gm-2Be" id="mzf-Hj-q8n"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="54e-dU-Njk">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qjJ-2d-VDy">
+                    <frame key="frameInset" minX="10" minY="374" width="580" height="216"/>
+                </pickerView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ppy-x4-hrc">
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EyJ-N4-PAy">
+                            <state key="normal" title="닫기"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7NC-gm-2Be">
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H50-Ol-qll">
+                            <state key="normal" title="확인"/>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="7NC-gm-2Be" secondAttribute="bottom" constant="10" id="CL4-F8-FQp"/>
+                        <constraint firstItem="7NC-gm-2Be" firstAttribute="top" secondItem="Ppy-x4-hrc" secondAttribute="top" constant="10" id="Mga-Yj-d9L"/>
+                        <constraint firstItem="H50-Ol-qll" firstAttribute="top" secondItem="Ppy-x4-hrc" secondAttribute="top" constant="10" id="O40-yM-5Au"/>
+                        <constraint firstAttribute="bottom" secondItem="H50-Ol-qll" secondAttribute="bottom" constant="10" id="QVG-FB-fGa"/>
+                        <constraint firstItem="EyJ-N4-PAy" firstAttribute="top" secondItem="Ppy-x4-hrc" secondAttribute="top" constant="10" id="TL9-8t-514"/>
+                        <constraint firstAttribute="bottom" secondItem="EyJ-N4-PAy" secondAttribute="bottom" constant="10" id="bDf-2n-CVI"/>
+                        <constraint firstItem="7NC-gm-2Be" firstAttribute="centerX" secondItem="Ppy-x4-hrc" secondAttribute="centerX" id="jrI-4D-4JI"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="qjJ-2d-VDy" firstAttribute="top" secondItem="Ppy-x4-hrc" secondAttribute="bottom" constant="10" id="EWn-6Q-hIr"/>
+                <constraint firstItem="Ppy-x4-hrc" firstAttribute="leading" secondItem="54e-dU-Njk" secondAttribute="leading" constant="15" id="M7A-N8-uMM"/>
+                <constraint firstItem="qjJ-2d-VDy" firstAttribute="leading" secondItem="54e-dU-Njk" secondAttribute="leading" constant="10" id="MJD-JW-C28"/>
+                <constraint firstItem="Ppy-x4-hrc" firstAttribute="top" secondItem="54e-dU-Njk" secondAttribute="top" id="Tnl-K1-y2T"/>
+                <constraint firstAttribute="trailing" secondItem="Ppy-x4-hrc" secondAttribute="trailing" constant="15" id="b1Q-6d-zfk"/>
+                <constraint firstAttribute="bottom" secondItem="qjJ-2d-VDy" secondAttribute="bottom" constant="10" id="ili-qZ-MhA"/>
+                <constraint firstAttribute="trailing" secondItem="qjJ-2d-VDy" secondAttribute="trailing" constant="10" id="pmF-61-l8r"/>
+            </constraints>
+            <point key="canvasLocation" x="85" y="441"/>
+        </view>
+    </objects>
+</document>

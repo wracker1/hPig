@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="hSessionControlView" customModule="hPig" customModuleProvider="target">
+            <connections>
+                <outlet property="nextButton" destination="XBc-wA-Gec" id="UK5-tE-xPH"/>
+                <outlet property="prevButton" destination="WVG-8i-NfN" id="Qmo-P8-oEV"/>
+                <outlet property="repeatButton" destination="dLV-Qi-sgA" id="lqH-gg-Upx"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="49P-l4-jEH">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Vrw-d7-9pi">
+                    <frame key="frameInset" minY="279" width="375" height="45"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WVG-8i-NfN">
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" image="btn_sub_prev"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLV-Qi-sgA">
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" image="btn_sub_repeat"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBc-wA-Gec">
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" image="btn_sub_next"/>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="XBc-wA-Gec" firstAttribute="top" secondItem="Vrw-d7-9pi" secondAttribute="top" constant="1" id="51D-zn-J7O"/>
+                        <constraint firstAttribute="bottom" secondItem="WVG-8i-NfN" secondAttribute="bottom" constant="1" id="OY8-ve-uQ3"/>
+                        <constraint firstItem="WVG-8i-NfN" firstAttribute="top" secondItem="Vrw-d7-9pi" secondAttribute="top" constant="1" id="Rn3-8F-YQH"/>
+                        <constraint firstAttribute="bottom" secondItem="XBc-wA-Gec" secondAttribute="bottom" constant="1" id="woz-N9-yxQ"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Vrw-d7-9pi" firstAttribute="centerY" secondItem="49P-l4-jEH" secondAttribute="centerY" id="7m6-WO-DIi"/>
+                <constraint firstItem="Vrw-d7-9pi" firstAttribute="centerX" secondItem="49P-l4-jEH" secondAttribute="centerX" id="ZAj-dW-DdX"/>
+                <constraint firstAttribute="trailing" secondItem="Vrw-d7-9pi" secondAttribute="trailing" id="ipd-Am-yXC"/>
+                <constraint firstItem="Vrw-d7-9pi" firstAttribute="leading" secondItem="49P-l4-jEH" secondAttribute="leading" id="qeU-pd-4dl"/>
+            </constraints>
+            <point key="canvasLocation" x="519" y="326"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn_sub_next" width="75" height="43"/>
+        <image name="btn_sub_prev" width="74" height="43"/>
+        <image name="btn_sub_repeat" width="43" height="43"/>
+    </resources>
+</document>

@@ -26,8 +26,8 @@ class NetService {
         })
     }
     
-    func getObject<T: ResponseObjectSerializable>(path: String, completionHandler: @escaping (DataResponse<T>) -> Void) -> Void {
-        get(url: path).responseObject(completionHandler: completionHandler)
+    func getObject<T: ResponseObjectSerializable>(path: String, completionHandler: @escaping (DataResponse<T>) -> Void) -> DataRequest {
+        return get(url: path).responseObject(completionHandler: completionHandler)
     }
     
     func getCollection<T: ResponseCollectionSerializable>(path: String, completionHandler: @escaping (DataResponse<[T]>) -> Void) -> Void {

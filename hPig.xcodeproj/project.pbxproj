@@ -7,7 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		83EC06F55AFF53AD4D40F4EE /* Pods_hPigTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E33491E5B2FDC71581ED77 /* Pods_hPigTests.framework */; };
+		881ED0041D93AB6400D612EF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0031D93AB6400D612EF /* Category.swift */; };
+		881ED0061D93AC0100D612EF /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0051D93AC0100D612EF /* CategoryService.swift */; };
+		881ED0081D93AEA200D612EF /* XibService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0071D93AEA200D612EF /* XibService.swift */; };
+		881ED00B1D93B00000D612EF /* hPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED00A1D93B00000D612EF /* hPickerView.swift */; };
+		881ED0101D93B02100D612EF /* picker_action_view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 881ED00D1D93B02100D612EF /* picker_action_view.xib */; };
+		881ED0111D93B02100D612EF /* session_nav_view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 881ED00E1D93B02100D612EF /* session_nav_view.xib */; };
+		881ED0121D93B02100D612EF /* st_player_view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 881ED00F1D93B02100D612EF /* st_player_view.xib */; };
+		881ED0141D93B0AA00D612EF /* hSessionControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0131D93B0AA00D612EF /* hSessionControlView.swift */; };
+		881ED0161D93B13700D612EF /* hPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0151D93B13700D612EF /* hPlayerView.swift */; };
+		881ED0181D93B2B300D612EF /* YoutubeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0171D93B2B300D612EF /* YoutubeService.swift */; };
+		881ED01A1D93B31700D612EF /* YoutubeVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0191D93B31700D612EF /* YoutubeVideo.swift */; };
+		881ED01C1D93B5B700D612EF /* TimeFormatServide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED01B1D93B5B700D612EF /* TimeFormatServide.swift */; };
+		881ED01E1D93B92100D612EF /* ArrayOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED01D1D93B92100D612EF /* ArrayOps.swift */; };
+		881ED0211D93BB2A00D612EF /* hActionPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0201D93BB2A00D612EF /* hActionPickerController.swift */; };
+		881ED0231D93BFDB00D612EF /* hTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0221D93BFDB00D612EF /* hTableViewCell.swift */; };
+		881ED0251D93D07400D612EF /* OptionOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0241D93D07400D612EF /* OptionOps.swift */; };
+		884B0E7B1D9393A2009748FF /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884B0E7A1D9393A2009748FF /* SessionCell.swift */; };
+		884B0E7C1D9393A2009748FF /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884B0E7A1D9393A2009748FF /* SessionCell.swift */; };
+		884B0E811D939505009748FF /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884B0E801D939505009748FF /* AlamofireImage.framework */; };
+		884B0E831D939AD2009748FF /* BannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884B0E821D939AD2009748FF /* BannerCell.swift */; };
+		884B0E861D939B13009748FF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884B0E841D939B13009748FF /* AVFoundation.framework */; };
+		884B0E871D939B13009748FF /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884B0E851D939B13009748FF /* AVKit.framework */; };
+		884B0E891D939B1D009748FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884B0E881D939B1D009748FF /* CoreGraphics.framework */; };
+		884B0E8B1D939B34009748FF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884B0E8A1D939B34009748FF /* QuartzCore.framework */; };
+		884B0E8D1D93A0BB009748FF /* ImageDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884B0E8C1D93A0BB009748FF /* ImageDownloadService.swift */; };
 		88CDB9ED1D92BDA30058ECFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDB9EC1D92BDA30058ECFE /* AppDelegate.swift */; };
 		88CDB9F21D92BDA30058ECFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88CDB9F01D92BDA30058ECFE /* Main.storyboard */; };
 		88CDB9F51D92BDA30058ECFE /* hPig.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88CDB9F31D92BDA30058ECFE /* hPig.xcdatamodeld */; };
@@ -43,8 +67,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1AFF7798F19E4360E943CCB5 /* Pods-hPigTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hPigTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hPigTests/Pods-hPigTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3F7DD837132F1D454EE2BA5F /* Pods-hPig.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hPig.release.xcconfig"; path = "Pods/Target Support Files/Pods-hPig/Pods-hPig.release.xcconfig"; sourceTree = "<group>"; };
+		881ED0031D93AB6400D612EF /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		881ED0051D93AC0100D612EF /* CategoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
+		881ED0071D93AEA200D612EF /* XibService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibService.swift; sourceTree = "<group>"; };
+		881ED00A1D93B00000D612EF /* hPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = hPickerView.swift; path = uiviews/hPickerView.swift; sourceTree = "<group>"; };
+		881ED00D1D93B02100D612EF /* picker_action_view.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = picker_action_view.xib; sourceTree = "<group>"; };
+		881ED00E1D93B02100D612EF /* session_nav_view.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = session_nav_view.xib; sourceTree = "<group>"; };
+		881ED00F1D93B02100D612EF /* st_player_view.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = st_player_view.xib; sourceTree = "<group>"; };
+		881ED0131D93B0AA00D612EF /* hSessionControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = hSessionControlView.swift; path = uiviews/hSessionControlView.swift; sourceTree = "<group>"; };
+		881ED0151D93B13700D612EF /* hPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = hPlayerView.swift; path = uiviews/hPlayerView.swift; sourceTree = "<group>"; };
+		881ED0171D93B2B300D612EF /* YoutubeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeService.swift; sourceTree = "<group>"; };
+		881ED0191D93B31700D612EF /* YoutubeVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeVideo.swift; sourceTree = "<group>"; };
+		881ED01B1D93B5B700D612EF /* TimeFormatServide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeFormatServide.swift; sourceTree = "<group>"; };
+		881ED01D1D93B92100D612EF /* ArrayOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayOps.swift; sourceTree = "<group>"; };
+		881ED0201D93BB2A00D612EF /* hActionPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = hActionPickerController.swift; path = commons/hActionPickerController.swift; sourceTree = "<group>"; };
+		881ED0221D93BFDB00D612EF /* hTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = hTableViewCell.swift; path = cells/super/hTableViewCell.swift; sourceTree = "<group>"; };
+		881ED0241D93D07400D612EF /* OptionOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionOps.swift; sourceTree = "<group>"; };
+		884B0E7A1D9393A2009748FF /* SessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionCell.swift; path = cells/SessionCell.swift; sourceTree = "<group>"; };
+		884B0E801D939505009748FF /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "Pods/../build/Debug-iphoneos/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
+		884B0E821D939AD2009748FF /* BannerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BannerCell.swift; path = cells/BannerCell.swift; sourceTree = "<group>"; };
+		884B0E841D939B13009748FF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		884B0E851D939B13009748FF /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		884B0E881D939B1D009748FF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		884B0E8A1D939B34009748FF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		884B0E8C1D93A0BB009748FF /* ImageDownloadService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloadService.swift; sourceTree = "<group>"; };
 		88CDB9E91D92BDA30058ECFE /* hPig.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hPig.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88CDB9EC1D92BDA30058ECFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88CDB9F11D92BDA30058ECFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,7 +110,6 @@
 		88CDBA251D92D2340058ECFE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../Library/Developer/Xcode/DerivedData/hPig-cgamwanqckhvsufhcxkvajblacum/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		88CDBA271D92D34E0058ECFE /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		88CDBA2A1D92D6EE0058ECFE /* NetService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetService.swift; sourceTree = "<group>"; };
-		A650F6275F6398383A681628 /* Pods-hPigTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hPigTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-hPigTests/Pods-hPigTests.release.xcconfig"; sourceTree = "<group>"; };
 		A70A2A9D9760F243AC574B73 /* Pods_hPig.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hPig.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E33491E5B2FDC71581ED77 /* Pods_hPigTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hPigTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2A86E940BFA0A45487A0A06 /* Pods-hPig.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hPig.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hPig/Pods-hPig.debug.xcconfig"; sourceTree = "<group>"; };
@@ -74,6 +120,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				884B0E8B1D939B34009748FF /* QuartzCore.framework in Frameworks */,
+				884B0E891D939B1D009748FF /* CoreGraphics.framework in Frameworks */,
+				884B0E861D939B13009748FF /* AVFoundation.framework in Frameworks */,
+				884B0E871D939B13009748FF /* AVKit.framework in Frameworks */,
+				884B0E811D939505009748FF /* AlamofireImage.framework in Frameworks */,
 				88CDBA261D92D2340058ECFE /* Alamofire.framework in Frameworks */,
 				CD60E31A6044EE444808C398 /* Pods_hPig.framework in Frameworks */,
 			);
@@ -83,7 +134,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83EC06F55AFF53AD4D40F4EE /* Pods_hPigTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,11 +143,62 @@
 		21B261A3D92EB5396488C94B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				884B0E8A1D939B34009748FF /* QuartzCore.framework */,
+				884B0E881D939B1D009748FF /* CoreGraphics.framework */,
+				884B0E841D939B13009748FF /* AVFoundation.framework */,
+				884B0E851D939B13009748FF /* AVKit.framework */,
+				884B0E801D939505009748FF /* AlamofireImage.framework */,
 				88CDBA251D92D2340058ECFE /* Alamofire.framework */,
 				A70A2A9D9760F243AC574B73 /* Pods_hPig.framework */,
 				D3E33491E5B2FDC71581ED77 /* Pods_hPigTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		881ED0091D93AFCC00D612EF /* uiviews */ = {
+			isa = PBXGroup;
+			children = (
+				881ED00A1D93B00000D612EF /* hPickerView.swift */,
+				881ED0131D93B0AA00D612EF /* hSessionControlView.swift */,
+				881ED0151D93B13700D612EF /* hPlayerView.swift */,
+			);
+			name = uiviews;
+			sourceTree = "<group>";
+		};
+		881ED00C1D93B02100D612EF /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				881ED00D1D93B02100D612EF /* picker_action_view.xib */,
+				881ED00E1D93B02100D612EF /* session_nav_view.xib */,
+				881ED00F1D93B02100D612EF /* st_player_view.xib */,
+			);
+			path = xib;
+			sourceTree = "<group>";
+		};
+		881ED01F1D93BAFC00D612EF /* commons */ = {
+			isa = PBXGroup;
+			children = (
+				881ED0201D93BB2A00D612EF /* hActionPickerController.swift */,
+			);
+			name = commons;
+			sourceTree = "<group>";
+		};
+		884B0E731D93863E009748FF /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				884B0E7D1D9393E3009748FF /* super */,
+				884B0E7A1D9393A2009748FF /* SessionCell.swift */,
+				884B0E821D939AD2009748FF /* BannerCell.swift */,
+			);
+			name = cells;
+			sourceTree = "<group>";
+		};
+		884B0E7D1D9393E3009748FF /* super */ = {
+			isa = PBXGroup;
+			children = (
+				881ED0221D93BFDB00D612EF /* hTableViewCell.swift */,
+			);
+			name = super;
 			sourceTree = "<group>";
 		};
 		88CDB9E01D92BDA30058ECFE = {
@@ -158,6 +259,7 @@
 		88CDBA101D92CABA0058ECFE /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				881ED01F1D93BAFC00D612EF /* commons */,
 				88CDBA111D92CABA0058ECFE /* SessionsController.swift */,
 				88CDBA181D92CB350058ECFE /* WorkBookController.swift */,
 				88CDBA1B1D92CB4A0058ECFE /* MyInfoController.swift */,
@@ -169,6 +271,8 @@
 		88CDBA121D92CABA0058ECFE /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				881ED01D1D93B92100D612EF /* ArrayOps.swift */,
+				881ED0241D93D07400D612EF /* OptionOps.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -178,6 +282,8 @@
 			children = (
 				88CDBA211D92D1D10058ECFE /* super */,
 				88CDBA271D92D34E0058ECFE /* Session.swift */,
+				881ED0031D93AB6400D612EF /* Category.swift */,
+				881ED0191D93B31700D612EF /* YoutubeVideo.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -186,6 +292,11 @@
 			isa = PBXGroup;
 			children = (
 				88CDBA2A1D92D6EE0058ECFE /* NetService.swift */,
+				881ED0071D93AEA200D612EF /* XibService.swift */,
+				884B0E8C1D93A0BB009748FF /* ImageDownloadService.swift */,
+				881ED0051D93AC0100D612EF /* CategoryService.swift */,
+				881ED0171D93B2B300D612EF /* YoutubeService.swift */,
+				881ED01B1D93B5B700D612EF /* TimeFormatServide.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -193,6 +304,9 @@
 		88CDBA151D92CABA0058ECFE /* views */ = {
 			isa = PBXGroup;
 			children = (
+				881ED00C1D93B02100D612EF /* xib */,
+				881ED0091D93AFCC00D612EF /* uiviews */,
+				884B0E731D93863E009748FF /* cells */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -210,8 +324,6 @@
 			children = (
 				E2A86E940BFA0A45487A0A06 /* Pods-hPig.debug.xcconfig */,
 				3F7DD837132F1D454EE2BA5F /* Pods-hPig.release.xcconfig */,
-				1AFF7798F19E4360E943CCB5 /* Pods-hPigTests.debug.xcconfig */,
-				A650F6275F6398383A681628 /* Pods-hPigTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -243,12 +355,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 88CDBA0C1D92BDA40058ECFE /* Build configuration list for PBXNativeTarget "hPigTests" */;
 			buildPhases = (
-				C95517C58B291669919CF1DE /* [CP] Check Pods Manifest.lock */,
 				88CDB9FC1D92BDA40058ECFE /* Sources */,
 				88CDB9FD1D92BDA40058ECFE /* Frameworks */,
 				88CDB9FE1D92BDA40058ECFE /* Resources */,
-				2AFBCBD13878746722684F35 /* [CP] Embed Pods Frameworks */,
-				E8D016F7B868B405DE4EA70E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -309,6 +418,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				881ED0111D93B02100D612EF /* session_nav_view.xib in Resources */,
+				881ED0101D93B02100D612EF /* picker_action_view.xib in Resources */,
+				881ED0121D93B02100D612EF /* st_player_view.xib in Resources */,
 				88CDB9FA1D92BDA30058ECFE /* LaunchScreen.storyboard in Resources */,
 				88CDB9F71D92BDA30058ECFE /* Assets.xcassets in Resources */,
 				88CDB9F21D92BDA30058ECFE /* Main.storyboard in Resources */,
@@ -325,21 +437,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2AFBCBD13878746722684F35 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hPigTests/Pods-hPigTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		845E55956050DBF70FCF3559 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -382,37 +479,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		C95517C58B291669919CF1DE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		E8D016F7B868B405DE4EA70E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hPigTests/Pods-hPigTests-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -423,14 +490,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				88CDBA231D92D1FF0058ECFE /* Model.swift in Sources */,
+				881ED01C1D93B5B700D612EF /* TimeFormatServide.swift in Sources */,
+				884B0E8D1D93A0BB009748FF /* ImageDownloadService.swift in Sources */,
 				88CDBA1F1D92CB670058ECFE /* SettingsController.swift in Sources */,
+				881ED0061D93AC0100D612EF /* CategoryService.swift in Sources */,
+				884B0E7B1D9393A2009748FF /* SessionCell.swift in Sources */,
+				881ED0081D93AEA200D612EF /* XibService.swift in Sources */,
+				881ED0181D93B2B300D612EF /* YoutubeService.swift in Sources */,
 				88CDBA161D92CABA0058ECFE /* SessionsController.swift in Sources */,
+				881ED0141D93B0AA00D612EF /* hSessionControlView.swift in Sources */,
 				88CDBA1C1D92CB4A0058ECFE /* MyInfoController.swift in Sources */,
+				881ED0211D93BB2A00D612EF /* hActionPickerController.swift in Sources */,
 				88CDBA281D92D34F0058ECFE /* Session.swift in Sources */,
+				881ED0251D93D07400D612EF /* OptionOps.swift in Sources */,
+				881ED0231D93BFDB00D612EF /* hTableViewCell.swift in Sources */,
 				88CDBA191D92CB350058ECFE /* WorkBookController.swift in Sources */,
 				88CDB9F51D92BDA30058ECFE /* hPig.xcdatamodeld in Sources */,
+				881ED01A1D93B31700D612EF /* YoutubeVideo.swift in Sources */,
+				881ED0041D93AB6400D612EF /* Category.swift in Sources */,
 				88CDB9ED1D92BDA30058ECFE /* AppDelegate.swift in Sources */,
+				881ED00B1D93B00000D612EF /* hPickerView.swift in Sources */,
 				88CDBA2B1D92D6EE0058ECFE /* NetService.swift in Sources */,
+				881ED0161D93B13700D612EF /* hPlayerView.swift in Sources */,
+				881ED01E1D93B92100D612EF /* ArrayOps.swift in Sources */,
+				884B0E831D939AD2009748FF /* BannerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +526,7 @@
 				88CDBA201D92CB670058ECFE /* SettingsController.swift in Sources */,
 				88CDBA2C1D92D6EE0058ECFE /* NetService.swift in Sources */,
 				88CDBA051D92BDA40058ECFE /* hPigTests.swift in Sources */,
+				884B0E7C1D9393A2009748FF /* SessionCell.swift in Sources */,
 				88CDBA241D92D1FF0058ECFE /* Model.swift in Sources */,
 				88CDBA1A1D92CB350058ECFE /* WorkBookController.swift in Sources */,
 				88CDBA1D1D92CB4A0058ECFE /* MyInfoController.swift in Sources */,
@@ -578,6 +662,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FY7JU9WRTC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/AlamofireImage",
+				);
 				INFOPLIST_FILE = hPig/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wearespeakingtube.hPig;
@@ -592,6 +680,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FY7JU9WRTC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/AlamofireImage",
+				);
 				INFOPLIST_FILE = hPig/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wearespeakingtube.hPig;
@@ -602,7 +694,6 @@
 		};
 		88CDBA0D1D92BDA40058ECFE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AFF7798F19E4360E943CCB5 /* Pods-hPigTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -618,7 +709,6 @@
 		};
 		88CDBA0E1D92BDA40058ECFE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A650F6275F6398383A681628 /* Pods-hPigTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
