@@ -29,7 +29,7 @@ class YoutubeService {
     }
     
     func videoInfo(id: String, completion: @escaping ([YoutubeVideo], Error?) -> Void) -> Void {
-        DispatchQueue.global().async {
+        DispatchQueue.global(qos: .utility).async {
             var req = self.defaultRequestWithUrl()
             req.httpBody = "ytdurl=\(id)".data(using: String.Encoding.utf8)
             

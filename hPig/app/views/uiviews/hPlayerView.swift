@@ -82,7 +82,7 @@ class hPlayerView: UIView {
         return self.player?.currentItem
     }
     
-    func prepareToPlay(id: String, completion: @escaping (Error?) -> Void) {
+    func prepareToPlay(_ id: String, completion: @escaping (Error?) -> Void) {
         
         DispatchQueue.global().async {
             YoutubeService.shared.videoInfo(id: id, completion: { (data, error) in
@@ -118,7 +118,7 @@ class hPlayerView: UIView {
         
         let time = TimeFormatService.shared.timeFromFloat(seconds: timeSlider.value)
         
-        seekToTime(time: time, completionHandler: { (result) in
+        seekToTime(time, completionHandler: { (result) in
             if let action = self.seekBySlider {
                 action(time, result)
             }
@@ -133,13 +133,13 @@ class hPlayerView: UIView {
         return self.player?.currentTime()
     }
     
-    func seekToTime(time: CMTime) {
-        self.seekToTime(time: time) { (result) in
+    func seekToTime(_ time: CMTime) {
+        self.seekToTime(time) { (result) in
             
         }
     }
     
-    func seekToTime(time: CMTime, completionHandler: @escaping (Bool) -> Void) {
+    func seekToTime(_ time: CMTime, completionHandler: @escaping (Bool) -> Void) {
         startLoadingIndicator()
         
         //        2016-08-29 22:29:45.150 speaking-tube[1013:414061] *** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: 'AVPlayerItem cannot service a seek request with a completion handler until its status is AVPlayerItemStatusReadyToPlay.'
@@ -151,8 +151,8 @@ class hPlayerView: UIView {
         self.player?.seek(to: time, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero, completionHandler: completionHandler)
     }
     
-    func playInTimeRange(timeRange: CMTimeRange, completion: @escaping (Bool) -> Void) {
-        seekToTime(time: timeRange.start) { (result) in
+    func playInTimeRange(_ timeRange: CMTimeRange, completion: @escaping (Bool) -> Void) {
+        seekToTime(timeRange.start) { (result) in
             if result {
                 self.ignoreRange = true
                 self.playRange = timeRange
@@ -216,7 +216,7 @@ class hPlayerView: UIView {
         
         pause()
         
-        seekToTime(time: start) { (result) in
+        seekToTime(start) { (result) in
             if result {
                 self.play()
             } else {
@@ -230,7 +230,7 @@ class hPlayerView: UIView {
         
         pause()
         
-        seekToTime(time: end) { (result) in
+        seekToTime(end) { (result) in
             if result {
                 self.play()
             } else {

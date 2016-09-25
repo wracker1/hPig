@@ -182,12 +182,12 @@ class SessionsController: UITableViewController {
         let session = self.sessions[index!]
         let type = session.type
         
-//        if type.lowercased() == "banner" {
-//            
-//        } else {
-//            let vc = segue.destinationViewController as! SessionController
-//            vc.session = session
-//        }
+        if type.lowercased() == "banner" {
+            
+        } else {
+            let vc = segue.destination as! SessionController
+            vc.session = session
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
