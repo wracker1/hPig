@@ -218,7 +218,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     
     private func setButtonState(_ button: UIButton, enable: Bool) {
         button.isUserInteractionEnabled = enable
-        button.backgroundColor = enable ? UIColor.clear : RGBA(237, g: 237, b: 237, a: 0.5)
+//        button.backgroundColor = enable ? UIColor.clear : RGBA(237, g: 237, b: 237, a: 0.5)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -51,8 +51,8 @@
         </view>
     </objects>
     <resources>
-        <image name="btn_sub_next" width="75" height="43"/>
-        <image name="btn_sub_prev" width="62" height="20"/>
-        <image name="btn_sub_repeat" width="43" height="43"/>
+        <image name="btn_sub_next" width="112" height="65"/>
+        <image name="btn_sub_prev" width="112" height="65"/>
+        <image name="btn_sub_repeat" width="65" height="65"/>
     </resources>
 </document>

@@ -82,6 +82,10 @@ class hPlayerView: UIView {
         return self.player?.currentItem
     }
     
+    func currentItemTimeScale() -> CMTimeScale? {
+        return self.currentItem()?.asset.duration.timescale
+    }
+    
     func prepareToPlay(_ id: String, completion: @escaping (Error?) -> Void) {
         
         DispatchQueue.global().async {
@@ -113,7 +117,7 @@ class hPlayerView: UIView {
         }
     }
     
-    @IBAction func seekFromTimeSlider(sender: AnyObject) {
+    @IBAction func seekFromTimeSlider(_ sender: AnyObject) {
         self.pause()
         
         let time = TimeFormatService.shared.timeFromFloat(seconds: timeSlider.value)
