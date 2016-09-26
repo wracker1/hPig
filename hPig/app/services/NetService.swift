@@ -6,6 +6,7 @@
 //  Copyright © 2016년 wearespeakingtube. All rights reserved.
 //
 
+import Foundation
 import Alamofire
 
 class NetService {
@@ -16,10 +17,20 @@ class NetService {
     
     private let host = "http://speakingtube.cafe24.com"
     
-    func get(url: String) -> DataRequest {
+    func get(path: String) -> DataRequest {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        return Alamofire.request("\(host)\(url)").response(completionHandler: { _ in
+        return Alamofire.request("\(host)\(path)").response(completionHandler: { _ in
+            DispatchQueue.main.async {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        })
+    }
+    
+    func post(path: String, parameters: Parameters?) -> DataRequest {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        return Alamofire.request("\(host)\(path)", method: .post, parameters: parameters).response(completionHandler: { _ in
             DispatchQueue.main.async {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
@@ -27,10 +38,10 @@ class NetService {
     }
     
     func getObject<T: ResponseObjectSerializable>(path: String, completionHandler: @escaping (DataResponse<T>) -> Void) -> DataRequest {
-        return get(url: path).responseObject(completionHandler: completionHandler)
+        return get(path: path).responseObject(completionHandler: completionHandler)
     }
     
     func getCollection<T: ResponseCollectionSerializable>(path: String, completionHandler: @escaping (DataResponse<[T]>) -> Void) -> Void {
-        get(url: path).responseCollection(completionHandler: completionHandler)
+        get(path: path).responseCollection(completionHandler: completionHandler)
     }
 }

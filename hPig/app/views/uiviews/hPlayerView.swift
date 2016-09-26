@@ -90,8 +90,8 @@ class hPlayerView: UIView {
         
         DispatchQueue.global().async {
             YoutubeService.shared.videoInfo(id: id, completion: { (data, error) in
-                if data.count > 0 {
-                    let url = data[0].url
+                if let item = data.last  {
+                    let url = item.url
                     
                     self.player = AVPlayer(url: URL(string: url)!)
                     self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill

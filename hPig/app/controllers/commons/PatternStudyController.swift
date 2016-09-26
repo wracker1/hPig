@@ -59,10 +59,10 @@ class PatternStudyController: UIViewController {
     }
     
     private func setupToolbar() {
-        self.prevButton = barButtonItem("btn_sub_prev", size: CGSizeMake(74, 43), target: self, selector: #selector(self.prevPattern))
-        self.nextButton = barButtonItem("btn_sub_next", size: CGSizeMake(74, 43), target: self, selector: #selector(self.nextPattern))
-        self.repeatButton = barButtonItem("btn_sub_repeat", size: CGSizeMake(43, 43), target: self, selector: #selector(self.repeatPattern))
-        self.saveButton = barButtonItem("btn_save", size: CGSizeMake(43, 43), target: self, selector: #selector(self.savePattern))
+        self.prevButton = barButtonItem("btn_sub_prev", size: CGSize(width: 74, height: 43), target: self, selector: #selector(self.prevPattern))
+        self.nextButton = barButtonItem("btn_sub_next", size: CGSize(width: 74, height: 43), target: self, selector: #selector(self.nextPattern))
+        self.repeatButton = barButtonItem("btn_sub_repeat", size: CGSize(width: 43, height: 43), target: self, selector: #selector(self.repeatPattern))
+        self.saveButton = barButtonItem("btn_save", size: CGSize(width: 43, height: 43), target: self, selector: #selector(self.savePattern))
         
         let lspace1 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let rspace1 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -72,16 +72,11 @@ class PatternStudyController: UIViewController {
     }
     
     private func changeLabels(_ index: Int) {
-        if let data = patternStudyData.get(index), let range = data.timeRange {
-            if let english = data.english, let korean = data.korean {
-                englishLabel.attributedText = SubtitleService.shared.buildAttributedString(english)
-                koreanLabel.text = korean
-            }
-            
-            if let meaning = data.meaning, let info = data.info {
-                meaningLabel.text = meaning
-                infoLabel.text = info
-            }
+        if let data = patternStudyData.get(index), let range = data.timeRange(playerView.currentItemTimeScale()) {
+            englishLabel.attributedText = SubtitleService.shared.buildAttributedString(data.english)
+            koreanLabel.text = data.korean
+            meaningLabel.text = data.meaning
+            infoLabel.text = data.info
             
             self.playerView.playInTimeRange(range, completion: { (result) in
                 if result {

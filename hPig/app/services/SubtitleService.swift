@@ -18,7 +18,7 @@ class SubtitleService {
     
     func subtitleData(_ id: String, part: Int, currentItem: AVPlayerItem?, completion: @escaping ([BasicStudy]) -> Void) {
         if let item = currentItem {
-            NetService.shared.get(url: "/svc/api/caption/\(id)/\(part)").responseString(completionHandler: { (res) in
+            NetService.shared.get(path: "/svc/api/caption/\(id)/\(part)").responseString(completionHandler: { (res) in
                 if let value = res.result.value {
                     let data = self.matchesInStringWithRegex("((\\d+?):(\\d+?))\\n+?(.*)\\n+?(.*)\\n*?", string: value).map({ (result) -> (CMTime, String, String) in
                         /**

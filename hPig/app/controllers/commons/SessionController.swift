@@ -53,11 +53,9 @@ class SessionController: UIViewController {
         
         if let basic = viewController as? BasicStudyController {
             basic.session = session
+        } else if let pattern = viewController as? PatternStudyController {
+            pattern.session = session
         }
-        
-//        else if let pattern = viewController as? PatternStudyController {
-//            pattern.session = session
-//        }
     }
     
     private func loadRelatedSessions(category: String) {
