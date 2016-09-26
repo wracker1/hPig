@@ -53,7 +53,7 @@ class YoutubeService {
     }
     
     func videoInfo(id: String, completion: @escaping ([YoutubeVideo], Error?) -> Void) -> Void {
-        DispatchQueue.global(qos: .utility).async {
+        DispatchQueue.global().async {
             if let cached = self.cache.object(forKey: id as NSString) {
                 self.videoData(html: cached as String, completion: completion)
             } else {
