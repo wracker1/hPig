@@ -86,35 +86,42 @@ class hPlayerView: UIView {
         return self.currentItem()?.asset.duration.timescale
     }
     
-    func prepareToPlay(_ id: String, completion: @escaping (Error?) -> Void) {
-        
-        DispatchQueue.global().async {
-            YoutubeService.shared.videoInfo(id: id, completion: { (data, error) in
-                if let item = data.last  {
-                    let url = item.url
+    func prepareToPlay(_ id: String, completion: @escaping (Error?) -> Void) throws {
+        YoutubeService.shared.videoInfo(id: id, completion: { (data, error) in
+            if let item = data.last  {
+                let url = item.url
+                let player = AVPlayer(url: URL(string: url)!)
+                
+                self.player = player
+                self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+                self.player?.currentItem?.canUseNetworkResourcesForLiveStreamingWhilePaused = true
+                
+                if let currentItem = self.player!.currentItem {
+                    let duration = currentItem.asset.duration
+                    self.duration = duration
                     
-                    self.player = AVPlayer(url: URL(string: url)!)
-                    self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-                    self.player?.currentItem?.canUseNetworkResourcesForLiveStreamingWhilePaused = true
-                    
-                    if let duration = self.player!.currentItem?.asset.duration {
-                        self.duration = duration
+                    DispatchQueue.global().async {
+                        var status: AVPlayerItemStatus = .unknown
+                        
+                        repeat {
+                            status = currentItem.status
+                        } while status != .readyToPlay
                         
                         DispatchQueue.main.async {
                             self.timeSlider.maximumValue = Float(TimeFormatService.shared.secondsFromCMTime(time: duration))
                             self.timeSlider.isUserInteractionEnabled = true
                             self.durationLabel.text = TimeFormatService.shared.timeStringFromCMTime(time: duration)
+                            
+                            completion(nil)
                         }
-                        
-                        completion(nil)
-                    } else {
-                        completion(NSError(domain: "", code: 400, userInfo: ["message": "\(id) empty duration info."]))
                     }
                 } else {
-                    completion(NSError(domain: "", code: 400, userInfo: ["message": "\(id) empty video data."]))
+                    completion(NSError(domain: "", code: 400, userInfo: ["message": "\(id) empty duration info."]))
                 }
-            })
-        }
+            } else {
+                completion(NSError(domain: "", code: 400, userInfo: ["message": "\(id) empty video data."]))
+            }
+        })
     }
     
     @IBAction func seekFromTimeSlider(_ sender: AnyObject) {
@@ -145,12 +152,6 @@ class hPlayerView: UIView {
     
     func seekToTime(_ time: CMTime, completionHandler: @escaping (Bool) -> Void) {
         startLoadingIndicator()
-        
-        //        2016-08-29 22:29:45.150 speaking-tube[1013:414061] *** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: 'AVPlayerItem cannot service a seek request with a completion handler until its status is AVPlayerItemStatusReadyToPlay.'
-        //        *** First throw call stack:
-        //        (0x1816cedb0 0x180d33f80 0x187da3720 0x187d8fe48 0x1000573d0 0x10005763c 0x1000446e0 0x100046984 0x100063b74 0x1000686c8 0x1003716d4 0x1001b099c 0x10016ed08 0x100aa1a7c 0x100aa1a3c 0x100aa74e4 0x181684d50 0x181682bb8 0x1815acc50 0x182e94088 0x18689a088 0x10006b9b4 0x18114a8b8)
-        //        libc++abi.dylib: terminating with uncaught exception of type NSException
-        //
         
         self.player?.seek(to: time, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero, completionHandler: completionHandler)
     }
@@ -277,9 +278,10 @@ class hPlayerView: UIView {
             return value.timeRangeValue
         })
         
-        if let range = data.get(0) {
+        if let range = data.get(0), let duration = currentItem()?.duration {
+            let isTimeInRange = current < duration
             
-            if !range.containsTime(current) && !loadingIndicator.isAnimating {
+            if isTimeInRange && !range.containsTime(current) && !loadingIndicator.isAnimating {
                 startLoadingIndicator()
             } else if loadingIndicator.isAnimating {
                 stopLoadingIndicator()

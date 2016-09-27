@@ -43,18 +43,32 @@ class PatternStudyController: UIViewController {
         
         playerView.startLoadingIndicator()
         
-        playerView.prepareToPlay(id) { (error) in
-            if let cause = error {
-                print(cause)
-            } else {
-                SubtitleService.shared.patternStudyData(id, part: part, currentItem: self.playerView.currentItem(), completion: { (data) in
-                    let index = 0
-                    self.patternStudyData = data
-                    self.playerView.seekBySlider = self.seekBySlider
-                    self.changeLabels(index)
-                })
+        play(id: id, part: part, retry: 0)
+    }
+    
+    private func play(id: String, part: Int, retry: Int) {
+        if retry < 2 {
+            do {
+                try playerView.prepareToPlay(id) { (error) in
+                    if let cause = error {
+                        print(cause)
+                        
+                        self.play(id: id, part: part, retry: retry + 1)
+                    } else {
+                        SubtitleService.shared.patternStudyData(id, part: part, currentItem: self.playerView.currentItem(), completion: { (data) in
+                            let index = 0
+                            self.patternStudyData = data
+                            self.playerView.seekBySlider = self.seekBySlider
+                            self.changeLabels(index)
+                        })
+                    }
+                    
+                }
+            } catch let e {
+                print(e)
+                
+                self.play(id: id, part: part, retry: retry + 1)
             }
-            
         }
     }
     

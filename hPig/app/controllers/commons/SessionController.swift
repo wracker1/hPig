@@ -12,16 +12,17 @@ import AVFoundation
 import Alamofire
 import CoreGraphics
 
-class SessionController: UIViewController {
+class SessionController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     var session: Session? = nil
+    
+    private var relatedSessions = [Session]()
     
     @IBOutlet weak var sessionImage: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var relatedContentsScroller: UIScrollView!
     @IBOutlet weak var basicExButton: UIButton!
     @IBOutlet weak var patternExButton: UIButton!
-    @IBOutlet weak var relatedContentsView: UIStackView!
+    @IBOutlet weak var relatedSessionsView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,29 +64,33 @@ class SessionController: UIViewController {
             if let current = self.session, let items = res.result.value?.filter({ (item) -> Bool in
                 return item.status == "Y" && item.id != current.id
             }) {
-                self.appendRelatedSessions(sessions: items)
+                self.relatedSessions = items
+                self.relatedSessionsView.reloadData()
             }
         }
     }
     
-    private func appendRelatedSessions(sessions: [Session]) {
-//        relatedContentsView.subviews.enumerated().forEach { (i, view) in
-//            if let button = view as? hRelatedSessionButton {
-//                button.addTarget(self, action: #selector(self.didSelectRelatedSessionButton(button:)), for: .touchUpInside)
-//                if i < sessions.count {
-//                    let session = sessions[i]
-//
-//                    button.update(session: session)
-//                } else {
-//                    button.isHidden = true
-//                }
-//            }
-//        }
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
     
-    func didSelectRelatedSessionButton(button: hRelatedSessionButton) {
-        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SessionController") as? SessionController {
-            viewController.session = button.session
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return relatedSessions.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "relatedSessionView", for: indexPath) as! RelatedSessionCell
+        
+        if let session = relatedSessions.get(indexPath.row) {
+            cell.update(session: session)
+        }
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let session = relatedSessions.get(indexPath.row), let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SessionController") as? SessionController {
+            viewController.session = session
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }

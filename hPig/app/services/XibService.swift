@@ -17,29 +17,10 @@ class XibService {
     func layoutXibViews(superview: UIView, nibName: String, viewLayoutBlock: @escaping (UIView) -> Void) {
         if let items = UINib(nibName: nibName, bundle: nil).instantiate(withOwner: superview, options: nil) as? [UIView] {
             items.forEach({ (view) in
+                view.frame = superview.bounds
+                view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                 
-                view.translatesAutoresizingMaskIntoConstraints = false
                 superview.addSubview(view)
-                
-                let data = ["view": view]
-                
-                superview.addConstraints(
-                    NSLayoutConstraint.constraints(
-                        withVisualFormat: "H:|[view]|",
-                        options: .alignAllCenterY,
-                        metrics: nil,
-                        views: data
-                    )
-                )
-                
-                superview.addConstraints(
-                    NSLayoutConstraint.constraints(
-                        withVisualFormat: "V:|[view]|",
-                        options: .alignAllCenterX,
-                        metrics: nil,
-                        views: data
-                    )
-                )
                 
                 viewLayoutBlock(view)
             })

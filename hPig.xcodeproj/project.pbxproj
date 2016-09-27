@@ -32,7 +32,6 @@
 		884B0E8B1D939B34009748FF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884B0E8A1D939B34009748FF /* QuartzCore.framework */; };
 		884B0E8D1D93A0BB009748FF /* ImageDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884B0E8C1D93A0BB009748FF /* ImageDownloadService.swift */; };
 		886085231D97A951009A9B3C /* SessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886085221D97A951009A9B3C /* SessionController.swift */; };
-		886085251D97AB7F009A9B3C /* hRelatedSessionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886085241D97AB7F009A9B3C /* hRelatedSessionButton.swift */; };
 		886085271D97D342009A9B3C /* BasicStudyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886085261D97D342009A9B3C /* BasicStudyController.swift */; };
 		886085291D97D393009A9B3C /* BasicStudy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886085281D97D393009A9B3C /* BasicStudy.swift */; };
 		8860852B1D97D3DB009A9B3C /* SubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8860852A1D97D3DB009A9B3C /* SubtitleCell.swift */; };
@@ -42,6 +41,7 @@
 		886085341D99643C009A9B3C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 886085331D99643C009A9B3C /* Alamofire.framework */; };
 		886085361D996448009A9B3C /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 886085351D996448009A9B3C /* AlamofireImage.framework */; };
 		888684FE1D99282D00989028 /* PatternStudyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888684FD1D99282D00989028 /* PatternStudyController.swift */; };
+		88BE97C51D9A64B4002903E3 /* RelatedSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97C41D9A64B4002903E3 /* RelatedSessionCell.swift */; };
 		88CDB9ED1D92BDA30058ECFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDB9EC1D92BDA30058ECFE /* AppDelegate.swift */; };
 		88CDB9F21D92BDA30058ECFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88CDB9F01D92BDA30058ECFE /* Main.storyboard */; };
 		88CDB9F51D92BDA30058ECFE /* hPig.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88CDB9F31D92BDA30058ECFE /* hPig.xcdatamodeld */; };
@@ -102,7 +102,6 @@
 		884B0E8A1D939B34009748FF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		884B0E8C1D93A0BB009748FF /* ImageDownloadService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloadService.swift; sourceTree = "<group>"; };
 		886085221D97A951009A9B3C /* SessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionController.swift; path = commons/SessionController.swift; sourceTree = "<group>"; };
-		886085241D97AB7F009A9B3C /* hRelatedSessionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = hRelatedSessionButton.swift; path = uiviews/hRelatedSessionButton.swift; sourceTree = "<group>"; };
 		886085261D97D342009A9B3C /* BasicStudyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicStudyController.swift; path = commons/BasicStudyController.swift; sourceTree = "<group>"; };
 		886085281D97D393009A9B3C /* BasicStudy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicStudy.swift; sourceTree = "<group>"; };
 		8860852A1D97D3DB009A9B3C /* SubtitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubtitleCell.swift; path = cells/SubtitleCell.swift; sourceTree = "<group>"; };
@@ -112,6 +111,7 @@
 		886085331D99643C009A9B3C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Release-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		886085351D996448009A9B3C /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "Pods/../build/Release-iphoneos/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
 		888684FD1D99282D00989028 /* PatternStudyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PatternStudyController.swift; path = commons/PatternStudyController.swift; sourceTree = "<group>"; };
+		88BE97C41D9A64B4002903E3 /* RelatedSessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RelatedSessionCell.swift; path = cells/RelatedSessionCell.swift; sourceTree = "<group>"; };
 		88CDB9E91D92BDA30058ECFE /* hPig.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hPig.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88CDB9EC1D92BDA30058ECFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88CDB9F11D92BDA30058ECFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -183,7 +183,6 @@
 				881ED00A1D93B00000D612EF /* hPickerView.swift */,
 				881ED0131D93B0AA00D612EF /* hSessionControlView.swift */,
 				881ED0151D93B13700D612EF /* hPlayerView.swift */,
-				886085241D97AB7F009A9B3C /* hRelatedSessionButton.swift */,
 			);
 			name = uiviews;
 			sourceTree = "<group>";
@@ -216,6 +215,7 @@
 				884B0E7A1D9393A2009748FF /* SessionCell.swift */,
 				884B0E821D939AD2009748FF /* BannerCell.swift */,
 				8860852A1D97D3DB009A9B3C /* SubtitleCell.swift */,
+				88BE97C41D9A64B4002903E3 /* RelatedSessionCell.swift */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -534,6 +534,7 @@
 				88CDBA1F1D92CB670058ECFE /* SettingsController.swift in Sources */,
 				881ED0061D93AC0100D612EF /* CategoryService.swift in Sources */,
 				884B0E7B1D9393A2009748FF /* SessionCell.swift in Sources */,
+				88BE97C51D9A64B4002903E3 /* RelatedSessionCell.swift in Sources */,
 				881ED0081D93AEA200D612EF /* XibService.swift in Sources */,
 				881ED0181D93B2B300D612EF /* YoutubeService.swift in Sources */,
 				88CDBA161D92CABA0058ECFE /* SessionsController.swift in Sources */,
@@ -557,7 +558,6 @@
 				8860852E1D97D435009A9B3C /* Global.swift in Sources */,
 				88CDB9ED1D92BDA30058ECFE /* AppDelegate.swift in Sources */,
 				881ED00B1D93B00000D612EF /* hPickerView.swift in Sources */,
-				886085251D97AB7F009A9B3C /* hRelatedSessionButton.swift in Sources */,
 				88CDBA2B1D92D6EE0058ECFE /* NetService.swift in Sources */,
 				881ED0161D93B13700D612EF /* hPlayerView.swift in Sources */,
 				881ED01E1D93B92100D612EF /* ArrayOps.swift in Sources */,

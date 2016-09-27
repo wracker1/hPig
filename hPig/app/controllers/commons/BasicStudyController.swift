@@ -55,28 +55,42 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         
         playerView.startLoadingIndicator()
         
-        playerView.prepareToPlay(id) { (error) in
-            if let cause = error {
-                print(cause)
-            } else {
-                SubtitleService.shared.subtitleData(id, part: part, currentItem: self.playerView.currentItem()) { (data) in
-                    self.subtitles = data
-                    self.subtitleTableView.reloadData()
-                    
-                    if let sub = data.get(0), let range = sub.timeRange {
-                        self.playerView.seekToTime(range.start)
-                    }
-                    
-                    self.playerView.ticker = self.changeSubtitle
-                    self.playerView.seekBySlider = self.seekBySlider
-                    self.playerView.play()
-                }
-            }
-        }
+        play(id: id, part: part, retry: 0)
         
         sessionControlView.repeatButton.addTarget(self, action: #selector(self.repeatCurrentIndex), for: .touchUpInside)
         sessionControlView.prevButton.addTarget(self, action: #selector(self.playPrevIndex), for: .touchUpInside)
         sessionControlView.nextButton.addTarget(self, action: #selector(self.playNextIndex), for: .touchUpInside)
+    }
+    
+    private func play(id: String, part: Int, retry: Int) {
+        if retry < 2 {
+            do {
+                try playerView.prepareToPlay(id) { (error) in
+                    if let cause = error {
+                        print(cause)
+                        
+                        self.play(id: id, part: part, retry: retry + 1)
+                    } else {
+                        SubtitleService.shared.subtitleData(id, part: part, currentItem: self.playerView.currentItem()) { (data) in
+                            self.subtitles = data
+                            self.subtitleTableView.reloadData()
+                            self.playerView.ticker = self.changeSubtitle
+                            self.playerView.seekBySlider = self.seekBySlider
+                            
+                            if let sub = data.get(0), let range = sub.timeRange {
+                                self.playerView.seekToTime(range.start, completionHandler: { (result) in
+                                    self.playerView.play()
+                                })
+                            }
+                        }
+                    }
+                }
+            } catch let e {
+                print(e)
+                
+                self.play(id: id, part: part, retry: retry + 1)
+            }
+        }
     }
     
     func repeatCurrentIndex() {
