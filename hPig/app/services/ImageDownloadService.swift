@@ -16,15 +16,34 @@ class ImageDownloadService {
         return instance
     }()
     
-    private let imageDownloader = ImageDownloader(
-        configuration: ImageDownloader.defaultURLSessionConfiguration(),
-        downloadPrioritization: .fifo,
-        maximumActiveDownloads: 5,
-        imageCache: AutoPurgingImageCache()
-    )
+    private let imageDownloader: ImageDownloader = {
+        let configuration = URLSessionConfiguration.default
+        
+        configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
+        configuration.httpShouldSetCookies = true
+        configuration.httpShouldUsePipelining = false
+        configuration.requestCachePolicy = .useProtocolCachePolicy
+        configuration.allowsCellularAccess = true
+        configuration.timeoutIntervalForRequest = 30
+        configuration.urlCache = URLCache(
+            memoryCapacity: 50 * 1024 * 1024, // 50 MB
+            diskCapacity: 150 * 1024 * 1024,  // 150 MB
+            diskPath: "org.alamofire.imagedownloader"
+        )
+        
+        
+        return ImageDownloader(
+            configuration: configuration,
+            downloadPrioritization: .fifo,
+            maximumActiveDownloads: 6,
+            imageCache: AutoPurgingImageCache()
+        )
+    }()
     
-    func get(url: String, filter: ImageFilter?, completionHandler: @escaping (DataResponse<Image>) -> Void) -> Void {
+    func get(url: String, filter: ImageFilter?, completionHandler: @escaping (DataResponse<Image>) -> Void) {
         let req = URLRequest(url: URL(string: url)!)
+        
+        print("GET IMAGE: \(url)")
         
         imageDownloader.download(
             req,

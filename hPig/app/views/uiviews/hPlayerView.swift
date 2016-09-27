@@ -89,18 +89,21 @@ class hPlayerView: UIView {
     func prepareToPlay(_ id: String, completion: @escaping (Error?) -> Void) throws {
         YoutubeService.shared.videoInfo(id: id, completion: { (data, error) in
             if let item = data.last  {
-                let url = item.url
-                let player = AVPlayer(url: URL(string: url)!)
-                
-                self.player = player
-                self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-                self.player?.currentItem?.canUseNetworkResourcesForLiveStreamingWhilePaused = true
-                
-                if let currentItem = self.player!.currentItem {
-                    let duration = currentItem.asset.duration
-                    self.duration = duration
+                DispatchQueue.global().async {
+                    let url = item.url
+                    let player = AVPlayer(url: URL(string: url)!)
                     
-                    DispatchQueue.global().async {
+                    print("VIDEO DATA: \(data)\n")
+                    print("STREAM VIDEO: \(item)")
+                    
+                    self.player = player
+                    self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+                    self.player?.currentItem?.canUseNetworkResourcesForLiveStreamingWhilePaused = true
+                    
+                    if let currentItem = self.player!.currentItem {
+                        let duration = currentItem.asset.duration
+                        self.duration = duration
+                        
                         var status: AVPlayerItemStatus = .unknown
                         
                         repeat {
@@ -114,9 +117,11 @@ class hPlayerView: UIView {
                             
                             completion(nil)
                         }
+                    } else {
+                        DispatchQueue.main.async {
+                            completion(NSError(domain: "", code: 400, userInfo: ["message": "\(id) empty duration info."]))
+                        }
                     }
-                } else {
-                    completion(NSError(domain: "", code: 400, userInfo: ["message": "\(id) empty duration info."]))
                 }
             } else {
                 completion(NSError(domain: "", code: 400, userInfo: ["message": "\(id) empty video data."]))

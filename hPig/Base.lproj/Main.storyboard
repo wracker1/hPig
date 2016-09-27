@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zVx-pS-ww8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2327e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zVx-pS-ww8">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -156,7 +156,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WXY-59-Bnm" id="WFP-Pm-9Vr">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -512,26 +512,25 @@
                                                             <constraint firstAttribute="height" constant="160" id="bGW-k9-r5h"/>
                                                         </constraints>
                                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="FcO-hU-YyL">
-                                                            <size key="itemSize" width="100" height="150"/>
+                                                            <size key="itemSize" width="110" height="160"/>
                                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
                                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="relatedSessionView" id="5PK-Xa-KQc" customClass="RelatedSessionCell" customModule="hPig" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="5" width="100" height="150"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="110" height="160"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="110" height="160"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lRn-lW-eoO">
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" constant="100" id="CQv-ss-WVd"/>
                                                                                 <constraint firstAttribute="width" secondItem="lRn-lW-eoO" secondAttribute="height" multiplier="1:1" priority="750" id="bJO-zA-hzQ"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BP-94-zDm">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BP-94-zDm">
                                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -539,7 +538,6 @@
                                                                     </subviews>
                                                                 </view>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="bottom" secondItem="7BP-94-zDm" secondAttribute="bottom" id="3uc-hC-Gos"/>
                                                                     <constraint firstItem="lRn-lW-eoO" firstAttribute="leading" secondItem="5PK-Xa-KQc" secondAttribute="leading" id="Bu7-YH-q6o"/>
                                                                     <constraint firstItem="lRn-lW-eoO" firstAttribute="top" secondItem="5PK-Xa-KQc" secondAttribute="top" id="Tgr-vu-J7e"/>
                                                                     <constraint firstAttribute="trailing" secondItem="7BP-94-zDm" secondAttribute="trailing" id="fi8-fZ-WGL"/>
@@ -562,7 +560,7 @@
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="rNe-6G-RV3" firstAttribute="top" secondItem="wtn-NP-tyX" secondAttribute="top" id="0B0-iE-XuM"/>
-                                                    <constraint firstItem="qmn-OT-lSe" firstAttribute="top" secondItem="kRN-sA-1P6" secondAttribute="bottom" constant="3" id="0qE-hw-OYQ"/>
+                                                    <constraint firstItem="qmn-OT-lSe" firstAttribute="top" secondItem="kRN-sA-1P6" secondAttribute="bottom" id="0qE-hw-OYQ"/>
                                                     <constraint firstItem="rNe-6G-RV3" firstAttribute="leading" secondItem="wtn-NP-tyX" secondAttribute="leading" id="3De-rF-MDU"/>
                                                     <constraint firstItem="TOV-GH-u00" firstAttribute="leading" secondItem="wtn-NP-tyX" secondAttribute="leading" id="4mE-6D-D0u"/>
                                                     <constraint firstItem="l8x-Dr-VMS" firstAttribute="leading" secondItem="wtn-NP-tyX" secondAttribute="leading" id="7Gv-YK-7Bu"/>

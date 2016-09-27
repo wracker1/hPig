@@ -21,9 +21,10 @@ class YoutubeService {
     
     private func defaultRequestWithUrl() -> URLRequest {
         let url = URL(string: "https://www.h3xed.com/blogmedia/youtube-info.php")!
-        var req = URLRequest(url: url)
+        var req = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 30)
         
         req.httpMethod = "POST"
+        
         req.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         req.addValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.8 (KHTML, like Gecko) Version/9.1.3 Safari/601.7.8", forHTTPHeaderField: "User-Agent")
         req.addValue("https://www.h3xed.com", forHTTPHeaderField: "Origin")
@@ -42,35 +43,31 @@ class YoutubeService {
                 return YoutubeVideo(quality: quality, url: url)
             })
             
-            DispatchQueue.main.async {
-                completion(videoInfo, nil)
-            }
+            completion(videoInfo, nil)
         } catch let e {
-            DispatchQueue.main.async {
-                completion([], e)
-            }
+            completion([], e)
         }
     }
     
     func videoInfo(id: String, completion: @escaping ([YoutubeVideo], Error?) -> Void) -> Void {
-        DispatchQueue.global().async {
-            if let cached = self.cache.object(forKey: id as NSString) {
-                self.videoData(html: cached as String, completion: completion)
-            } else {
-                var req = self.defaultRequestWithUrl()
-                req.httpBody = "ytdurl=\(id)".data(using: String.Encoding.utf8)
+        if let cached = self.cache.object(forKey: id as NSString) {
+            self.videoData(html: cached as String, completion: completion)
+        } else {
+            var req = self.defaultRequestWithUrl()
+            req.httpBody = "ytdurl=\(id)".data(using: String.Encoding.utf8)
+            
+            let task = URLSession.shared.dataTask(with: req) { (data, res, error) in
                 
-                let task = URLSession.shared.dataTask(with: req) { (data, res, error) in
-                    
-                    if let item = data {
-                        let html = String(data: item, encoding: .utf8)!
-                        self.videoData(html: html, completion: completion)
-                        self.cache.setObject(html as NSString, forKey: id as NSString)
-                    }
+                if let item = data {
+                    let html = String(data: item, encoding: .utf8)!
+                    self.videoData(html: html, completion: completion)
+                    self.cache.setObject(html as NSString, forKey: id as NSString)
                 }
-                
-                task.resume()
             }
+            
+            print("POST =======================> req: \(req)")
+            
+            task.resume()
         }
     }
 }

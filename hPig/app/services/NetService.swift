@@ -20,7 +20,11 @@ class NetService {
     func get(path: String) -> DataRequest {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        return Alamofire.request("\(host)\(path)").response(completionHandler: { _ in
+        let url = "\(host)\(path)"
+        
+        print("GET =======================> url: \(url)")
+        
+        return Alamofire.request(url).response(completionHandler: { _ in
             DispatchQueue.main.async {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
@@ -30,7 +34,11 @@ class NetService {
     func post(path: String, parameters: Parameters?) -> DataRequest {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        return Alamofire.request("\(host)\(path)", method: .post, parameters: parameters).response(completionHandler: { _ in
+        let url = "\(host)\(path)"
+        
+        print("POST =======================> url: \(url), parameter: \(parameters)")
+        
+        return Alamofire.request(url, method: .post, parameters: parameters).response(completionHandler: { _ in
             DispatchQueue.main.async {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
