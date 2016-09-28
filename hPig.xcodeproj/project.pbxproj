@@ -40,6 +40,9 @@
 		886085321D97DAD8009A9B3C /* PatternStudy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886085311D97DAD8009A9B3C /* PatternStudy.swift */; };
 		886085341D99643C009A9B3C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 886085331D99643C009A9B3C /* Alamofire.framework */; };
 		886085361D996448009A9B3C /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 886085351D996448009A9B3C /* AlamofireImage.framework */; };
+		886EF1741D9C2B58009DA8E8 /* NaverAuth.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 886EF16D1D9C2B58009DA8E8 /* NaverAuth.bundle */; };
+		886EF1751D9C2B58009DA8E8 /* libNaverLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 886EF16F1D9C2B58009DA8E8 /* libNaverLogin.a */; };
+		886EF1761D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886EF1731D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m */; };
 		888684FE1D99282D00989028 /* PatternStudyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888684FD1D99282D00989028 /* PatternStudyController.swift */; };
 		88BE97C51D9A64B4002903E3 /* RelatedSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97C41D9A64B4002903E3 /* RelatedSessionCell.swift */; };
 		88CDB9ED1D92BDA30058ECFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDB9EC1D92BDA30058ECFE /* AppDelegate.swift */; };
@@ -110,6 +113,13 @@
 		886085311D97DAD8009A9B3C /* PatternStudy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatternStudy.swift; sourceTree = "<group>"; };
 		886085331D99643C009A9B3C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Release-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		886085351D996448009A9B3C /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "Pods/../build/Release-iphoneos/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
+		886EF1691D9C2AC5009DA8E8 /* hPig-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hPig-Bridging-Header.h"; sourceTree = "<group>"; };
+		886EF16D1D9C2B58009DA8E8 /* NaverAuth.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NaverAuth.bundle; sourceTree = "<group>"; };
+		886EF16F1D9C2B58009DA8E8 /* libNaverLogin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libNaverLogin.a; sourceTree = "<group>"; };
+		886EF1701D9C2B58009DA8E8 /* NaverThirdPartyConstantsForApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NaverThirdPartyConstantsForApp.h; sourceTree = "<group>"; };
+		886EF1711D9C2B58009DA8E8 /* NaverThirdPartyLoginConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NaverThirdPartyLoginConnection.h; sourceTree = "<group>"; };
+		886EF1721D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLoginThirdPartyOAuth20InAppBrowserViewController.h; sourceTree = "<group>"; };
+		886EF1731D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLoginThirdPartyOAuth20InAppBrowserViewController.m; sourceTree = "<group>"; };
 		888684FD1D99282D00989028 /* PatternStudyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PatternStudyController.swift; path = commons/PatternStudyController.swift; sourceTree = "<group>"; };
 		88BE97C41D9A64B4002903E3 /* RelatedSessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RelatedSessionCell.swift; path = cells/RelatedSessionCell.swift; sourceTree = "<group>"; };
 		88CDB9E91D92BDA30058ECFE /* hPig.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hPig.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +152,7 @@
 			files = (
 				886085361D996448009A9B3C /* AlamofireImage.framework in Frameworks */,
 				886085341D99643C009A9B3C /* Alamofire.framework in Frameworks */,
+				886EF1751D9C2B58009DA8E8 /* libNaverLogin.a in Frameworks */,
 				884B0E8B1D939B34009748FF /* QuartzCore.framework in Frameworks */,
 				884B0E891D939B1D009748FF /* CoreGraphics.framework in Frameworks */,
 				884B0E861D939B13009748FF /* AVFoundation.framework in Frameworks */,
@@ -236,6 +247,26 @@
 			name = etc;
 			sourceTree = "<group>";
 		};
+		886EF16C1D9C2B58009DA8E8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				886EF16D1D9C2B58009DA8E8 /* NaverAuth.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		886EF16E1D9C2B58009DA8E8 /* ThirdPartyModule */ = {
+			isa = PBXGroup;
+			children = (
+				886EF16F1D9C2B58009DA8E8 /* libNaverLogin.a */,
+				886EF1701D9C2B58009DA8E8 /* NaverThirdPartyConstantsForApp.h */,
+				886EF1711D9C2B58009DA8E8 /* NaverThirdPartyLoginConnection.h */,
+				886EF1721D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.h */,
+				886EF1731D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m */,
+			);
+			path = ThirdPartyModule;
+			sourceTree = "<group>";
+		};
 		88CDB9E01D92BDA30058ECFE = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +275,9 @@
 				88CDB9EA1D92BDA30058ECFE /* Products */,
 				E4108440DBB5266D60FD8E5D /* Pods */,
 				21B261A3D92EB5396488C94B /* Frameworks */,
+				886EF16C1D9C2B58009DA8E8 /* Resources */,
+				886EF16E1D9C2B58009DA8E8 /* ThirdPartyModule */,
+				886EF1691D9C2AC5009DA8E8 /* hPig-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -459,6 +493,7 @@
 			files = (
 				881ED0111D93B02100D612EF /* session_nav_view.xib in Resources */,
 				881ED0101D93B02100D612EF /* picker_action_view.xib in Resources */,
+				886EF1741D9C2B58009DA8E8 /* NaverAuth.bundle in Resources */,
 				881ED0121D93B02100D612EF /* st_player_view.xib in Resources */,
 				88CDB9FA1D92BDA30058ECFE /* LaunchScreen.storyboard in Resources */,
 				88CDB9F71D92BDA30058ECFE /* Assets.xcassets in Resources */,
@@ -541,6 +576,7 @@
 				881ED0141D93B0AA00D612EF /* hSessionControlView.swift in Sources */,
 				886085231D97A951009A9B3C /* SessionController.swift in Sources */,
 				88CDBA1C1D92CB4A0058ECFE /* MyInfoController.swift in Sources */,
+				886EF1761D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m in Sources */,
 				888684FE1D99282D00989028 /* PatternStudyController.swift in Sources */,
 				881ED0211D93BB2A00D612EF /* hActionPickerController.swift in Sources */,
 				886085301D97D74B009A9B3C /* SubtitleService.swift in Sources */,
@@ -712,17 +748,19 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = FY7JU9WRTC;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/AlamofireImage",
-					"$(PROJECT_DIR)/build/Release-iphoneos/Alamofire",
-					"$(PROJECT_DIR)/build/Release-iphoneos/AlamofireImage",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = hPig/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ThirdPartyModule",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wearespeakingtube.hPig;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "hPig-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -733,17 +771,18 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = FY7JU9WRTC;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/AlamofireImage",
-					"$(PROJECT_DIR)/build/Release-iphoneos/Alamofire",
-					"$(PROJECT_DIR)/build/Release-iphoneos/AlamofireImage",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = hPig/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ThirdPartyModule",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wearespeakingtube.hPig;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "hPig-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
