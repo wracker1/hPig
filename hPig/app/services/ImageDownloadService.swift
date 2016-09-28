@@ -22,7 +22,7 @@ class ImageDownloadService {
         configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
         configuration.httpShouldSetCookies = true
         configuration.httpShouldUsePipelining = false
-        configuration.requestCachePolicy = .useProtocolCachePolicy
+        configuration.requestCachePolicy = .returnCacheDataElseLoad
         configuration.allowsCellularAccess = true
         configuration.timeoutIntervalForRequest = 30
         configuration.urlCache = URLCache(
