@@ -8,16 +8,22 @@
 
 import UIKit
 
+enum SettingCellType {
+    case action
+}
+
+enum SettingCellAction {
+    case login
+}
+
 class SettingsController: UITableViewController {
+    
+    private let menu = [
+        ["type": SettingCellType.action, "action": SettingCellAction.login, "value": "로그인"]
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,24 +34,25 @@ class SettingsController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return menu.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        let data = menu[indexPath.row]
+        let type = data["type"] as! SettingCellType
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier(type: type), for: indexPath)
+        return updateCell(cell: cell, data: data)
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let data = menu.get(indexPath.row) {
+            actionCell(data: data)
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -91,5 +98,33 @@ class SettingsController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    private func updateCell(cell: UITableViewCell, data: [String : Any]) -> UITableViewCell {
+        let value = data["value"]
+        
+        switch data["type"] as! SettingCellType {
+        case .action:
+            if let txt = value as? String {
+                cell.textLabel?.text = txt
+            }
+        }
+        
+        return cell
+    }
+    
+    private func actionCell(data: [String : Any]) {
+        switch data["action"] as! SettingCellAction {
+        case .login:
+            AuthenticateService.shared.tryLogin()
+            
+        }
+    }
+    
+    private func cellIdentifier(type: SettingCellType) -> String {
+        switch type {
+        case .action:
+            return "ActionCell"
+        }
+    }
 
 }
