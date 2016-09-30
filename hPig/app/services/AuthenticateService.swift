@@ -15,25 +15,46 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     }()
     
     private let naverConnection: NaverThirdPartyLoginConnection = NaverThirdPartyLoginConnection.getSharedInstance()!
+    private weak var viewController: UIViewController? = nil
+    private var completionHandler: ((_ isSuccess: Bool) -> Void)? = nil
     
     func prepare() {
-        naverConnection.appName = kServiceAppName
         naverConnection.serviceUrlScheme = kServiceAppUrlScheme
         naverConnection.consumerKey = kConsumerKey
         naverConnection.consumerSecret = kConsumerSecret
+        naverConnection.appName = kServiceAppName
         
         naverConnection.isNaverAppOauthEnable = true
         naverConnection.isInAppOauthEnable = true
         naverConnection.delegate = self
+    }
+    
+    func isOn() -> Bool {
+        return naverConnection.accessToken != nil
+    }
+    
+    func tryLogin(viewController: UIViewController, completion: ((_ isSuccess: Bool) -> Void)?) {
+        self.viewController = viewController
+        self.completionHandler = completion
         
-        naverConnection.requestAccessTokenWithRefreshToken()
+        naverConnection.requestThirdPartyLogin()
+    }
+    
+    func logout(_ completion: (() -> Void)?) {
+        naverConnection.resetToken()
+        
+        if let handler = completion {
+            handler()
+        }
     }
     
     func processAccessToken(url: URL) -> Bool {
+        print("0 ============== \(url)")
+        
         if url.scheme ?? "" == "speakingtube" {
-            let result = naverConnection.receiveAccessToken(url)
-            
-            print(result)
+            if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true), let queryItems = urlComponents.queryItems {
+                
+            }
             
             return true
         } else {
@@ -41,16 +62,21 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         }
     }
     
-    func tryLogin() {
-        naverConnection.requestThirdPartyLogin()
-    }
-    
     func oauth20ConnectionDidOpenInAppBrowser(forOAuth request: URLRequest!) {
-        print("1 ============== \(request)")
+        print("1 ==============")
+        
+        if let vc = viewController {
+            vc.present(NLoginThirdPartyOAuth20InAppBrowserViewController(request: request), animated: true, completion: nil)
+        }
     }
     
     func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
         print("2 ==============")
+        
+        if let completion = completionHandler {
+            completion(true)
+            self.completionHandler = nil
+        }
     }
     
     func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {

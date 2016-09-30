@@ -19,7 +19,7 @@ enum SettingCellAction {
 class SettingsController: UITableViewController {
     
     private let menu = [
-        ["type": SettingCellType.action, "action": SettingCellAction.login, "value": "로그인"]
+        ["type": SettingCellType.action, "action": SettingCellAction.login]
     ]
 
     override func viewDidLoad() {
@@ -100,12 +100,13 @@ class SettingsController: UITableViewController {
     */
     
     private func updateCell(cell: UITableViewCell, data: [String : Any]) -> UITableViewCell {
-        let value = data["value"]
+        let type = data["type"] as! SettingCellType
+        let action = data["action"] as! SettingCellAction
         
-        switch data["type"] as! SettingCellType {
+        switch type {
         case .action:
-            if let txt = value as? String {
-                cell.textLabel?.text = txt
+            if action == .login {
+                cell.textLabel?.text = AuthenticateService.shared.isOn() ? "로그아웃" : "로그인"
             }
         }
         
@@ -115,8 +116,18 @@ class SettingsController: UITableViewController {
     private func actionCell(data: [String : Any]) {
         switch data["action"] as! SettingCellAction {
         case .login:
-            AuthenticateService.shared.tryLogin()
-            
+            let authenticate = AuthenticateService.shared
+            if authenticate.isOn() {
+                authenticate.logout {
+                    self.tableView.reloadData()
+                }
+            } else {
+                authenticate.tryLogin(viewController: self) { (isSuccess) in
+                    if isSuccess {
+                        self.tableView.reloadData()
+                    }
+                }
+            }
         }
     }
     
