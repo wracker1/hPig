@@ -46,6 +46,9 @@
 		88BE97D41D9D04B2002903E3 /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97CF1D9D04B2002903E3 /* SessionCell.swift */; };
 		88BE97D71D9D0547002903E3 /* ActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97D61D9D0547002903E3 /* ActionCell.swift */; };
 		88BE97D91D9D0C37002903E3 /* AuthenticateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97D81D9D0C37002903E3 /* AuthenticateService.swift */; };
+		88CC671D1D9FAFC7002C6E51 /* WorkBook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88CC671B1D9FAFC7002C6E51 /* WorkBook.storyboard */; };
+		88CC671F1D9FAFD6002C6E51 /* MyInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88CC671E1D9FAFD6002C6E51 /* MyInfo.storyboard */; };
+		88CC67221D9FAFE8002C6E51 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88CC67201D9FAFE8002C6E51 /* Settings.storyboard */; };
 		88CDB9ED1D92BDA30058ECFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDB9EC1D92BDA30058ECFE /* AppDelegate.swift */; };
 		88CDB9F21D92BDA30058ECFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88CDB9F01D92BDA30058ECFE /* Main.storyboard */; };
 		88CDB9F51D92BDA30058ECFE /* hPig.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88CDB9F31D92BDA30058ECFE /* hPig.xcdatamodeld */; };
@@ -125,6 +128,9 @@
 		88BE97CF1D9D04B2002903E3 /* SessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCell.swift; sourceTree = "<group>"; };
 		88BE97D61D9D0547002903E3 /* ActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionCell.swift; path = settings/ActionCell.swift; sourceTree = "<group>"; };
 		88BE97D81D9D0C37002903E3 /* AuthenticateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticateService.swift; sourceTree = "<group>"; };
+		88CC671C1D9FAFC7002C6E51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/WorkBook.storyboard; sourceTree = "<group>"; };
+		88CC671E1D9FAFD6002C6E51 /* MyInfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyInfo.storyboard; sourceTree = "<group>"; };
+		88CC67211D9FAFE8002C6E51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		88CDB9E91D92BDA30058ECFE /* hPig.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hPig.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88CDB9EC1D92BDA30058ECFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88CDB9F11D92BDA30058ECFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -324,6 +330,9 @@
 				88CDBA0F1D92CABA0058ECFE /* app */,
 				88CDB9EC1D92BDA30058ECFE /* AppDelegate.swift */,
 				88CDB9F01D92BDA30058ECFE /* Main.storyboard */,
+				88CC67201D9FAFE8002C6E51 /* Settings.storyboard */,
+				88CC671E1D9FAFD6002C6E51 /* MyInfo.storyboard */,
+				88CC671B1D9FAFC7002C6E51 /* WorkBook.storyboard */,
 				88CDB9F61D92BDA30058ECFE /* Assets.xcassets */,
 				88CDB9F81D92BDA30058ECFE /* LaunchScreen.storyboard */,
 				88CDB9FB1D92BDA30058ECFE /* Info.plist */,
@@ -520,13 +529,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88CC671D1D9FAFC7002C6E51 /* WorkBook.storyboard in Resources */,
 				881ED0111D93B02100D612EF /* session_nav_view.xib in Resources */,
 				881ED0101D93B02100D612EF /* picker_action_view.xib in Resources */,
 				886EF1741D9C2B58009DA8E8 /* NaverAuth.bundle in Resources */,
 				881ED0121D93B02100D612EF /* st_player_view.xib in Resources */,
 				88CDB9FA1D92BDA30058ECFE /* LaunchScreen.storyboard in Resources */,
 				88CDB9F71D92BDA30058ECFE /* Assets.xcassets in Resources */,
+				88CC671F1D9FAFD6002C6E51 /* MyInfo.storyboard in Resources */,
 				88CDB9F21D92BDA30058ECFE /* Main.storyboard in Resources */,
+				88CC67221D9FAFE8002C6E51 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,6 +670,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		88CC671B1D9FAFC7002C6E51 /* WorkBook.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88CC671C1D9FAFC7002C6E51 /* Base */,
+			);
+			name = WorkBook.storyboard;
+			sourceTree = "<group>";
+		};
+		88CC67201D9FAFE8002C6E51 /* Settings.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88CC67211D9FAFE8002C6E51 /* Base */,
+			);
+			name = Settings.storyboard;
+			sourceTree = "<group>";
+		};
 		88CDB9F01D92BDA30058ECFE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
