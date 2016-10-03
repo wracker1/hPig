@@ -9,6 +9,7 @@
 import UIKit
 import AVKit
 import AVFoundation
+import CoreData
 
 class BasicStudyController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var session: Session? = nil
@@ -60,6 +61,29 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         sessionControlView.repeatButton.addTarget(self, action: #selector(self.repeatCurrentIndex), for: .touchUpInside)
         sessionControlView.prevButton.addTarget(self, action: #selector(self.playPrevIndex), for: .touchUpInside)
         sessionControlView.nextButton.addTarget(self, action: #selector(self.playNextIndex), for: .touchUpInside)
+    }
+    
+    private func saveStudyLog() {
+        let dataService = CoreDataService.shared
+        
+        if let item = session, let current = playerView.currentTime() {
+            let req: NSFetchRequest<HISTORY> = HISTORY.fetchRequest()
+            let userId = AuthenticateService.shared.userId()
+            let query = "uid = '\(userId)' AND vid = '\(item.id)' AND part = '\(item.part)'"
+            req.predicate = NSPredicate(format: query)
+                
+            dataService.select(request: req) { (items, error) in
+                let history = items.get(0) ?? {
+                    let (desc, ctx) = dataService.entityDescription("history")
+                    return HISTORY(entity: desc!, insertInto: ctx)
+                }()
+                
+                let currentSeconds = TimeFormatService.shared.secondsFromCMTime(time: current)
+                history.mutating(userId: userId, session: item, date: NSDate(), studyTime: currentSeconds)
+                
+                CoreDataService.shared.save()
+            }
+        }
     }
     
     private func play(id: String, part: Int, retry: Int) {
@@ -138,6 +162,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         super.viewWillDisappear(animated)
         
         playerView.pause()
+        saveStudyLog()
     }
     
     private func setupToolbar() {

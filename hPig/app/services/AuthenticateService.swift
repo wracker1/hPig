@@ -33,6 +33,10 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         return naverConnection.accessToken != nil
     }
     
+    func userId() -> String {
+        return "guest"
+    }
+    
     func tryLogin(viewController: UIViewController, completion: ((_ isSuccess: Bool) -> Void)?) {
         self.viewController = viewController
         self.completionHandler = completion
@@ -53,7 +57,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         
         if url.scheme ?? "" == "speakingtube" {
             if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true), let queryItems = urlComponents.queryItems {
-                
+                print(queryItems)
             }
             
             return true
