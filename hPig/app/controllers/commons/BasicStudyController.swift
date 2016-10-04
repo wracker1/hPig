@@ -65,7 +65,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     
     private func saveStudyLog() {
         let dataService = CoreDataService.shared
-        
+
         if let item = session, let current = playerView.currentTime() {
             let req: NSFetchRequest<HISTORY> = HISTORY.fetchRequest()
             let userId = AuthenticateService.shared.userId()
@@ -79,7 +79,14 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
                 }()
                 
                 let currentSeconds = TimeFormatService.shared.secondsFromCMTime(time: current)
-                history.mutating(userId: userId, session: item, date: NSDate(), studyTime: currentSeconds)
+                let currentIndex = self.currentIndex(current)
+                
+                history.mutating(userId: userId,
+                                 session: item,
+                                 date: NSDate(),
+                                 studyTime: currentSeconds,
+                                 position: currentIndex,
+                                 maxPosition: self.subtitles.count - 1)
                 
                 CoreDataService.shared.save()
             }

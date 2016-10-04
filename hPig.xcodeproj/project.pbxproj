@@ -53,6 +53,8 @@
 		88BE97D41D9D04B2002903E3 /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97CF1D9D04B2002903E3 /* SessionCell.swift */; };
 		88BE97D71D9D0547002903E3 /* ActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97D61D9D0547002903E3 /* ActionCell.swift */; };
 		88BE97D91D9D0C37002903E3 /* AuthenticateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97D81D9D0C37002903E3 /* AuthenticateService.swift */; };
+		88BE97DC1DA36D4D002903E3 /* HISTORY+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97DA1DA36D4D002903E3 /* HISTORY+CoreDataClass.swift */; };
+		88BE97DD1DA36D4D002903E3 /* HISTORY+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97DB1DA36D4D002903E3 /* HISTORY+CoreDataProperties.swift */; };
 		88CC671D1D9FAFC7002C6E51 /* WorkBook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88CC671B1D9FAFC7002C6E51 /* WorkBook.storyboard */; };
 		88CC671F1D9FAFD6002C6E51 /* MyInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88CC671E1D9FAFD6002C6E51 /* MyInfo.storyboard */; };
 		88CC67221D9FAFE8002C6E51 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88CC67201D9FAFE8002C6E51 /* Settings.storyboard */; };
@@ -77,8 +79,6 @@
 		88CDBA291D92D34F0058ECFE /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA271D92D34E0058ECFE /* Session.swift */; };
 		88CDBA2B1D92D6EE0058ECFE /* NetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA2A1D92D6EE0058ECFE /* NetService.swift */; };
 		88CDBA2C1D92D6EE0058ECFE /* NetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA2A1D92D6EE0058ECFE /* NetService.swift */; };
-		88FD830D1DA17714001D1D28 /* HISTORY+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FD830B1DA17714001D1D28 /* HISTORY+CoreDataClass.swift */; };
-		88FD830E1DA17714001D1D28 /* HISTORY+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FD830C1DA17714001D1D28 /* HISTORY+CoreDataProperties.swift */; };
 		CD60E31A6044EE444808C398 /* Pods_hPig.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A70A2A9D9760F243AC574B73 /* Pods_hPig.framework */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +145,8 @@
 		88BE97CF1D9D04B2002903E3 /* SessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCell.swift; sourceTree = "<group>"; };
 		88BE97D61D9D0547002903E3 /* ActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionCell.swift; path = settings/ActionCell.swift; sourceTree = "<group>"; };
 		88BE97D81D9D0C37002903E3 /* AuthenticateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticateService.swift; sourceTree = "<group>"; };
+		88BE97DA1DA36D4D002903E3 /* HISTORY+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HISTORY+CoreDataClass.swift"; sourceTree = "<group>"; };
+		88BE97DB1DA36D4D002903E3 /* HISTORY+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HISTORY+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		88CC671C1D9FAFC7002C6E51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/WorkBook.storyboard; sourceTree = "<group>"; };
 		88CC671E1D9FAFD6002C6E51 /* MyInfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyInfo.storyboard; sourceTree = "<group>"; };
 		88CC67211D9FAFE8002C6E51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
@@ -167,8 +169,6 @@
 		88CDBA251D92D2340058ECFE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../Library/Developer/Xcode/DerivedData/hPig-cgamwanqckhvsufhcxkvajblacum/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		88CDBA271D92D34E0058ECFE /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		88CDBA2A1D92D6EE0058ECFE /* NetService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetService.swift; sourceTree = "<group>"; };
-		88FD830B1DA17714001D1D28 /* HISTORY+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HISTORY+CoreDataClass.swift"; sourceTree = "<group>"; };
-		88FD830C1DA17714001D1D28 /* HISTORY+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HISTORY+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A70A2A9D9760F243AC574B73 /* Pods_hPig.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hPig.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E33491E5B2FDC71581ED77 /* Pods_hPigTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hPigTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2A86E940BFA0A45487A0A06 /* Pods-hPig.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hPig.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hPig/Pods-hPig.debug.xcconfig"; sourceTree = "<group>"; };
@@ -279,8 +279,8 @@
 		887FA9A21DA112BF00821495 /* db */ = {
 			isa = PBXGroup;
 			children = (
-				88FD830B1DA17714001D1D28 /* HISTORY+CoreDataClass.swift */,
-				88FD830C1DA17714001D1D28 /* HISTORY+CoreDataProperties.swift */,
+				88BE97DA1DA36D4D002903E3 /* HISTORY+CoreDataClass.swift */,
+				88BE97DB1DA36D4D002903E3 /* HISTORY+CoreDataProperties.swift */,
 				8865F0641DA115050025D0B9 /* TIME_LOG+CoreDataClass.swift */,
 				8865F0651DA115050025D0B9 /* TIME_LOG+CoreDataProperties.swift */,
 				8865F0661DA115050025D0B9 /* WORD+CoreDataClass.swift */,
@@ -644,7 +644,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88CDBA231D92D1FF0058ECFE /* Model.swift in Sources */,
-				88FD830D1DA17714001D1D28 /* HISTORY+CoreDataClass.swift in Sources */,
+				88BE97DC1DA36D4D002903E3 /* HISTORY+CoreDataClass.swift in Sources */,
 				881ED01C1D93B5B700D612EF /* TimeFormatServide.swift in Sources */,
 				884B0E8D1D93A0BB009748FF /* ImageDownloadService.swift in Sources */,
 				8865F06F1DA115050025D0B9 /* PATTERN+CoreDataProperties.swift in Sources */,
@@ -665,7 +665,7 @@
 				881ED0211D93BB2A00D612EF /* hActionPickerController.swift in Sources */,
 				886085301D97D74B009A9B3C /* SubtitleService.swift in Sources */,
 				88CDBA281D92D34F0058ECFE /* Session.swift in Sources */,
-				88FD830E1DA17714001D1D28 /* HISTORY+CoreDataProperties.swift in Sources */,
+				88BE97DD1DA36D4D002903E3 /* HISTORY+CoreDataProperties.swift in Sources */,
 				88BE97D21D9D04B2002903E3 /* RelatedSessionCell.swift in Sources */,
 				881ED0251D93D07400D612EF /* OptionOps.swift in Sources */,
 				886085291D97D393009A9B3C /* BasicStudy.swift in Sources */,

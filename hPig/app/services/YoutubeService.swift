@@ -65,7 +65,7 @@ class YoutubeService {
                 }
             }
             
-            print("POST =======================> req: \(req)")
+            print("POST =======================> req: \(req), body: ytdurl=\(id)")
             
             task.resume()
         }

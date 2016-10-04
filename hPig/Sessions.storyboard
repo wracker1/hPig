@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2333a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -19,7 +19,7 @@
                         <color key="separatorColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionCell" rowHeight="300" id="ZWT-AR-azU" customClass="SessionCell" customModule="hPig" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="375" height="300"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" verticalCompressionResistancePriority="1000" tableViewCell="ZWT-AR-azU" id="v6h-P7-bjc">
                                     <frame key="frameInset" width="375" height="300"/>
@@ -148,7 +148,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BannerCell" rowHeight="320" id="pml-tq-adu" customClass="BannerCell" customModule="hPig" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="392" width="375" height="320"/>
+                                <rect key="frame" x="0.0" y="372" width="375" height="320"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pml-tq-adu" id="HtM-Sh-PEg">
                                     <frame key="frameInset" width="375" height="320"/>
@@ -257,7 +257,7 @@
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IN5-tW-zUx">
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IN5-tW-zUx">
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="IN5-tW-zUx" secondAttribute="height" multiplier="10:3" priority="750" id="St6-29-Ia5"/>
                                                             <constraint firstAttribute="width" constant="50" id="yZl-7E-LiV"/>
@@ -458,11 +458,14 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="basicExButton" destination="heZ-za-8R8" id="hpu-Rc-HKc"/>
+                        <outlet property="continueButton" destination="IN5-tW-zUx" id="R2Y-1g-KQv"/>
                         <outlet property="descriptionLabel" destination="rNe-6G-RV3" id="whU-l3-zth"/>
                         <outlet property="durationLabel" destination="Mco-oW-ql7" id="mB4-Y9-Q79"/>
                         <outlet property="patternExButton" destination="kQ2-BF-zlf" id="POA-HF-thk"/>
+                        <outlet property="progress" destination="l8x-Dr-VMS" id="fzZ-kr-nxk"/>
                         <outlet property="relatedSessionsView" destination="qmn-OT-lSe" id="HKq-ZW-sTO"/>
                         <outlet property="sessionImage" destination="qQT-Su-wgs" id="whx-mg-NpD"/>
+                        <outlet property="startTimeLabel" destination="TOV-GH-u00" id="pfY-1A-3Mp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EQm-Dk-XKt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -495,10 +498,10 @@
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SubtitleCell" id="Sqf-j6-w8K" customClass="SubtitleCell" customModule="hPig" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="28" width="375" height="50"/>
+                                                        <rect key="frame" x="0.0" y="28" width="1000" height="50"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sqf-j6-w8K" id="gIa-10-WcV">
-                                                            <frame key="frameInset" width="375" height="50"/>
+                                                            <frame key="frameInset" width="1000" height="50"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvG-yr-AqL">

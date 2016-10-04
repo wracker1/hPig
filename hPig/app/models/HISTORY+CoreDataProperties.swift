@@ -2,7 +2,7 @@
 //  HISTORY+CoreDataProperties.swift
 //  hPig
 //
-//  Created by 이동현 on 2016. 10. 3..
+//  Created by Jesse on 2016. 10. 4..
 //  Copyright © 2016년 wearespeakingtube. All rights reserved.
 //
 

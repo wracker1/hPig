@@ -11,6 +11,7 @@ import AVKit
 import AVFoundation
 import Alamofire
 import CoreGraphics
+import CoreData
 
 class SessionController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     var session: Session? = nil
@@ -19,10 +20,13 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
     
     @IBOutlet weak var sessionImage: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var basicExButton: UIButton!
     @IBOutlet weak var patternExButton: UIButton!
     @IBOutlet weak var relatedSessionsView: UICollectionView!
+    @IBOutlet weak var progress: UIProgressView!
+    @IBOutlet weak var continueButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +41,12 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
             })
             
             loadRelatedSessions(category: item.category)
+            
+            SubtitleService.shared.subtitleData(item.id, part: Int(item.part) ?? 0, currentItem: nil, completion: { (data) in
+                if let subtitle = data.first, let range = subtitle.timeRange {
+                    self.startTimeLabel.text = TimeFormatService.shared.timeStringFromCMTime(time: range.start)
+                }
+            })
         }
 
         descriptionLabel.text = session?.sessionDescription
@@ -49,6 +59,14 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
         patternExButton.layer.masksToBounds = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let item = session {
+            loadHistory(session: item)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let viewController = (segue.destination as! UINavigationController).topViewController
         
@@ -56,6 +74,28 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
             basic.session = session
         } else if let pattern = viewController as? PatternStudyController {
             pattern.session = session
+        }
+    }
+    
+    private func loadHistory(session: Session) {
+        let req: NSFetchRequest<HISTORY> = HISTORY.fetchRequest()
+        let userId = AuthenticateService.shared.userId()
+        let query = "uid = '\(userId)' AND vid = '\(session.id)' AND part = '\(session.part)'"
+        req.predicate = NSPredicate(format: query)
+        
+        CoreDataService.shared.select(request: req) { (items, error) in
+            let hasHistory = items.count > 0
+            self.continueButton.isHidden = !hasHistory
+            
+            if let history = items.first,
+                let pos = history.position,
+                let maxPos = history.maxposition,
+                let position = Int(pos),
+                let maxPosition = Int(maxPos) {
+                
+                let value = Float(position) / Float(maxPosition)
+                self.progress.progress = value
+            }
         }
     }
     
