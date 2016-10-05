@@ -13,16 +13,16 @@
             <objects>
                 <tableViewController storyboardIdentifier="Sessions" id="CNS-Uf-dfs" customClass="SessionsController" customModule="hPig" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="174" sectionHeaderHeight="28" sectionFooterHeight="28" id="Bjn-DZ-2Qn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="separatorColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionCell" rowHeight="300" id="ZWT-AR-azU" customClass="SessionCell" customModule="hPig" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="375" height="300"/>
+                                <rect key="frame" x="0.0" y="92" width="1024" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" verticalCompressionResistancePriority="1000" tableViewCell="ZWT-AR-azU" id="v6h-P7-bjc">
-                                    <frame key="frameInset" width="375" height="300"/>
+                                    <frame key="frameInset" width="1024" height="300"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f7Q-oH-Xcm">
@@ -148,10 +148,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BannerCell" rowHeight="320" id="pml-tq-adu" customClass="BannerCell" customModule="hPig" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="392" width="375" height="320"/>
+                                <rect key="frame" x="0.0" y="392" width="1024" height="320"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pml-tq-adu" id="HtM-Sh-PEg">
-                                    <frame key="frameInset" width="375" height="320"/>
+                                    <frame key="frameInset" width="1024" height="320"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wgy-gX-xko">
@@ -233,7 +233,7 @@
                         <viewControllerLayoutGuide type="bottom" id="w0y-sc-PKo"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jf8-qE-70G">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzN-Oh-5aQ">
@@ -481,7 +481,7 @@
                         <viewControllerLayoutGuide type="bottom" id="zMK-FE-Um6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YX6-vP-l95">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFO-NZ-Sek">
@@ -667,7 +667,7 @@
                         <viewControllerLayoutGuide type="bottom" id="nWb-eu-XTR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2tg-2j-kgJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7se-cd-jQe">

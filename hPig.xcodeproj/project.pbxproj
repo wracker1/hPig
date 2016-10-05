@@ -55,6 +55,7 @@
 		88BE97D91D9D0C37002903E3 /* AuthenticateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97D81D9D0C37002903E3 /* AuthenticateService.swift */; };
 		88BE97DC1DA36D4D002903E3 /* HISTORY+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97DA1DA36D4D002903E3 /* HISTORY+CoreDataClass.swift */; };
 		88BE97DD1DA36D4D002903E3 /* HISTORY+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97DB1DA36D4D002903E3 /* HISTORY+CoreDataProperties.swift */; };
+		88BE97E01DA50499002903E3 /* PatternCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97DF1DA50499002903E3 /* PatternCell.swift */; };
 		88CC671D1D9FAFC7002C6E51 /* WorkBook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88CC671B1D9FAFC7002C6E51 /* WorkBook.storyboard */; };
 		88CC671F1D9FAFD6002C6E51 /* MyInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88CC671E1D9FAFD6002C6E51 /* MyInfo.storyboard */; };
 		88CC67221D9FAFE8002C6E51 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88CC67201D9FAFE8002C6E51 /* Settings.storyboard */; };
@@ -147,6 +148,7 @@
 		88BE97D81D9D0C37002903E3 /* AuthenticateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticateService.swift; sourceTree = "<group>"; };
 		88BE97DA1DA36D4D002903E3 /* HISTORY+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HISTORY+CoreDataClass.swift"; sourceTree = "<group>"; };
 		88BE97DB1DA36D4D002903E3 /* HISTORY+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HISTORY+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		88BE97DF1DA50499002903E3 /* PatternCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PatternCell.swift; path = workBook/PatternCell.swift; sourceTree = "<group>"; };
 		88CC671C1D9FAFC7002C6E51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/WorkBook.storyboard; sourceTree = "<group>"; };
 		88CC671E1D9FAFD6002C6E51 /* MyInfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyInfo.storyboard; sourceTree = "<group>"; };
 		88CC67211D9FAFE8002C6E51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 		88BE97C71D9D04B2002903E3 /* cells */ = {
 			isa = PBXGroup;
 			children = (
+				88BE97DE1DA50452002903E3 /* workBook */,
 				88BE97D51D9D04BF002903E3 /* settings */,
 				88BE97C81D9D04B2002903E3 /* basicStudy */,
 				88BE97CA1D9D04B2002903E3 /* hTableViewCell.swift */,
@@ -334,6 +337,14 @@
 				88BE97D61D9D0547002903E3 /* ActionCell.swift */,
 			);
 			name = settings;
+			sourceTree = "<group>";
+		};
+		88BE97DE1DA50452002903E3 /* workBook */ = {
+			isa = PBXGroup;
+			children = (
+				88BE97DF1DA50499002903E3 /* PatternCell.swift */,
+			);
+			name = workBook;
 			sourceTree = "<group>";
 		};
 		88CDB9E01D92BDA30058ECFE = {
@@ -679,6 +690,7 @@
 				881ED01A1D93B31700D612EF /* YoutubeVideo.swift in Sources */,
 				881ED0041D93AB6400D612EF /* Category.swift in Sources */,
 				88BE97D41D9D04B2002903E3 /* SessionCell.swift in Sources */,
+				88BE97E01DA50499002903E3 /* PatternCell.swift in Sources */,
 				8865F06D1DA115050025D0B9 /* WORD+CoreDataProperties.swift in Sources */,
 				8860852E1D97D435009A9B3C /* Global.swift in Sources */,
 				88BE97D11D9D04B2002903E3 /* hTableViewCell.swift in Sources */,

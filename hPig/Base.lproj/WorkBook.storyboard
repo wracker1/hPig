@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,11 +19,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qys-I2-bW2">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qys-I2-bW2">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PatternCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="PatternCell" id="ESP-CP-Nom" customClass="PatternCell" customModule="hPig" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="375" height="150"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ESP-CP-Nom" id="3Gy-Nr-MzH">
+                                            <frame key="frameInset" width="375" height="149"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kt8-LG-lNT">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="khy-yB-dsm"/>
+                                                        <constraint firstAttribute="height" constant="100" id="ple-Fq-HKK"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Kt8-LG-lNT" firstAttribute="leading" secondItem="3Gy-Nr-MzH" secondAttribute="leadingMargin" constant="5" id="Krg-g5-sjs"/>
+                                                <constraint firstItem="Kt8-LG-lNT" firstAttribute="top" secondItem="3Gy-Nr-MzH" secondAttribute="topMargin" constant="5" id="Q8g-J6-lcI"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="sessionImageView" destination="Kt8-LG-lNT" id="vTR-ti-ReZ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="3mx-Ie-cnv" id="LfB-LX-Voy"/>
+                                    <outlet property="delegate" destination="3mx-Ie-cnv" id="bw6-nv-lbF"/>
+                                </connections>
                             </tableView>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iwE-nf-7VE">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="3mx-Ie-cnv" id="pn2-du-OYL"/>
+                                    <outlet property="delegate" destination="3mx-Ie-cnv" id="cvS-md-BxN"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

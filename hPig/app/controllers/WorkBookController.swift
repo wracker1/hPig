@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class WorkBookController: UIViewController {
+class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var segMenu: UISegmentedControl!
     @IBOutlet weak var patternTableView: UITableView!
@@ -34,6 +34,41 @@ class WorkBookController: UIViewController {
     
     @IBAction func segValueChanged(_ sender: AnyObject) {
         toggleTableView()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == patternTableView {
+            return patternData.count
+        } else if tableView == wordTableView {
+            return wordData.count
+        } else {
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId(tableView), for: indexPath)
+        return update(tableView, cell: cell, indexPath: indexPath)
+    }
+    
+    private func cellId(_ tableView: UITableView) -> String {
+        if tableView == patternTableView {
+            return "PatternCell"
+        } else if tableView == wordTableView {
+            return "WordCell"
+        } else {
+            return "error"
+        }
+    }
+    
+    private func update(_ tableView: UITableView, cell: UITableViewCell, indexPath: IndexPath) -> UITableViewCell {
+        if tableView == patternTableView, let data = patternData.get(indexPath.row), let itemCell = cell as? PatternCell {
+            return itemCell.update(data: data)
+        } else if tableView == wordTableView {
+            return cell
+        } else {
+            return cell
+        }
     }
     
     private func toggleTableView() {
