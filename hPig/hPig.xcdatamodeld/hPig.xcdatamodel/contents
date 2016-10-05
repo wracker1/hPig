@@ -22,7 +22,7 @@
         <attribute name="regdt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="videoid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="TIME_LOG" representedClassName=".TIME_LOG" syncable="YES">
         <attribute name="regdt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -40,7 +40,7 @@
     </entity>
     <elements>
         <element name="HISTORY" positionX="-353" positionY="-135" width="128" height="210"/>
-        <element name="PATTERN" positionX="169" positionY="-135" width="128" height="178"/>
+        <element name="PATTERN" positionX="169" positionY="-135" width="128" height="180"/>
         <element name="TIME_LOG" positionX="-180" positionY="-135" width="128" height="88"/>
         <element name="WORD" positionX="-2" positionY="-135" width="128" height="148"/>
     </elements>

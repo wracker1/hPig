@@ -7,29 +7,85 @@
 //
 
 import UIKit
+import CoreData
 
 class WorkBookController: UIViewController {
 
+    @IBOutlet weak var segMenu: UISegmentedControl!
+    @IBOutlet weak var patternTableView: UITableView!
+    @IBOutlet weak var wordTableView: UITableView!
+    
+    private var patternData = [PATTERN]()
+    private var wordData = [WORD]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        toggleTableView()
     }
-    */
-
+    
+    @IBAction func segValueChanged(_ sender: AnyObject) {
+        toggleTableView()
+    }
+    
+    private func toggleTableView() {
+        switch segMenu.selectedSegmentIndex {
+        case 0:
+            loadPatternData {
+                self.patternTableView.isHidden = false
+                self.wordTableView.isHidden = true
+            }
+        case 1:
+            loadWordData {
+                self.patternTableView.isHidden = true
+                self.wordTableView.isHidden = false
+            }
+        default:
+            print("error")
+        }
+    }
+    
+    private func loadPatternData(completion: (() -> Void)?) {
+        let dataService = CoreDataService.shared
+        let req: NSFetchRequest<PATTERN> = PATTERN.fetchRequest()
+        let userId = AuthenticateService.shared.userId()
+        let query = "uid = '\(userId)'"
+        req.predicate = NSPredicate(format: query)
+        
+        dataService.select(request: req) { (items, error) in
+            self.patternData = items
+            self.patternTableView.reloadData()
+            
+            print(items)
+            
+            if let callback = completion {
+                callback()
+            }
+        }
+    }
+    
+    private func loadWordData(completion: (() -> Void)?) {
+        let dataService = CoreDataService.shared
+        let req: NSFetchRequest<WORD> = WORD.fetchRequest()
+        let userId = AuthenticateService.shared.userId()
+        let query = "uid = '\(userId)'"
+        req.predicate = NSPredicate(format: query)
+        
+        dataService.select(request: req) { (items, error) in
+            self.wordData = items
+            self.wordTableView.reloadData()
+            
+            if let callback = completion {
+                callback()
+            }
+        }
+    }
 }

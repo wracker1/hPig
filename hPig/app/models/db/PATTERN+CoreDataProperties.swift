@@ -17,7 +17,7 @@ extension PATTERN {
     }
 
     @NSManaged public var uid: String?
-    @NSManaged public var videoid: String?
+    @NSManaged public var vid: String?
     @NSManaged public var part: String?
     @NSManaged public var position: String?
     @NSManaged public var image: String?

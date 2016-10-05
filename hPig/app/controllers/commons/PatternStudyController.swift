@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
 class PatternStudyController: UIViewController {
 
@@ -138,6 +139,28 @@ class PatternStudyController: UIViewController {
     }
     
     func savePattern() {
+        if let item = session, let currentPattern = patternStudyData.get(self.currentIndex) {
+            let dataService = CoreDataService.shared
+            let req: NSFetchRequest<PATTERN> = PATTERN.fetchRequest()
+            let userId = AuthenticateService.shared.userId()
+            let query = "uid = '\(userId)' AND vid = '\(item.id)' AND part = '\(item.part)' AND position = '\(self.currentIndex)'"
+            req.predicate = NSPredicate(format: query)
+            
+            dataService.select(request: req) { (items, error) in
+                let pattern = items.get(0) ?? {
+                    let (desc, ctx) = dataService.entityDescription("pattern")
+                    return PATTERN(entity: desc!, insertInto: ctx)
+                }()
+                
+                pattern.mutating(userId: userId,
+                                 session: item,
+                                 pattern: currentPattern,
+                                 position: self.currentIndex)
+                
+                dataService.save()
+            }
+        }
+        
         
     }
     

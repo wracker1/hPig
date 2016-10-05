@@ -1,31 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2333a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3mx-Ie-cnv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3mx-Ie-cnv">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Work Book Controller-->
         <scene sceneID="HOe-6c-q35">
             <objects>
-                <viewController id="3mx-Ie-cnv" sceneMemberID="viewController">
+                <viewController id="3mx-Ie-cnv" customClass="WorkBookController" customModule="hPig" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="R0q-8e-G3q"/>
                         <viewControllerLayoutGuide type="bottom" id="rNA-Gr-DJ4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="COW-jf-QuB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qys-I2-bW2">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iwE-nf-7VE">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="iwE-nf-7VE" firstAttribute="top" secondItem="R0q-8e-G3q" secondAttribute="bottom" id="4Yo-EX-y7b"/>
+                            <constraint firstItem="iwE-nf-7VE" firstAttribute="leading" secondItem="COW-jf-QuB" secondAttribute="leading" id="8yC-L3-eof"/>
+                            <constraint firstItem="rNA-Gr-DJ4" firstAttribute="top" secondItem="iwE-nf-7VE" secondAttribute="bottom" id="M5z-1N-4bP"/>
+                            <constraint firstItem="rNA-Gr-DJ4" firstAttribute="top" secondItem="Qys-I2-bW2" secondAttribute="bottom" id="MKk-NU-aaU"/>
+                            <constraint firstItem="Qys-I2-bW2" firstAttribute="top" secondItem="R0q-8e-G3q" secondAttribute="bottom" id="ZuM-gC-vkx"/>
+                            <constraint firstAttribute="trailing" secondItem="Qys-I2-bW2" secondAttribute="trailing" id="oLR-Bu-ydR"/>
+                            <constraint firstItem="Qys-I2-bW2" firstAttribute="leading" secondItem="COW-jf-QuB" secondAttribute="leading" id="pno-Hk-oiy"/>
+                            <constraint firstAttribute="trailing" secondItem="iwE-nf-7VE" secondAttribute="trailing" id="rET-mm-X5Y"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="zEZ-xQ-maW"/>
+                    <navigationItem key="navigationItem" id="zEZ-xQ-maW">
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="W7z-1u-E1i">
+                            <rect key="frame" x="113" y="7" width="150" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="관심 패턴"/>
+                                <segment title="단어장"/>
+                            </segments>
+                            <connections>
+                                <action selector="segValueChanged:" destination="3mx-Ie-cnv" eventType="valueChanged" id="EtH-4Y-hdU"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4_7.fullscreen"/>
+                    <connections>
+                        <outlet property="patternTableView" destination="Qys-I2-bW2" id="HPZ-aV-rC6"/>
+                        <outlet property="segMenu" destination="W7z-1u-E1i" id="SQa-0Q-tuf"/>
+                        <outlet property="wordTableView" destination="iwE-nf-7VE" id="Bka-pf-y9F"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pwh-vn-OFd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1302" y="661"/>
+            <point key="canvasLocation" x="620" y="689"/>
         </scene>
     </scenes>
 </document>

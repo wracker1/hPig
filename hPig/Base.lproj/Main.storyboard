@@ -46,11 +46,11 @@
             </objects>
             <point key="canvasLocation" x="-274.39999999999998" y="-101.19940029985008"/>
         </scene>
-        <!--학습-->
+        <!--학습 정보-->
         <scene sceneID="WDW-go-3Bb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hX3-qA-3p7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="학습" id="0g3-Xq-rEk"/>
+                    <tabBarItem key="tabBarItem" title="학습 정보" id="0g3-Xq-rEk"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aPc-F0-Fhb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -65,11 +65,11 @@
             </objects>
             <point key="canvasLocation" x="561" y="661"/>
         </scene>
-        <!--내정보-->
+        <!--학습 현황-->
         <scene sceneID="IAO-8C-4Rp">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Q8p-iD-O7l" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="내정보" id="uEP-AL-oDN"/>
+                    <tabBarItem key="tabBarItem" title="학습 현황" id="uEP-AL-oDN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GUM-qI-06e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

@@ -88,7 +88,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
                                  position: currentIndex,
                                  maxPosition: self.subtitles.count - 1)
                 
-                CoreDataService.shared.save()
+                dataService.save()
             }
         }
     }
