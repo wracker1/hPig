@@ -17,6 +17,7 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
     var session: Session? = nil
     
     private var relatedSessions = [Session]()
+    private var latestStudyPosition = 0
     
     @IBOutlet weak var sessionImage: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -72,6 +73,11 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
         
         if let basic = viewController as? BasicStudyController {
             basic.session = session
+            
+            if let button = sender as? UIButton, button == continueButton {
+                basic.currentIndex = latestStudyPosition
+            }
+            
         } else if let pattern = viewController as? PatternStudyController {
             pattern.session = session
         }
@@ -95,6 +101,7 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
                 
                 let value = Float(position) / Float(maxPosition)
                 self.progress.progress = value
+                self.latestStudyPosition = position
             }
         }
     }

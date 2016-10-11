@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8805499C1DAA4295001CF3F8 /* MyInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880549981DAA4295001CF3F8 /* MyInfo.storyboard */; };
+		8805499D1DAA4295001CF3F8 /* Sessions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8805499A1DAA4295001CF3F8 /* Sessions.storyboard */; };
+		880549A01DAA4338001CF3F8 /* PatternStudy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8805499E1DAA4338001CF3F8 /* PatternStudy.storyboard */; };
+		880549A21DAA5083001CF3F8 /* hInteractedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880549A11DAA5083001CF3F8 /* hInteractedLabel.swift */; };
 		881ED0041D93AB6400D612EF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0031D93AB6400D612EF /* Category.swift */; };
 		881ED0061D93AC0100D612EF /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0051D93AC0100D612EF /* CategoryService.swift */; };
 		881ED0081D93AEA200D612EF /* XibService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0071D93AEA200D612EF /* XibService.swift */; };
@@ -57,9 +61,7 @@
 		88BE97DD1DA36D4D002903E3 /* HISTORY+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97DB1DA36D4D002903E3 /* HISTORY+CoreDataProperties.swift */; };
 		88BE97E01DA50499002903E3 /* PatternCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97DF1DA50499002903E3 /* PatternCell.swift */; };
 		88CC671D1D9FAFC7002C6E51 /* WorkBook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88CC671B1D9FAFC7002C6E51 /* WorkBook.storyboard */; };
-		88CC671F1D9FAFD6002C6E51 /* MyInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88CC671E1D9FAFD6002C6E51 /* MyInfo.storyboard */; };
 		88CC67221D9FAFE8002C6E51 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88CC67201D9FAFE8002C6E51 /* Settings.storyboard */; };
-		88CC67291D9FB110002C6E51 /* Sessions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88CC67281D9FB110002C6E51 /* Sessions.storyboard */; };
 		88CDB9ED1D92BDA30058ECFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDB9EC1D92BDA30058ECFE /* AppDelegate.swift */; };
 		88CDB9F21D92BDA30058ECFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88CDB9F01D92BDA30058ECFE /* Main.storyboard */; };
 		88CDB9F51D92BDA30058ECFE /* hPig.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88CDB9F31D92BDA30058ECFE /* hPig.xcdatamodeld */; };
@@ -95,6 +97,10 @@
 
 /* Begin PBXFileReference section */
 		3F7DD837132F1D454EE2BA5F /* Pods-hPig.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hPig.release.xcconfig"; path = "Pods/Target Support Files/Pods-hPig/Pods-hPig.release.xcconfig"; sourceTree = "<group>"; };
+		880549991DAA4295001CF3F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MyInfo.storyboard; sourceTree = "<group>"; };
+		8805499B1DAA4295001CF3F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Sessions.storyboard; sourceTree = "<group>"; };
+		8805499F1DAA4338001CF3F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PatternStudy.storyboard; sourceTree = "<group>"; };
+		880549A11DAA5083001CF3F8 /* hInteractedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = hInteractedLabel.swift; path = uiviews/hInteractedLabel.swift; sourceTree = "<group>"; };
 		881ED0031D93AB6400D612EF /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		881ED0051D93AC0100D612EF /* CategoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		881ED0071D93AEA200D612EF /* XibService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibService.swift; sourceTree = "<group>"; };
@@ -150,9 +156,7 @@
 		88BE97DB1DA36D4D002903E3 /* HISTORY+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HISTORY+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		88BE97DF1DA50499002903E3 /* PatternCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PatternCell.swift; path = workBook/PatternCell.swift; sourceTree = "<group>"; };
 		88CC671C1D9FAFC7002C6E51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/WorkBook.storyboard; sourceTree = "<group>"; };
-		88CC671E1D9FAFD6002C6E51 /* MyInfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyInfo.storyboard; sourceTree = "<group>"; };
 		88CC67211D9FAFE8002C6E51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
-		88CC67281D9FB110002C6E51 /* Sessions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sessions.storyboard; sourceTree = "<group>"; };
 		88CDB9E91D92BDA30058ECFE /* hPig.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hPig.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88CDB9EC1D92BDA30058ECFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88CDB9F11D92BDA30058ECFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -225,6 +229,7 @@
 				881ED00A1D93B00000D612EF /* hPickerView.swift */,
 				881ED0131D93B0AA00D612EF /* hSessionControlView.swift */,
 				881ED0151D93B13700D612EF /* hPlayerView.swift */,
+				880549A11DAA5083001CF3F8 /* hInteractedLabel.swift */,
 			);
 			name = uiviews;
 			sourceTree = "<group>";
@@ -376,9 +381,10 @@
 				88CDBA0F1D92CABA0058ECFE /* app */,
 				88CDB9EC1D92BDA30058ECFE /* AppDelegate.swift */,
 				88CDB9F01D92BDA30058ECFE /* Main.storyboard */,
-				88CC67281D9FB110002C6E51 /* Sessions.storyboard */,
+				880549981DAA4295001CF3F8 /* MyInfo.storyboard */,
+				8805499A1DAA4295001CF3F8 /* Sessions.storyboard */,
+				8805499E1DAA4338001CF3F8 /* PatternStudy.storyboard */,
 				88CC671B1D9FAFC7002C6E51 /* WorkBook.storyboard */,
-				88CC671E1D9FAFD6002C6E51 /* MyInfo.storyboard */,
 				88CC67201D9FAFE8002C6E51 /* Settings.storyboard */,
 				88CDB9F81D92BDA30058ECFE /* LaunchScreen.storyboard */,
 				88CDB9F61D92BDA30058ECFE /* Assets.xcassets */,
@@ -583,11 +589,12 @@
 				881ED0101D93B02100D612EF /* picker_action_view.xib in Resources */,
 				886EF1741D9C2B58009DA8E8 /* NaverAuth.bundle in Resources */,
 				881ED0121D93B02100D612EF /* st_player_view.xib in Resources */,
+				880549A01DAA4338001CF3F8 /* PatternStudy.storyboard in Resources */,
 				88CDB9FA1D92BDA30058ECFE /* LaunchScreen.storyboard in Resources */,
 				88CDB9F71D92BDA30058ECFE /* Assets.xcassets in Resources */,
-				88CC671F1D9FAFD6002C6E51 /* MyInfo.storyboard in Resources */,
-				88CC67291D9FB110002C6E51 /* Sessions.storyboard in Resources */,
 				88CDB9F21D92BDA30058ECFE /* Main.storyboard in Resources */,
+				8805499D1DAA4295001CF3F8 /* Sessions.storyboard in Resources */,
+				8805499C1DAA4295001CF3F8 /* MyInfo.storyboard in Resources */,
 				88CC67221D9FAFE8002C6E51 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -666,6 +673,7 @@
 				881ED0181D93B2B300D612EF /* YoutubeService.swift in Sources */,
 				88BE97D31D9D04B2002903E3 /* BannerCell.swift in Sources */,
 				8865F06C1DA115050025D0B9 /* WORD+CoreDataClass.swift in Sources */,
+				880549A21DAA5083001CF3F8 /* hInteractedLabel.swift in Sources */,
 				8865F06E1DA115050025D0B9 /* PATTERN+CoreDataClass.swift in Sources */,
 				88CDBA161D92CABA0058ECFE /* SessionsController.swift in Sources */,
 				881ED0141D93B0AA00D612EF /* hSessionControlView.swift in Sources */,
@@ -730,6 +738,30 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		880549981DAA4295001CF3F8 /* MyInfo.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				880549991DAA4295001CF3F8 /* Base */,
+			);
+			name = MyInfo.storyboard;
+			sourceTree = "<group>";
+		};
+		8805499A1DAA4295001CF3F8 /* Sessions.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8805499B1DAA4295001CF3F8 /* Base */,
+			);
+			name = Sessions.storyboard;
+			sourceTree = "<group>";
+		};
+		8805499E1DAA4338001CF3F8 /* PatternStudy.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8805499F1DAA4338001CF3F8 /* Base */,
+			);
+			name = PatternStudy.storyboard;
+			sourceTree = "<group>";
+		};
 		88CC671B1D9FAFC7002C6E51 /* WorkBook.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

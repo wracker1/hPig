@@ -13,13 +13,15 @@ import CoreData
 class PatternStudyController: UIViewController {
 
     var session: Session? = nil
+    var id: String? = nil
+    var part: String? = nil
+    var currentIndex = 0
     
     private var patternStudyData = [PatternStudy]()
     private var prevButton: UIBarButtonItem? = nil
     private var nextButton: UIBarButtonItem? = nil
     private var repeatButton: UIBarButtonItem? = nil
     private var saveButton: UIBarButtonItem? = nil
-    private var currentIndex = 0
     
     @IBOutlet weak var playerView: hPlayerView!
     @IBOutlet weak var englishLabel: UILabel!
@@ -32,8 +34,8 @@ class PatternStudyController: UIViewController {
         
         self.title = "패턴학습"
         
-        let id = session?.id ?? ""
-        let part = Int(session?.part ?? "0")!
+        let id = session?.id ?? self.id ?? ""
+        let part = Int(session?.part ?? self.part ?? "0")!
         
         englishLabel.text = ""
         koreanLabel.text = ""
@@ -57,10 +59,9 @@ class PatternStudyController: UIViewController {
                         self.play(id: id, part: part, retry: retry + 1)
                     } else {
                         SubtitleService.shared.patternStudyData(id, part: part, currentItem: self.playerView.currentItem(), completion: { (data) in
-                            let index = 0
                             self.patternStudyData = data
                             self.playerView.seekBySlider = self.seekBySlider
-                            self.changeLabels(index)
+                            self.changeLabels(self.currentIndex)
                         })
                     }
                     

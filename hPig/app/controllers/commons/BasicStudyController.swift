@@ -13,9 +13,9 @@ import CoreData
 
 class BasicStudyController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var session: Session? = nil
+    var currentIndex = 0
     
     private var subtitles = [BasicStudy]()
-    private var currentIndex = 0
     private let timeRangePadding = Float64(0.1)
     
     private var useAutoScroll = true
@@ -108,7 +108,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
                             self.playerView.ticker = self.changeSubtitle
                             self.playerView.seekBySlider = self.seekBySlider
                             
-                            if let sub = data.get(0), let range = sub.timeRange {
+                            if let sub = data.get(self.currentIndex), let range = sub.timeRange {
                                 self.playerView.seekToTime(range.start, completionHandler: { (result) in
                                     self.playerView.play()
                                 })

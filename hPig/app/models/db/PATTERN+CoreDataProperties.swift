@@ -25,5 +25,6 @@ extension PATTERN {
     @NSManaged public var english: String?
     @NSManaged public var korean: String?
     @NSManaged public var regdt: NSDate?
+    @NSManaged public var mean: String?
 
 }

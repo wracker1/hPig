@@ -17,6 +17,7 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     
     private var patternData = [PATTERN]()
     private var wordData = [WORD]()
+    private weak var selectedTableView: UITableView? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,16 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
         toggleTableView()
     }
     
+    @IBAction func editTableView(_ sender: AnyObject) {
+        if let tableView = selectedTableView {
+            tableView.setEditing(!tableView.isEditing, animated: true)
+        }
+    }
+    
+    @IBAction func returnedFromPatternStudy(segue: UIStoryboardSegue) {
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == patternTableView {
             return patternData.count
@@ -49,6 +60,41 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId(tableView), for: indexPath)
         return update(tableView, cell: cell, indexPath: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        let dataService = CoreDataService.shared
+        
+        if tableView == patternTableView, let pattern = patternData.get(indexPath.row) {
+            patternData.remove(at: indexPath.row)
+            dataService.delete(model: pattern)
+        }
+        
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        dataService.save()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let viewController = (segue.destination as! UINavigationController).topViewController
+        
+        if let patternStudyController = viewController as? PatternStudyController,
+            let indexPath = patternTableView.indexPathForSelectedRow,
+            let data = patternData.get(indexPath.row),
+            let position = data.position,
+            let patternIndex = Int(position) {
+            
+            patternStudyController.id = data.vid
+            patternStudyController.part = data.part
+            patternStudyController.currentIndex = patternIndex
+        }
     }
     
     private func cellId(_ tableView: UITableView) -> String {
@@ -77,11 +123,13 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
             loadPatternData {
                 self.patternTableView.isHidden = false
                 self.wordTableView.isHidden = true
+                self.selectedTableView = self.patternTableView
             }
         case 1:
             loadWordData {
                 self.patternTableView.isHidden = true
                 self.wordTableView.isHidden = false
+                self.selectedTableView = self.wordTableView
             }
         default:
             print("error")
