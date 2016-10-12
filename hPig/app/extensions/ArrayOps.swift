@@ -16,4 +16,17 @@ extension Array {
             return nil
         }
     }
+    
+    func find(_ search: (Element) -> Bool) -> Optional<Element> {
+        var item: Optional<Element> = nil
+        
+        for elem in self {
+            if search(elem) {
+                item = elem
+                break
+            }
+        }
+        
+        return item
+    }
 }

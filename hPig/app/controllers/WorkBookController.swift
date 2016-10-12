@@ -82,6 +82,14 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
         dataService.save()
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let viewController = (segue.destination as! UINavigationController).topViewController
         

@@ -13,8 +13,9 @@ class PatternCell: UITableViewCell, hTableViewCell {
     typealias Item = PATTERN
     
     @IBOutlet weak var sessionImageView: UIImageView!
-    @IBOutlet weak var englishLabel: UILabel!
     @IBOutlet weak var meaningLabel: UILabel!
+    @IBOutlet weak var englishLabel: UILabel!
+    @IBOutlet weak var koreanLabel: UILabel!
     
     func update(data: Item) -> UITableViewCell {
         if let url = data.image {
@@ -23,10 +24,10 @@ class PatternCell: UITableViewCell, hTableViewCell {
             })
         }
         
-        if let english = data.english, let mean = data.mean {
-            englishLabel.attributedText = SubtitleService.shared.buildAttributedString(english)
-            
+        if let mean = data.mean, let english = data.english, let korean = data.korean {
             meaningLabel.text = mean
+            englishLabel.attributedText = SubtitleService.shared.buildAttributedString(english)
+            koreanLabel.text = korean
         }
         
         return self

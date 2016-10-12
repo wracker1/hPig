@@ -49,6 +49,7 @@
 		886EF1741D9C2B58009DA8E8 /* NaverAuth.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 886EF16D1D9C2B58009DA8E8 /* NaverAuth.bundle */; };
 		886EF1751D9C2B58009DA8E8 /* libNaverLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 886EF16F1D9C2B58009DA8E8 /* libNaverLogin.a */; };
 		886EF1761D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886EF1731D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m */; };
+		887741531DAE29E700198666 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887741521DAE29E700198666 /* MessageUI.framework */; };
 		888684FE1D99282D00989028 /* PatternStudyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888684FD1D99282D00989028 /* PatternStudyController.swift */; };
 		88BE97D01D9D04B2002903E3 /* SubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97C91D9D04B2002903E3 /* SubtitleCell.swift */; };
 		88BE97D11D9D04B2002903E3 /* hTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97CA1D9D04B2002903E3 /* hTableViewCell.swift */; };
@@ -144,6 +145,7 @@
 		886EF1711D9C2B58009DA8E8 /* NaverThirdPartyLoginConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NaverThirdPartyLoginConnection.h; sourceTree = "<group>"; };
 		886EF1721D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLoginThirdPartyOAuth20InAppBrowserViewController.h; sourceTree = "<group>"; };
 		886EF1731D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLoginThirdPartyOAuth20InAppBrowserViewController.m; sourceTree = "<group>"; };
+		887741521DAE29E700198666 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		888684FD1D99282D00989028 /* PatternStudyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PatternStudyController.swift; path = commons/PatternStudyController.swift; sourceTree = "<group>"; };
 		88BE97C91D9D04B2002903E3 /* SubtitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtitleCell.swift; sourceTree = "<group>"; };
 		88BE97CA1D9D04B2002903E3 /* hTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hTableViewCell.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				887741531DAE29E700198666 /* MessageUI.framework in Frameworks */,
 				886085361D996448009A9B3C /* AlamofireImage.framework in Frameworks */,
 				886085341D99643C009A9B3C /* Alamofire.framework in Frameworks */,
 				886EF1751D9C2B58009DA8E8 /* libNaverLogin.a in Frameworks */,
@@ -209,6 +212,7 @@
 		21B261A3D92EB5396488C94B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				887741521DAE29E700198666 /* MessageUI.framework */,
 				886085351D996448009A9B3C /* AlamofireImage.framework */,
 				886085331D99643C009A9B3C /* Alamofire.framework */,
 				884B0E8A1D939B34009748FF /* QuartzCore.framework */,
