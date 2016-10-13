@@ -15,6 +15,7 @@ class PatternCell: UITableViewCell, hTableViewCell {
     private var isHiddenDesc = true
     private var hiddenConsts = [NSLayoutConstraint]()
     private var visibleConsts = [NSLayoutConstraint]()
+    private var descConsts = [NSLayoutConstraint]()
     
     @IBOutlet weak var sessionImageView: UIImageView!
     @IBOutlet weak var meaningLabel: UILabel!
@@ -29,6 +30,7 @@ class PatternCell: UITableViewCell, hTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        /*
         self.sessionImageView.translatesAutoresizingMaskIntoConstraints = false
         self.meaningLabel.translatesAutoresizingMaskIntoConstraints = false
         self.descView.translatesAutoresizingMaskIntoConstraints = false
@@ -72,9 +74,11 @@ class PatternCell: UITableViewCell, hTableViewCell {
                         options: .alignAllTrailing,
                         metrics: nil,
                         views: views)
-        
-        setConstsForDescView(views: views)
-        show()
+
+//        setConstsForDescView(views: views)
+//        hide()
+//        show()
+ */
     }
     
     private func setConstsForDescView(views: [String: Any]) {
@@ -82,37 +86,37 @@ class PatternCell: UITableViewCell, hTableViewCell {
         englishLabel.translatesAutoresizingMaskIntoConstraints = false
         koreanLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        descView.addConstraints(
-            NSLayoutConstraint.constraints(
-                withVisualFormat: "H:|-[eng]-|",
+        self.descConsts = NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|-[eng]-|",
+            options: .alignAllLeading,
+            metrics: nil,
+            views: views) + NSLayoutConstraint.constraints(
+                withVisualFormat: "H:|-[kor]-|",
                 options: .alignAllLeading,
                 metrics: nil,
                 views: views) + NSLayoutConstraint.constraints(
-                    withVisualFormat: "H:|-[kor]-|",
+                    withVisualFormat: "V:|-[eng]-[kor]-|",
                     options: .alignAllLeading,
                     metrics: nil,
-                    views: views) + NSLayoutConstraint.constraints(
-                        withVisualFormat: "V:|-[eng]-[kor]-|",
-                        options: .alignAllLeading,
-                        metrics: nil,
-                        views: views)
-        )
+                    views: views)
     }
     
     private func hide() {
-        self.contentView.removeConstraints(visibleConsts)
-        self.contentView.addConstraints(hiddenConsts)
-        self.isHiddenDesc = true
-        self.descView.isHidden = true
-        self.updateConstraintsIfNeeded()
+//        self.contentView.removeConstraints(visibleConsts)
+//        self.contentView.addConstraints(hiddenConsts)
+//        self.isHiddenDesc = true
+//        self.descView.isHidden = true
+//        
+//        self.updateConstraintsIfNeeded()
     }
     
     private func show() {
-        self.contentView.removeConstraints(hiddenConsts)
-        self.contentView.addConstraints(visibleConsts)
-        self.isHiddenDesc = false
-        self.descView.isHidden = false
-        self.updateConstraintsIfNeeded()
+//        self.contentView.removeConstraints(hiddenConsts)
+//        self.contentView.addConstraints(visibleConsts)
+//        self.isHiddenDesc = false
+//        self.descView.isHidden = false
+//        
+//        self.updateConstraintsIfNeeded()
     }
     
     func toggle() {
@@ -135,19 +139,10 @@ class PatternCell: UITableViewCell, hTableViewCell {
         }
         
         if let mean = data.mean, let english = data.english, let korean = data.korean {
-//            self.updateConstraintsIfNeeded()
             
             meaningLabel.text = mean
             englishLabel.attributedText = SubtitleService.shared.buildAttributedString(english)
             koreanLabel.text = korean
-            
-            englishLabel.sizeToFit()
-            koreanLabel.sizeToFit()
-            
-            print("\(englishLabel.frame)")
-            print("\(koreanLabel.frame)")
-            
-            self.updateConstraintsIfNeeded()
         }
 
         return self

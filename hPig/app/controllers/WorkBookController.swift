@@ -82,19 +82,6 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
         dataService.save()
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch segMenu.selectedSegmentIndex {
-        case 0:
-            if let cell = patternTableView.cellForRow(at: indexPath), let patternCell = cell as? PatternCell {
-                patternCell.toggle()
-            }
-        case 1:
-            print("error")
-        default:
-            print("error")
-        }
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
