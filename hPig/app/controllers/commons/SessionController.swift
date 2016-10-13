@@ -37,6 +37,8 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
         self.sessionImage.clipsToBounds = true
         
         if let item = session {
+            self.sessionImage.image = nil
+            
             ImageDownloadService.shared.get(url: item.image, filter: nil, completionHandler: { (res) in
                 self.sessionImage.image = res.result.value
             })

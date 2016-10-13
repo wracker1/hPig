@@ -50,6 +50,8 @@
 		886EF1751D9C2B58009DA8E8 /* libNaverLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 886EF16F1D9C2B58009DA8E8 /* libNaverLogin.a */; };
 		886EF1761D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886EF1731D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m */; };
 		887741531DAE29E700198666 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887741521DAE29E700198666 /* MessageUI.framework */; };
+		887741551DAF207C00198666 /* hWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887741541DAF207C00198666 /* hWebViewController.swift */; };
+		887741581DAF20A200198666 /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 887741561DAF20A200198666 /* WebView.storyboard */; };
 		888684FE1D99282D00989028 /* PatternStudyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888684FD1D99282D00989028 /* PatternStudyController.swift */; };
 		88BE97D01D9D04B2002903E3 /* SubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97C91D9D04B2002903E3 /* SubtitleCell.swift */; };
 		88BE97D11D9D04B2002903E3 /* hTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97CA1D9D04B2002903E3 /* hTableViewCell.swift */; };
@@ -146,6 +148,8 @@
 		886EF1721D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLoginThirdPartyOAuth20InAppBrowserViewController.h; sourceTree = "<group>"; };
 		886EF1731D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLoginThirdPartyOAuth20InAppBrowserViewController.m; sourceTree = "<group>"; };
 		887741521DAE29E700198666 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		887741541DAF207C00198666 /* hWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = hWebViewController.swift; path = commons/hWebViewController.swift; sourceTree = "<group>"; };
+		887741571DAF20A200198666 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/WebView.storyboard; sourceTree = "<group>"; };
 		888684FD1D99282D00989028 /* PatternStudyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PatternStudyController.swift; path = commons/PatternStudyController.swift; sourceTree = "<group>"; };
 		88BE97C91D9D04B2002903E3 /* SubtitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtitleCell.swift; sourceTree = "<group>"; };
 		88BE97CA1D9D04B2002903E3 /* hTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hTableViewCell.swift; sourceTree = "<group>"; };
@@ -255,6 +259,7 @@
 				886085221D97A951009A9B3C /* SessionController.swift */,
 				886085261D97D342009A9B3C /* BasicStudyController.swift */,
 				888684FD1D99282D00989028 /* PatternStudyController.swift */,
+				887741541DAF207C00198666 /* hWebViewController.swift */,
 			);
 			name = commons;
 			sourceTree = "<group>";
@@ -390,6 +395,7 @@
 				8805499E1DAA4338001CF3F8 /* PatternStudy.storyboard */,
 				88CC671B1D9FAFC7002C6E51 /* WorkBook.storyboard */,
 				88CC67201D9FAFE8002C6E51 /* Settings.storyboard */,
+				887741561DAF20A200198666 /* WebView.storyboard */,
 				88CDB9F81D92BDA30058ECFE /* LaunchScreen.storyboard */,
 				88CDB9F61D92BDA30058ECFE /* Assets.xcassets */,
 				88CDB9FB1D92BDA30058ECFE /* Info.plist */,
@@ -593,6 +599,7 @@
 				881ED0101D93B02100D612EF /* picker_action_view.xib in Resources */,
 				886EF1741D9C2B58009DA8E8 /* NaverAuth.bundle in Resources */,
 				881ED0121D93B02100D612EF /* st_player_view.xib in Resources */,
+				887741581DAF20A200198666 /* WebView.storyboard in Resources */,
 				880549A01DAA4338001CF3F8 /* PatternStudy.storyboard in Resources */,
 				88CDB9FA1D92BDA30058ECFE /* LaunchScreen.storyboard in Resources */,
 				88CDB9F71D92BDA30058ECFE /* Assets.xcassets in Resources */,
@@ -670,6 +677,7 @@
 				881ED01C1D93B5B700D612EF /* TimeFormatServide.swift in Sources */,
 				884B0E8D1D93A0BB009748FF /* ImageDownloadService.swift in Sources */,
 				8865F06F1DA115050025D0B9 /* PATTERN+CoreDataProperties.swift in Sources */,
+				887741551DAF207C00198666 /* hWebViewController.swift in Sources */,
 				88CDBA1F1D92CB670058ECFE /* SettingsController.swift in Sources */,
 				88BE97D91D9D0C37002903E3 /* AuthenticateService.swift in Sources */,
 				881ED0061D93AC0100D612EF /* CategoryService.swift in Sources */,
@@ -764,6 +772,14 @@
 				8805499F1DAA4338001CF3F8 /* Base */,
 			);
 			name = PatternStudy.storyboard;
+			sourceTree = "<group>";
+		};
+		887741561DAF20A200198666 /* WebView.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				887741571DAF20A200198666 /* Base */,
+			);
+			name = WebView.storyboard;
 			sourceTree = "<group>";
 		};
 		88CC671B1D9FAFC7002C6E51 /* WorkBook.storyboard */ = {

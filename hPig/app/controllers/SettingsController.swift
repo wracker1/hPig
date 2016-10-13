@@ -12,6 +12,7 @@ import MessageUI
 enum SettingCellType {
     case login
     case sendMail
+    case faq
     case version
 }
 
@@ -31,9 +32,10 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
         }
         
         let items = [
-            ["type": SettingCellType.version, "value": "\(appVersion) (\(buildVersion))"],
-            ["type": SettingCellType.sendMail],
-            ["type": SettingCellType.login]
+            ["type": SettingCellType.version, "id": "SettingCell" , "value": "\(appVersion) (\(buildVersion))"],
+            ["type": SettingCellType.faq, "id": "FAQCell"],
+            ["type": SettingCellType.sendMail, "id": "ActionCell"],
+            ["type": SettingCellType.login, "id": "ActionCell"]
         ]
         
         return items
@@ -60,8 +62,8 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let data = menu[indexPath.row]
-        let type = data["type"] as! SettingCellType
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier(type: type), for: indexPath)
+        let id = data["id"] as! String
+        let cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath)
         return updateCell(cell: cell, data: data)
     }
     
@@ -74,51 +76,13 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "이용안내"
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let webController = segue.destination as? hWebViewController {
+            webController.url = "http://speakingtube.cafe24.com/faq.html"
+            webController.title = "자주 묻는 질문"
+        }
     }
-    */
     
     private func updateCell(cell: UITableViewCell, data: [String : Any]) -> UITableViewCell {
         let type = data["type"] as! SettingCellType
@@ -133,6 +97,8 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
         case .version:
             cell.textLabel?.text = "버전정보"
             cell.detailTextLabel?.text = data["value"] as? String
+        case .faq:
+            cell.textLabel?.text = "자주 묻는 질문"
         }
         
         return cell
@@ -194,16 +160,4 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
     }
-    
-    private func cellIdentifier(type: SettingCellType) -> String {
-        switch type {
-        case .login:
-            return "ActionCell"
-        case .sendMail:
-            return "ActionCell"
-        default:
-            return "SettingCell"
-        }
-    }
-
 }

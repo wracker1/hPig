@@ -49,6 +49,8 @@ class SessionCell: UITableViewCell, hTableViewCell {
     
     func update(data item: Session) -> UITableViewCell {
         sessionImageView.clipsToBounds = true
+        self.sessionImageView.image = nil
+        self.channelImageView.image = nil
         
         if let const = constCateImage {
             categoryImageView.removeConstraint(const)

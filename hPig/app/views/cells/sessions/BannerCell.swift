@@ -20,6 +20,9 @@ class BannerCell: UITableViewCell, hTableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     func update(data item: Session) -> UITableViewCell {
+        self.bannerImageView.image = nil
+        self.iconView.image = nil
+        
         ImageDownloadService.shared.get(url: item.image, filter: nil) { (res: DataResponse<Image>) in
             self.bannerImageView.image = res.result.value
         }

@@ -47,6 +47,17 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FAQCell" id="INE-vi-eqw">
+                                <rect key="frame" x="0.0" y="208" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="INE-vi-eqw" id="BQ6-Nb-At6">
+                                    <frame key="frameInset" width="342" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="v3p-ut-AyN" kind="show" id="iJY-kX-gEX"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="EcJ-Mi-5z1" id="pRT-ol-HaG"/>
@@ -60,6 +71,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Aw-VO-dIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1302" y="2173"/>
+        </scene>
+        <!--WebView-->
+        <scene sceneID="ovy-fp-XYN">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="hWebView" storyboardName="WebView" id="v3p-ut-AyN" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="326-4I-yGD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2135" y="2172"/>
         </scene>
     </scenes>
 </document>

@@ -14,6 +14,8 @@ class RelatedSessionCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     
     func update(session: Session) {
+        self.imageView.image = nil
+        
         ImageDownloadService.shared.get(url: session.image, filter: nil) { (res) in
             self.imageView.image = res.result.value
         }
