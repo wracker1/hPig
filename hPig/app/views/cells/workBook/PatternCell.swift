@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CoreGraphics
 
 class PatternCell: UITableViewCell, hTableViewCell {
     typealias Item = PATTERN
@@ -29,6 +30,12 @@ class PatternCell: UITableViewCell, hTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        sessionImageView.layer.cornerRadius = 3.0
+        sessionImageView.clipsToBounds = true
+//
+//        descView.layer.cornerRadius = 5.0
+//        descView.clipsToBounds = true
         
         /*
         self.sessionImageView.translatesAutoresizingMaskIntoConstraints = false

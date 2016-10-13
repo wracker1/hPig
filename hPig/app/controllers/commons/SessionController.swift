@@ -86,24 +86,25 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
     }
     
     private func loadHistory(session: Session) {
-        let req: NSFetchRequest<HISTORY> = HISTORY.fetchRequest()
-        let userId = AuthenticateService.shared.userId()
-        let query = "uid = '\(userId)' AND vid = '\(session.id)' AND part = '\(session.part)'"
-        req.predicate = NSPredicate(format: query)
-        
-        CoreDataService.shared.select(request: req) { (items, error) in
-            let hasHistory = items.count > 0
-            self.continueButton.isHidden = !hasHistory
+        AuthenticateService.shared.userId { (userId) in
+            let req: NSFetchRequest<HISTORY> = HISTORY.fetchRequest()
+            let query = "uid = '\(userId)' AND vid = '\(session.id)' AND part = '\(session.part)'"
+            req.predicate = NSPredicate(format: query)
             
-            if let history = items.first,
-                let pos = history.position,
-                let maxPos = history.maxposition,
-                let position = Int(pos),
-                let maxPosition = Int(maxPos) {
+            CoreDataService.shared.select(request: req) { (items, error) in
+                let hasHistory = items.count > 0
+                self.continueButton.isHidden = !hasHistory
                 
-                let value = Float(position) / Float(maxPosition)
-                self.progress.progress = value
-                self.latestStudyPosition = position
+                if let history = items.first,
+                    let pos = history.position,
+                    let maxPos = history.maxposition,
+                    let position = Int(pos),
+                    let maxPosition = Int(maxPos) {
+                    
+                    let value = Float(position) / Float(maxPosition)
+                    self.progress.progress = value
+                    self.latestStudyPosition = position
+                }
             }
         }
     }

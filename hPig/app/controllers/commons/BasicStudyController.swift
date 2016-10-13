@@ -64,32 +64,32 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     }
     
     private func saveStudyLog() {
-        let dataService = CoreDataService.shared
-
         if let item = session, let current = playerView.currentTime() {
-            let req: NSFetchRequest<HISTORY> = HISTORY.fetchRequest()
-            let userId = AuthenticateService.shared.userId()
-            let query = "uid = '\(userId)' AND vid = '\(item.id)' AND part = '\(item.part)'"
-            req.predicate = NSPredicate(format: query)
+            AuthenticateService.shared.userId(completion: { (userId) in
+                let dataService = CoreDataService.shared
+                let req: NSFetchRequest<HISTORY> = HISTORY.fetchRequest()
+                let query = "uid = '\(userId)' AND vid = '\(item.id)' AND part = '\(item.part)'"
+                req.predicate = NSPredicate(format: query)
                 
-            dataService.select(request: req) { (items, error) in
-                let history = items.get(0) ?? {
-                    let (desc, ctx) = dataService.entityDescription("history")
-                    return HISTORY(entity: desc!, insertInto: ctx)
-                }()
-                
-                let currentSeconds = TimeFormatService.shared.secondsFromCMTime(time: current)
-                let currentIndex = self.currentIndex(current)
-                
-                history.mutating(userId: userId,
-                                 session: item,
-                                 date: NSDate(),
-                                 studyTime: currentSeconds,
-                                 position: currentIndex,
-                                 maxPosition: self.subtitles.count - 1)
-                
-                dataService.save()
-            }
+                dataService.select(request: req) { (items, error) in
+                    let history = items.get(0) ?? {
+                        let (desc, ctx) = dataService.entityDescription("history")
+                        return HISTORY(entity: desc!, insertInto: ctx)
+                        }()
+                    
+                    let currentSeconds = TimeFormatService.shared.secondsFromCMTime(time: current)
+                    let currentIndex = self.currentIndex(current)
+                    
+                    history.mutating(userId: userId,
+                                     session: item,
+                                     date: NSDate(),
+                                     studyTime: currentSeconds,
+                                     position: currentIndex,
+                                     maxPosition: self.subtitles.count - 1)
+                    
+                    dataService.save()
+                }
+            })
         }
     }
     

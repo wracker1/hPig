@@ -145,37 +145,39 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     private func loadPatternData(completion: (() -> Void)?) {
-        let dataService = CoreDataService.shared
-        let req: NSFetchRequest<PATTERN> = PATTERN.fetchRequest()
-        let userId = AuthenticateService.shared.userId()
-        let query = "uid = '\(userId)'"
-        req.predicate = NSPredicate(format: query)
-        
-        dataService.select(request: req) { (items, error) in
-            self.patternData = items
-            self.patternTableView.reloadData()
+        AuthenticateService.shared.userId { (userId) in
+            let dataService = CoreDataService.shared
+            let req: NSFetchRequest<PATTERN> = PATTERN.fetchRequest()
+            let query = "uid = '\(userId)'"
+            req.predicate = NSPredicate(format: query)
             
-            print(items)
-            
-            if let callback = completion {
-                callback()
+            dataService.select(request: req) { (items, error) in
+                self.patternData = items
+                self.patternTableView.reloadData()
+                
+                print(items)
+                
+                if let callback = completion {
+                    callback()
+                }
             }
         }
     }
     
     private func loadWordData(completion: (() -> Void)?) {
-        let dataService = CoreDataService.shared
-        let req: NSFetchRequest<WORD> = WORD.fetchRequest()
-        let userId = AuthenticateService.shared.userId()
-        let query = "uid = '\(userId)'"
-        req.predicate = NSPredicate(format: query)
-        
-        dataService.select(request: req) { (items, error) in
-            self.wordData = items
-            self.wordTableView.reloadData()
+        AuthenticateService.shared.userId { (userId) in
+            let dataService = CoreDataService.shared
+            let req: NSFetchRequest<WORD> = WORD.fetchRequest()
+            let query = "uid = '\(userId)'"
+            req.predicate = NSPredicate(format: query)
             
-            if let callback = completion {
-                callback()
+            dataService.select(request: req) { (items, error) in
+                self.wordData = items
+                self.wordTableView.reloadData()
+                
+                if let callback = completion {
+                    callback()
+                }
             }
         }
     }

@@ -17,6 +17,20 @@ class NetService {
     
     private let host = "http://speakingtube.cafe24.com"
     
+    func get(req: URLRequest) -> DataRequest {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        if let url = req.url {
+            print("GET =======================> url: \(url)")
+        }
+        
+        return Alamofire.request(req).response(completionHandler: { _ in
+            DispatchQueue.main.async {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        })
+    }
+    
     func get(path: String) -> DataRequest {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         

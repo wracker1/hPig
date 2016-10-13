@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SWXMLHash
 
 class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     static let shared: AuthenticateService = {
@@ -17,6 +18,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     private let naverConnection: NaverThirdPartyLoginConnection = NaverThirdPartyLoginConnection.getSharedInstance()!
     private weak var viewController: UIViewController? = nil
     private var completionHandler: ((_ isSuccess: Bool) -> Void)? = nil
+    private var userMap = [String: User]()
     
     func prepare() {
         naverConnection.serviceUrlScheme = kServiceAppUrlScheme
@@ -33,8 +35,14 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         return naverConnection.accessToken != nil
     }
     
-    func userId() -> String {
-        return "guest"
+    func userId(completion: @escaping (String) -> Void) {
+        user { (opt) in
+            if let item = opt {
+                completion(item.id)
+            } else {
+                completion("guest")
+            }
+        }
     }
     
     func tryLogin(viewController: UIViewController, completion: ((_ isSuccess: Bool) -> Void)?) {
@@ -44,11 +52,32 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         naverConnection.requestThirdPartyLogin()
     }
     
-    func logout(_ completion: (() -> Void)?) {
+    func logout(completion: (() -> Void)?) {
         naverConnection.resetToken()
         
         if let handler = completion {
             handler()
+        }
+    }
+    
+    func user(_ completion: @escaping (User?) -> Void) {
+        if let token = naverConnection.accessToken {
+            if let user = userMap[token] {
+                completion(user)
+            } else {
+                var req = URLRequest(url: URL(string: "https://apis.naver.com/nidlogin/nid/getUserProfile.xml")!)
+                req.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+                
+                NetService.shared.get(req: req).response { (res) in
+                    if let data = res.data {
+                        let user = User(data: data)
+                        self.userMap[token] = user
+                        completion(user)
+                    } else {
+                        completion(nil)
+                    }
+                }
+            }
         }
     }
     
@@ -76,7 +105,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     
     func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
         print("2 ==============")
-        
+
         if let completion = completionHandler {
             completion(true)
             self.completionHandler = nil

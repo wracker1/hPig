@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2338c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3mx-Ie-cnv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3mx-Ie-cnv">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -33,7 +33,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="155"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ESP-CP-Nom" id="3Gy-Nr-MzH">
-                                            <frame key="frameInset" width="375" height="154.5"/>
+                                            <frame key="frameInset" width="375" height="154"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kt8-LG-lNT">
@@ -52,10 +52,12 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eo7-WK-Vfp">
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCD-Ml-NQP">
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -75,13 +77,13 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="Hyf-r3-ziM" secondAttribute="trailing" id="0pw-C2-3mq"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Hyf-r3-ziM" secondAttribute="bottom" id="7o4-Cz-v2Y"/>
                                                 <constraint firstItem="lt1-jl-NG9" firstAttribute="top" secondItem="3Gy-Nr-MzH" secondAttribute="topMargin" id="8P2-sR-G8R"/>
-                                                <constraint firstItem="Hyf-r3-ziM" firstAttribute="top" secondItem="lt1-jl-NG9" secondAttribute="bottom" constant="5" id="8hd-IE-Cbi"/>
+                                                <constraint firstItem="Hyf-r3-ziM" firstAttribute="top" secondItem="lt1-jl-NG9" secondAttribute="bottom" constant="8" id="8hd-IE-Cbi"/>
                                                 <constraint firstItem="Hyf-r3-ziM" firstAttribute="leading" secondItem="3Gy-Nr-MzH" secondAttribute="leadingMargin" id="Gla-KI-x6O"/>
                                                 <constraint firstItem="Kt8-LG-lNT" firstAttribute="top" secondItem="3Gy-Nr-MzH" secondAttribute="topMargin" id="VZp-ZC-CAj"/>
                                                 <constraint firstItem="Kt8-LG-lNT" firstAttribute="leading" secondItem="3Gy-Nr-MzH" secondAttribute="leadingMargin" id="ZrF-4i-HIV"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="lt1-jl-NG9" secondAttribute="trailing" id="eY8-go-ydB"/>
-                                                <constraint firstItem="lt1-jl-NG9" firstAttribute="leading" secondItem="Kt8-LG-lNT" secondAttribute="trailing" constant="5" id="ouj-zD-4JG"/>
-                                                <constraint firstItem="Hyf-r3-ziM" firstAttribute="top" secondItem="Kt8-LG-lNT" secondAttribute="bottom" constant="5" id="pMl-cr-89S"/>
+                                                <constraint firstItem="lt1-jl-NG9" firstAttribute="leading" secondItem="Kt8-LG-lNT" secondAttribute="trailing" constant="8" id="ouj-zD-4JG"/>
+                                                <constraint firstItem="Hyf-r3-ziM" firstAttribute="top" secondItem="Kt8-LG-lNT" secondAttribute="bottom" constant="8" id="pMl-cr-89S"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -114,7 +116,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="zEZ-xQ-maW">
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="W7z-1u-E1i">
-                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
+                            <rect key="frame" x="113" y="7" width="150" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="관심 패턴"/>
