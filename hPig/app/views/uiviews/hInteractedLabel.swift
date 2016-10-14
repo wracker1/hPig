@@ -20,22 +20,34 @@ class hInteractedLabel: UILabel {
     
     override var canBecomeFirstResponder: Bool { get { return true } }
     
-//    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-//        if action.description == "_define:" {
-//            return true
-//        } else {
-//            return false
-//        }
-//    }
-    
     func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
-        let item = UIMenuItem(title: "단어 저장", action: #selector(self.saveWord))
-        let menu = UIMenuController.shared
-        menu.menuItems = [item]
-        menu.setTargetRect(self.frame, in: self)
-        menu.setMenuVisible(true, animated: true)
+//        let item = UIMenuItem(title: "단어 저장", action: #selector(self.saveWord))
+//        let menu = UIMenuController.shared
+//        menu.menuItems = [item]
+//        menu.setTargetRect(self.frame, in: self)
+//        menu.setMenuVisible(true, animated: true)
+//        
+//        self.becomeFirstResponder()
         
-        self.becomeFirstResponder()
+//        if let text = englishSubLabel.text {
+//            let textStorage = NSTextStorage(string: text)
+//            let layoutManager = NSLayoutManager()
+//            let textContainer = NSTextContainer(size: englishSubLabel.bounds.size)
+//            
+//            textContainer.lineFragmentPadding = 0
+//            textStorage.addLayoutManager(layoutManager)
+//            
+//            var glyphRange = NSMakeRange(0, 0)
+//            layoutManager.characterRange(forGlyphRange: NSMakeRange(0, text.characters.count), actualGlyphRange: &glyphRange)
+//            
+//            let glyphRect = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textContainer)
+//            
+//            print("\(glyphRect)")
+//            
+//            let touchPoint = gestureRecognizer.location(ofTouch: 0, in: englishSubLabel)
+//            
+//            print("\(touchPoint)")
+//        }
     }
     
     func saveWord() {
