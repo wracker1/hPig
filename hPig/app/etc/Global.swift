@@ -9,8 +9,10 @@
 import UIKit
 
 struct Global {
-    static var kToggleKoreanLabelVisible = Notification.Name("kToggleKoreanLabelVisible")
-    static var kToggleEnglishLabelVisible = Notification.Name("kToggleEnglishLabelVisible")
+    static let kToggleKoreanLabelVisible = Notification.Name("kToggleKoreanLabelVisible")
+    static let kToggleEnglishLabelVisible = Notification.Name("kToggleEnglishLabelVisible")
+    
+    static let guestId = "guest"
 }
 
 func RGBA(_ r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) -> UIColor {

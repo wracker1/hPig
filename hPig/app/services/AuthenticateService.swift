@@ -40,7 +40,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
             if let item = opt {
                 completion(item.id)
             } else {
-                completion("guest")
+                completion(Global.guestId)
             }
         }
     }
