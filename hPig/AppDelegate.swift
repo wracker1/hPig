@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Toast_Swift
                    
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         AuthenticateService.shared.prepare()
+        ToastManager.shared.style.verticalPadding = 10
+        ToastManager.shared.position = .center
         
         return true
     }

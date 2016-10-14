@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import Toast_Swift
 
 enum SettingCellType {
     case login
@@ -148,7 +149,7 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
                 
                 present(mail, animated: true)
             } else {
-                // TODO - show failure alert
+                self.view.makeToast("'설정 > Mail'을 확인 하고, 계정 설정을 해주세요.")
             }
         default:
             print(data)

@@ -78,6 +78,8 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
                     }
                 }
             }
+        } else {
+            completion(nil)
         }
     }
     

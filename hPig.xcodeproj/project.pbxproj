@@ -26,6 +26,8 @@
 		881ED01E1D93B92100D612EF /* ArrayOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED01D1D93B92100D612EF /* ArrayOps.swift */; };
 		881ED0211D93BB2A00D612EF /* hActionPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0201D93BB2A00D612EF /* hActionPickerController.swift */; };
 		881ED0251D93D07400D612EF /* OptionOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0241D93D07400D612EF /* OptionOps.swift */; };
+		8829124E1DAFD32700E5B6E4 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8829124D1DAFD32700E5B6E4 /* AlertService.swift */; };
+		8829124F1DAFD7E300E5B6E4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CDBA251D92D2340058ECFE /* Alamofire.framework */; };
 		884B0E861D939B13009748FF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884B0E841D939B13009748FF /* AVFoundation.framework */; };
 		884B0E871D939B13009748FF /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884B0E851D939B13009748FF /* AVKit.framework */; };
 		884B0E891D939B1D009748FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884B0E881D939B1D009748FF /* CoreGraphics.framework */; };
@@ -37,8 +39,6 @@
 		8860852E1D97D435009A9B3C /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8860852D1D97D435009A9B3C /* Global.swift */; };
 		886085301D97D74B009A9B3C /* SubtitleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8860852F1D97D74B009A9B3C /* SubtitleService.swift */; };
 		886085321D97DAD8009A9B3C /* PatternStudy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886085311D97DAD8009A9B3C /* PatternStudy.swift */; };
-		886085341D99643C009A9B3C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 886085331D99643C009A9B3C /* Alamofire.framework */; };
-		886085361D996448009A9B3C /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 886085351D996448009A9B3C /* AlamofireImage.framework */; };
 		8865F06A1DA115050025D0B9 /* TIME_LOG+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865F0641DA115050025D0B9 /* TIME_LOG+CoreDataClass.swift */; };
 		8865F06B1DA115050025D0B9 /* TIME_LOG+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865F0651DA115050025D0B9 /* TIME_LOG+CoreDataProperties.swift */; };
 		8865F06C1DA115050025D0B9 /* WORD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865F0661DA115050025D0B9 /* WORD+CoreDataClass.swift */; };
@@ -120,6 +120,8 @@
 		881ED01D1D93B92100D612EF /* ArrayOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayOps.swift; sourceTree = "<group>"; };
 		881ED0201D93BB2A00D612EF /* hActionPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = hActionPickerController.swift; path = commons/hActionPickerController.swift; sourceTree = "<group>"; };
 		881ED0241D93D07400D612EF /* OptionOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionOps.swift; sourceTree = "<group>"; };
+		8829124D1DAFD32700E5B6E4 /* AlertService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
+		882912501DAFD85C00E5B6E4 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "../../../../Library/Developer/Xcode/DerivedData/hPig-cgamwanqckhvsufhcxkvajblacum/Build/Products/Debug-iphonesimulator/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
 		884B0E801D939505009748FF /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "Pods/../build/Debug-iphoneos/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
 		884B0E841D939B13009748FF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		884B0E851D939B13009748FF /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
@@ -193,9 +195,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8829124F1DAFD7E300E5B6E4 /* Alamofire.framework in Frameworks */,
 				887741531DAE29E700198666 /* MessageUI.framework in Frameworks */,
-				886085361D996448009A9B3C /* AlamofireImage.framework in Frameworks */,
-				886085341D99643C009A9B3C /* Alamofire.framework in Frameworks */,
 				886EF1751D9C2B58009DA8E8 /* libNaverLogin.a in Frameworks */,
 				884B0E8B1D939B34009748FF /* QuartzCore.framework in Frameworks */,
 				884B0E891D939B1D009748FF /* CoreGraphics.framework in Frameworks */,
@@ -218,6 +219,7 @@
 		21B261A3D92EB5396488C94B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				882912501DAFD85C00E5B6E4 /* AlamofireImage.framework */,
 				887741521DAE29E700198666 /* MessageUI.framework */,
 				886085351D996448009A9B3C /* AlamofireImage.framework */,
 				886085331D99643C009A9B3C /* Alamofire.framework */,
@@ -476,6 +478,7 @@
 				8860852F1D97D74B009A9B3C /* SubtitleService.swift */,
 				88BE97D81D9D0C37002903E3 /* AuthenticateService.swift */,
 				8865F0721DA115410025D0B9 /* CoreDataService.swift */,
+				8829124D1DAFD32700E5B6E4 /* AlertService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -688,6 +691,7 @@
 				881ED0181D93B2B300D612EF /* YoutubeService.swift in Sources */,
 				88BE97D31D9D04B2002903E3 /* BannerCell.swift in Sources */,
 				8865F06C1DA115050025D0B9 /* WORD+CoreDataClass.swift in Sources */,
+				8829124E1DAFD32700E5B6E4 /* AlertService.swift in Sources */,
 				880549A21DAA5083001CF3F8 /* hInteractedLabel.swift in Sources */,
 				8865F06E1DA115050025D0B9 /* PATTERN+CoreDataClass.swift in Sources */,
 				88CDBA161D92CABA0058ECFE /* SessionsController.swift in Sources */,

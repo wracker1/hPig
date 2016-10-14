@@ -82,6 +82,10 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
         dataService.save()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        AlertService.shared.present(self, title: "테스트", message: "메세지", completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }

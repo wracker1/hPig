@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3mx-Ie-cnv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2338c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3mx-Ie-cnv">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -92,7 +92,6 @@
                                             <outlet property="koreanLabel" destination="aCD-Ml-NQP" id="AJz-me-6ve"/>
                                             <outlet property="meaningLabel" destination="lt1-jl-NG9" id="ydS-TW-x7L"/>
                                             <outlet property="sessionImageView" destination="Kt8-LG-lNT" id="vTR-ti-ReZ"/>
-                                            <segue destination="s2r-f6-GKo" kind="presentation" id="Ez2-hM-NNX"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -143,14 +142,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pwh-vn-OFd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="620" y="688.60569715142435"/>
-        </scene>
-        <!--PatternStudy-->
-        <scene sceneID="gKb-Ra-uWO">
-            <objects>
-                <viewControllerPlaceholder storyboardName="PatternStudy" id="s2r-f6-GKo" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TPZ-JU-TPd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1262" y="688"/>
         </scene>
     </scenes>
 </document>

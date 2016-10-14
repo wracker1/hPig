@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import CoreData
+import Toast_Swift
 
 class PatternStudyController: UIViewController {
 
@@ -159,6 +160,8 @@ class PatternStudyController: UIViewController {
                                      position: self.currentIndex)
                     
                     dataService.save()
+                    
+                    self.view.makeToast("저장 하였습니다.\n학습 정보에서 확인 해보세요.")
                 }
             })
         }
