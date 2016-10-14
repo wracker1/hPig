@@ -88,6 +88,7 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
     private func loadHistory(session: Session) {
         AuthenticateService.shared.userId { (userId) in
             let req: NSFetchRequest<HISTORY> = HISTORY.fetchRequest()
+            
             let query = "uid = '\(userId)' AND vid = '\(session.id)' AND part = '\(session.part)'"
             req.predicate = NSPredicate(format: query)
             

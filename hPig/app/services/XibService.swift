@@ -14,7 +14,7 @@ class XibService {
         return instance
     }()
     
-    func layoutXibViews(superview: UIView, nibName: String, viewLayoutBlock: @escaping (UIView) -> Void) {
+    func layoutXibViews(superview: UIView, nibName: String, viewLayoutBlock: ((UIView) -> Void)?) {
         if let items = UINib(nibName: nibName, bundle: nil).instantiate(withOwner: superview, options: nil) as? [UIView] {
             items.forEach({ (view) in
                 view.frame = superview.bounds
@@ -22,8 +22,14 @@ class XibService {
                 
                 superview.addSubview(view)
                 
-                viewLayoutBlock(view)
+                if let block = viewLayoutBlock {
+                    block(view)
+                }
             })
         }
+    }
+    
+    func layoutXibView(superview: UIView, nibName: String) {
+        Bundle(for: type(of: superview)).loadNibNamed(nibName, owner: superview, options: nil)
     }
 }

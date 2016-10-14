@@ -38,7 +38,7 @@ struct User {
         get {
             let items = email.components(separatedBy: "@")
             switch items.count {
-            case 1 | 2:
+            case 1, 2:
                 return items[0]
             default:
                 return Global.guestId

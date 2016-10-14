@@ -18,16 +18,12 @@ class hPickerView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        XibService.shared.layoutXibViews(superview: self, nibName: "picker_action_view") { (view) in
-            
-        }
+        XibService.shared.layoutXibViews(superview: self, nibName: "picker_action_view", viewLayoutBlock: nil)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        XibService.shared.layoutXibViews(superview:self, nibName: "picker_action_view") { (view) in
-            
-        }
+        XibService.shared.layoutXibViews(superview: self, nibName: "picker_action_view", viewLayoutBlock: nil)
     }
 }

@@ -83,7 +83,13 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        AlertService.shared.present(self, title: "테스트", message: "메세지", completion: nil)
+        if let pattern = patternData.get(indexPath.row) {
+            let item = PatternView(frame: CGRectZero)
+            AlertService.shared.presentActionSheet(self, view: item, completion: nil)
+            item.update(pattern: pattern)
+            
+            item.confirmButton.addTarget(self, action: #selector(self.dismissAlert), for: .touchUpInside)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -94,11 +100,17 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
         return UITableViewAutomaticDimension
     }
     
+    func dismissAlert() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let viewController = (segue.destination as! UINavigationController).topViewController
         
         if let patternStudyController = viewController as? PatternStudyController,
-            let indexPath = patternTableView.indexPathForSelectedRow,
+            let button = sender as? UIButton,
+            let cell = button.superview?.superview as? UITableViewCell,
+            let indexPath = patternTableView.indexPath(for: cell),
             let data = patternData.get(indexPath.row),
             let position = data.position,
             let patternIndex = Int(position) {

@@ -21,6 +21,7 @@ public class PATTERN: NSManagedObject {
         self.english = pattern.english
         self.korean = pattern.korean
         self.mean = pattern.meaning
+        self.info = pattern.info
         self.regdt = NSDate()
     }
 }
