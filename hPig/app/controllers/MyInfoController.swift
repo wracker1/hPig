@@ -7,29 +7,51 @@
 //
 
 import UIKit
+import AlamofireImage
+import CoreGraphics
 
 class MyInfoController: UIViewController {
 
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var passNameLabel: UILabel!
+    @IBOutlet weak var passDurationLabel: UILabel!
+    @IBOutlet weak var studyTotalDurationView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+//        profileImageView.clipsToBounds = true
+//        profileImageView.layer.cornerRadius = 40.0
+        
+        studyTotalDurationView.layer.cornerRadius = 5.0
+        studyTotalDurationView.layer.borderColor = UIColor.lightGray.cgColor
+        studyTotalDurationView.layer.borderWidth = 1.0
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        AuthenticateService.shared.user { (user) in
+            self.loadPersonalInfoView(user)
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    private func loadPersonalInfoView(_ user: User?) {
+        if let registerdUser = user {
+            nameLabel.text = "\(registerdUser.name) 님"
+            idLabel.text = "| \(registerdUser.id)"
+            
+            ImageDownloadService.shared.get(
+                url: registerdUser.profileImage,
+                filter: nil,
+                completionHandler: { (res) in
+                    if let image = res.result.value {
+                        self.profileImageView.image = image
+                    }
+            })
+        }
     }
-    */
 
 }
