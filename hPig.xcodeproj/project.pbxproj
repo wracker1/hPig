@@ -97,6 +97,7 @@
 		88DEDEEA1DB4BC1200781123 /* TIME_LOG+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DEDEE81DB4BC1200781123 /* TIME_LOG+CoreDataClass.swift */; };
 		88DEDEEB1DB4BC1200781123 /* TIME_LOG+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DEDEE91DB4BC1200781123 /* TIME_LOG+CoreDataProperties.swift */; };
 		88DEDEED1DB4CE2F00781123 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DEDEEC1DB4CE2F00781123 /* CoreData.framework */; };
+		88DEDEF01DB4D53700781123 /* StudyHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DEDEEF1DB4D53700781123 /* StudyHistoryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,6 +208,7 @@
 		88DEDEE81DB4BC1200781123 /* TIME_LOG+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TIME_LOG+CoreDataClass.swift"; sourceTree = "<group>"; };
 		88DEDEE91DB4BC1200781123 /* TIME_LOG+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TIME_LOG+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		88DEDEEC1DB4CE2F00781123 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		88DEDEEF1DB4D53700781123 /* StudyHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudyHistoryCell.swift; path = myinfo/StudyHistoryCell.swift; sourceTree = "<group>"; };
 		B9F0C3F95AB86E4B5BCFF5CB /* Pods_hPig.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hPig.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2A86E940BFA0A45487A0A06 /* Pods-hPig.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hPig.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hPig/Pods-hPig.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -373,6 +375,7 @@
 		88BE97C71D9D04B2002903E3 /* cells */ = {
 			isa = PBXGroup;
 			children = (
+				88DEDEEE1DB4D4F700781123 /* myinfo */,
 				88BE97DE1DA50452002903E3 /* workBook */,
 				88BE97D51D9D04BF002903E3 /* settings */,
 				88BE97C81D9D04B2002903E3 /* basicStudy */,
@@ -552,6 +555,14 @@
 				88CDBA221D92D1FF0058ECFE /* Model.swift */,
 			);
 			name = super;
+			sourceTree = "<group>";
+		};
+		88DEDEEE1DB4D4F700781123 /* myinfo */ = {
+			isa = PBXGroup;
+			children = (
+				88DEDEEF1DB4D53700781123 /* StudyHistoryCell.swift */,
+			);
+			name = myinfo;
 			sourceTree = "<group>";
 		};
 		E4108440DBB5266D60FD8E5D /* Pods */ = {
@@ -748,6 +759,7 @@
 				8865F06C1DA115050025D0B9 /* WORD+CoreDataClass.swift in Sources */,
 				8829124E1DAFD32700E5B6E4 /* AlertService.swift in Sources */,
 				880549A21DAA5083001CF3F8 /* hInteractedLabel.swift in Sources */,
+				88DEDEF01DB4D53700781123 /* StudyHistoryCell.swift in Sources */,
 				8865F06E1DA115050025D0B9 /* PATTERN+CoreDataClass.swift in Sources */,
 				88CDBA161D92CABA0058ECFE /* SessionsController.swift in Sources */,
 				881ED0141D93B0AA00D612EF /* hSessionControlView.swift in Sources */,

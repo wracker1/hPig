@@ -11,7 +11,7 @@ import AlamofireImage
 import CoreGraphics
 import CoreData
 
-class MyInfoController: UIViewController {
+class MyInfoController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -21,6 +21,10 @@ class MyInfoController: UIViewController {
     @IBOutlet weak var studyTotalDurationView: UIView!
     @IBOutlet weak var totalDurationLabel: UILabel!
     @IBOutlet weak var numberOfVideoLabel: UILabel!
+    @IBOutlet weak var historyCollectionView: UICollectionView!
+    @IBOutlet weak var historySegControl: UISegmentedControl!
+    
+    private var histories = [HISTORY]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +32,8 @@ class MyInfoController: UIViewController {
         studyTotalDurationView.layer.cornerRadius = 5.0
         studyTotalDurationView.layer.borderColor = UIColor.lightGray.cgColor
         studyTotalDurationView.layer.borderWidth = 1.0
+        
+        historySegChanged(historySegControl)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -37,14 +43,24 @@ class MyInfoController: UIViewController {
             self.loadPersonalInfoView(user)
             
             let id = user?.id ?? Global.guestId
-            let dataService = CoreDataService.shared
-            let req: NSFetchRequest<TIME_LOG> = TIME_LOG.fetchRequest()
-            let query = "uid = '\(id)'"
+            let logReq: NSFetchRequest<TIME_LOG> = TIME_LOG.fetchRequest()
+            logReq.predicate = NSPredicate(format: "uid = '\(id)'")
             
-            req.predicate = NSPredicate(format: query)
-            
-            dataService.select(request: req) { (items, error) in
+            CoreDataService.shared.select(request: logReq) { (items, error) in
                 self.loadStudyTimeInfoView(logs: items)
+            }
+        }
+    }
+    
+    @IBAction func historySegChanged(_ sender: AnyObject) {
+        AuthenticateService.shared.user { (user) in
+            let id = user?.id ?? Global.guestId
+            let historyReq: NSFetchRequest<HISTORY> = HISTORY.fetchRequest()
+            historyReq.predicate = NSPredicate(format: "uid = '\(id)'")
+            
+            CoreDataService.shared.select(request: historyReq) { (items, error) in
+                self.histories = items
+                self.historyCollectionView.reloadData()
             }
         }
     }
@@ -88,6 +104,22 @@ class MyInfoController: UIViewController {
         let m = String(format: "%02d", (seconds % 3600) / 60)
         let s = String(format: "%02d", (seconds % 3600) % 60)
         return "\(h):\(m):\(s)"
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return histories.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "studyHistoryCell", for: indexPath) as! StudyHistoryCell
+        
+        
+        
+        return cell
     }
 
 }

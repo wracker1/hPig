@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -176,33 +177,57 @@
                                                     <segment title="완료"/>
                                                 </segments>
                                                 <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="historySegChanged:" destination="Svc-SF-dvT" eventType="valueChanged" id="3Ka-OJ-HGN"/>
+                                                </connections>
                                             </segmentedControl>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Ab-LZ-c4r">
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="l9A-4c-ehd">
-                                                    <size key="itemSize" width="50" height="50"/>
+                                                    <size key="itemSize" width="174" height="100"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="yJp-E2-xOd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="studyHistoryCell" id="yJp-E2-xOd" customClass="StudyHistoryCell" customModule="hPig" customModuleProvider="target">
+                                                        <rect key="frame" x="89" y="0.0" width="174" height="100"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="174" height="100"/>
                                                             <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BWZ-bZ-WAU">
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="BWZ-bZ-WAU" secondAttribute="height" multiplier="174:65" id="laa-2g-I65"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCa-hK-Kkd">
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
                                                         </view>
-                                                    </collectionViewCell>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mPZ-BY-EQF">
-                                                        <rect key="frame" x="60" y="0.0" width="50" height="50"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                        </view>
+                                                        <constraints>
+                                                            <constraint firstItem="fCa-hK-Kkd" firstAttribute="bottom" secondItem="yJp-E2-xOd" secondAttribute="bottomMargin" id="5sn-1N-5tE"/>
+                                                            <constraint firstItem="BWZ-bZ-WAU" firstAttribute="top" secondItem="yJp-E2-xOd" secondAttribute="top" id="F0I-G0-hTF"/>
+                                                            <constraint firstAttribute="trailingMargin" secondItem="fCa-hK-Kkd" secondAttribute="trailing" id="Rem-ra-7vG"/>
+                                                            <constraint firstItem="fCa-hK-Kkd" firstAttribute="top" secondItem="BWZ-bZ-WAU" secondAttribute="bottom" constant="5" id="Xvj-Sx-Z5D"/>
+                                                            <constraint firstItem="BWZ-bZ-WAU" firstAttribute="leading" secondItem="yJp-E2-xOd" secondAttribute="leading" id="jbO-u2-Ruv"/>
+                                                            <constraint firstAttribute="trailing" secondItem="BWZ-bZ-WAU" secondAttribute="trailing" id="xQ3-Kj-gBz"/>
+                                                            <constraint firstItem="fCa-hK-Kkd" firstAttribute="leading" secondItem="yJp-E2-xOd" secondAttribute="leadingMargin" id="zhf-uC-IcU"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outlet property="sessionImageView" destination="BWZ-bZ-WAU" id="5pM-AK-ERs"/>
+                                                            <outlet property="titleLabel" destination="fCa-hK-Kkd" id="TIa-1P-yiH"/>
+                                                        </connections>
                                                     </collectionViewCell>
                                                 </cells>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="Svc-SF-dvT" id="aam-BP-EQo"/>
+                                                    <outlet property="delegate" destination="Svc-SF-dvT" id="7Vg-aZ-4M6"/>
+                                                </connections>
                                             </collectionView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -252,6 +277,8 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="historyCollectionView" destination="5Ab-LZ-c4r" id="eNT-Zl-vGD"/>
+                        <outlet property="historySegControl" destination="6cc-8t-YB9" id="6tx-eA-YzT"/>
                         <outlet property="idLabel" destination="1BP-wt-l0P" id="EwY-4f-Hk9"/>
                         <outlet property="nameLabel" destination="4yB-mJ-Z31" id="Kjb-hf-1PI"/>
                         <outlet property="numberOfVideoLabel" destination="X1U-qj-RXw" id="3V2-m6-4Ot"/>
