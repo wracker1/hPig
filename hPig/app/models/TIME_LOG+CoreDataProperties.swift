@@ -2,7 +2,7 @@
 //  TIME_LOG+CoreDataProperties.swift
 //  hPig
 //
-//  Created by 이동현 on 2016. 10. 2..
+//  Created by Jesse on 2016. 10. 17..
 //  Copyright © 2016년 wearespeakingtube. All rights reserved.
 //
 
@@ -16,8 +16,10 @@ extension TIME_LOG {
         return NSFetchRequest<TIME_LOG>(entityName: "TIME_LOG");
     }
 
-    @NSManaged public var uid: String?
     @NSManaged public var regdt: NSDate?
-    @NSManaged public var studytime: String?
+    @NSManaged public var studytime: Double
+    @NSManaged public var uid: String?
+    @NSManaged public var type: String?
+    @NSManaged public var vid: String?
 
 }

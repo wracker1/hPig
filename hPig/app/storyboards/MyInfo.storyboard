@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2548a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Svc-SF-dvT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Svc-SF-dvT">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -73,7 +73,7 @@
                                                     <constraint firstItem="SQN-L5-fgP" firstAttribute="leading" secondItem="Zyt-m1-ACf" secondAttribute="trailing" constant="8" id="LzE-Cf-lRK"/>
                                                     <constraint firstItem="Zyt-m1-ACf" firstAttribute="leading" secondItem="Sdx-DA-F15" secondAttribute="leading" id="NlL-A8-bIp"/>
                                                     <constraint firstItem="Zyt-m1-ACf" firstAttribute="centerY" secondItem="Sdx-DA-F15" secondAttribute="centerY" id="Occ-I3-hOx"/>
-                                                    <constraint firstItem="wxR-D5-Lht" firstAttribute="top" secondItem="1BP-wt-l0P" secondAttribute="bottom" constant="8" id="aN0-Lo-FYn"/>
+                                                    <constraint firstItem="wxR-D5-Lht" firstAttribute="top" secondItem="1BP-wt-l0P" secondAttribute="bottom" constant="10" id="aN0-Lo-FYn"/>
                                                     <constraint firstAttribute="trailing" secondItem="wxR-D5-Lht" secondAttribute="trailing" id="fIX-pc-tiz"/>
                                                     <constraint firstItem="dgA-FU-3Pf" firstAttribute="leading" secondItem="SQN-L5-fgP" secondAttribute="trailing" id="mko-03-fh6"/>
                                                     <constraint firstItem="4yB-mJ-Z31" firstAttribute="leading" secondItem="Zyt-m1-ACf" secondAttribute="trailing" constant="8" id="nVv-um-zJH"/>
@@ -254,10 +254,12 @@
                     <connections>
                         <outlet property="idLabel" destination="1BP-wt-l0P" id="EwY-4f-Hk9"/>
                         <outlet property="nameLabel" destination="4yB-mJ-Z31" id="Kjb-hf-1PI"/>
+                        <outlet property="numberOfVideoLabel" destination="X1U-qj-RXw" id="3V2-m6-4Ot"/>
                         <outlet property="passDurationLabel" destination="dgA-FU-3Pf" id="h1Q-th-cPV"/>
                         <outlet property="passNameLabel" destination="SQN-L5-fgP" id="rsx-MU-7ft"/>
                         <outlet property="profileImageView" destination="Zyt-m1-ACf" id="ynb-Eu-NlE"/>
                         <outlet property="studyTotalDurationView" destination="YeC-9e-45D" id="yUw-Zp-fpq"/>
+                        <outlet property="totalDurationLabel" destination="DeH-fE-tfG" id="yIP-OT-C8X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RyD-aK-DsH" userLabel="First Responder" sceneMemberID="firstResponder"/>

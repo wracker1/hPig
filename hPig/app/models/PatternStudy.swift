@@ -41,19 +41,19 @@ struct PatternStudy: ResponseObjectSerializable, ResponseCollectionSerializable,
         self.info = info
     }
     
-    func timeRange(_ timeScale: Int32?) -> CMTimeRange? {
-        if let start = stringToTime(startTime, timeScale: timeScale), let end = stringToTime(endTime, timeScale: timeScale) {
+    func timeRange() -> CMTimeRange? {
+        if let start = stringToTime(startTime), let end = stringToTime(endTime) {
             return CMTimeRange(start: start, end: end)
         } else {
             return nil
         }
     }
     
-    private func stringToTime(_ value: String, timeScale: Int32?) -> CMTime? {
+    private func stringToTime(_ value: String) -> CMTime? {
         let values = value.components(separatedBy: ":")
         
         if values.count > 1 {
-            return TimeFormatService.shared.stringToCMTime(min: values[0], sec: values[1], timeScale: timeScale)
+            return TimeFormatService.shared.stringToCMTime(min: values[0], sec: values[1])
         } else {
             return nil
         }

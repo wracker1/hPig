@@ -7,6 +7,5 @@ target 'hPig' do
     pod 'AlamofireImage', '~> 3.1'
     pod 'SWXMLHash', '~> 3.0.0'
     pod 'Toast-Swift', '~> 2.0.0'
-    pod 'youtube-ios-player-helper', '~> 0.1.6'
 #    pod 'Charts/Realm'
 end

@@ -23,8 +23,9 @@ class PatternStudyController: UIViewController {
     private var nextButton: UIBarButtonItem? = nil
     private var repeatButton: UIBarButtonItem? = nil
     private var saveButton: UIBarButtonItem? = nil
+    private var startStudyTime: Date? = nil
     
-    @IBOutlet weak var playerView: hPlayerView!
+    @IBOutlet weak var playerView: hYTPlayerView!
     @IBOutlet weak var englishLabel: UILabel!
     @IBOutlet weak var koreanLabel: UILabel!
     @IBOutlet weak var meaningLabel: UILabel!
@@ -45,33 +46,26 @@ class PatternStudyController: UIViewController {
         
         setupToolbar()
         
-        playerView.startLoadingIndicator()
-        
         play(id: id, part: part, retry: 0)
     }
     
     private func play(id: String, part: Int, retry: Int) {
         if retry < 2 {
-            do {
-                try playerView.prepareToPlay(id) { (error) in
-                    if let cause = error {
-                        print(cause)
-                        
-                        self.play(id: id, part: part, retry: retry + 1)
-                    } else {
-                        SubtitleService.shared.patternStudyData(id, part: part, currentItem: self.playerView.currentItem(), completion: { (data) in
-                            self.patternStudyData = data
-                            self.playerView.seekBySlider = self.seekBySlider
-                            self.changeLabels(self.currentIndex)
-                        })
-                    }
-                    
-                }
-            } catch let e {
-                print(e)
+            SubtitleService.shared.patternStudyData(id, part: part, completion: { (data) in
+                self.patternStudyData = data
                 
-                self.play(id: id, part: part, retry: retry + 1)
-            }
+                if let start = data.first?.timeRange()?.start, let end = data.last?.timeRange()?.end {
+                    self.playerView.prepareToPlay(id, range: CMTimeRange(start: start, end: end), completion: { (error) in
+                        if let cause = error {
+                            print(cause)
+                            
+                            self.play(id: id, part: part, retry: retry + 1)
+                        } else {
+                            self.changeLabels(self.currentIndex)
+                        }
+                    })
+                }
+            })
         }
     }
     
@@ -89,17 +83,14 @@ class PatternStudyController: UIViewController {
     }
     
     private func changeLabels(_ index: Int) {
-        if let data = patternStudyData.get(index), let range = data.timeRange(playerView.currentItemTimeScale()) {
+        if let data = patternStudyData.get(index), let range = data.timeRange() {
             englishLabel.attributedText = SubtitleService.shared.buildAttributedString(data.english)
             koreanLabel.text = data.korean
             meaningLabel.text = data.meaning
             infoLabel.text = data.info
             
-            self.playerView.playInTimeRange(range, completion: { (result) in
-                if result {
-                    self.currentIndex = index
-                    self.playerView.play()
-                }
+            self.playerView.playInTimeRange(range, completion: {
+                self.currentIndex = index
             })
         }
         
@@ -124,7 +115,7 @@ class PatternStudyController: UIViewController {
     
     private func currentIndex(_ time: CMTime) -> Int {
         return SubtitleService.shared.currentIndex(time, items: patternStudyData) { (item) -> CMTimeRange? in
-            return item.timeRange(self.playerView.currentItemTimeScale())
+            return item.timeRange()
         }
     }
     
@@ -169,10 +160,28 @@ class PatternStudyController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.startStudyTime = Date()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        playerView.pause()
+        if let time = startStudyTime {
+            AuthenticateService.shared.userId(completion: { (userId) in
+                let dataService = CoreDataService.shared
+                let (entity, ctx) = dataService.entityDescription("time_log")
+                let log = TIME_LOG(entity: entity!, insertInto: ctx)
+                let vid = self.session?.id ?? self.id ?? ""
+                
+                log.mutating(userId: userId, vid: vid, startTime: time, type: "pattern")
+                dataService.save()
+            })
+        }
+        
+        playerView.pauseVideo()
     }
 
 }

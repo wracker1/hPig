@@ -16,7 +16,7 @@ class SubtitleService {
         return instance
     }()
     
-    func subtitleData(_ id: String, part: Int, currentItem: AVPlayerItem?, completion: @escaping ([BasicStudy]) -> Void) {
+    func subtitleData(_ id: String, part: Int, completion: @escaping ([BasicStudy]) -> Void) {
         NetService.shared.get(path: "/svc/api/caption/\(id)/\(part)").responseString(completionHandler: { (res) in
             if let value = res.result.value {
                 let data = self.matchesInStringWithRegex("((\\d+?):(\\d+?))\\n+?(.*)\\n+?(.*)\\n*?", string: value).map({ (result) -> (CMTime, String, String) in
@@ -31,7 +31,7 @@ class SubtitleService {
                     let str = value as NSString
                     let min = str.substring(with: result.rangeAt(2))
                     let sec = str.substring(with: result.rangeAt(3))
-                    let time = TimeFormatService.shared.stringToCMTime(min: min, sec: sec, timeScale: currentItem?.asset.duration.timescale)
+                    let time = TimeFormatService.shared.stringToCMTime(min: min, sec: sec)
                     let english = str.substring(with: result.rangeAt(4))
                     let korean = str.substring(with: result.rangeAt(5))
                     
@@ -40,8 +40,7 @@ class SubtitleService {
                 
                 let subtitles = data.enumerated().map({ (i: Int, element: (CMTime, String, String)) -> BasicStudy in
                     let start = element.0
-                    let duration = currentItem?.duration ?? start
-                    let end = i + 1 < data.count ? data[i + 1].0 : duration
+                    let end = i + 1 < data.count ? data[i + 1].0 : data[data.count - 1].0
                     return BasicStudy(timeRange: CMTimeRange(start: start, end: end), english: element.1, korean: element.2)
                 })
                 
@@ -51,7 +50,7 @@ class SubtitleService {
         })
     }
     
-    func patternStudyData(_ id: String, part: Int, currentItem: AVPlayerItem?, completion: @escaping ([PatternStudy]) -> Void) {
+    func patternStudyData(_ id: String, part: Int, completion: @escaping ([PatternStudy]) -> Void) {
         NetService.shared.getCollection(path: "/svc/api/v2/pattern/\(id)/\(part)") { (res: DataResponse<[PatternStudy]>) in
             if let data = res.result.value {
                 completion(data)

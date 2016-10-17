@@ -9,6 +9,7 @@
 import UIKit
 import AlamofireImage
 import CoreGraphics
+import CoreData
 
 class MyInfoController: UIViewController {
 
@@ -18,12 +19,11 @@ class MyInfoController: UIViewController {
     @IBOutlet weak var passNameLabel: UILabel!
     @IBOutlet weak var passDurationLabel: UILabel!
     @IBOutlet weak var studyTotalDurationView: UIView!
+    @IBOutlet weak var totalDurationLabel: UILabel!
+    @IBOutlet weak var numberOfVideoLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        profileImageView.clipsToBounds = true
-//        profileImageView.layer.cornerRadius = 40.0
         
         studyTotalDurationView.layer.cornerRadius = 5.0
         studyTotalDurationView.layer.borderColor = UIColor.lightGray.cgColor
@@ -35,23 +35,59 @@ class MyInfoController: UIViewController {
         
         AuthenticateService.shared.user { (user) in
             self.loadPersonalInfoView(user)
+            
+            let id = user?.id ?? Global.guestId
+            let dataService = CoreDataService.shared
+            let req: NSFetchRequest<TIME_LOG> = TIME_LOG.fetchRequest()
+            let query = "uid = '\(id)'"
+            
+            req.predicate = NSPredicate(format: query)
+            
+            dataService.select(request: req) { (items, error) in
+                self.loadStudyTimeInfoView(logs: items)
+            }
         }
     }
     
     private func loadPersonalInfoView(_ user: User?) {
-        if let registerdUser = user {
-            nameLabel.text = "\(registerdUser.name) 님"
-            idLabel.text = "| \(registerdUser.id)"
+        let name = user?.name ?? "게스트"
+        let id = user?.id ?? Global.guestId
+        let url = user?.profileImage ?? "https://ssl.pstatic.net/static/pwe/address/nodata_45x45.gif"
+        
+        nameLabel.text = "\(name) 님"
+        idLabel.text = "| \(id)"
+        
+        ImageDownloadService.shared.get(
+            url: url,
+            filter: nil,
+            completionHandler: { (res) in
+                if let image = res.result.value {
+                    self.profileImageView.image = image
+                }
+        })
+    }
+    
+    private func loadStudyTimeInfoView(logs: [TIME_LOG]) {
+        var totalTime: Double = 0
+        var vids = Set<String>()
+        
+        logs.forEach({ (log) in
+            totalTime += log.studytime
             
-            ImageDownloadService.shared.get(
-                url: registerdUser.profileImage,
-                filter: nil,
-                completionHandler: { (res) in
-                    if let image = res.result.value {
-                        self.profileImageView.image = image
-                    }
-            })
-        }
+            if let vid = log.vid {
+                vids.insert(vid)
+            }
+        })
+        
+        totalDurationLabel.text = secondsToHoursMinutesSeconds(seconds: Int(totalTime))
+        numberOfVideoLabel.text = "\(vids.count)개"
+    }
+    
+    private func secondsToHoursMinutesSeconds(seconds : Int) -> String {
+        let h = String(format: "%02d", seconds / 3600)
+        let m = String(format: "%02d", (seconds % 3600) / 60)
+        let s = String(format: "%02d", (seconds % 3600) % 60)
+        return "\(h):\(m):\(s)"
     }
 
 }

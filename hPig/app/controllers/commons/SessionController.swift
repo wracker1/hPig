@@ -45,7 +45,7 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
             
             loadRelatedSessions(category: item.category)
             
-            SubtitleService.shared.subtitleData(item.id, part: Int(item.part) ?? 0, currentItem: nil, completion: { (data) in
+            SubtitleService.shared.subtitleData(item.id, part: Int(item.part) ?? 0, completion: { (data) in
                 if let subtitle = data.first, let range = subtitle.timeRange {
                     self.startTimeLabel.text = TimeFormatService.shared.timeStringFromCMTime(time: range.start)
                 }

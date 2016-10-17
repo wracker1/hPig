@@ -45,14 +45,14 @@ class TimeFormatService {
         }
     }
     
-    func stringToCMTime(min: String, sec: String, timeScale: Int32?) -> CMTime {
-        return CMTimeMakeWithSeconds(Float64(min)! * 60 + Float64(sec)!, timeScale ?? 600)
+    func stringToCMTime(min: String, sec: String) -> CMTime {
+        return CMTimeMakeWithSeconds(Float64(min)! * 60 + Float64(sec)!, 600)
     }
     
     func stringToCMTimeRange(startMin: String, startSec: String, endMin: String, endSec: String, timeScale: Int32?) -> CMTimeRange {
         return CMTimeRange(
-            start: stringToCMTime(min: startMin, sec: startSec, timeScale: timeScale),
-            end: stringToCMTime(min: endMin, sec: endSec, timeScale: timeScale)
+            start: stringToCMTime(min: startMin, sec: startSec),
+            end: stringToCMTime(min: endMin, sec: endSec)
         )
     }
 }
