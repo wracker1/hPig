@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0137AD7D147A3F77BE04BD7E /* Pods_hPig.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9F0C3F95AB86E4B5BCFF5CB /* Pods_hPig.framework */; };
 		880549A21DAA5083001CF3F8 /* hInteractedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880549A11DAA5083001CF3F8 /* hInteractedLabel.swift */; };
+		881A76F01DB465C100CF6409 /* youtube_ios_player_helper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 881A76EF1DB465C100CF6409 /* youtube_ios_player_helper.framework */; };
 		881ED0041D93AB6400D612EF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0031D93AB6400D612EF /* Category.swift */; };
 		881ED0061D93AC0100D612EF /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0051D93AC0100D612EF /* CategoryService.swift */; };
 		881ED0081D93AEA200D612EF /* XibService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0071D93AEA200D612EF /* XibService.swift */; };
@@ -107,6 +108,9 @@
 /* Begin PBXFileReference section */
 		3F7DD837132F1D454EE2BA5F /* Pods-hPig.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hPig.release.xcconfig"; path = "Pods/Target Support Files/Pods-hPig/Pods-hPig.release.xcconfig"; sourceTree = "<group>"; };
 		880549A11DAA5083001CF3F8 /* hInteractedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = hInteractedLabel.swift; path = uiviews/hInteractedLabel.swift; sourceTree = "<group>"; };
+		881A76E91DB4633A00CF6409 /* youtube_ios_player_helper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = youtube_ios_player_helper.framework; path = "Pods/../build/Debug-iphoneos/youtube-ios-player-helper/youtube_ios_player_helper.framework"; sourceTree = "<group>"; };
+		881A76EB1DB464FC00CF6409 /* YouTubePlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YouTubePlayer.framework; path = "Pods/../build/Debug-iphoneos/YouTubePlayer/YouTubePlayer.framework"; sourceTree = "<group>"; };
+		881A76EF1DB465C100CF6409 /* youtube_ios_player_helper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = youtube_ios_player_helper.framework; path = "../../../Library/Developer/Xcode/DerivedData/hPig-byqselxxffzlqhcolurdyikdjjha/Build/Products/Debug-iphonesimulator/youtube-ios-player-helper/youtube_ios_player_helper.framework"; sourceTree = "<group>"; };
 		881ED0031D93AB6400D612EF /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		881ED0051D93AC0100D612EF /* CategoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		881ED0071D93AEA200D612EF /* XibService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibService.swift; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				881A76F01DB465C100CF6409 /* youtube_ios_player_helper.framework in Frameworks */,
 				885376631DB12F060076D1BF /* SWXMLHash.framework in Frameworks */,
 				885376641DB12F060076D1BF /* Toast_Swift.framework in Frameworks */,
 				8853765A1DB12F060076D1BF /* AlamofireImage.framework in Frameworks */,
@@ -230,6 +235,9 @@
 		21B261A3D92EB5396488C94B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				881A76EF1DB465C100CF6409 /* youtube_ios_player_helper.framework */,
+				881A76EB1DB464FC00CF6409 /* YouTubePlayer.framework */,
+				881A76E91DB4633A00CF6409 /* youtube_ios_player_helper.framework */,
 				885376651DB12FBC0076D1BF /* Charts.framework */,
 				885376661DB12FBC0076D1BF /* Realm.framework */,
 				885376671DB12FBC0076D1BF /* RealmSwift.framework */,
@@ -890,6 +898,8 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Charts",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Realm",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/RealmSwift",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/youtube-ios-player-helper",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/YouTubePlayer",
 				);
 				INFOPLIST_FILE = hPig/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -918,6 +928,8 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Charts",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Realm",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/RealmSwift",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/youtube-ios-player-helper",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/YouTubePlayer",
 				);
 				INFOPLIST_FILE = hPig/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
