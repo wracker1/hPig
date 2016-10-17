@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Svc-SF-dvT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2548a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Svc-SF-dvT">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -181,28 +181,28 @@
                                                     <action selector="historySegChanged:" destination="Svc-SF-dvT" eventType="valueChanged" id="3Ka-OJ-HGN"/>
                                                 </connections>
                                             </segmentedControl>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Ab-LZ-c4r">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Ab-LZ-c4r">
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="l9A-4c-ehd">
-                                                    <size key="itemSize" width="174" height="100"/>
+                                                    <size key="itemSize" width="170" height="135"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="studyHistoryCell" id="yJp-E2-xOd" customClass="StudyHistoryCell" customModule="hPig" customModuleProvider="target">
-                                                        <rect key="frame" x="89" y="0.0" width="174" height="100"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="170" height="135"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                            <rect key="frame" x="0.0" y="0.0" width="174" height="100"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="170" height="135"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BWZ-bZ-WAU">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BWZ-bZ-WAU">
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" secondItem="BWZ-bZ-WAU" secondAttribute="height" multiplier="174:65" id="laa-2g-I65"/>
+                                                                        <constraint firstAttribute="width" secondItem="BWZ-bZ-WAU" secondAttribute="height" multiplier="2:1" id="laa-2g-I65"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCa-hK-Kkd">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Label Label Label Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCa-hK-Kkd">
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -237,7 +237,6 @@
                                             <constraint firstItem="6cc-8t-YB9" firstAttribute="centerY" secondItem="8Xj-Pv-ZS4" secondAttribute="centerY" id="7Xv-dM-nlp"/>
                                             <constraint firstItem="EeQ-VB-Kgq" firstAttribute="leading" secondItem="nkI-eR-UJM" secondAttribute="leadingMargin" constant="12" id="8EW-2z-mkK"/>
                                             <constraint firstAttribute="trailing" secondItem="Sdx-DA-F15" secondAttribute="trailing" constant="12" id="COE-Qn-dYm"/>
-                                            <constraint firstAttribute="bottom" secondItem="5Ab-LZ-c4r" secondAttribute="bottom" constant="10" id="EkD-dd-oQ1"/>
                                             <constraint firstItem="YeC-9e-45D" firstAttribute="leading" secondItem="nkI-eR-UJM" secondAttribute="leading" constant="12" id="FzB-DP-gOi"/>
                                             <constraint firstItem="5Ab-LZ-c4r" firstAttribute="leading" secondItem="nkI-eR-UJM" secondAttribute="leading" constant="12" id="Nfl-5m-N3M"/>
                                             <constraint firstItem="5Ab-LZ-c4r" firstAttribute="top" secondItem="6cc-8t-YB9" secondAttribute="bottom" constant="10" id="Piv-05-n9p"/>
@@ -247,6 +246,7 @@
                                             <constraint firstAttribute="trailing" secondItem="5Ab-LZ-c4r" secondAttribute="trailing" constant="12" id="bbt-YE-aUM"/>
                                             <constraint firstItem="8Xj-Pv-ZS4" firstAttribute="leading" secondItem="nkI-eR-UJM" secondAttribute="leadingMargin" constant="12" id="c9u-pH-55I"/>
                                             <constraint firstItem="EeQ-VB-Kgq" firstAttribute="top" secondItem="YeC-9e-45D" secondAttribute="bottom" constant="12" id="d1i-vu-fWR"/>
+                                            <constraint firstAttribute="bottom" secondItem="5Ab-LZ-c4r" secondAttribute="bottom" id="f9f-2g-MBe"/>
                                             <constraint firstItem="Sdx-DA-F15" firstAttribute="top" secondItem="nkI-eR-UJM" secondAttribute="top" constant="10" id="kmg-zE-lxY"/>
                                             <constraint firstItem="G3x-ek-b6L" firstAttribute="leading" secondItem="nkI-eR-UJM" secondAttribute="leadingMargin" constant="12" id="pdD-d5-wWT"/>
                                             <constraint firstAttribute="trailing" secondItem="YeC-9e-45D" secondAttribute="trailing" constant="12" id="qrw-VU-lfp"/>

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0137AD7D147A3F77BE04BD7E /* Pods_hPig.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9F0C3F95AB86E4B5BCFF5CB /* Pods_hPig.framework */; };
 		880549A21DAA5083001CF3F8 /* hInteractedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880549A11DAA5083001CF3F8 /* hInteractedLabel.swift */; };
-		881A76F01DB465C100CF6409 /* youtube_ios_player_helper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 881A76EF1DB465C100CF6409 /* youtube_ios_player_helper.framework */; };
 		881ED0041D93AB6400D612EF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0031D93AB6400D612EF /* Category.swift */; };
 		881ED0061D93AC0100D612EF /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0051D93AC0100D612EF /* CategoryService.swift */; };
 		881ED0081D93AEA200D612EF /* XibService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0071D93AEA200D612EF /* XibService.swift */; };
@@ -219,7 +218,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				88DEDEED1DB4CE2F00781123 /* CoreData.framework in Frameworks */,
-				881A76F01DB465C100CF6409 /* youtube_ios_player_helper.framework in Frameworks */,
 				885376631DB12F060076D1BF /* SWXMLHash.framework in Frameworks */,
 				885376641DB12F060076D1BF /* Toast_Swift.framework in Frameworks */,
 				8853765A1DB12F060076D1BF /* AlamofireImage.framework in Frameworks */,

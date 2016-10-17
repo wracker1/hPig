@@ -117,7 +117,9 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "studyHistoryCell", for: indexPath) as! StudyHistoryCell
         
-        
+        if let history = histories.get(indexPath.row) {
+            cell.update(history: history)
+        }
         
         return cell
     }
