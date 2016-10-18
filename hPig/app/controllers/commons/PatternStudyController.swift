@@ -152,7 +152,7 @@ class PatternStudyController: UIViewController {
                     
                     dataService.save()
                     
-                    self.view.makeToast("저장 하였습니다.\n학습 정보에서 확인 해보세요.")
+                    self.view.presentToast("저장 하였습니다.\n학습 정보에서 확인 해보세요.")
                 }
             })
         }

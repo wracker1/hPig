@@ -149,7 +149,7 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
                 
                 present(mail, animated: true)
             } else {
-                self.view.makeToast("'설정 > Mail'을 확인 하고, 계정 설정을 해주세요.")
+                self.view.presentToast("'설정 > Mail'을 확인 하고, 계정 설정을 해주세요.")
             }
         default:
             print(data)

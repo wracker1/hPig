@@ -138,6 +138,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="JnC-0Q-0rS">
                         <barButtonItem key="leftBarButtonItem" title="닫기" id="jo6-v4-BJN">
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
                                 <segue destination="7qH-W8-3NP" kind="unwind" unwindAction="returnedFromPatternStudyWithSegue:" id="5QX-zd-zzM"/>
                             </connections>

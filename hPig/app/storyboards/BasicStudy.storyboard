@@ -156,6 +156,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Jnq-2R-VJA">
                         <barButtonItem key="leftBarButtonItem" title="닫기" id="3XQ-wx-KMZ">
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
                                 <segue destination="xUP-87-b7q" kind="unwind" unwindAction="returnedFromBasicStudyWithSegue:" id="aQX-UD-soB"/>
                             </connections>

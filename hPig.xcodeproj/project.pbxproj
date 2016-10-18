@@ -98,6 +98,7 @@
 		88DEDEED1DB4CE2F00781123 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DEDEEC1DB4CE2F00781123 /* CoreData.framework */; };
 		88DEDEF01DB4D53700781123 /* StudyHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DEDEEF1DB4D53700781123 /* StudyHistoryCell.swift */; };
 		88DEDEF41DB5ED7300781123 /* BasicStudy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DEDEF31DB5ED7300781123 /* BasicStudy.storyboard */; };
+		88DEDEF61DB605CC00781123 /* UIViewOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DEDEF51DB605CC00781123 /* UIViewOps.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,6 +211,7 @@
 		88DEDEEC1DB4CE2F00781123 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		88DEDEEF1DB4D53700781123 /* StudyHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudyHistoryCell.swift; path = myinfo/StudyHistoryCell.swift; sourceTree = "<group>"; };
 		88DEDEF31DB5ED7300781123 /* BasicStudy.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BasicStudy.storyboard; sourceTree = "<group>"; };
+		88DEDEF51DB605CC00781123 /* UIViewOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewOps.swift; sourceTree = "<group>"; };
 		B9F0C3F95AB86E4B5BCFF5CB /* Pods_hPig.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hPig.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2A86E940BFA0A45487A0A06 /* Pods-hPig.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hPig.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hPig/Pods-hPig.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -503,6 +505,7 @@
 			children = (
 				881ED01D1D93B92100D612EF /* ArrayOps.swift */,
 				881ED0241D93D07400D612EF /* OptionOps.swift */,
+				88DEDEF51DB605CC00781123 /* UIViewOps.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -751,6 +754,7 @@
 				881ED01C1D93B5B700D612EF /* TimeFormatServide.swift in Sources */,
 				884B0E8D1D93A0BB009748FF /* ImageDownloadService.swift in Sources */,
 				8865F06F1DA115050025D0B9 /* PATTERN+CoreDataProperties.swift in Sources */,
+				88DEDEF61DB605CC00781123 /* UIViewOps.swift in Sources */,
 				887741551DAF207C00198666 /* hWebViewController.swift in Sources */,
 				88CDBA1F1D92CB670058ECFE /* SettingsController.swift in Sources */,
 				88BE97D91D9D0C37002903E3 /* AuthenticateService.swift in Sources */,

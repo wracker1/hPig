@@ -33,8 +33,8 @@ class PatternView: UIView {
     }
     
     private func initBgView() {
-        bgView.clipsToBounds = true
-        bgView.layer.cornerRadius = 8.0
+//        bgView.clipsToBounds = true
+//        bgView.layer.cornerRadius = 8.0
     }
     
     func update(pattern: PATTERN) {

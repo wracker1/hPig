@@ -208,7 +208,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="cxJ-Os-hk1">
-                        <barButtonItem key="rightBarButtonItem" title="카테고리" id="ngh-7u-B7h"/>
+                        <barButtonItem key="leftBarButtonItem" title="카테고리" id="ngh-7u-B7h">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -368,10 +370,10 @@
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lRn-lW-eoO">
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" secondItem="lRn-lW-eoO" secondAttribute="height" multiplier="5:3" priority="750" id="bJO-zA-hzQ"/>
+                                                                                <constraint firstAttribute="width" secondItem="lRn-lW-eoO" secondAttribute="height" multiplier="7:4" priority="750" id="bJO-zA-hzQ"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BP-94-zDm">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BP-94-zDm">
                                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -381,10 +383,10 @@
                                                                 <constraints>
                                                                     <constraint firstItem="lRn-lW-eoO" firstAttribute="leading" secondItem="5PK-Xa-KQc" secondAttribute="leading" id="Bu7-YH-q6o"/>
                                                                     <constraint firstItem="lRn-lW-eoO" firstAttribute="top" secondItem="5PK-Xa-KQc" secondAttribute="top" id="Tgr-vu-J7e"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="7BP-94-zDm" secondAttribute="trailing" id="fi8-fZ-WGL"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="7BP-94-zDm" secondAttribute="trailing" constant="3" id="fi8-fZ-WGL"/>
                                                                     <constraint firstAttribute="trailing" secondItem="lRn-lW-eoO" secondAttribute="trailing" id="mBc-Ou-WOk"/>
-                                                                    <constraint firstItem="7BP-94-zDm" firstAttribute="top" secondItem="lRn-lW-eoO" secondAttribute="bottom" id="nnN-Fk-CWo"/>
-                                                                    <constraint firstItem="7BP-94-zDm" firstAttribute="leading" secondItem="5PK-Xa-KQc" secondAttribute="leading" id="ot8-u0-rRq"/>
+                                                                    <constraint firstItem="7BP-94-zDm" firstAttribute="top" secondItem="lRn-lW-eoO" secondAttribute="bottom" constant="3" id="nnN-Fk-CWo"/>
+                                                                    <constraint firstItem="7BP-94-zDm" firstAttribute="leading" secondItem="5PK-Xa-KQc" secondAttribute="leading" constant="3" id="ot8-u0-rRq"/>
                                                                 </constraints>
                                                                 <connections>
                                                                     <outlet property="imageView" destination="lRn-lW-eoO" id="OZA-ta-Co0"/>

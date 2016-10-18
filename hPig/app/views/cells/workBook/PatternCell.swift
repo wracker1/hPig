@@ -28,11 +28,9 @@ class PatternCell: UITableViewCell, hTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        sessionImageButton.layer.cornerRadius = 8.0
-        sessionImageButton.clipsToBounds = true
-        
         if let imageView = sessionImageButton.imageView {
             imageView.contentMode = .scaleAspectFill
+            imageView.clipsToBounds = true
         }
     }
     
