@@ -28,6 +28,7 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
     @IBOutlet weak var relatedSessionsView: UICollectionView!
     @IBOutlet weak var progress: UIProgressView!
     @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +61,12 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
         
         patternExButton.layer.cornerRadius = 3
         patternExButton.layer.masksToBounds = true
+        
+        let ratio: CGFloat = 1.3
+        let margin: CGFloat = 10
+        let width = (view.bounds.size.width / 3) - margin
+        
+        flowLayout.itemSize = CGSize(width: width, height: width * ratio)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,7 +147,7 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let session = relatedSessions.get(indexPath.row), let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SessionController") as? SessionController {
+        if let session = relatedSessions.get(indexPath.row), let viewController = UIStoryboard(name: "Sessions", bundle: nil).instantiateViewController(withIdentifier: "SessionController") as? SessionController {
             viewController.session = session
             self.navigationController?.pushViewController(viewController, animated: true)
         }

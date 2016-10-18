@@ -164,6 +164,7 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
         AuthenticateService.shared.userId { (userId) in
             let dataService = CoreDataService.shared
             let req: NSFetchRequest<PATTERN> = PATTERN.fetchRequest()
+            req.sortDescriptors = [NSSortDescriptor(key: "regdt", ascending: false)]
             let query = "uid = '\(userId)'"
             req.predicate = NSPredicate(format: query)
             

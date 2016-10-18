@@ -8,15 +8,55 @@
 
 import UIKit
 import CoreData
+import CoreGraphics
 
 class StudyHistoryCell: UICollectionViewCell {
     
     @IBOutlet weak var sessionImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var completeLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    
+    var history: HISTORY? = nil
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        progressLabel.clipsToBounds = true
+        completeLabel.clipsToBounds = true
+        durationLabel.clipsToBounds = true
+        
+        progressLabel.layer.cornerRadius = 5.0
+        completeLabel.layer.cornerRadius = 5.0
+        durationLabel.layer.cornerRadius = 5.0
+    }
+    
     func update(history: HISTORY) {
-        if let url = history.image, let title = history.title {
+        self.history = history
+        
+        if let url = history.image,
+            let title = history.title,
+            let duration = history.duration,
+            let maxposition = Int(history.maxposition ?? "1"),
+            let position = Int(history.position ?? "0") {
+            
             titleLabel.text = title
+            durationLabel.text = duration
+            
+            if position == maxposition {
+                completeLabel.isHidden = false
+                progressLabel.isHidden = true
+            } else {
+                completeLabel.isHidden = true
+                progressLabel.isHidden = false
+                progressLabel.text = "\(Int(Float(position) / Float(maxposition) * 100))%"
+            }
             
             ImageDownloadService.shared.get(url: url, filter: nil, completionHandler: { (res) in
                 if let image = res.result.value {

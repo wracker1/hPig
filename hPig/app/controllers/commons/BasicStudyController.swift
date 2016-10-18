@@ -13,6 +13,8 @@ import CoreData
 
 class BasicStudyController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var session: Session? = nil
+    var id: String? = nil
+    var part: String? = nil
     var currentIndex = 0
     
     private var subtitles = [BasicStudy]()
@@ -52,8 +54,8 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         
         setupToolbar()
         
-        let id = session?.id ?? ""
-        let part = Int(session?.part ?? "0")!
+        let id = session?.id ?? self.id ?? ""
+        let part = Int(session?.part ?? self.part ?? "0")!
         
         play(id: id, part: part, retry: 0)
         
@@ -65,14 +67,13 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     private func saveStudyLog() {
         if let item = session {
             AuthenticateService.shared.userId(completion: { (userId) in
-                let dataService = CoreDataService.shared
                 let req: NSFetchRequest<HISTORY> = HISTORY.fetchRequest()
                 let query = "uid = '\(userId)' AND vid = '\(item.id)' AND part = '\(item.part)'"
                 req.predicate = NSPredicate(format: query)
                 
-                dataService.select(request: req) { (items, error) in
+                CoreDataService.shared.select(request: req) { (items, error) in
                     let history = items.get(0) ?? {
-                        let (desc, ctx) = dataService.entityDescription("history")
+                        let (desc, ctx) = CoreDataService.shared.entityDescription("history")
                         return HISTORY(entity: desc!, insertInto: ctx)
                         }()
                     
@@ -85,7 +86,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
                                      position: currentIndex,
                                      maxPosition: self.subtitles.count - 1)
                     
-                    dataService.save()
+                    CoreDataService.shared.save()
                 }
             })
         }
@@ -163,13 +164,12 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         
         if let time = startStudyTime {
             AuthenticateService.shared.userId(completion: { (userId) in
-                let dataService = CoreDataService.shared
-                let (entity, ctx) = dataService.entityDescription("time_log")
+                let (entity, ctx) = CoreDataService.shared.entityDescription("time_log")
                 let log = TIME_LOG(entity: entity!, insertInto: ctx)
-                let id = self.session?.id ?? ""
+                let id = self.session?.id ?? self.id ?? ""
                 
                 log.mutating(userId: userId, vid: id, startTime: time, type: "basic")
-                dataService.save()
+                CoreDataService.shared.save()
             })
         }
         

@@ -61,16 +61,32 @@ class SubtitleService {
     }
     
     func currentIndex<T>(_ time: CMTime, items: [T], rangeBlock: (T) -> CMTimeRange?) -> Int {
-        if let index = (items.index { (item) -> Bool in
+        let opt = items.index { (item) -> Bool in
             if let range = rangeBlock(item) {
                 return range.containsTime(time)
             } else {
                 return false
             }
-        }) {
+        }
+        
+        if let index = opt {
             return index
         } else {
-            return 0
+            if let first = items.first,
+                let last = items.last,
+                let firstRange = rangeBlock(first),
+                let lastRange = rangeBlock(last) {
+                
+                if time <= firstRange.start {
+                    return 0
+                } else if time >= lastRange.end {
+                    return items.count - 1
+                } else {
+                    return -1
+                }
+            } else {
+                return -1
+            }
         }
     }
     

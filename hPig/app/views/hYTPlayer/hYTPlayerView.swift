@@ -37,7 +37,17 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
     }
     
     func prepareToPlay(_ id: String, range: CMTimeRange, completion: ((YTPlayerError?) -> Void)?) {
-        let playerVars = ["controls": 0, "playsinline": 1, "autohide": 1, "showinfo": 0, "modestbranding": 1]
+        let playerVars: [String: Any] = [
+            "controls": 2
+            , "playsinline": 1
+            , "autohide": 1
+            , "showinfo": 0
+            , "modestbranding": 0
+            , "autoplay": 1
+            , "rel": 0
+            , "theme": "light"
+            , "cc_load_policy": 0
+        ]
         
         self.id = id
         self.completion = completion

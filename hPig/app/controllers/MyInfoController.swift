@@ -23,6 +23,7 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
     @IBOutlet weak var numberOfVideoLabel: UILabel!
     @IBOutlet weak var historyCollectionView: UICollectionView!
     @IBOutlet weak var historySegControl: UISegmentedControl!
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     private var histories = [HISTORY]()
     
@@ -33,7 +34,11 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
         studyTotalDurationView.layer.borderColor = UIColor.lightGray.cgColor
         studyTotalDurationView.layer.borderWidth = 1.0
         
-        historySegChanged(historySegControl)
+        let ratio: CGFloat = 0.85
+        let margin: CGFloat = 18
+        let width = (view.bounds.size.width / 2) - margin
+        
+        flowLayout.itemSize = CGSize(width: width, height: width * ratio)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -50,13 +55,24 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
                 self.loadStudyTimeInfoView(logs: items)
             }
         }
+        
+        historySegChanged(historySegControl)
     }
     
-    @IBAction func historySegChanged(_ sender: AnyObject) {
+    @IBAction func historySegChanged(_ sender: UISegmentedControl) {
         AuthenticateService.shared.user { (user) in
             let id = user?.id ?? Global.guestId
             let historyReq: NSFetchRequest<HISTORY> = HISTORY.fetchRequest()
-            historyReq.predicate = NSPredicate(format: "uid = '\(id)'")
+            historyReq.sortDescriptors = [NSSortDescriptor(key: "lastdate", ascending: false)]
+            
+            switch sender.selectedSegmentIndex {
+            case 1:
+                historyReq.predicate = NSPredicate(format: "uid = '\(id)' AND position != maxposition")
+            case 2:
+                historyReq.predicate = NSPredicate(format: "uid = '\(id)' AND position == maxposition")
+            default:
+                historyReq.predicate = NSPredicate(format: "uid = '\(id)'")
+            }
             
             CoreDataService.shared.select(request: historyReq) { (items, error) in
                 self.histories = items
@@ -107,7 +123,7 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -123,5 +139,19 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
         
         return cell
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let viewController = (segue.destination as! UINavigationController).topViewController,
+            let basic = viewController as? BasicStudyController,
+            let cell = sender as? StudyHistoryCell,
+            let history = cell.history {
+            
+            basic.session = Session(history)
+            basic.currentIndex = Int(history.position ?? "0")!
+        }
+    }
+    
+    @IBAction func returnedFromBasicStudy(segue: UIStoryboardSegue) {
+        
+    }
 }

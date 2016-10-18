@@ -35,6 +35,41 @@ struct Session: ResponseObjectSerializable, ResponseCollectionSerializable, Cust
         return "Session"
     }
     
+    init?(_ history: HISTORY) {
+        guard
+            let id = history.vid
+            , let part = history.part
+            , let image = history.image
+            , let title = history.title
+            , let duration = history.duration
+            , let status = history.status
+        else {
+            return nil
+        }
+        
+        self.caption = ""
+        self.category = ""
+        self.categoryName = ""
+        self.channelId = ""
+        self.channelImage = ""
+        self.channelName = ""
+        self.sessionDescription = ""
+        self.duration = duration
+        self.id = id
+        self.image = image
+        self.languages = nil
+        self.level = ""
+        self.part = part
+        self.pattern = ""
+        self.pubdate = ""
+        self.regdt = ""
+        self.status = status
+        self.svctype = ""
+        self.title = title
+        self.type = ""
+        self.viewcnt = "0"
+    }
+    
     init?(response: HTTPURLResponse, representation: Any) {
         guard
             let representation = representation as? [String: Any],
