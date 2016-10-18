@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AuthenticateService.shared.prepare()
         ToastManager.shared.style.verticalPadding = 10
         
-        
         return true
     }
 

@@ -10,6 +10,7 @@ import UIKit
 import AlamofireImage
 import CoreGraphics
 import CoreData
+import Charts
 
 class MyInfoController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -24,6 +25,7 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
     @IBOutlet weak var historyCollectionView: UICollectionView!
     @IBOutlet weak var historySegControl: UISegmentedControl!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var chartView: BarChartView!
     
     private var histories = [HISTORY]()
     
@@ -53,6 +55,14 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
             
             CoreDataService.shared.select(request: logReq) { (items, error) in
                 self.loadStudyTimeInfoView(logs: items)
+            }
+            
+            let sixDaysLogReq: NSFetchRequest<TIME_LOG> = TIME_LOG.fetchRequest()
+            let sixDaysAgo = self.daysFromNow(days: -6)
+            sixDaysLogReq.predicate = NSPredicate(format: "uid = '\(id)' AND regdt >= %@", sixDaysAgo as NSDate)
+            
+            CoreDataService.shared.select(request: sixDaysLogReq) { (items, error) in
+                self.loadChart(logs: items)
             }
         }
         
@@ -113,6 +123,69 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
         
         totalDurationLabel.text = secondsToHoursMinutesSeconds(seconds: Int(totalTime))
         numberOfVideoLabel.text = "\(vids.count)개"
+    }
+    
+    private func loadChart(logs: [TIME_LOG]) {
+        chartView.noDataText = ""
+        chartView.descriptionText = ""
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM.dd"
+        
+        var days = [String]()
+        for day in -6...0 {
+            let newDate = daysFromNow(days: day)
+            let dateString = formatter.string(from: newDate)
+            days.append(dateString)
+        }
+        
+        var logMap = [String : [TIME_LOG]]()
+        
+        for log in logs {
+            if let regdt = log.regdt {
+                let dateString = formatter.string(from: regdt as Date)
+                var dayLogs = logMap[dateString] ?? [TIME_LOG]()
+                dayLogs.append(log)
+                logMap[dateString] = dayLogs
+            }
+        }
+        
+        let studyTimes = days.map { (dateString) -> Double in
+            let dayLogs = logMap[dateString] ?? [TIME_LOG]()
+            var sum: Double = 0
+            
+            for log in dayLogs {
+                sum += log.studytime
+            }
+            
+            return sum / 60
+        }
+        
+        setChartData(dataPoints: days, values: studyTimes)
+    }
+    
+    private func daysFromNow(days: Int) -> Date {
+        let date = Date()
+        let interval = Double(days * 24 * 60 * 60)
+        return date.addingTimeInterval(interval)
+    }
+    
+    private func setChartData(dataPoints: [String], values: [Double]) {
+        var dataEntries: [BarChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            let dataEntry = BarChartDataEntry(value: values[i], xIndex: i)
+            dataEntries.append(dataEntry)
+        }
+        
+        let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "학습시간(분)")
+        chartDataSet.colors = [UIColor.red]
+        
+        let chartData = BarChartData(xVals: dataPoints, dataSet: chartDataSet)
+        chartView.data = chartData
+        chartView.xAxis.labelPosition = .bottom
+        chartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInExpo)
+        
     }
     
     private func secondsToHoursMinutesSeconds(seconds : Int) -> String {

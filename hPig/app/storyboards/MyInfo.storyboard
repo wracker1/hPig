@@ -159,10 +159,10 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G3x-ek-b6L">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G3x-ek-b6L" customClass="BarChartView" customModule="Charts">
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="JFw-2e-0Tk"/>
+                                                    <constraint firstAttribute="height" constant="130" id="JFw-2e-0Tk"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학습 히스토리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8Xj-Pv-ZS4">
@@ -273,7 +273,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="G3x-ek-b6L" firstAttribute="top" secondItem="EeQ-VB-Kgq" secondAttribute="bottom" constant="8" id="1zd-Zv-pnw"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="G3x-ek-b6L" secondAttribute="trailing" constant="12" id="3JY-up-8YC"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="G3x-ek-b6L" secondAttribute="trailing" id="3JY-up-8YC"/>
                                             <constraint firstItem="6cc-8t-YB9" firstAttribute="centerY" secondItem="8Xj-Pv-ZS4" secondAttribute="centerY" id="7Xv-dM-nlp"/>
                                             <constraint firstItem="EeQ-VB-Kgq" firstAttribute="leading" secondItem="nkI-eR-UJM" secondAttribute="leadingMargin" constant="12" id="8EW-2z-mkK"/>
                                             <constraint firstAttribute="trailing" secondItem="Sdx-DA-F15" secondAttribute="trailing" constant="12" id="COE-Qn-dYm"/>
@@ -288,7 +288,7 @@
                                             <constraint firstItem="EeQ-VB-Kgq" firstAttribute="top" secondItem="YeC-9e-45D" secondAttribute="bottom" constant="12" id="d1i-vu-fWR"/>
                                             <constraint firstAttribute="bottom" secondItem="5Ab-LZ-c4r" secondAttribute="bottom" id="f9f-2g-MBe"/>
                                             <constraint firstItem="Sdx-DA-F15" firstAttribute="top" secondItem="nkI-eR-UJM" secondAttribute="top" constant="10" id="kmg-zE-lxY"/>
-                                            <constraint firstItem="G3x-ek-b6L" firstAttribute="leading" secondItem="nkI-eR-UJM" secondAttribute="leadingMargin" constant="12" id="pdD-d5-wWT"/>
+                                            <constraint firstItem="G3x-ek-b6L" firstAttribute="leading" secondItem="nkI-eR-UJM" secondAttribute="leadingMargin" id="pdD-d5-wWT"/>
                                             <constraint firstAttribute="trailing" secondItem="YeC-9e-45D" secondAttribute="trailing" constant="12" id="qrw-VU-lfp"/>
                                             <constraint firstItem="YeC-9e-45D" firstAttribute="top" secondItem="Sdx-DA-F15" secondAttribute="bottom" constant="10" id="vRT-1k-DZK"/>
                                             <constraint firstItem="6cc-8t-YB9" firstAttribute="top" secondItem="G3x-ek-b6L" secondAttribute="bottom" constant="10" id="zsD-XY-Bya"/>
@@ -317,6 +317,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="chartView" destination="G3x-ek-b6L" id="Frb-vO-1vr"/>
                         <outlet property="flowLayout" destination="l9A-4c-ehd" id="NXh-tw-HtH"/>
                         <outlet property="historyCollectionView" destination="5Ab-LZ-c4r" id="eNT-Zl-vGD"/>
                         <outlet property="historySegControl" destination="6cc-8t-YB9" id="6tx-eA-YzT"/>
