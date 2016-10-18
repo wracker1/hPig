@@ -34,6 +34,10 @@
 		8853765A1DB12F060076D1BF /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882912501DAFD85C00E5B6E4 /* AlamofireImage.framework */; };
 		885376631DB12F060076D1BF /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8853765E1DB12F060076D1BF /* SWXMLHash.framework */; };
 		885376641DB12F060076D1BF /* Toast_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8853765F1DB12F060076D1BF /* Toast_Swift.framework */; };
+		8853766C1DB65C5D0076D1BF /* WordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8853766B1DB65C5D0076D1BF /* WordData.swift */; };
+		8853766E1DB660540076D1BF /* eng_dic_view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8853766D1DB660540076D1BF /* eng_dic_view.xib */; };
+		885376701DB662850076D1BF /* hEnglishDictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8853766F1DB662850076D1BF /* hEnglishDictionaryView.swift */; };
+		885376721DB671710076D1BF /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885376711DB671710076D1BF /* WordCell.swift */; };
 		886085231D97A951009A9B3C /* SessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886085221D97A951009A9B3C /* SessionController.swift */; };
 		886085271D97D342009A9B3C /* BasicStudyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886085261D97D342009A9B3C /* BasicStudyController.swift */; };
 		886085291D97D393009A9B3C /* BasicStudy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886085281D97D393009A9B3C /* BasicStudy.swift */; };
@@ -144,6 +148,11 @@
 		885376651DB12FBC0076D1BF /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = "Pods/../build/Debug-iphoneos/Charts/Charts.framework"; sourceTree = "<group>"; };
 		885376661DB12FBC0076D1BF /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Pods/../build/Debug-iphoneos/Realm/Realm.framework"; sourceTree = "<group>"; };
 		885376671DB12FBC0076D1BF /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "Pods/../build/Debug-iphoneos/RealmSwift/RealmSwift.framework"; sourceTree = "<group>"; };
+		8853766B1DB65C5D0076D1BF /* WordData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordData.swift; sourceTree = "<group>"; };
+		8853766D1DB660540076D1BF /* eng_dic_view.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = eng_dic_view.xib; sourceTree = "<group>"; };
+		8853766F1DB662850076D1BF /* hEnglishDictionaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = hEnglishDictionaryView.swift; path = uiviews/hEnglishDictionaryView.swift; sourceTree = "<group>"; };
+		885376711DB671710076D1BF /* WordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WordCell.swift; path = workBook/WordCell.swift; sourceTree = "<group>"; };
+		885376731DB67C770076D1BF /* hPig.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = hPig.entitlements; sourceTree = "<group>"; };
 		886085221D97A951009A9B3C /* SessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionController.swift; path = commons/SessionController.swift; sourceTree = "<group>"; };
 		886085261D97D342009A9B3C /* BasicStudyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicStudyController.swift; path = commons/BasicStudyController.swift; sourceTree = "<group>"; };
 		886085281D97D393009A9B3C /* BasicStudy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicStudy.swift; sourceTree = "<group>"; };
@@ -278,6 +287,7 @@
 				881ED0151D93B13700D612EF /* hPlayerView.swift */,
 				880549A11DAA5083001CF3F8 /* hInteractedLabel.swift */,
 				887741721DB0A2AD00198666 /* PatternView.swift */,
+				8853766F1DB662850076D1BF /* hEnglishDictionaryView.swift */,
 			);
 			name = uiviews;
 			sourceTree = "<group>";
@@ -289,6 +299,7 @@
 				881ED00E1D93B02100D612EF /* session_nav_view.xib */,
 				881ED00F1D93B02100D612EF /* st_player_view.xib */,
 				887741701DB0743C00198666 /* pattern_view.xib */,
+				8853766D1DB660540076D1BF /* eng_dic_view.xib */,
 			);
 			path = xib;
 			sourceTree = "<group>";
@@ -426,6 +437,7 @@
 			isa = PBXGroup;
 			children = (
 				88BE97DF1DA50499002903E3 /* PatternCell.swift */,
+				885376711DB671710076D1BF /* WordCell.swift */,
 			);
 			name = workBook;
 			sourceTree = "<group>";
@@ -456,6 +468,7 @@
 		88CDB9EB1D92BDA30058ECFE /* hPig */ = {
 			isa = PBXGroup;
 			children = (
+				885376731DB67C770076D1BF /* hPig.entitlements */,
 				88CDBA0F1D92CABA0058ECFE /* app */,
 				88CDB9EC1D92BDA30058ECFE /* AppDelegate.swift */,
 				88CDB9F61D92BDA30058ECFE /* Assets.xcassets */,
@@ -517,6 +530,7 @@
 				88CDBA211D92D1D10058ECFE /* super */,
 				88CDBA271D92D34E0058ECFE /* Session.swift */,
 				881ED0031D93AB6400D612EF /* Category.swift */,
+				8853766B1DB65C5D0076D1BF /* WordData.swift */,
 				886085311D97DAD8009A9B3C /* PatternStudy.swift */,
 				881ED0191D93B31700D612EF /* YoutubeVideo.swift */,
 				886085281D97D393009A9B3C /* BasicStudy.swift */,
@@ -634,6 +648,11 @@
 						DevelopmentTeam = FY7JU9WRTC;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
+						};
 					};
 					88CDB9FF1D92BDA40058ECFE = {
 						CreatedOnToolsVersion = 8.0;
@@ -678,6 +697,7 @@
 				88DEDEF41DB5ED7300781123 /* BasicStudy.storyboard in Resources */,
 				886EF1741D9C2B58009DA8E8 /* NaverAuth.bundle in Resources */,
 				887741661DB0738C00198666 /* LaunchScreen.storyboard in Resources */,
+				8853766E1DB660540076D1BF /* eng_dic_view.xib in Resources */,
 				8877416E1DB0738C00198666 /* WebView.storyboard in Resources */,
 				881ED0121D93B02100D612EF /* st_player_view.xib in Resources */,
 				8877416D1DB0738C00198666 /* Settings.storyboard in Resources */,
@@ -754,6 +774,7 @@
 				881ED01C1D93B5B700D612EF /* TimeFormatServide.swift in Sources */,
 				884B0E8D1D93A0BB009748FF /* ImageDownloadService.swift in Sources */,
 				8865F06F1DA115050025D0B9 /* PATTERN+CoreDataProperties.swift in Sources */,
+				8853766C1DB65C5D0076D1BF /* WordData.swift in Sources */,
 				88DEDEF61DB605CC00781123 /* UIViewOps.swift in Sources */,
 				887741551DAF207C00198666 /* hWebViewController.swift in Sources */,
 				88CDBA1F1D92CB670058ECFE /* SettingsController.swift in Sources */,
@@ -778,6 +799,7 @@
 				88CDBA281D92D34F0058ECFE /* Session.swift in Sources */,
 				88BE97DD1DA36D4D002903E3 /* HISTORY+CoreDataProperties.swift in Sources */,
 				88BE97D21D9D04B2002903E3 /* RelatedSessionCell.swift in Sources */,
+				885376701DB662850076D1BF /* hEnglishDictionaryView.swift in Sources */,
 				881ED0251D93D07400D612EF /* OptionOps.swift in Sources */,
 				88B9ED981DB49B0600EC86D6 /* hYTPlayerView.swift in Sources */,
 				886085291D97D393009A9B3C /* BasicStudy.swift in Sources */,
@@ -792,6 +814,7 @@
 				88CDB9F51D92BDA30058ECFE /* hPig.xcdatamodeld in Sources */,
 				881ED01A1D93B31700D612EF /* YoutubeVideo.swift in Sources */,
 				881ED0041D93AB6400D612EF /* Category.swift in Sources */,
+				885376721DB671710076D1BF /* WordCell.swift in Sources */,
 				88BE97D41D9D04B2002903E3 /* SessionCell.swift in Sources */,
 				88BE97E01DA50499002903E3 /* PatternCell.swift in Sources */,
 				8865F06D1DA115050025D0B9 /* WORD+CoreDataProperties.swift in Sources */,

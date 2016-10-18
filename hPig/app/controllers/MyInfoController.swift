@@ -179,7 +179,7 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
         }
         
         let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "학습시간(분)")
-        chartDataSet.colors = [UIColor.red]
+        chartDataSet.colors = [pointColor]
         
         let chartData = BarChartData(xVals: dataPoints, dataSet: chartDataSet)
         chartView.data = chartData

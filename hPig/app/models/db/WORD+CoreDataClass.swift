@@ -11,5 +11,13 @@ import CoreData
 
 
 public class WORD: NSManagedObject {
-
+    
+    func mutating(data: WordData, uid: String) {
+        self.uid = uid
+        self.word = data.word
+        self.summary = data.summary
+        self.pron = data.pronunciation
+        self.pronfile = data.soundUrl
+        self.regdt = Date() as NSDate
+    }
 }

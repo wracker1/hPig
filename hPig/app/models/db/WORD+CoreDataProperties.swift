@@ -18,7 +18,6 @@ extension WORD {
 
     @NSManaged public var uid: String?
     @NSManaged public var word: String?
-    @NSManaged public var wordid: String?
     @NSManaged public var summary: String?
     @NSManaged public var pron: String?
     @NSManaged public var pronfile: String?

@@ -29,4 +29,6 @@ func barButtonItem(_ imageNamed: String, size: CGSize, target: AnyObject?, selec
 
 let SubtitlePointColor = RGBA(213, g: 135, b: 125, a: 1)
 
+let pointColor = RGBA(246, g: 0, b: 29, a: 1)
+
 let CGRectZero = CGRectFromString("{{0, 0}, {0, 0}}")

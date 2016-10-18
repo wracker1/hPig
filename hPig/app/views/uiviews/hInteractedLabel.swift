@@ -7,50 +7,40 @@
 //
 
 import UIKit
+import Alamofire
 
 class hInteractedLabel: UILabel {
+    
+    var wordTapBlock: ((WordData) -> Void)? = nil
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         self.isUserInteractionEnabled = true
-        
-        self.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress(gestureRecognizer:))))
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        self.addGestureRecognizer(gestureRecognizer)
     }
     
     override var canBecomeFirstResponder: Bool { get { return true } }
     
-    func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
-//        let item = UIMenuItem(title: "단어 저장", action: #selector(self.saveWord))
-//        let menu = UIMenuController.shared
-//        menu.menuItems = [item]
-//        menu.setTargetRect(self.frame, in: self)
-//        menu.setMenuVisible(true, animated: true)
-//        
-//        self.becomeFirstResponder()
+    func handleTap(_ recognizer: UITapGestureRecognizer) {
+        let loc = recognizer.location(in: self)
         
-//        if let text = englishSubLabel.text {
-//            let textStorage = NSTextStorage(string: text)
-//            let layoutManager = NSLayoutManager()
-//            let textContainer = NSTextContainer(size: englishSubLabel.bounds.size)
-//            
-//            textContainer.lineFragmentPadding = 0
-//            textStorage.addLayoutManager(layoutManager)
-//            
-//            var glyphRange = NSMakeRange(0, 0)
-//            layoutManager.characterRange(forGlyphRange: NSMakeRange(0, text.characters.count), actualGlyphRange: &glyphRange)
-//            
-//            let glyphRect = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textContainer)
-//            
-//            print("\(glyphRect)")
-//            
-//            let touchPoint = gestureRecognizer.location(ofTouch: 0, in: englishSubLabel)
-//            
-//            print("\(touchPoint)")
-//        }
-    }
-    
-    func saveWord() {
-    
+        let textView = UITextView(frame: self.frame)
+        textView.textContainerInset = UIEdgeInsetsMake(0, -0.5, 0, -0.5)
+        textView.font = self.font
+        textView.text = self.text
+        
+        if let pos = textView.closestPosition(to: loc),
+            let range = textView.tokenizer.rangeEnclosingPosition(pos, with: .word, inDirection: 0),
+            let text = textView.text(in: range),
+            let callback = wordTapBlock {
+            
+            NetService.shared.getObject(path: "/svc/api/dictionary/\(text)", completionHandler: { (res: DataResponse<WordData>) in
+                if let data = res.result.value {
+                    callback(data)
+                }
+            })
+        }
     }
 }

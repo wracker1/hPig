@@ -17,6 +17,7 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     
     private var patternData = [PATTERN]()
     private var wordData = [WORD]()
+    
     private weak var selectedTableView: UITableView? = nil
     
     override func viewDidLoad() {
@@ -76,9 +77,13 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
         if tableView == patternTableView, let pattern = patternData.get(indexPath.row) {
             patternData.remove(at: indexPath.row)
             dataService.delete(model: pattern)
+        } else if tableView == wordTableView, let word = wordData.get(indexPath.row) {
+            wordData.remove(at: indexPath.row)
+            dataService.delete(model: word)
         }
         
         tableView.deleteRows(at: [indexPath], with: .automatic)
+        
         dataService.save()
     }
     
@@ -134,8 +139,8 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     private func update(_ tableView: UITableView, cell: UITableViewCell, indexPath: IndexPath) -> UITableViewCell {
         if tableView == patternTableView, let data = patternData.get(indexPath.row), let itemCell = cell as? PatternCell {
             return itemCell.update(data: data)
-        } else if tableView == wordTableView {
-            return cell
+        } else if tableView == wordTableView, let word = wordData.get(indexPath.row), let wordCell = cell as? WordCell {
+            return wordCell.update(data: word)
         } else {
             return cell
         }

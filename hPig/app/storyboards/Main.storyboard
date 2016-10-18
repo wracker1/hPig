@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zVx-pS-ww8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2548a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zVx-pS-ww8">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -10,7 +10,7 @@
         <scene sceneID="tJ7-Da-xPh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3IA-JP-WGi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="세션" id="RR7-Pv-Pkh"/>
+                    <tabBarItem key="tabBarItem" title="세션" image="tab_session_disable" id="RR7-Pv-Pkh"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5pg-u0-3mR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -51,7 +51,7 @@
         <scene sceneID="WDW-go-3Bb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hX3-qA-3p7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="학습 정보" id="0g3-Xq-rEk"/>
+                    <tabBarItem key="tabBarItem" title="학습 정보" image="tab_study_disable" id="0g3-Xq-rEk"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aPc-F0-Fhb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -70,7 +70,7 @@
         <scene sceneID="IAO-8C-4Rp">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Q8p-iD-O7l" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="학습 현황" id="uEP-AL-oDN"/>
+                    <tabBarItem key="tabBarItem" title="학습 현황" image="tab_my_disable" id="uEP-AL-oDN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GUM-qI-06e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -89,7 +89,7 @@
         <scene sceneID="vT8-tB-zaH">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="i0d-Xj-WLQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="설정" id="CfV-03-2Bj"/>
+                    <tabBarItem key="tabBarItem" title="설정" image="tab_setting_disable" id="CfV-03-2Bj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="b2a-tP-4Qu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -145,4 +145,10 @@
             <point key="canvasLocation" x="1303" y="-101"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tab_my_disable" width="62" height="20"/>
+        <image name="tab_session_disable" width="62" height="20"/>
+        <image name="tab_setting_disable" width="62" height="20"/>
+        <image name="tab_study_disable" width="62" height="20"/>
+    </resources>
 </document>
