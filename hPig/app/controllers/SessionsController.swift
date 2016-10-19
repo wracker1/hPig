@@ -165,15 +165,22 @@ class SessionsController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let index = self.tableView.indexPathForSelectedRow?.row
-        let session = self.sessions[index!]
-        let type = session.type
-        
-        if type.lowercased() == "banner" {
+        if let channelController = segue.destination as? ChannelController,
+            let button = sender as? ChannelButton,
+            let session = button.session {
             
+            channelController.id = session.channelId
         } else {
-            let vc = segue.destination as! SessionController
-            vc.session = session
+            let index = self.tableView.indexPathForSelectedRow?.row
+            let session = self.sessions[index!]
+            let type = session.type
+            
+            if type.lowercased() == "banner" {
+                
+            } else {
+                let vc = segue.destination as! SessionController
+                vc.session = session
+            }
         }
     }
     

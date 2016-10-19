@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2548a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fN9-Jy-PpQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fN9-Jy-PpQ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -125,12 +125,6 @@
                                     <constraint firstAttribute="height" constant="50" id="EHd-Cy-8f6"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PxS-P0-sYm" customClass="hEnglishDictionaryView" customModule="hPig" customModuleProvider="target">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="iU0-n5-oak"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -139,20 +133,11 @@
                             <constraint firstItem="QNe-ED-TtN" firstAttribute="width" secondItem="YX6-vP-l95" secondAttribute="width" id="I6n-49-RU9"/>
                             <constraint firstItem="LFO-NZ-Sek" firstAttribute="leading" secondItem="YX6-vP-l95" secondAttribute="leading" id="OHH-o0-sh0"/>
                             <constraint firstItem="Lsv-ZS-2UW" firstAttribute="leading" secondItem="YX6-vP-l95" secondAttribute="leading" id="RXR-Ew-mbI"/>
-                            <constraint firstAttribute="trailing" secondItem="PxS-P0-sYm" secondAttribute="trailing" id="SxW-5s-yBp"/>
                             <constraint firstAttribute="trailing" secondItem="LFO-NZ-Sek" secondAttribute="trailing" id="aCO-d6-fDw"/>
-                            <constraint firstAttribute="bottom" secondItem="Lsv-ZS-2UW" secondAttribute="bottom" id="cWf-0b-ZBI"/>
                             <constraint firstItem="LFO-NZ-Sek" firstAttribute="top" secondItem="YX6-vP-l95" secondAttribute="top" id="dXp-eD-kPG"/>
                             <constraint firstItem="Lsv-ZS-2UW" firstAttribute="centerX" secondItem="YX6-vP-l95" secondAttribute="centerX" id="nNe-86-V5K"/>
-                            <constraint firstItem="zMK-FE-Um6" firstAttribute="top" secondItem="PxS-P0-sYm" secondAttribute="bottom" id="tJ8-oT-Oe6"/>
                             <constraint firstAttribute="trailing" secondItem="Lsv-ZS-2UW" secondAttribute="trailing" id="udU-gu-x8t"/>
-                            <constraint firstItem="PxS-P0-sYm" firstAttribute="leading" secondItem="YX6-vP-l95" secondAttribute="leading" id="wOQ-df-exB"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="cWf-0b-ZBI"/>
-                            </mask>
-                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Jnq-2R-VJA">
@@ -166,7 +151,6 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="currentSubtitleView" destination="qD5-Su-cIp" id="tWF-ee-Skn"/>
-                        <outlet property="englishDictionaryView" destination="PxS-P0-sYm" id="ONm-uV-JCY"/>
                         <outlet property="englishSubLabel" destination="kOv-l1-ZCy" id="8E8-GG-2Ea"/>
                         <outlet property="koreanSubLabel" destination="SiU-ir-eox" id="VrB-gO-hhd"/>
                         <outlet property="playerView" destination="ujS-Nk-Zlw" id="t2L-Xi-HbG"/>

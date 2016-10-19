@@ -11,10 +11,14 @@ import UIKit
 class WordCell: UITableViewCell, hTableViewCell {
 
     typealias Item = WORD
+    @IBOutlet weak var englishDictionaryView: hEnglishDictionaryView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        if let button = englishDictionaryView.confirmButton {
+            button.isHidden = true
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -24,9 +28,8 @@ class WordCell: UITableViewCell, hTableViewCell {
     }
 
     func update(data: Item) -> UITableViewCell {
-        if let word = data.word, let _ = data.pron {
-            self.textLabel?.text = word
-            self.detailTextLabel?.text = data.summary
+        if let item = WordData(data) {
+            englishDictionaryView.update(data: item, completion: nil)
         }
         
         return self

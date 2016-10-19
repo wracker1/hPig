@@ -32,6 +32,8 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "학습 현황"
+        
         studyTotalDurationView.layer.cornerRadius = 5.0
         studyTotalDurationView.layer.borderColor = UIColor.lightGray.cgColor
         studyTotalDurationView.layer.borderWidth = 1.0

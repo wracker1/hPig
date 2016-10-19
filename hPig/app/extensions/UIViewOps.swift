@@ -19,7 +19,7 @@ extension UIView {
             
             let position = CGPoint(
                 x: self.bounds.size.width / 2.0,
-                y: (self.bounds.size.height - (toast.frame.size.height / 2.0)) - 130
+                y: (self.bounds.size.height - (toast.frame.size.height / 2.0)) - 200
             )
 
             self.makeToast(message, duration: 2.0, position: position)

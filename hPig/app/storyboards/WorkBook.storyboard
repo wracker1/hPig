@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2548a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3mx-Ie-cnv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3mx-Ie-cnv">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -20,32 +20,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="iwE-nf-7VE">
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="iwE-nf-7VE">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WordCell" textLabel="4k8-EW-vPi" detailTextLabel="zsp-8B-WIt" style="IBUITableViewCellStyleSubtitle" id="kgu-4U-CDe" customClass="WordCell" customModule="hPig" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WordCell" id="kgu-4U-CDe" customClass="WordCell" customModule="hPig" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="65" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kgu-4U-CDe" id="xDa-ND-clo">
                                             <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4k8-EW-vPi">
-                                                    <frame key="frameInset" minX="15" minY="4" width="34" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zsp-8B-WIt">
-                                                    <frame key="frameInset" minX="15" minY="25" width="44" height="15"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ckd-CU-ar8" customClass="hEnglishDictionaryView" customModule="hPig" customModuleProvider="target">
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ckd-CU-ar8" firstAttribute="top" secondItem="xDa-ND-clo" secondAttribute="top" id="Vu2-RR-rfd"/>
+                                                <constraint firstItem="ckd-CU-ar8" firstAttribute="leading" secondItem="xDa-ND-clo" secondAttribute="leading" id="Wwr-Ke-nta"/>
+                                                <constraint firstAttribute="bottom" secondItem="ckd-CU-ar8" secondAttribute="bottom" id="bWl-bo-tPp"/>
+                                                <constraint firstAttribute="trailing" secondItem="ckd-CU-ar8" secondAttribute="trailing" id="fnj-Jc-FHw"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="englishDictionaryView" destination="ckd-CU-ar8" id="33H-3o-IC8"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -71,18 +69,21 @@
                                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3r2-ty-MpR">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="pDS-1w-8jP"/>
-                                                        <constraint firstAttribute="width" secondItem="3r2-ty-MpR" secondAttribute="height" multiplier="7:4" id="uVK-O3-Gio"/>
+                                                        <constraint firstAttribute="width" secondItem="3r2-ty-MpR" secondAttribute="height" multiplier="9:5" id="uVK-O3-Gio"/>
                                                     </constraints>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
                                                         <segue destination="zjG-SB-X89" kind="presentation" id="9KM-cX-NHf"/>
                                                     </connections>
                                                 </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico_play" translatesAutoresizingMaskIntoConstraints="NO" id="FRe-tX-oVf"/>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="3r2-ty-MpR" firstAttribute="leading" secondItem="3Gy-Nr-MzH" secondAttribute="leadingMargin" id="0Ia-vB-BlY"/>
                                                 <constraint firstItem="lt1-jl-NG9" firstAttribute="top" secondItem="3Gy-Nr-MzH" secondAttribute="topMargin" id="8P2-sR-G8R"/>
+                                                <constraint firstItem="FRe-tX-oVf" firstAttribute="centerX" secondItem="3r2-ty-MpR" secondAttribute="centerX" id="HPn-xA-ELG"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="lt1-jl-NG9" secondAttribute="bottom" priority="750" id="N9a-jV-4xF"/>
+                                                <constraint firstItem="FRe-tX-oVf" firstAttribute="centerY" secondItem="3r2-ty-MpR" secondAttribute="centerY" id="VZm-XG-vc6"/>
                                                 <constraint firstItem="3r2-ty-MpR" firstAttribute="top" secondItem="3Gy-Nr-MzH" secondAttribute="topMargin" id="bhh-BN-qAt"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="lt1-jl-NG9" secondAttribute="trailing" id="eY8-go-ydB"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="3r2-ty-MpR" secondAttribute="bottom" priority="750" id="ofC-Qf-hpp"/>
@@ -154,4 +155,7 @@
             <point key="canvasLocation" x="1289" y="688"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ico_play" width="50" height="50"/>
+    </resources>
 </document>

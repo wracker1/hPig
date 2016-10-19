@@ -11,7 +11,10 @@ import Alamofire
 
 class hInteractedLabel: UILabel {
     
-    var wordTapBlock: ((WordData) -> Void)? = nil
+    var viewController: UIViewController? = nil
+    var videoPlayer: hYTPlayerView? = nil
+    
+    private let englishDictionaryView = hEnglishDictionaryView(frame: CGRectZero)
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -34,13 +37,18 @@ class hInteractedLabel: UILabel {
         if let pos = textView.closestPosition(to: loc),
             let range = textView.tokenizer.rangeEnclosingPosition(pos, with: .word, inDirection: 0),
             let text = textView.text(in: range),
-            let callback = wordTapBlock {
+            let controller = viewController {
             
             NetService.shared.getObject(path: "/svc/api/dictionary/\(text)", completionHandler: { (res: DataResponse<WordData>) in
                 if let data = res.result.value {
-                    callback(data)
+                    self.present(viewController: controller, data: data)
                 }
             })
+            
         }
+    }
+    
+    private func present(viewController: UIViewController, data: WordData) {
+        englishDictionaryView.present(viewController, data: data, videoPlayer: videoPlayer)
     }
 }

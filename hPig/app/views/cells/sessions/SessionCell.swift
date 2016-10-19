@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import AlamofireImage
+import CoreGraphics
 
 class SessionCell: UITableViewCell, hTableViewCell {
     
@@ -16,7 +17,7 @@ class SessionCell: UITableViewCell, hTableViewCell {
 
     @IBOutlet weak var contentWrapView: UIView!
     @IBOutlet weak var sessionImageView: UIImageView!
-    @IBOutlet weak var channelImageView: UIImageView!
+    @IBOutlet weak var channelButton: ChannelButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var channelNameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -32,6 +33,9 @@ class SessionCell: UITableViewCell, hTableViewCell {
         contentWrapView.layer.shadowOpacity = 0.3
         contentWrapView.layer.shadowColor = UIColor.black.cgColor
         contentWrapView.layer.shadowOffset = CGSize(width: 0.1, height: 0.1)
+        
+        channelButton.clipsToBounds = true
+        channelButton.layer.cornerRadius = 19.0
     }
     
     private func levelText(level: String) -> String {
@@ -48,9 +52,11 @@ class SessionCell: UITableViewCell, hTableViewCell {
     }
     
     func update(data item: Session) -> UITableViewCell {
+        self.channelButton.session = item
+        
         sessionImageView.clipsToBounds = true
         self.sessionImageView.image = nil
-        self.channelImageView.image = nil
+        self.channelButton.imageView?.image = nil
         
         if let const = constCateImage {
             categoryImageView.removeConstraint(const)
@@ -60,13 +66,8 @@ class SessionCell: UITableViewCell, hTableViewCell {
             self.sessionImageView.image = res.result.value
         }
         
-        let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
-            size: channelImageView.frame.size,
-            radius: 20.0
-        )
-        
-        ImageDownloadService.shared.get(url: item.channelImage, filter: filter) { (res: DataResponse<Image>) in
-            self.channelImageView.image = res.result.value
+        ImageDownloadService.shared.get(url: item.channelImage, filter: nil) { (res: DataResponse<Image>) in
+            self.channelButton.setImage(res.result.value, for: .normal)
         }
         
         self.titleLabel.text = item.title

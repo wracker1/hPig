@@ -47,6 +47,7 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
             , "rel": 0
             , "theme": "light"
             , "cc_load_policy": 0
+            , "origin" : "https://www.example.com"
         ]
         
         self.id = id

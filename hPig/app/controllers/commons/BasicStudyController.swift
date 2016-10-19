@@ -39,7 +39,6 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     
     @IBOutlet weak var englishSubLabel: hInteractedLabel!
     @IBOutlet weak var koreanSubLabel: UILabel!
-    @IBOutlet weak var englishDictionaryView: hEnglishDictionaryView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +49,9 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         self.subtitleTableView.rowHeight = UITableViewAutomaticDimension
         self.subtitleTableView.estimatedRowHeight = 50
         
+        englishSubLabel.viewController = self
+        englishSubLabel.videoPlayer = playerView
         englishSubLabel.text = ""
-        englishSubLabel.wordTapBlock = self.showEnglishDictionary
-        englishDictionaryView.confirmButton.addTarget(self, action: #selector(self.hideEnglishDictionary), for: .touchUpInside)
         koreanSubLabel.text = ""
         
         setupToolbar()
@@ -117,15 +116,6 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
                 }
             })
         }
-    }
-    
-    private func showEnglishDictionary(word: WordData) {
-        englishDictionaryView.update(data: word)
-        englishDictionaryView.isHidden = false
-    }
-    
-    func hideEnglishDictionary() {
-        englishDictionaryView.isHidden = true
     }
     
     func repeatCurrentIndex() {

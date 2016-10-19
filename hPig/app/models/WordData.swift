@@ -36,4 +36,19 @@ struct WordData: ResponseObjectSerializable, ResponseCollectionSerializable, Cus
         self.summary = summary
         self.word = word
     }
+    
+    init?(_ data: WORD) {
+        guard let word = data.word
+            , let pron = data.pron
+            , let soundUrl = data.pronfile
+            , let summary = data.summary else {
+            return nil
+        }
+        
+        self.word = word
+        self.summary = summary
+        self.pronunciation = pron
+        self.soundUrl = soundUrl
+        self.position = 0
+    }
 }
