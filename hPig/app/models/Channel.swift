@@ -29,12 +29,8 @@ struct Channel: ResponseObjectSerializable, ResponseCollectionSerializable, Cust
             let id = representation["id"] as? String,
             let name = representation["name"] as? String,
             let banner = representation["banner"] as? String,
-            let desc = representation["description"] as? String,
             let image = representation["image"] as? String,
-            let regdt = representation["regdt"] as? String,
-            let subCnt = representation["subCnt"] as? String,
-            let videoCnt = representation["videoCnt"] as? String,
-            let videoList = representation["videoList"] as? [Any]
+            let regdt = representation["regdt"] as? String
             
             else { return nil }
         
@@ -43,10 +39,12 @@ struct Channel: ResponseObjectSerializable, ResponseCollectionSerializable, Cust
         self.banner = banner
         self.image = image
         self.regdt = regdt
-        self.desc = desc
-        self.subCnt = subCnt
-        self.videoCnt = videoCnt
-        self.videoList = videoList.flatMap { (data) -> Session? in
+        self.desc = representation["description"] as? String ?? ""
+        self.subCnt = representation["subCnt"] as? String ?? "0"
+        self.videoCnt = representation["videoCnt"] as? String ?? "0"
+        
+        let items = representation["videoList"] as? [Any] ?? [Any]()
+        self.videoList = items.flatMap { (data) -> Session? in
             return Session(response: response, representation: data)
         }
     }
