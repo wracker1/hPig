@@ -189,5 +189,14 @@ class SessionsController: UITableViewController {
             }
         }
     }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if let indexPath = self.tableView.indexPathForSelectedRow,
+            let session = self.sessions.get(indexPath.row) {
+            return APIService.shared.shouldPerform(identifier, session: session)
+        } else {
+            return APIService.shared.shouldPerform(identifier, session: nil)
+        }
+    }
 }
 

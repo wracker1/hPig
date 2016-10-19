@@ -69,29 +69,6 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
         flowLayout.itemSize = CGSize(width: width, height: width * ratio)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if let item = session {
-            loadHistory(session: item)
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let viewController = (segue.destination as! UINavigationController).topViewController
-        
-        if let basic = viewController as? BasicStudyController {
-            basic.session = session
-            
-            if let button = sender as? UIButton, button == continueButton {
-                basic.currentIndex = latestStudyPosition
-            }
-            
-        } else if let pattern = viewController as? PatternStudyController {
-            pattern.session = session
-        }
-    }
-    
     private func loadHistory(session: Session) {
         AuthenticateService.shared.userId { (userId) in
             let req: NSFetchRequest<HISTORY> = HISTORY.fetchRequest()
@@ -160,5 +137,31 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
     @IBAction func returnedFromPatternStudy(segue: UIStoryboardSegue) {
         
     }
-
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let item = session {
+            loadHistory(session: item)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let viewController = (segue.destination as! UINavigationController).topViewController
+        
+        if let basic = viewController as? BasicStudyController {
+            basic.session = session
+            
+            if let button = sender as? UIButton, button == continueButton {
+                basic.currentIndex = latestStudyPosition
+            }
+            
+        } else if let pattern = viewController as? PatternStudyController {
+            pattern.session = session
+        }
+    }
 }

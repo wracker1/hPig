@@ -29,6 +29,8 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         naverConnection.isNaverAppOauthEnable = true
         naverConnection.isInAppOauthEnable = true
         naverConnection.delegate = self
+        
+        user { (_) in }
     }
     
     func isOn() -> Bool {
@@ -54,6 +56,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     
     func logout(completion: (() -> Void)?) {
         naverConnection.resetToken()
+        APIService.shared.user = nil
         
         if let handler = completion {
             handler()
@@ -72,6 +75,8 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
                     if let data = res.data {
                         let user = User(data: data)
                         self.userMap[token] = user
+                        APIService.shared.user = user
+                        
                         completion(user)
                     } else {
                         completion(nil)
@@ -107,6 +112,8 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     
     func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
         print("2 ==============")
+        
+        user { (_) in }
 
         if let completion = completionHandler {
             completion(true)

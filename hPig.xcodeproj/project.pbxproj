@@ -95,6 +95,7 @@
 		88CDBA291D92D34F0058ECFE /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA271D92D34E0058ECFE /* Session.swift */; };
 		88CDBA2B1D92D6EE0058ECFE /* NetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA2A1D92D6EE0058ECFE /* NetService.swift */; };
 		88CDBA2C1D92D6EE0058ECFE /* NetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA2A1D92D6EE0058ECFE /* NetService.swift */; };
+		88D7F5671DB7A6A4001D9655 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D7F5661DB7A6A4001D9655 /* APIService.swift */; };
 		88DEDEEA1DB4BC1200781123 /* TIME_LOG+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DEDEE81DB4BC1200781123 /* TIME_LOG+CoreDataClass.swift */; };
 		88DEDEEB1DB4BC1200781123 /* TIME_LOG+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DEDEE91DB4BC1200781123 /* TIME_LOG+CoreDataProperties.swift */; };
 		88DEDEED1DB4CE2F00781123 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DEDEEC1DB4CE2F00781123 /* CoreData.framework */; };
@@ -220,6 +221,7 @@
 		88CDBA251D92D2340058ECFE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../Library/Developer/Xcode/DerivedData/hPig-cgamwanqckhvsufhcxkvajblacum/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		88CDBA271D92D34E0058ECFE /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		88CDBA2A1D92D6EE0058ECFE /* NetService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetService.swift; sourceTree = "<group>"; };
+		88D7F5661DB7A6A4001D9655 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		88DEDEE81DB4BC1200781123 /* TIME_LOG+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TIME_LOG+CoreDataClass.swift"; sourceTree = "<group>"; };
 		88DEDEE91DB4BC1200781123 /* TIME_LOG+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TIME_LOG+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		88DEDEEC1DB4CE2F00781123 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -573,6 +575,7 @@
 				88BE97D81D9D0C37002903E3 /* AuthenticateService.swift */,
 				8865F0721DA115410025D0B9 /* CoreDataService.swift */,
 				8829124D1DAFD32700E5B6E4 /* AlertService.swift */,
+				88D7F5661DB7A6A4001D9655 /* APIService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 				88DEDF021DB765C900781123 /* ChannelController.swift in Sources */,
 				8865F06E1DA115050025D0B9 /* PATTERN+CoreDataClass.swift in Sources */,
 				88CDBA161D92CABA0058ECFE /* SessionsController.swift in Sources */,
+				88D7F5671DB7A6A4001D9655 /* APIService.swift in Sources */,
 				881ED0141D93B0AA00D612EF /* hSessionControlView.swift in Sources */,
 				886085231D97A951009A9B3C /* SessionController.swift in Sources */,
 				88CDBA1C1D92CB4A0058ECFE /* MyInfoController.swift in Sources */,

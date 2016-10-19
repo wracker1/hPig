@@ -73,49 +73,34 @@ struct Session: ResponseObjectSerializable, ResponseCollectionSerializable, Cust
     init?(response: HTTPURLResponse, representation: Any) {
         guard
             let representation = representation as? [String: Any],
-            let caption = representation["caption"] as? String,
-            let category = representation["category"] as? String,
-            let categoryName = representation["categoryName"] as? String,
             let channelId = representation["channelId"] as? String,
-            let channelImage = representation["channelImage"] as? String,
-            let channelName = representation["channelName"] as? String,
-            let sessionDescription = representation["description"] as? String,
-            let duration = representation["duration"] as? String,
             let id = representation["id"] as? String,
             let image = representation["image"] as? String,
-            let languages = representation["languages"] as? [String],
-            let level = representation["level"] as? String,
             let part = representation["part"] as? String,
-            let pattern = representation["pattern"] as? String,
-            let pubdate = representation["pubdate"] as? String,
-            let regdt = representation["regdt"] as? String,
-            let status = representation["status"] as? String,
-            let svctype = representation["svctype"] as? String,
-            let title = representation["title"] as? String,
-            let type = representation["type"] as? String,
-            let viewcnt = representation["viewcnt"] as? String
+            let svctype = representation["svctype"] as? String
         else { return nil }
         
-        self.caption = caption
-        self.category = category
-        self.categoryName = categoryName
-        self.channelId = channelId
-        self.channelImage = channelImage
-        self.channelName = channelName
-        self.sessionDescription = sessionDescription
-        self.duration = duration
         self.id = id
         self.image = image
-        self.languages = languages
-        self.level = level
         self.part = part
-        self.pattern = pattern
-        self.pubdate = pubdate
-        self.regdt = regdt
-        self.status = status
         self.svctype = svctype
-        self.title = title
-        self.type = type
-        self.viewcnt = viewcnt
+        self.channelId = channelId
+        
+        self.caption = representation["caption"] as? String ?? ""
+        self.category = representation["category"] as? String ?? ""
+        self.categoryName = representation["categoryName"] as? String ?? ""
+        self.channelImage = representation["channelImage"] as? String ?? ""
+        self.channelName = representation["channelName"] as? String ?? ""
+        self.sessionDescription = representation["description"] as? String ?? ""
+        self.duration = representation["duration"] as? String ?? ""
+        self.languages = representation["languages"] as? [String] ?? [String]()
+        self.level = representation["level"] as? String ?? "1"
+        self.pattern = representation["pattern"] as? String ?? ""
+        self.pubdate = representation["pubdate"] as? String ?? ""
+        self.regdt = representation["regdt"] as? String ?? ""
+        self.status = representation["status"] as? String ?? "N"
+        self.title = representation["title"] as? String ?? ""
+        self.type = representation["type"] as? String ?? "video"
+        self.viewcnt = representation["viewcnt"] as? String ?? "0"
     }
 }
