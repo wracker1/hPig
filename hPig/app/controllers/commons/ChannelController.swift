@@ -29,7 +29,7 @@ class ChannelController: UIViewController, UICollectionViewDelegate, UICollectio
         imageView.layer.cornerRadius = 20
         
         let ratio: CGFloat = 1
-        let margin: CGFloat = 20
+        let margin: CGFloat = 30
         let width = (view.bounds.size.width / 2) - margin
         
         flowLayout.itemSize = CGSize(width: width, height: width * ratio)
