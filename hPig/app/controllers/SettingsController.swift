@@ -44,6 +44,7 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "설정"
     }
 
     override func didReceiveMemoryWarning() {
