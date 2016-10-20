@@ -13,8 +13,6 @@ import CoreData
 
 class BasicStudyController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var session: Session? = nil
-    var id: String? = nil
-    var part: String? = nil
     var currentIndex = 0
     
     private var subtitles = [BasicStudy]()
@@ -56,8 +54,8 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         
         setupToolbar()
         
-        let id = session?.id ?? self.id ?? ""
-        let part = Int(session?.part ?? self.part ?? "0")!
+        let id = session?.id ?? ""
+        let part = Int(session?.part ?? "0")!
         
         play(id: id, part: part, retry: 0)
         
@@ -168,7 +166,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
             AuthenticateService.shared.userId(completion: { (userId) in
                 let (entity, ctx) = CoreDataService.shared.entityDescription("time_log")
                 let log = TIME_LOG(entity: entity!, insertInto: ctx)
-                let id = self.session?.id ?? self.id ?? ""
+                let id = self.session?.id ?? ""
                 
                 log.mutating(userId: userId, vid: id, startTime: time, type: "basic")
                 CoreDataService.shared.save()

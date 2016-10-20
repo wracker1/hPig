@@ -93,10 +93,10 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
         }
     }
     
-    private func loadPersonalInfoView(_ user: User?) {
-        let name = user?.name ?? "게스트"
+    private func loadPersonalInfoView(_ user: TubeUserInfo?) {
+        let name = user?.nickname ?? "게스트"
         let id = user?.id ?? Global.guestId
-        let url = user?.profileImage ?? "https://ssl.pstatic.net/static/pwe/address/nodata_45x45.gif"
+        let url = user?.image ?? "https://ssl.pstatic.net/static/pwe/address/nodata_45x45.gif"
         
         nameLabel.text = "\(name) 님"
         idLabel.text = "| \(id)"

@@ -18,8 +18,10 @@ class ChannelSessionCell: UICollectionViewCell {
         titleLabel.text = session.title
         durationLabel.text = session.duration
         
-        ImageDownloadService.shared.get(url: session.image, filter: nil) { (res) in
-            self.sessionImageView.image = res.result.value
+        if let imageUrl = session.image {
+            ImageDownloadService.shared.get(url: imageUrl, filter: nil) { (res) in
+                self.sessionImageView.image = res.result.value
+            }
         }
     }
 }

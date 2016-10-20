@@ -23,12 +23,16 @@ class BannerCell: UITableViewCell, hTableViewCell {
         self.bannerImageView.image = nil
         self.iconView.image = nil
         
-        ImageDownloadService.shared.get(url: item.image, filter: nil) { (res: DataResponse<Image>) in
-            self.bannerImageView.image = res.result.value
+        if let imageUrl = item.image {
+            ImageDownloadService.shared.get(url: imageUrl, filter: nil) { (res: DataResponse<Image>) in
+                self.bannerImageView.image = res.result.value
+            }
         }
-
-        ImageDownloadService.shared.get(url: item.channelImage, filter: nil) { (res: DataResponse<Image>) in
-            self.iconView.image = res.result.value
+        
+        if let channelImageUrl = item.channelImage {
+            ImageDownloadService.shared.get(url: channelImageUrl, filter: nil) { (res: DataResponse<Image>) in
+                self.iconView.image = res.result.value
+            }
         }
         
         self.titleLabel.text = item.title

@@ -13,11 +13,16 @@ class RelatedSessionCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     
+    var session: Session? = nil
+    
     func update(session: Session) {
+        self.session = session
         self.imageView.image = nil
         
-        ImageDownloadService.shared.get(url: session.image, filter: nil) { (res) in
-            self.imageView.image = res.result.value
+        if let imageUrl = session.image {
+            ImageDownloadService.shared.get(url: imageUrl, filter: nil) { (res) in
+                self.imageView.image = res.result.value
+            }
         }
         
         titleLabel.text = session.title

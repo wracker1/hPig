@@ -56,7 +56,7 @@ class SessionsController: UITableViewController {
         let session = sessions[indexPath.row]
         let cell = self.tableView.dequeueReusableCell(withIdentifier: cellId(session: session), for: indexPath)
         
-        if session.type.lowercased() == "banner" {
+        if let type = session.type?.lowercased(), type == "banner" {
             return (cell as! BannerCell).update(data: session)
         } else {
             return (cell as! SessionCell).update(data: session)
@@ -133,7 +133,7 @@ class SessionsController: UITableViewController {
     }
     
     private func cellId(session: Session) -> String {
-        if session.type.lowercased() == "banner" {
+        if let type = session.type?.lowercased(), type == "banner" {
             return "BannerCell"
         } else {
             return "SessionCell"
@@ -179,11 +179,8 @@ class SessionsController: UITableViewController {
         } else {
             let index = self.tableView.indexPathForSelectedRow?.row
             let session = self.sessions[index!]
-            let type = session.type
             
-            if type.lowercased() == "banner" {
-                
-            } else {
+            if let type = session.type?.lowercased(), type != "banner" {
                 let vc = segue.destination as! SessionController
                 vc.session = session
             }
@@ -193,9 +190,10 @@ class SessionsController: UITableViewController {
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if let indexPath = self.tableView.indexPathForSelectedRow,
             let session = self.sessions.get(indexPath.row) {
-            return APIService.shared.shouldPerform(identifier, session: session)
+            
+            return AuthenticateService.shared.shouldPerform(identifier, session: session)
         } else {
-            return APIService.shared.shouldPerform(identifier, session: nil)
+            return AuthenticateService.shared.shouldPerform(identifier, session: nil)
         }
     }
 }

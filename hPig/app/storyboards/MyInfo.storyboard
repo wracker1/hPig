@@ -260,7 +260,7 @@
                                                             <outlet property="progressLabel" destination="C01-Xf-jli" id="Pxh-sW-LOy"/>
                                                             <outlet property="sessionImageView" destination="BWZ-bZ-WAU" id="5pM-AK-ERs"/>
                                                             <outlet property="titleLabel" destination="fCa-hK-Kkd" id="TIa-1P-yiH"/>
-                                                            <segue destination="MGZ-KL-WrR" kind="presentation" id="y9d-oq-dEK"/>
+                                                            <segue destination="MGZ-KL-WrR" kind="presentation" identifier="basicStudyFromMyInfo" id="y9d-oq-dEK"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>

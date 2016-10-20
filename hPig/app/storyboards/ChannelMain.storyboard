@@ -113,7 +113,7 @@
                                                             <outlet property="durationLabel" destination="Tbh-Qx-QlF" id="ZhI-PC-zt7"/>
                                                             <outlet property="sessionImageView" destination="eef-yT-hGb" id="uYa-Gf-Hxz"/>
                                                             <outlet property="titleLabel" destination="Phs-Ku-glX" id="Ue6-zZ-iNj"/>
-                                                            <segue destination="STd-11-Jdz" kind="show" id="AoP-Pd-lKh"/>
+                                                            <segue destination="STd-11-Jdz" kind="show" identifier="sessionMainFromChannelMain" id="AoP-Pd-lKh"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>

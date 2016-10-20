@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2548a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rzw-Jr-A0u">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rzw-Jr-A0u">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -48,7 +48,7 @@
                                                         </constraints>
                                                         <state key="normal" title="이어서 학습" image="btn_continue_study"/>
                                                         <connections>
-                                                            <segue destination="Vf4-EU-5mT" kind="presentation" id="MbY-MT-Mmf"/>
+                                                            <segue destination="Vf4-EU-5mT" kind="presentation" identifier="basicStudyFromSessionMain" id="MbY-MT-Mmf"/>
                                                         </connections>
                                                     </button>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l8x-Dr-VMS"/>
@@ -79,7 +79,7 @@
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                                         <state key="normal" title="기본학습"/>
                                                                         <connections>
-                                                                            <segue destination="Vf4-EU-5mT" kind="presentation" id="9ko-gp-5Mj"/>
+                                                                            <segue destination="Vf4-EU-5mT" kind="presentation" identifier="basicStudyFromSessionMain" id="9ko-gp-5Mj"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -109,7 +109,7 @@
                                                                             </mask>
                                                                         </variation>
                                                                         <connections>
-                                                                            <segue destination="bWM-1P-I6b" kind="presentation" id="VkQ-DY-RlZ"/>
+                                                                            <segue destination="bWM-1P-I6b" kind="presentation" identifier="patternStudyFromSessionMain" id="VkQ-DY-RlZ"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -173,6 +173,7 @@
                                                                 <connections>
                                                                     <outlet property="imageView" destination="lRn-lW-eoO" id="OZA-ta-Co0"/>
                                                                     <outlet property="titleLabel" destination="7BP-94-zDm" id="9Py-fm-Qth"/>
+                                                                    <segue destination="rzw-Jr-A0u" kind="show" identifier="sessionMainFromRelatedCell" id="rIp-yj-R0S"/>
                                                                 </connections>
                                                             </collectionViewCell>
                                                         </cells>
@@ -258,7 +259,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EQm-Dk-XKt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2060.625" y="-101.25"/>
+            <point key="canvasLocation" x="2031" y="-103"/>
         </scene>
         <!--PatternStudy-->
         <scene sceneID="V5y-8h-WDe">
@@ -266,7 +267,7 @@
                 <viewControllerPlaceholder storyboardName="PatternStudy" id="bWM-1P-I6b" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KVK-Fj-J8u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3038" y="-60"/>
+            <point key="canvasLocation" x="3038" y="37"/>
         </scene>
         <!--BasicStudy-->
         <scene sceneID="sNp-JB-p83">

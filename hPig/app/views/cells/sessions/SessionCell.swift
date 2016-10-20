@@ -62,19 +62,23 @@ class SessionCell: UITableViewCell, hTableViewCell {
             categoryImageView.removeConstraint(const)
         }
         
-        ImageDownloadService.shared.get(url: item.image, filter: nil) { (res: DataResponse<Image>) in
-            self.sessionImageView.image = res.result.value
+        if let imageUrl = item.image {
+            ImageDownloadService.shared.get(url: imageUrl, filter: nil) { (res: DataResponse<Image>) in
+                self.sessionImageView.image = res.result.value
+            }
         }
         
-        ImageDownloadService.shared.get(url: item.channelImage, filter: nil) { (res: DataResponse<Image>) in
-            self.channelButton.setImage(res.result.value, for: .normal)
+        if let channelImageUrl = item.channelImage {
+            ImageDownloadService.shared.get(url: channelImageUrl, filter: nil) { (res: DataResponse<Image>) in
+                self.channelButton.setImage(res.result.value, for: .normal)
+            }
         }
         
         self.titleLabel.text = item.title
         self.channelNameLabel.text = item.channelName
         self.descriptionLabel.text = item.sessionDescription
         
-        if let cateImage = UIImage(named: "cate_\(item.category.lowercased())") {
+        if let category = item.category, let cateImage = UIImage(named: "cate_\(category.lowercased())") {
             let aspect = cateImage.size.width / cateImage.size.height
             let const = NSLayoutConstraint(
                 item: self.categoryImageView,
@@ -90,12 +94,13 @@ class SessionCell: UITableViewCell, hTableViewCell {
             self.categoryImageView.addConstraint(const)
         }
         
+        if let level = item.level {
+            self.levelLabel.text = self.levelText(level: level)
+        }
         
-        
-        self.levelLabel.text = self.levelText(level: item.level)
-        
-        let viewCount = Int(item.viewcnt)! / 1000
-        self.viewCountLabel.text = "\(viewCount)k"
+        if let viewCount = item.viewcnt, let count = Int(viewCount) {
+            self.viewCountLabel.text = "\(count / 1000)k"
+        }
 
         return self
     }

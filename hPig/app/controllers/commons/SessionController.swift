@@ -40,11 +40,15 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
         if let item = session {
             self.sessionImage.image = nil
             
-            ImageDownloadService.shared.get(url: item.image, filter: nil, completionHandler: { (res) in
-                self.sessionImage.image = res.result.value
-            })
+            if let imageUrl = item.image {
+                ImageDownloadService.shared.get(url: imageUrl, filter: nil, completionHandler: { (res) in
+                    self.sessionImage.image = res.result.value
+                })
+            }
             
-            loadRelatedSessions(category: item.category)
+            if let category = item.category {
+                loadRelatedSessions(category: category)
+            }
             
             SubtitleService.shared.subtitleData(item.id, part: Int(item.part) ?? 0, completion: { (data) in
                 if let subtitle = data.first, let range = subtitle.timeRange {
@@ -123,23 +127,12 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let session = relatedSessions.get(indexPath.row), let viewController = UIStoryboard(name: "Sessions", bundle: nil).instantiateViewController(withIdentifier: "SessionController") as? SessionController {
-            viewController.session = session
-            self.navigationController?.pushViewController(viewController, animated: true)
-        }
-    }
-    
     @IBAction func returnedFromBasicStudy(segue: UIStoryboardSegue) {
         
     }
     
     @IBAction func returnedFromPatternStudy(segue: UIStoryboardSegue) {
         
-    }
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        return true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -151,17 +144,31 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let viewController = (segue.destination as! UINavigationController).topViewController
-        
-        if let basic = viewController as? BasicStudyController {
-            basic.session = session
-            
-            if let button = sender as? UIButton, button == continueButton {
-                basic.currentIndex = latestStudyPosition
+        if let navigator = segue.destination as? UINavigationController {
+            if let basic = navigator.topViewController as? BasicStudyController {
+                basic.session = session
+                
+                if let button = sender as? UIButton, button == continueButton {
+                    basic.currentIndex = latestStudyPosition
+                }
+            } else if let pattern = navigator.topViewController as? PatternStudyController {
+                pattern.session = session
             }
-            
-        } else if let pattern = viewController as? PatternStudyController {
-            pattern.session = session
+        } else if let sessionController = segue.destination as? SessionController, let cell = sender as? RelatedSessionCell {
+            sessionController.session = cell.session
+        }
+    }
+    
+    
+    
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if let indexPaths = relatedSessionsView.indexPathsForSelectedItems,
+            let indexPath = indexPaths.first,
+            let session = self.relatedSessions.get(indexPath.row) {
+            return AuthenticateService.shared.shouldPerform(identifier, session: session)
+        } else {
+            return AuthenticateService.shared.shouldPerform(identifier, session: session)
         }
     }
 }

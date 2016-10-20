@@ -7,7 +7,12 @@
 //
 
 import Foundation
+import Alamofire
 import SWXMLHash
+
+enum AuthError: Error {
+    case needToLogin
+}
 
 class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     static let shared: AuthenticateService = {
@@ -19,6 +24,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     private weak var viewController: UIViewController? = nil
     private var completionHandler: ((_ isSuccess: Bool) -> Void)? = nil
     private var userMap = [String: User]()
+    private var userDataMap = [String: TubeUserInfo]()
     
     func prepare() {
         naverConnection.serviceUrlScheme = kServiceAppUrlScheme
@@ -30,20 +36,18 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         naverConnection.isInAppOauthEnable = true
         naverConnection.delegate = self
         
-        user { (_) in }
+        user(nil)
     }
     
     func isOn() -> Bool {
         return naverConnection.accessToken != nil
     }
     
-    func userId(completion: @escaping (String) -> Void) {
+    func userId(completion: ((String) -> Void)?) {
+        let callback = completion ?? {(_) in }
+        
         user { (opt) in
-            if let item = opt {
-                completion(item.id)
-            } else {
-                completion(Global.guestId)
-            }
+            callback(opt?.id ?? Global.guestId)
         }
     }
     
@@ -55,36 +59,86 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     }
     
     func logout(completion: (() -> Void)?) {
+        userMap.removeAll()
+        userDataMap.removeAll()
         naverConnection.resetToken()
-        APIService.shared.user = nil
         
         if let handler = completion {
             handler()
         }
     }
     
-    func user(_ completion: @escaping (User?) -> Void) {
+    func user(_ completion: ((TubeUserInfo?) -> Void)?) {
+        let callback = completion ?? {(_) in }
+        
         if let token = naverConnection.accessToken {
-            if let user = userMap[token] {
-                completion(user)
+            if let user = userMap[token], let info = userDataMap[user.id] {
+                callback(info)
             } else {
                 var req = URLRequest(url: URL(string: "https://apis.naver.com/nidlogin/nid/getUserProfile.xml")!)
                 req.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
                 
                 NetService.shared.get(req: req).response { (res) in
-                    if let data = res.data {
-                        let user = User(data: data)
+                    if let data = res.data, let user = User(data: data) {
                         self.userMap[token] = user
-                        APIService.shared.user = user
-                        
-                        completion(user)
+                        self.tubeUser(user.id, completion: completion)
                     } else {
-                        completion(nil)
+                        callback(nil)
                     }
                 }
             }
         } else {
-            completion(nil)
+            callback(nil)
+        }
+    }
+    
+    private func tubeUser(_ id: String, completion: ((TubeUserInfo?) -> Void)?) {
+        let callback = completion ?? {(_) in }
+        
+        NetService.shared.getObject(path: "/svc/api/user/info?id=\(id)", completionHandler: { (res: DataResponse<TubeUserInfo>) in
+            if let userInfo = res.result.value {
+                self.userDataMap[id] = userInfo
+                
+                callback(userInfo)
+            } else {
+                callback(nil)
+            }
+        })
+    }
+    
+    func shouldPerform(_ id: String, session: Session?) -> Bool {
+        switch id {
+        case "basicStudyFromMyInfo"
+        , "basicStudyFromSessionMain"
+        , "patternStudyFromSessionMain"
+        , "patternStudyFromWorkBook":
+            if let item = session {
+                if item.isFree {
+                    return true
+                } else {
+                    return isActiveUser()
+                }
+            } else {
+                return false
+            }
+        default:
+            return true
+        }
+    }
+    
+    private func isActiveUser() -> Bool {
+        if let token = naverConnection.accessToken,
+            let user = userMap[token],
+            let info = userDataMap[user.id] {
+            return info.isActiveUser
+        } else {
+            // log on
+            
+            user({ (_) in
+                
+            })
+            
+            return false
         }
     }
     
@@ -113,7 +167,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
         print("2 ==============")
         
-        user { (_) in }
+        user(nil)
 
         if let completion = completionHandler {
             completion(true)

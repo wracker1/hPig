@@ -73,7 +73,7 @@
                                                     </constraints>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
-                                                        <segue destination="zjG-SB-X89" kind="presentation" id="9KM-cX-NHf"/>
+                                                        <segue destination="zjG-SB-X89" kind="presentation" identifier="patternStudyFromWorkBook" id="9KM-cX-NHf"/>
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico_play" translatesAutoresizingMaskIntoConstraints="NO" id="FRe-tX-oVf"/>
