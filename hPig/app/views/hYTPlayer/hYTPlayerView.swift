@@ -28,6 +28,10 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
         self.delegate = self
     }
     
+    deinit {
+        self.stopVideo()
+    }
+    
     private func floatToCMTime(seconds: Float) -> CMTime {
         return CMTimeMakeWithSeconds(Float64(seconds), 600)
     }

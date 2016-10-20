@@ -55,4 +55,15 @@ class ImageDownloadService {
         )
         
     }
+    
+    func decorateChannelButton(_ button: UIButton, imageUrl: String) {
+        ImageDownloadService.shared.get(url: imageUrl, filter: nil, completionHandler: { (res) in
+            button.setImage(res.result.value, for: .normal)
+            button.imageView?.clipsToBounds = true
+            button.imageView?.contentMode = .scaleAspectFill
+            button.imageView?.layer.cornerRadius = 15.0
+            button.imageView?.layer.borderColor = UIColor.white.cgColor
+            button.imageView?.layer.borderWidth = 1.0
+        })
+    }
 }

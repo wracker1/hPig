@@ -9,7 +9,8 @@
 import UIKit
 import CoreData
 import Toast_Swift
-                   
+import UserNotifications
+               
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -19,10 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+
+        UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound, .carPlay]){ (granted, error) in }
+        application.registerForRemoteNotifications()
+        
         AuthenticateService.shared.prepare()
         ToastManager.shared.style.verticalPadding = 10
         
         return true
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

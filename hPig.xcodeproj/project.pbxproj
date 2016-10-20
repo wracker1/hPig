@@ -64,6 +64,9 @@
 		887933741DB8A56A001CB925 /* PATTERN+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887933721DB8A56A001CB925 /* PATTERN+CoreDataProperties.swift */; };
 		887933771DB8A670001CB925 /* hPig.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 887933751DB8A670001CB925 /* hPig.xcdatamodeld */; };
 		887933791DB8A7FC001CB925 /* PatternImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887933781DB8A7FC001CB925 /* PatternImageButton.swift */; };
+		8879337D1DB8B315001CB925 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8879337A1DB8B315001CB925 /* NotificationCenter.framework */; };
+		8879337E1DB8B315001CB925 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8879337B1DB8B315001CB925 /* UserNotifications.framework */; };
+		8879337F1DB8B315001CB925 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8879337C1DB8B315001CB925 /* UserNotificationsUI.framework */; };
 		888684FE1D99282D00989028 /* PatternStudyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888684FD1D99282D00989028 /* PatternStudyController.swift */; };
 		88B9ED981DB49B0600EC86D6 /* hYTPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9ED941DB49B0600EC86D6 /* hYTPlayerView.swift */; };
 		88B9ED991DB49B0600EC86D6 /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = 88B9ED951DB49B0600EC86D6 /* YTPlayerView-iframe-player.html */; };
@@ -192,6 +195,9 @@
 		887933721DB8A56A001CB925 /* PATTERN+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PATTERN+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		887933761DB8A670001CB925 /* hPig.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hPig.xcdatamodel; sourceTree = "<group>"; };
 		887933781DB8A7FC001CB925 /* PatternImageButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PatternImageButton.swift; path = uiviews/PatternImageButton.swift; sourceTree = "<group>"; };
+		8879337A1DB8B315001CB925 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		8879337B1DB8B315001CB925 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		8879337C1DB8B315001CB925 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		888684FD1D99282D00989028 /* PatternStudyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PatternStudyController.swift; path = commons/PatternStudyController.swift; sourceTree = "<group>"; };
 		88B9ED941DB49B0600EC86D6 /* hYTPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hYTPlayerView.swift; sourceTree = "<group>"; };
 		88B9ED951DB49B0600EC86D6 /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "YTPlayerView-iframe-player.html"; sourceTree = "<group>"; };
@@ -244,6 +250,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8879337D1DB8B315001CB925 /* NotificationCenter.framework in Frameworks */,
+				8879337E1DB8B315001CB925 /* UserNotifications.framework in Frameworks */,
+				8879337F1DB8B315001CB925 /* UserNotificationsUI.framework in Frameworks */,
 				88DEDEED1DB4CE2F00781123 /* CoreData.framework in Frameworks */,
 				887741531DAE29E700198666 /* MessageUI.framework in Frameworks */,
 				886EF1751D9C2B58009DA8E8 /* libNaverLogin.a in Frameworks */,
@@ -268,6 +277,9 @@
 		21B261A3D92EB5396488C94B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8879337A1DB8B315001CB925 /* NotificationCenter.framework */,
+				8879337B1DB8B315001CB925 /* UserNotifications.framework */,
+				8879337C1DB8B315001CB925 /* UserNotificationsUI.framework */,
 				88DEDEEC1DB4CE2F00781123 /* CoreData.framework */,
 				881A76EF1DB465C100CF6409 /* youtube_ios_player_helper.framework */,
 				881A76EB1DB464FC00CF6409 /* YouTubePlayer.framework */,

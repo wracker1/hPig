@@ -12,6 +12,7 @@ import SWXMLHash
 
 enum AuthError: Error {
     case needToLogin
+    case unauthorized
 }
 
 class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
@@ -79,10 +80,12 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
                 req.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
                 
                 NetService.shared.get(req: req).response { (res) in
-                    if let data = res.data, let user = User(data: data) {
+                    if let data = res.data, let user = User(data: data), user.id != Global.guestId {
                         self.userMap[token] = user
                         self.tubeUser(user.id, completion: completion)
                     } else {
+                        self.userMap.removeValue(forKey: self.naverConnection.accessToken)
+                        self.naverConnection.requestAccessTokenWithRefreshToken()
                         callback(nil)
                     }
                 }
@@ -116,7 +119,18 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
                 if item.isFree {
                     return true
                 } else {
-                    return isActiveUser()
+                    do {
+                        return try isActiveUser()
+                    } catch AuthError.needToLogin {
+                        viewController.view.presentToast("로그인이 필요합니다.")
+                        return false
+                    } catch AuthError.unauthorized {
+                        viewController.view.presentToast("이용권을 구매해주세요.")
+                        return false
+                    } catch let e {
+                        viewController.view.presentToast(e.localizedDescription)
+                        return false
+                    }
                 }
             } else {
                 return false
@@ -126,11 +140,16 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         }
     }
     
-    private func isActiveUser() -> Bool {
+    private func isActiveUser() throws -> Bool {
         if let token = naverConnection.accessToken,
             let user = userMap[token],
             let info = userDataMap[user.id] {
-            return info.isActiveUser
+            
+            if info.isActiveUser {
+                return true
+            } else {
+                throw AuthError.unauthorized
+            }
         } else {
             // log on
             
@@ -138,7 +157,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
                 
             })
             
-            return false
+            throw AuthError.needToLogin
         }
     }
     

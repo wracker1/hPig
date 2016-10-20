@@ -35,7 +35,8 @@ class SessionCell: UITableViewCell, hTableViewCell {
         contentWrapView.layer.shadowOffset = CGSize(width: 0.1, height: 0.1)
         
         channelButton.clipsToBounds = true
-        channelButton.layer.cornerRadius = 19.0
+        channelButton.contentMode = .scaleAspectFill
+        channelButton.layer.cornerRadius = 20.0
     }
     
     private func levelText(level: String) -> String {

@@ -147,9 +147,19 @@
                                 <segue destination="xUP-87-b7q" kind="unwind" unwindAction="returnedFromBasicStudyWithSegue:" id="aQX-UD-soB"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="WFk-d1-WhT">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0RG-Cf-Xx1">
+                                <rect key="frame" x="329" y="7" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="dEb-aL-bic" kind="show" id="BAg-rA-zeY"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="channelButton" destination="0RG-Cf-Xx1" id="1n9-hL-7hx"/>
                         <outlet property="currentSubtitleView" destination="qD5-Su-cIp" id="tWF-ee-Skn"/>
                         <outlet property="englishSubLabel" destination="kOv-l1-ZCy" id="8E8-GG-2Ea"/>
                         <outlet property="koreanSubLabel" destination="SiU-ir-eox" id="VrB-gO-hhd"/>
@@ -162,6 +172,14 @@
                 <exit id="xUP-87-b7q" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3834" y="-516"/>
+        </scene>
+        <!--ChannelMain-->
+        <scene sceneID="6bQ-7c-amD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ChannelMain" id="dEb-aL-bic" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CBa-b0-ojl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4540" y="-517"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LKm-wJ-ytO">

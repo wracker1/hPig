@@ -143,8 +143,18 @@
                                 <segue destination="7qH-W8-3NP" kind="unwind" unwindAction="returnedFromPatternStudyWithSegue:" id="5QX-zd-zzM"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="hL5-fV-vtt">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="i3j-oq-bXD">
+                                <rect key="frame" x="329" y="7" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="fUE-Pw-N9m" kind="show" id="dcu-py-EiM"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="channelButton" destination="i3j-oq-bXD" id="OeZ-09-mRL"/>
                         <outlet property="englishLabel" destination="ho8-NZ-eBj" id="x7P-GS-S6d"/>
                         <outlet property="infoLabel" destination="wsy-TH-aW1" id="NVw-5A-Yv0"/>
                         <outlet property="koreanLabel" destination="9pr-bD-f01" id="hum-ZV-yaE"/>
@@ -156,6 +166,14 @@
                 <exit id="7qH-W8-3NP" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3833" y="170"/>
+        </scene>
+        <!--ChannelMain-->
+        <scene sceneID="ODP-n2-mLl">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ChannelMain" id="fUE-Pw-N9m" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AjX-Dc-Rlz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4570" y="170"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Kue-XD-L9h">
@@ -177,6 +195,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="stroke_dot" width="1" height="1"/>
+        <image name="stroke_dot" width="62" height="20"/>
     </resources>
 </document>

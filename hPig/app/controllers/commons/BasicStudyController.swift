@@ -10,6 +10,7 @@ import UIKit
 import AVKit
 import AVFoundation
 import CoreData
+import CoreGraphics
 
 class BasicStudyController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var session: Session? = nil
@@ -30,6 +31,8 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     private var selectedCell: SubtitleCell? = nil
     private var startStudyTime: Date? = nil
     
+    
+    @IBOutlet weak var channelButton: UIButton!
     @IBOutlet weak var playerView: hYTPlayerView!
     @IBOutlet weak var subtitleTableView: UITableView!
     @IBOutlet weak var currentSubtitleView: UIView!
@@ -58,6 +61,10 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         let part = Int(session?.part ?? "0")!
         
         play(id: id, part: part, retry: 0)
+        
+        if let channelImage = session?.channelImage {
+            ImageDownloadService.shared.decorateChannelButton(self.channelButton, imageUrl: channelImage)
+        }
         
         sessionControlView.repeatButton.addTarget(self, action: #selector(self.repeatCurrentIndex), for: .touchUpInside)
         sessionControlView.prevButton.addTarget(self, action: #selector(self.playPrevIndex), for: .touchUpInside)
@@ -173,8 +180,14 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
             })
         }
         
-        playerView.pauseVideo()
+        playerView.stopVideo()
         saveStudyLog()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let channelMain = segue.destination as? ChannelController {
+           channelMain.id = session?.channelId
+        }
     }
     
     private func setupToolbar() {

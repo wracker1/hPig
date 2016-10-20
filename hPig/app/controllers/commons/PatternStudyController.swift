@@ -28,6 +28,7 @@ class PatternStudyController: UIViewController {
     @IBOutlet weak var koreanLabel: UILabel!
     @IBOutlet weak var meaningLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var channelButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,9 +46,17 @@ class PatternStudyController: UIViewController {
         meaningLabel.text = ""
         infoLabel.text = ""
         
+        if let imageUrl = session?.channelImage {
+            ImageDownloadService.shared.decorateChannelButton(self.channelButton, imageUrl: imageUrl)
+        }
+        
         setupToolbar()
         
         play(id: id, part: part, retry: 0)
+    }
+    
+    deinit {
+        playerView.stopVideo()
     }
     
     private func play(id: String, part: Int, retry: Int) {
@@ -182,7 +191,13 @@ class PatternStudyController: UIViewController {
             })
         }
         
-        playerView.pauseVideo()
+        playerView.stopVideo()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let channelMain = segue.destination as? ChannelController {
+            channelMain.id = session?.channelId
+        }
     }
 
 }
