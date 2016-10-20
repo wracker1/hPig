@@ -66,7 +66,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3r2-ty-MpR">
+                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3r2-ty-MpR" customClass="PatternImageButton" customModule="hPig" customModuleProvider="target">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="pDS-1w-8jP"/>
                                                         <constraint firstAttribute="width" secondItem="3r2-ty-MpR" secondAttribute="height" multiplier="9:5" id="uVK-O3-Gio"/>

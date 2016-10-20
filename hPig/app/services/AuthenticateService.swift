@@ -106,7 +106,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         })
     }
     
-    func shouldPerform(_ id: String, session: Session?) -> Bool {
+    func shouldPerform(_ id: String, viewController: UIViewController, session: Session?) -> Bool {
         switch id {
         case "basicStudyFromMyInfo"
         , "basicStudyFromSessionMain"

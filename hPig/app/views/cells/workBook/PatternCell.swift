@@ -18,7 +18,7 @@ class PatternCell: UITableViewCell, hTableViewCell {
     private var visibleConsts = [NSLayoutConstraint]()
     private var descConsts = [NSLayoutConstraint]()
     
-    @IBOutlet weak var sessionImageButton: UIButton!
+    @IBOutlet weak var sessionImageButton: PatternImageButton!
     @IBOutlet weak var meaningLabel: UILabel!
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,6 +35,7 @@ class PatternCell: UITableViewCell, hTableViewCell {
     }
     
     func update(data: Item) -> UITableViewCell {
+        sessionImageButton.pattern = data
         self.sessionImageButton.setImage(nil, for: .normal)
         
         if let url = data.image {

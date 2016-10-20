@@ -40,33 +40,62 @@ struct Session: ResponseObjectSerializable, ResponseCollectionSerializable, Cust
         guard
             let id = history.vid
             , let part = history.part
-            , let image = history.image
-            , let title = history.title
-            , let duration = history.duration
-            , let status = history.status
         else {
             return nil
         }
         
+        self.id = id
+        self.part = part
+        self.svctype = history.svctype ?? "F"
+        self.image = history.image
+        self.duration = history.duration
+        self.status = history.status
+        self.title = history.title
+        self.channelId = history.channelId ?? ""
+        self.channelImage = history.channelImage
+        self.channelName = history.channelName
+        
         self.caption = ""
         self.category = ""
         self.categoryName = ""
-        self.channelId = ""
-        self.channelImage = ""
-        self.channelName = ""
         self.sessionDescription = ""
-        self.duration = duration
-        self.id = id
-        self.image = image
         self.languages = nil
         self.level = ""
-        self.part = part
         self.pattern = ""
         self.pubdate = ""
         self.regdt = ""
-        self.status = status
-        self.svctype = ""
-        self.title = title
+        self.type = ""
+        self.viewcnt = "0"
+    }
+    
+    init?(_ pattern: PATTERN) {
+        guard
+            let id = pattern.vid
+            , let part = pattern.part
+            else {
+                return nil
+        }
+        
+        self.id = id
+        self.part = part
+        self.svctype = pattern.svctype ?? "F"
+        self.image = pattern.image
+        self.channelId = pattern.channelId ?? ""
+        self.channelImage = pattern.channelImage
+        self.channelName = pattern.channelName
+        self.title = pattern.title
+        
+        self.duration = ""
+        self.status = ""
+        self.caption = ""
+        self.category = ""
+        self.categoryName = ""
+        self.sessionDescription = ""
+        self.languages = nil
+        self.level = ""
+        self.pattern = ""
+        self.pubdate = ""
+        self.regdt = ""
         self.type = ""
         self.viewcnt = "0"
     }

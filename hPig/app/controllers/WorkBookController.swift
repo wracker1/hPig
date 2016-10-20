@@ -109,23 +109,6 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
         self.dismiss(animated: true, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let viewController = (segue.destination as! UINavigationController).topViewController
-        
-        if let patternStudyController = viewController as? PatternStudyController,
-            let button = sender as? UIButton,
-            let cell = button.superview?.superview as? UITableViewCell,
-            let indexPath = patternTableView.indexPath(for: cell),
-            let data = patternData.get(indexPath.row),
-            let position = data.position,
-            let patternIndex = Int(position) {
-            
-            patternStudyController.id = data.vid
-            patternStudyController.part = data.part
-            patternStudyController.currentIndex = patternIndex
-        }
-    }
-    
     private func cellId(_ tableView: UITableView) -> String {
         if tableView == patternTableView {
             return "PatternCell"
@@ -201,6 +184,30 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
                     callback()
                 }
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let viewController = (segue.destination as! UINavigationController).topViewController
+        
+        if let patternStudyController = viewController as? PatternStudyController,
+            let button = sender as? UIButton,
+            let cell = button.superview?.superview as? UITableViewCell,
+            let indexPath = patternTableView.indexPath(for: cell),
+            let data = patternData.get(indexPath.row),
+            let position = data.position,
+            let patternIndex = Int(position) {
+            
+            patternStudyController.session = Session(data)
+            patternStudyController.currentIndex = patternIndex
+        }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if let button = sender as? PatternImageButton, let pattern = button.pattern {
+            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, session: Session(pattern))
+        } else {
+            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, session: nil)
         }
     }
 }

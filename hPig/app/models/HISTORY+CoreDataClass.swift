@@ -2,7 +2,7 @@
 //  HISTORY+CoreDataClass.swift
 //  hPig
 //
-//  Created by Jesse on 2016. 10. 4..
+//  Created by Jesse on 2016. 10. 20..
 //  Copyright © 2016년 wearespeakingtube. All rights reserved.
 //
 
@@ -18,6 +18,10 @@ public class HISTORY: NSManagedObject {
         self.duration = session.duration
         self.image = session.image
         self.status = session.status
+        self.svctype = session.svctype
+        self.channelId = session.channelId
+        self.channelImage = session.channelImage
+        self.channelName = session.channelName
         
         self.uid = userId
         self.lastdate = date

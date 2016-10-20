@@ -226,6 +226,18 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
         }
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if let indexPaths = historyCollectionView.indexPathsForSelectedItems,
+            let indexPath = indexPaths.first,
+            let history = histories.get(indexPath.row),
+            let session = Session(history) {
+            
+            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, session: session)
+        } else {
+            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, session: nil)
+        }
+    }
+    
     @IBAction func returnedFromBasicStudy(segue: UIStoryboardSegue) {
         
     }

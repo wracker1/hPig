@@ -14,8 +14,6 @@ import Toast_Swift
 class PatternStudyController: UIViewController {
 
     var session: Session? = nil
-    var id: String? = nil
-    var part: String? = nil
     var currentIndex = 0
     
     private var patternStudyData = [PatternStudy]()
@@ -26,7 +24,7 @@ class PatternStudyController: UIViewController {
     private var startStudyTime: Date? = nil
     
     @IBOutlet weak var playerView: hYTPlayerView!
-    @IBOutlet weak var englishLabel: UILabel!
+    @IBOutlet weak var englishLabel: hInteractedLabel!
     @IBOutlet weak var koreanLabel: UILabel!
     @IBOutlet weak var meaningLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
@@ -36,10 +34,13 @@ class PatternStudyController: UIViewController {
         
         self.title = "패턴학습"
         
-        let id = session?.id ?? self.id ?? ""
-        let part = Int(session?.part ?? self.part ?? "0")!
+        let id = session?.id ?? ""
+        let part = Int(session?.part ?? "0")!
         
         englishLabel.text = ""
+        englishLabel.viewController = self
+        englishLabel.videoPlayer = playerView
+        
         koreanLabel.text = ""
         meaningLabel.text = ""
         infoLabel.text = ""
@@ -174,7 +175,7 @@ class PatternStudyController: UIViewController {
                 let dataService = CoreDataService.shared
                 let (entity, ctx) = dataService.entityDescription("time_log")
                 let log = TIME_LOG(entity: entity!, insertInto: ctx)
-                let vid = self.session?.id ?? self.id ?? ""
+                let vid = self.session?.id ?? ""
                 
                 log.mutating(userId: userId, vid: vid, startTime: time, type: "pattern")
                 dataService.save()

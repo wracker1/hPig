@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import CoreGraphics
 
 class hInteractedLabel: UILabel {
     
@@ -24,15 +25,21 @@ class hInteractedLabel: UILabel {
         self.addGestureRecognizer(gestureRecognizer)
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
     override var canBecomeFirstResponder: Bool { get { return true } }
     
     func handleTap(_ recognizer: UITapGestureRecognizer) {
         let loc = recognizer.location(in: self)
         
-        let textView = UITextView(frame: self.frame)
+        let textView = UITextView(frame: self.bounds)
         textView.textContainerInset = UIEdgeInsetsMake(0, -0.5, 0, -0.5)
         textView.font = self.font
         textView.text = self.text
+        textView.textAlignment = self.textAlignment
+        
         
         if let pos = textView.closestPosition(to: loc),
             let range = textView.tokenizer.rangeEnclosingPosition(pos, with: .word, inDirection: 0),

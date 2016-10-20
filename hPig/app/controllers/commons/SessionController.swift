@@ -166,9 +166,9 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
         if let indexPaths = relatedSessionsView.indexPathsForSelectedItems,
             let indexPath = indexPaths.first,
             let session = self.relatedSessions.get(indexPath.row) {
-            return AuthenticateService.shared.shouldPerform(identifier, session: session)
+            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, session: session)
         } else {
-            return AuthenticateService.shared.shouldPerform(identifier, session: session)
+            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, session: session)
         }
     }
 }
