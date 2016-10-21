@@ -124,6 +124,11 @@ class hEnglishDictionaryView: UIView {
                     if let callback = completion {
                         callback()
                     }
+                    
+                    if hasWord, let word = items.get(0) {
+                        word.count += 1
+                        CoreDataService.shared.save()
+                    }
                 }
             }
         }
@@ -200,6 +205,7 @@ class hEnglishDictionaryView: UIView {
                         let (desc, ctx) = CoreDataService.shared.entityDescription("word")
                         let word = WORD(entity: desc!, insertInto: ctx)
                         word.mutating(data: item, uid: uid)
+                        word.count += 1
                         superview.presentToast("저장 하였습니다.\n학습 정보에서 확인 해보세요.")
                     }
                     

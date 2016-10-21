@@ -34,11 +34,11 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
         }
         
         let items = [
-            ["type": SettingCellType.login, "id": "ActionCell"],
             ["type": SettingCellType.version, "id": "SettingCell" , "value": "\(appVersion) (\(buildVersion))"],
-            ["type": SettingCellType.deleteData, "id": "ActionCell"],
+            ["type": SettingCellType.login, "id": "ActionCell"],
             ["type": SettingCellType.faq, "id": "FAQCell"],
-            ["type": SettingCellType.sendMail, "id": "ActionCell"]
+            ["type": SettingCellType.sendMail, "id": "ActionCell"],
+            ["type": SettingCellType.deleteData, "id": "ActionCell"]
             
         ]
         

@@ -2,7 +2,7 @@
 //  WORD+CoreDataClass.swift
 //  hPig
 //
-//  Created by Jesse on 2016. 10. 19..
+//  Created by Jesse on 2016. 10. 21..
 //  Copyright © 2016년 wearespeakingtube. All rights reserved.
 //
 
@@ -14,6 +14,7 @@ public class WORD: NSManagedObject {
     static func wordId(item: String) -> String {
         return item.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics) ?? item
     }
+
     
     func mutating(data: WordData, uid: String) {
         self.id = WORD.wordId(item: data.word)

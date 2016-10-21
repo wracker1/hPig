@@ -177,6 +177,7 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
             let req: NSFetchRequest<WORD> = WORD.fetchRequest()
             let query = "uid = '\(userId)'"
             req.predicate = NSPredicate(format: query)
+            req.sortDescriptors = [NSSortDescriptor(key: "count", ascending: false), NSSortDescriptor(key: "regdt", ascending: false)]
             
             dataService.select(request: req) { (items, error) in
                 self.wordData = items

@@ -42,6 +42,7 @@
         <attribute name="vid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="WORD" representedClassName=".WORD" syncable="YES">
+        <attribute name="count" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pron" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pronfile" optional="YES" attributeType="String" syncable="YES"/>
@@ -54,6 +55,6 @@
         <element name="HISTORY" positionX="-353" positionY="-135" width="128" height="270"/>
         <element name="PATTERN" positionX="169" positionY="-135" width="128" height="270"/>
         <element name="TIME_LOG" positionX="-180" positionY="-135" width="128" height="120"/>
-        <element name="WORD" positionX="-2" positionY="-135" width="128" height="150"/>
+        <element name="WORD" positionX="-2" positionY="-135" width="128" height="165"/>
     </elements>
 </model>

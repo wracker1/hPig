@@ -67,6 +67,8 @@
 		8879337D1DB8B315001CB925 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8879337A1DB8B315001CB925 /* NotificationCenter.framework */; };
 		8879337E1DB8B315001CB925 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8879337B1DB8B315001CB925 /* UserNotifications.framework */; };
 		8879337F1DB8B315001CB925 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8879337C1DB8B315001CB925 /* UserNotificationsUI.framework */; };
+		887933821DBA1D5C001CB925 /* WORD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887933801DBA1D5C001CB925 /* WORD+CoreDataClass.swift */; };
+		887933831DBA1D5C001CB925 /* WORD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887933811DBA1D5C001CB925 /* WORD+CoreDataProperties.swift */; };
 		888684FE1D99282D00989028 /* PatternStudyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888684FD1D99282D00989028 /* PatternStudyController.swift */; };
 		88B9ED981DB49B0600EC86D6 /* hYTPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9ED941DB49B0600EC86D6 /* hYTPlayerView.swift */; };
 		88B9ED991DB49B0600EC86D6 /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = 88B9ED951DB49B0600EC86D6 /* YTPlayerView-iframe-player.html */; };
@@ -102,8 +104,6 @@
 		88DEDEF01DB4D53700781123 /* StudyHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DEDEEF1DB4D53700781123 /* StudyHistoryCell.swift */; };
 		88DEDEF41DB5ED7300781123 /* BasicStudy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DEDEF31DB5ED7300781123 /* BasicStudy.storyboard */; };
 		88DEDEF61DB605CC00781123 /* UIViewOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DEDEF51DB605CC00781123 /* UIViewOps.swift */; };
-		88DEDEF91DB7493400781123 /* WORD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DEDEF71DB7493400781123 /* WORD+CoreDataClass.swift */; };
-		88DEDEFA1DB7493400781123 /* WORD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DEDEF81DB7493400781123 /* WORD+CoreDataProperties.swift */; };
 		88DEDEFC1DB75CF700781123 /* eng_dic_view_cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88DEDEFB1DB75CF700781123 /* eng_dic_view_cell.xib */; };
 		88DEDEFE1DB7637B00781123 /* ChannelMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DEDEFD1DB7637B00781123 /* ChannelMain.storyboard */; };
 		88DEDF001DB7644600781123 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DEDEFF1DB7644600781123 /* Channel.swift */; };
@@ -198,6 +198,8 @@
 		8879337A1DB8B315001CB925 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		8879337B1DB8B315001CB925 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		8879337C1DB8B315001CB925 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		887933801DBA1D5C001CB925 /* WORD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		887933811DBA1D5C001CB925 /* WORD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		888684FD1D99282D00989028 /* PatternStudyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PatternStudyController.swift; path = commons/PatternStudyController.swift; sourceTree = "<group>"; };
 		88B9ED941DB49B0600EC86D6 /* hYTPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hYTPlayerView.swift; sourceTree = "<group>"; };
 		88B9ED951DB49B0600EC86D6 /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "YTPlayerView-iframe-player.html"; sourceTree = "<group>"; };
@@ -232,8 +234,6 @@
 		88DEDEEF1DB4D53700781123 /* StudyHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudyHistoryCell.swift; path = myinfo/StudyHistoryCell.swift; sourceTree = "<group>"; };
 		88DEDEF31DB5ED7300781123 /* BasicStudy.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BasicStudy.storyboard; sourceTree = "<group>"; };
 		88DEDEF51DB605CC00781123 /* UIViewOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewOps.swift; sourceTree = "<group>"; };
-		88DEDEF71DB7493400781123 /* WORD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataClass.swift"; sourceTree = "<group>"; };
-		88DEDEF81DB7493400781123 /* WORD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		88DEDEFB1DB75CF700781123 /* eng_dic_view_cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = eng_dic_view_cell.xib; sourceTree = "<group>"; };
 		88DEDEFD1DB7637B00781123 /* ChannelMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChannelMain.storyboard; sourceTree = "<group>"; };
 		88DEDEFF1DB7644600781123 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
@@ -391,12 +391,12 @@
 		887FA9A21DA112BF00821495 /* db */ = {
 			isa = PBXGroup;
 			children = (
+				887933801DBA1D5C001CB925 /* WORD+CoreDataClass.swift */,
+				887933811DBA1D5C001CB925 /* WORD+CoreDataProperties.swift */,
 				887933711DB8A56A001CB925 /* PATTERN+CoreDataClass.swift */,
 				887933721DB8A56A001CB925 /* PATTERN+CoreDataProperties.swift */,
 				8879336C1DB8A236001CB925 /* HISTORY+CoreDataClass.swift */,
 				8879336D1DB8A236001CB925 /* HISTORY+CoreDataProperties.swift */,
-				88DEDEF71DB7493400781123 /* WORD+CoreDataClass.swift */,
-				88DEDEF81DB7493400781123 /* WORD+CoreDataProperties.swift */,
 				88DEDEE81DB4BC1200781123 /* TIME_LOG+CoreDataClass.swift */,
 				88DEDEE91DB4BC1200781123 /* TIME_LOG+CoreDataProperties.swift */,
 			);
@@ -819,7 +819,7 @@
 				88DEDEF61DB605CC00781123 /* UIViewOps.swift in Sources */,
 				887741551DAF207C00198666 /* hWebViewController.swift in Sources */,
 				88CDBA1F1D92CB670058ECFE /* SettingsController.swift in Sources */,
-				88DEDEFA1DB7493400781123 /* WORD+CoreDataProperties.swift in Sources */,
+				887933831DBA1D5C001CB925 /* WORD+CoreDataProperties.swift in Sources */,
 				88BE97D91D9D0C37002903E3 /* AuthenticateService.swift in Sources */,
 				881ED0061D93AC0100D612EF /* CategoryService.swift in Sources */,
 				881ED0081D93AEA200D612EF /* LayoutService.swift in Sources */,
@@ -831,6 +831,7 @@
 				880549A21DAA5083001CF3F8 /* hInteractedLabel.swift in Sources */,
 				88DEDEF01DB4D53700781123 /* StudyHistoryCell.swift in Sources */,
 				88DEDF021DB765C900781123 /* ChannelController.swift in Sources */,
+				887933821DBA1D5C001CB925 /* WORD+CoreDataClass.swift in Sources */,
 				88CDBA161D92CABA0058ECFE /* SessionsController.swift in Sources */,
 				881ED0141D93B0AA00D612EF /* hSessionControlView.swift in Sources */,
 				886085231D97A951009A9B3C /* SessionController.swift in Sources */,
@@ -856,7 +857,6 @@
 				88DEDF071DB7757800781123 /* ChannelSessionCell.swift in Sources */,
 				88BE97D01D9D04B2002903E3 /* SubtitleCell.swift in Sources */,
 				88DEDEEB1DB4BC1200781123 /* TIME_LOG+CoreDataProperties.swift in Sources */,
-				88DEDEF91DB7493400781123 /* WORD+CoreDataClass.swift in Sources */,
 				887933791DB8A7FC001CB925 /* PatternImageButton.swift in Sources */,
 				886085321D97DAD8009A9B3C /* PatternStudy.swift in Sources */,
 				88B9ED9A1DB49B0600EC86D6 /* YTPlayerView.m in Sources */,
