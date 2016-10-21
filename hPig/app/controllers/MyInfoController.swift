@@ -27,6 +27,10 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
     @IBOutlet weak var historySegControl: UISegmentedControl!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var chartView: BarChartView!
+    @IBOutlet weak var passInfoTitleLabel: UILabel!
+    @IBOutlet weak var purchaseButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var passInfoView: UIStackView!
     
     private var histories = [HISTORY]()
     
@@ -44,32 +48,23 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
         let width = (view.bounds.size.width / 2) - margin
         
         flowLayout.itemSize = CGSize(width: width, height: width * ratio)
+        
+        purchaseButton.layer.borderColor = UIColor.red.cgColor
+        purchaseButton.layer.borderWidth = 1.0
+        purchaseButton.layer.cornerRadius = 8
+        
+        loginButton.layer.borderColor = UIColor.black.cgColor
+        loginButton.layer.borderWidth = 1.0
+        loginButton.layer.cornerRadius = 8
+        loginButton.addTarget(self, action: #selector(self.login), for: .touchUpInside)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         AuthenticateService.shared.user { (user) in
-            self.loadPersonalInfoView(user)
-            
-            let id = user?.id ?? Global.guestId
-            let logReq: NSFetchRequest<TIME_LOG> = TIME_LOG.fetchRequest()
-            logReq.predicate = NSPredicate(format: "uid = '\(id)'")
-            
-            CoreDataService.shared.select(request: logReq) { (items, error) in
-                self.loadStudyTimeInfoView(logs: items)
-            }
-            
-            let sixDaysLogReq: NSFetchRequest<TIME_LOG> = TIME_LOG.fetchRequest()
-            let sixDaysAgo = self.daysFromNow(days: -6)
-            sixDaysLogReq.predicate = NSPredicate(format: "uid = '\(id)' AND regdt >= %@", sixDaysAgo as NSDate)
-            
-            CoreDataService.shared.select(request: sixDaysLogReq) { (items, error) in
-                self.loadChart(logs: items)
-            }
+            self.loadUserInfo(user)
         }
-        
-        historySegChanged(historySegControl)
     }
     
     override func viewWillLayoutSubviews() {
@@ -95,6 +90,57 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
                 self.histories = items
                 self.historyCollectionView.reloadData()
             }
+        }
+    }
+    
+    private func presentPassInfoButton(_ user: TubeUserInfo?) {
+        if let tubeUser = user {
+            self.passInfoTitleLabel.text = "보유 이용권 정보"
+            
+            if let endDate = tubeUser.enddt, tubeUser.isActiveUser {
+                self.passInfoView.isHidden = false
+                self.purchaseButton.isHidden = true
+                self.loginButton.isHidden = true
+                self.passDurationLabel.text = "\(endDate) 까지"
+            } else {
+                self.passInfoView.isHidden = true
+                self.purchaseButton.isHidden = false
+                self.loginButton.isHidden = true
+            }
+        } else {
+            self.passInfoTitleLabel.text = ""
+            self.passInfoView.isHidden = true
+            self.purchaseButton.isHidden = true
+            self.loginButton.isHidden = false
+        }
+    }
+    
+    private func loadUserInfo(_ user: TubeUserInfo?) {
+        self.loadPersonalInfoView(user)
+        
+        let id = user?.id ?? Global.guestId
+        let logReq: NSFetchRequest<TIME_LOG> = TIME_LOG.fetchRequest()
+        logReq.predicate = NSPredicate(format: "uid = '\(id)'")
+        
+        CoreDataService.shared.select(request: logReq) { (items, error) in
+            self.loadStudyTimeInfoView(logs: items)
+        }
+        
+        let sixDaysLogReq: NSFetchRequest<TIME_LOG> = TIME_LOG.fetchRequest()
+        let sixDaysAgo = self.daysFromNow(days: -6)
+        sixDaysLogReq.predicate = NSPredicate(format: "uid = '\(id)' AND regdt >= %@", sixDaysAgo as NSDate)
+        
+        CoreDataService.shared.select(request: sixDaysLogReq) { (items, error) in
+            self.loadChart(logs: items)
+        }
+        
+        self.presentPassInfoButton(user)
+        self.historySegChanged(historySegControl)
+    }
+    
+    func login() {
+        AuthenticateService.shared.tryLogin(self) { (user) in
+            self.loadUserInfo(user)
         }
     }
     

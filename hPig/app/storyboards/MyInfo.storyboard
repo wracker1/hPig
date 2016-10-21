@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2548a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Svc-SF-dvT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Svc-SF-dvT">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -50,38 +50,59 @@
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="토탈패스" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="SQN-L5-fgP">
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="65" id="CaC-0R-ERv"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020.12.31 까지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgA-FU-3Pf">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="NRi-qX-iLC">
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="토탈패스" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="SQN-L5-fgP">
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="65" id="CaC-0R-ERv"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020.12.31 까지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgA-FU-3Pf">
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQg-eb-XBr">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <inset key="contentEdgeInsets" minX="5" minY="2" maxX="5" maxY="2"/>
+                                                        <state key="normal" title="이용권 구매">
+                                                            <color key="titleColor" red="0.96470588239999999" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MqA-Xr-tzp">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <inset key="contentEdgeInsets" minX="5" minY="2" maxX="5" maxY="2"/>
+                                                        <state key="normal" title="로그인">
+                                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        </state>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="NRi-qX-iLC" secondAttribute="trailing" id="1Am-7Y-cCg"/>
                                                     <constraint firstItem="1BP-wt-l0P" firstAttribute="leading" secondItem="4yB-mJ-Z31" secondAttribute="trailing" id="1HL-xP-0QX"/>
                                                     <constraint firstAttribute="height" constant="100" id="579-ec-vux"/>
+                                                    <constraint firstItem="wQg-eb-XBr" firstAttribute="leading" secondItem="Zyt-m1-ACf" secondAttribute="trailing" constant="8" id="7oe-jP-Spy"/>
+                                                    <constraint firstItem="wQg-eb-XBr" firstAttribute="top" secondItem="wxR-D5-Lht" secondAttribute="bottom" constant="2" id="ASx-Mu-RbL"/>
                                                     <constraint firstItem="wxR-D5-Lht" firstAttribute="leading" secondItem="Zyt-m1-ACf" secondAttribute="trailing" constant="8" id="ATk-5w-Zvf"/>
                                                     <constraint firstAttribute="trailing" secondItem="1BP-wt-l0P" secondAttribute="trailing" id="CQX-Uw-cyg"/>
-                                                    <constraint firstItem="SQN-L5-fgP" firstAttribute="top" secondItem="wxR-D5-Lht" secondAttribute="bottom" constant="8" id="GAP-HQ-bUG"/>
-                                                    <constraint firstItem="SQN-L5-fgP" firstAttribute="leading" secondItem="Zyt-m1-ACf" secondAttribute="trailing" constant="8" id="LzE-Cf-lRK"/>
+                                                    <constraint firstItem="NRi-qX-iLC" firstAttribute="top" secondItem="wxR-D5-Lht" secondAttribute="bottom" constant="8" id="CVq-we-RdQ"/>
+                                                    <constraint firstItem="MqA-Xr-tzp" firstAttribute="top" secondItem="wxR-D5-Lht" secondAttribute="bottom" constant="2" id="JMX-4Q-DUR"/>
+                                                    <constraint firstItem="MqA-Xr-tzp" firstAttribute="leading" secondItem="Zyt-m1-ACf" secondAttribute="trailing" constant="8" id="KLu-8A-8bq"/>
                                                     <constraint firstItem="Zyt-m1-ACf" firstAttribute="leading" secondItem="Sdx-DA-F15" secondAttribute="leading" id="NlL-A8-bIp"/>
                                                     <constraint firstItem="Zyt-m1-ACf" firstAttribute="centerY" secondItem="Sdx-DA-F15" secondAttribute="centerY" id="Occ-I3-hOx"/>
+                                                    <constraint firstItem="NRi-qX-iLC" firstAttribute="leading" secondItem="Zyt-m1-ACf" secondAttribute="trailing" constant="8" id="aA6-9l-37y"/>
                                                     <constraint firstItem="wxR-D5-Lht" firstAttribute="top" secondItem="1BP-wt-l0P" secondAttribute="bottom" constant="10" id="aN0-Lo-FYn"/>
                                                     <constraint firstAttribute="trailing" secondItem="wxR-D5-Lht" secondAttribute="trailing" id="fIX-pc-tiz"/>
-                                                    <constraint firstItem="dgA-FU-3Pf" firstAttribute="leading" secondItem="SQN-L5-fgP" secondAttribute="trailing" id="mko-03-fh6"/>
                                                     <constraint firstItem="4yB-mJ-Z31" firstAttribute="leading" secondItem="Zyt-m1-ACf" secondAttribute="trailing" constant="8" id="nVv-um-zJH"/>
                                                     <constraint firstItem="wxR-D5-Lht" firstAttribute="top" secondItem="4yB-mJ-Z31" secondAttribute="bottom" constant="8" id="nww-xd-De4"/>
-                                                    <constraint firstItem="dgA-FU-3Pf" firstAttribute="centerY" secondItem="SQN-L5-fgP" secondAttribute="centerY" id="rPe-T8-aQ8"/>
+                                                    <constraint firstAttribute="bottom" secondItem="NRi-qX-iLC" secondAttribute="bottom" priority="750" id="rfy-QG-7NQ"/>
                                                     <constraint firstItem="wxR-D5-Lht" firstAttribute="centerY" secondItem="Sdx-DA-F15" secondAttribute="centerY" id="yas-lQ-pLw"/>
-                                                    <constraint firstAttribute="trailing" secondItem="dgA-FU-3Pf" secondAttribute="trailing" id="yzz-vD-NQB"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YeC-9e-45D">
@@ -322,12 +343,16 @@
                         <outlet property="historyCollectionView" destination="5Ab-LZ-c4r" id="eNT-Zl-vGD"/>
                         <outlet property="historySegControl" destination="6cc-8t-YB9" id="6tx-eA-YzT"/>
                         <outlet property="idLabel" destination="1BP-wt-l0P" id="EwY-4f-Hk9"/>
+                        <outlet property="loginButton" destination="MqA-Xr-tzp" id="NCd-fT-mnz"/>
                         <outlet property="mainScroller" destination="hwC-M1-VCY" id="IoZ-8A-54B"/>
                         <outlet property="nameLabel" destination="4yB-mJ-Z31" id="Kjb-hf-1PI"/>
                         <outlet property="numberOfVideoLabel" destination="X1U-qj-RXw" id="3V2-m6-4Ot"/>
                         <outlet property="passDurationLabel" destination="dgA-FU-3Pf" id="h1Q-th-cPV"/>
+                        <outlet property="passInfoTitleLabel" destination="wxR-D5-Lht" id="gqz-6n-S8m"/>
+                        <outlet property="passInfoView" destination="NRi-qX-iLC" id="rxY-6L-X1z"/>
                         <outlet property="passNameLabel" destination="SQN-L5-fgP" id="rsx-MU-7ft"/>
                         <outlet property="profileImageView" destination="Zyt-m1-ACf" id="ynb-Eu-NlE"/>
+                        <outlet property="purchaseButton" destination="wQg-eb-XBr" id="8VG-s7-Rmm"/>
                         <outlet property="studyTotalDurationView" destination="YeC-9e-45D" id="yUw-Zp-fpq"/>
                         <outlet property="totalDurationLabel" destination="DeH-fE-tfG" id="yIP-OT-C8X"/>
                     </connections>

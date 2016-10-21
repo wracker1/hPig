@@ -45,7 +45,7 @@ struct TubeUserInfo: ResponseObjectSerializable, ResponseCollectionSerializable,
         self.enddt = representation["enddt"] as? String
         self.gender = representation["gender"] as? String
         self.age = representation["age"] as? String
-        self.image = representation["gender"] as? String
+        self.image = representation["image"] as? String
         self.lastvisitdt = representation["lastvisitdt"] as? String
         self.nickname = representation["nickname"] as? String
         self.regdt = representation["regdt"] as? String

@@ -23,7 +23,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     
     private let naverConnection: NaverThirdPartyLoginConnection = NaverThirdPartyLoginConnection.getSharedInstance()!
     private weak var viewController: UIViewController? = nil
-    private var completionHandler: ((_ isSuccess: Bool) -> Void)? = nil
+    private var completionHandler: ((TubeUserInfo?) -> Void)? = nil
     private var userMap = [String: User]()
     private var userDataMap = [String: TubeUserInfo]()
     
@@ -52,7 +52,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         }
     }
     
-    func tryLogin(viewController: UIViewController, completion: ((_ isSuccess: Bool) -> Void)?) {
+    func tryLogin(_ viewController: UIViewController, completion: ((TubeUserInfo?) -> Void)?) {
         self.viewController = viewController
         self.completionHandler = completion
         
@@ -71,6 +71,8 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     
     func user(_ completion: ((TubeUserInfo?) -> Void)?) {
         let callback = completion ?? {(_) in }
+        
+        print(naverConnection.accessToken ?? "empty")
         
         if let token = naverConnection.accessToken {
             if let user = userMap[token], let info = userDataMap[user.id] {
@@ -128,7 +130,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
                             message: nil,
                             cancel: nil,
                             confirm: {
-                                self.tryLogin(viewController: viewController, completion: { (success) in
+                                self.tryLogin(viewController, completion: { (success) in
                                     viewController.performSegue(withIdentifier: id, sender: sender)
                                 })
                         })
@@ -198,10 +200,8 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
         print("2 ==============")
         
-        user(nil)
-
         if let completion = completionHandler {
-            completion(true)
+            user(completion)
             self.completionHandler = nil
         }
     }

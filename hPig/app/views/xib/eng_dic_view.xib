@@ -31,7 +31,8 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7l-XB-myE">
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7l-XB-myE">
+                    <frame key="frameInset" minX="126" minY="10.5" width="30" height="22"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="25" id="3aq-xC-p3Z"/>
                     </constraints>
