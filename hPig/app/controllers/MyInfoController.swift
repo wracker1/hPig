@@ -237,9 +237,9 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
             let history = histories.get(indexPath.row),
             let session = Session(history) {
             
-            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, session: session)
+            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, sender: sender, session: session)
         } else {
-            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, session: nil)
+            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, sender: sender, session: nil)
         }
     }
     

@@ -191,9 +191,9 @@ class SessionsController: UITableViewController {
         if let indexPath = self.tableView.indexPathForSelectedRow,
             let session = self.sessions.get(indexPath.row) {
             
-            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, session: session)
+            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, sender: sender, session: session)
         } else {
-            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, session: nil)
+            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, sender: sender, session: nil)
         }
     }
 }

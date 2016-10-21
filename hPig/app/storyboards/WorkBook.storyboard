@@ -119,8 +119,8 @@
                             <rect key="frame" x="113" y="7" width="150" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
-                                <segment title="관심 패턴"/>
                                 <segment title="단어장"/>
+                                <segment title="관심 패턴"/>
                             </segments>
                             <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>

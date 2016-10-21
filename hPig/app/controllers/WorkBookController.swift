@@ -132,17 +132,19 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     private func toggleTableView() {
         switch segMenu.selectedSegmentIndex {
         case 0:
-            loadPatternData {
-                self.patternTableView.isHidden = false
-                self.wordTableView.isHidden = true
-                self.selectedTableView = self.patternTableView
-            }
-        case 1:
             loadWordData {
                 self.patternTableView.isHidden = true
                 self.wordTableView.isHidden = false
                 self.selectedTableView = self.wordTableView
             }
+            
+        case 1:
+            loadPatternData {
+                self.patternTableView.isHidden = false
+                self.wordTableView.isHidden = true
+                self.selectedTableView = self.patternTableView
+            }
+            
         default:
             print("error")
         }
@@ -205,9 +207,9 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if let button = sender as? PatternImageButton, let pattern = button.pattern {
-            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, session: Session(pattern))
+            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, sender: sender, session: Session(pattern))
         } else {
-            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, session: nil)
+            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, sender: sender, session: nil)
         }
     }
 }

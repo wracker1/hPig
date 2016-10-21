@@ -14,17 +14,34 @@ class AlertService {
         return instance
     }()
     
-    @discardableResult func presentAlert(_ viewController: UIViewController, view: UIView, completion: (() -> Void)?) -> UIAlertController {
+    func presentAlert(_ viewController: UIViewController, view: UIView, completion: (() -> Void)?) {
         let alert = UIAlertController(title: "SpeakingTube", message: nil, preferredStyle: .alert)
-        return embed(viewController, alert: alert, view: view, completion: completion)
+        embed(viewController, alert: alert, view: view, completion: completion)
     }
     
-    @discardableResult func presentActionSheet(_ viewController: UIViewController, view: UIView, completion: (() -> Void)?) -> UIAlertController {
+    func presentActionSheet(_ viewController: UIViewController, view: UIView, completion: (() -> Void)?) {
         let alert = UIAlertController(title: "SpeakingTube", message: nil, preferredStyle: .actionSheet)
-        return embed(viewController, alert: alert, view: view, completion: completion)
+        embed(viewController, alert: alert, view: view, completion: completion)
     }
     
-    private func embed(_ viewController: UIViewController, alert: UIAlertController, view: UIView, completion: (() -> Void)?) -> UIAlertController {
+    func presentConfirm(_ viewController: UIViewController, title: String, message: String?, cancel: (() -> Void)?, confirm: (() -> Void)?) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: { (_) in
+            viewController.dismiss(animated: true, completion: cancel)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (_) in
+            if let callback = confirm {
+                callback()
+            }
+        }))
+        
+        viewController.present(alert, animated: true, completion: nil)
+    }
+    
+    @discardableResult private func embed(_ viewController: UIViewController, alert: UIAlertController, view: UIView, completion: (() -> Void)?) -> UIAlertController {
 
         alert.view.addSubview(view)
         alert.view.translatesAutoresizingMaskIntoConstraints = false

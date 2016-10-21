@@ -19,6 +19,7 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
     private var relatedSessions = [Session]()
     private var latestStudyPosition = 0
     
+    @IBOutlet weak var mainScroller: UIScrollView!
     @IBOutlet weak var channelButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var sessionImage: UIImageView!
@@ -154,6 +155,10 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
         }
     }
     
+    override func viewWillLayoutSubviews() {
+//        LayoutService.shared.adjustContentSize(mainScroller, subScroller: relatedSessionsView)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navigator = segue.destination as? UINavigationController {
             if let basic = navigator.topViewController as? BasicStudyController {
@@ -179,9 +184,9 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
         if let indexPaths = relatedSessionsView.indexPathsForSelectedItems,
             let indexPath = indexPaths.first,
             let session = self.relatedSessions.get(indexPath.row) {
-            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, session: session)
+            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, sender: sender, session: session)
         } else {
-            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, session: session)
+            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, sender: sender, session: session)
         }
     }
 }

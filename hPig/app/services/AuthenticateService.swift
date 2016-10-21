@@ -109,7 +109,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         })
     }
     
-    func shouldPerform(_ id: String, viewController: UIViewController, session: Session?) -> Bool {
+    func shouldPerform(_ id: String, viewController: UIViewController, sender: Any?, session: Session?) -> Bool {
         switch id {
         case "basicStudyFromMyInfo"
         , "basicStudyFromSessionMain"
@@ -122,7 +122,17 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
                     do {
                         return try isActiveUser()
                     } catch AuthError.needToLogin {
-                        viewController.view.presentToast("로그인이 필요합니다.")
+                        AlertService.shared.presentConfirm(
+                            viewController,
+                            title: "로그인이 필요합니다. 로그인 하시겠습니까?",
+                            message: nil,
+                            cancel: nil,
+                            confirm: {
+                                self.tryLogin(viewController: viewController, completion: { (success) in
+                                    viewController.performSegue(withIdentifier: id, sender: sender)
+                                })
+                        })
+                        
                         return false
                     } catch AuthError.unauthorized {
                         viewController.view.presentToast("이용권을 구매해주세요.")
@@ -179,7 +189,9 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         print("1 ==============")
         
         if let vc = viewController {
-            vc.present(NLoginThirdPartyOAuth20InAppBrowserViewController(request: request), animated: true, completion: nil)
+            let navigator = UINavigationController(rootViewController: NLoginThirdPartyOAuth20InAppBrowserViewController(request: request))
+            
+            vc.present(navigator, animated: true, completion: nil)
         }
     }
     

@@ -41,6 +41,20 @@
 @implementation NLoginThirdPartyOAuth20InAppBrowserViewController
 @synthesize parentOrientation;
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.title = @"로그인";
+    
+    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 45, 45);
+    
+    [button setImage:[UIImage imageNamed:@"btn_close"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(closeBtAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView: button];
+}
+
 - (BOOL)isUpperIOS8
 {
     int version = [[[UIDevice currentDevice] systemVersion] intValue];
@@ -73,38 +87,17 @@
 }
 
 - (void) closeInApp {
-    [self dismissViewControllerAnimated:NO completion:nil];
+    [self dismissViewControllerAnimated: YES completion:nil];
 }
 
-- (CGFloat) topMargin {
+- (CGFloat)topMargin {
+    CGFloat barHeight = 44;
+    
     if(7 <= [[[UIDevice currentDevice] systemVersion] intValue] && (NO == [UIApplication sharedApplication].statusBarHidden)){
-        return 20.0f;
+        return 20.0f + barHeight;
     } else{
-        return 0.0f;
+        return 0.0f + barHeight;
     }
-}
-
-- (void)makeBottomBar   {
-    _bottomBar = [[UIView alloc] initWithFrame:CGRectMake(0, kThirdPartyMainWindowHeight - kBottomBarHeight, kThirdPartyMainWindowWidth, kBottomBarHeight)];
-    _bottomBar.backgroundColor = [UIColor whiteColor];
-    [_mainView addSubview:_bottomBar];
-    
-    _bottomBarTopDivLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _bottomBar.frame.size.width, 1)];
-    _bottomBarTopDivLine.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    _bottomBarTopDivLine.backgroundColor = [UIColor colorWithRed:0xC6/255.0 green:0xC6/255.0 blue:0xC6/255.0 alpha:1.0];
-    [_bottomBar addSubview:_bottomBarTopDivLine];
-    
-    // 24X24
-    int numberOfBtn = 4;
-    CGFloat btnWidth = CGRectGetWidth(_bottomBar.frame) / numberOfBtn;
-    CGFloat btnHeight = CGRectGetHeight(_bottomBar.frame) - CGRectGetHeight(_bottomBarTopDivLine.bounds);
-    
-    CGFloat closeBtnOriginX = btnWidth * 3;
-    _closeBt = [[UIButton alloc] initWithFrame:CGRectMake(closeBtnOriginX, 0, btnWidth, btnHeight)];
-
-    [_closeBt setImage:[UIImage imageNamed:@"NaverAuth.bundle/btn_notice_close_normal.png"] forState:UIControlStateNormal];
-    [_closeBt addTarget:self action:@selector(closeBtAction:) forControlEvents:UIControlEventTouchUpInside];
-    [_bottomBar addSubview:_closeBt];
 }
 
 - (void)makeMainView
@@ -230,8 +223,6 @@
         [self makeMainView];
         [self makeBannerView];
         [self makeWebView];
-        [self makeBottomBar];
-
     }
     return self;
 }

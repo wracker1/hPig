@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2548a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rzw-Jr-A0u">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rzw-Jr-A0u">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -254,9 +254,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="FzN-Oh-5aQ" secondAttribute="bottom" id="O1r-3I-4Zh"/>
                             <constraint firstItem="EYJ-hj-6ug" firstAttribute="width" secondItem="jf8-qE-70G" secondAttribute="width" id="QLY-TK-f9V"/>
                             <constraint firstItem="FzN-Oh-5aQ" firstAttribute="leading" secondItem="jf8-qE-70G" secondAttribute="leading" id="SSl-sd-EMC"/>
+                            <constraint firstItem="w0y-sc-PKo" firstAttribute="top" secondItem="FzN-Oh-5aQ" secondAttribute="bottom" id="Xpb-BD-DGw"/>
                             <constraint firstItem="FzN-Oh-5aQ" firstAttribute="top" secondItem="jf8-qE-70G" secondAttribute="top" id="xGE-uh-F9e"/>
                             <constraint firstAttribute="trailing" secondItem="FzN-Oh-5aQ" secondAttribute="trailing" id="xzd-Uz-2aY"/>
                         </constraints>
@@ -270,6 +270,7 @@
                         <outlet property="descriptionLabel" destination="rNe-6G-RV3" id="whU-l3-zth"/>
                         <outlet property="durationLabel" destination="Mco-oW-ql7" id="mB4-Y9-Q79"/>
                         <outlet property="flowLayout" destination="FcO-hU-YyL" id="0WB-hC-DQK"/>
+                        <outlet property="mainScroller" destination="FzN-Oh-5aQ" id="jyD-oX-23L"/>
                         <outlet property="patternExButton" destination="kQ2-BF-zlf" id="POA-HF-thk"/>
                         <outlet property="progress" destination="l8x-Dr-VMS" id="fzZ-kr-nxk"/>
                         <outlet property="relatedSessionsView" destination="qmn-OT-lSe" id="HKq-ZW-sTO"/>
