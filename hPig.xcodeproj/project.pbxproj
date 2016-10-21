@@ -11,7 +11,7 @@
 		880549A21DAA5083001CF3F8 /* hInteractedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880549A11DAA5083001CF3F8 /* hInteractedLabel.swift */; };
 		881ED0041D93AB6400D612EF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0031D93AB6400D612EF /* Category.swift */; };
 		881ED0061D93AC0100D612EF /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0051D93AC0100D612EF /* CategoryService.swift */; };
-		881ED0081D93AEA200D612EF /* XibService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0071D93AEA200D612EF /* XibService.swift */; };
+		881ED0081D93AEA200D612EF /* LayoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0071D93AEA200D612EF /* LayoutService.swift */; };
 		881ED00B1D93B00000D612EF /* hPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED00A1D93B00000D612EF /* hPickerView.swift */; };
 		881ED0101D93B02100D612EF /* picker_action_view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 881ED00D1D93B02100D612EF /* picker_action_view.xib */; };
 		881ED0111D93B02100D612EF /* session_nav_view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 881ED00E1D93B02100D612EF /* session_nav_view.xib */; };
@@ -131,7 +131,7 @@
 		881A76EF1DB465C100CF6409 /* youtube_ios_player_helper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = youtube_ios_player_helper.framework; path = "../../../Library/Developer/Xcode/DerivedData/hPig-byqselxxffzlqhcolurdyikdjjha/Build/Products/Debug-iphonesimulator/youtube-ios-player-helper/youtube_ios_player_helper.framework"; sourceTree = "<group>"; };
 		881ED0031D93AB6400D612EF /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		881ED0051D93AC0100D612EF /* CategoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
-		881ED0071D93AEA200D612EF /* XibService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibService.swift; sourceTree = "<group>"; };
+		881ED0071D93AEA200D612EF /* LayoutService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutService.swift; sourceTree = "<group>"; };
 		881ED00A1D93B00000D612EF /* hPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = hPickerView.swift; path = uiviews/hPickerView.swift; sourceTree = "<group>"; };
 		881ED00D1D93B02100D612EF /* picker_action_view.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = picker_action_view.xib; sourceTree = "<group>"; };
 		881ED00E1D93B02100D612EF /* session_nav_view.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = session_nav_view.xib; sourceTree = "<group>"; };
@@ -574,7 +574,7 @@
 			isa = PBXGroup;
 			children = (
 				88CDBA2A1D92D6EE0058ECFE /* NetService.swift */,
-				881ED0071D93AEA200D612EF /* XibService.swift */,
+				881ED0071D93AEA200D612EF /* LayoutService.swift */,
 				884B0E8C1D93A0BB009748FF /* ImageDownloadService.swift */,
 				881ED0051D93AC0100D612EF /* CategoryService.swift */,
 				881ED0171D93B2B300D612EF /* YoutubeService.swift */,
@@ -822,7 +822,7 @@
 				88DEDEFA1DB7493400781123 /* WORD+CoreDataProperties.swift in Sources */,
 				88BE97D91D9D0C37002903E3 /* AuthenticateService.swift in Sources */,
 				881ED0061D93AC0100D612EF /* CategoryService.swift in Sources */,
-				881ED0081D93AEA200D612EF /* XibService.swift in Sources */,
+				881ED0081D93AEA200D612EF /* LayoutService.swift in Sources */,
 				881ED0181D93B2B300D612EF /* YoutubeService.swift in Sources */,
 				88BE97D31D9D04B2002903E3 /* BannerCell.swift in Sources */,
 				887933731DB8A56A001CB925 /* PATTERN+CoreDataClass.swift in Sources */,

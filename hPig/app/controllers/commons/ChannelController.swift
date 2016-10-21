@@ -15,6 +15,7 @@ class ChannelController: UIViewController, UICollectionViewDelegate, UICollectio
     var id: String? = nil
     var data: Channel? = nil
 
+    @IBOutlet weak var mainScroller: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var bannerView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -42,6 +43,10 @@ class ChannelController: UIViewController, UICollectionViewDelegate, UICollectio
             })
         }
         
+    }
+    
+    override func viewWillLayoutSubviews() {
+        LayoutService.shared.adjustContentSize(mainScroller, subScroller: sessionsView)
     }
 
     override func didReceiveMemoryWarning() {

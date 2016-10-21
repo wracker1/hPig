@@ -14,6 +14,7 @@ import Charts
 
 class MyInfoController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
+    @IBOutlet weak var mainScroller: UIScrollView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
@@ -69,6 +70,10 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
         }
         
         historySegChanged(historySegControl)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        LayoutService.shared.adjustContentSize(mainScroller, subScroller: historyCollectionView)
     }
     
     @IBAction func historySegChanged(_ sender: UISegmentedControl) {

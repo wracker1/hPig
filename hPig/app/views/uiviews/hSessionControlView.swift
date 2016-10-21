@@ -19,7 +19,7 @@ class hSessionControlView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        XibService.shared.layoutXibViews(superview: self, nibName: "session_nav_view", viewLayoutBlock: nil)
+        LayoutService.shared.layoutXibViews(superview: self, nibName: "session_nav_view", viewLayoutBlock: nil)
     }
 
 }

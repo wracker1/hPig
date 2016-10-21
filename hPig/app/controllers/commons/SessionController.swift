@@ -19,6 +19,8 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
     private var relatedSessions = [Session]()
     private var latestStudyPosition = 0
     
+    @IBOutlet weak var channelButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var sessionImage: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var startTimeLabel: UILabel!
@@ -33,7 +35,8 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = session?.title
+        self.title = "세션"
+        self.titleLabel.text = session?.title
         
         self.sessionImage.clipsToBounds = true
         
@@ -43,6 +46,14 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
             if let imageUrl = item.image {
                 ImageDownloadService.shared.get(url: imageUrl, filter: nil, completionHandler: { (res) in
                     self.sessionImage.image = res.result.value
+                })
+            }
+            
+            if let channelImage = item.channelImage {
+                ImageDownloadService.shared.get(url: channelImage, filter: nil, completionHandler: { (res) in
+                    self.channelButton.imageView?.layer.cornerRadius = 20.0
+                    
+                    self.channelButton.setImage(res.result.value, for: .normal)
                 })
             }
             
@@ -156,6 +167,8 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
             }
         } else if let sessionController = segue.destination as? SessionController, let cell = sender as? RelatedSessionCell {
             sessionController.session = cell.session
+        } else if let channelController = segue.destination as? ChannelController, let item = session {
+            channelController.id = item.channelId
         }
     }
     

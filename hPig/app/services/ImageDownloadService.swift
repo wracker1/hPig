@@ -61,7 +61,7 @@ class ImageDownloadService {
             button.setImage(res.result.value, for: .normal)
             button.imageView?.clipsToBounds = true
             button.imageView?.contentMode = .scaleAspectFill
-            button.imageView?.layer.cornerRadius = 15.0
+            button.imageView?.layer.cornerRadius = 18.0
             button.imageView?.layer.borderColor = UIColor.white.cgColor
             button.imageView?.layer.borderWidth = 1.0
         })

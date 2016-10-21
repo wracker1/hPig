@@ -21,14 +21,14 @@ class PatternView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        XibService.shared.layoutXibViews(superview: self, nibName: "pattern_view", viewLayoutBlock: nil)
+        LayoutService.shared.layoutXibViews(superview: self, nibName: "pattern_view", viewLayoutBlock: nil)
         initBgView()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        XibService.shared.layoutXibViews(superview: self, nibName: "pattern_view", viewLayoutBlock: nil)
+        LayoutService.shared.layoutXibViews(superview: self, nibName: "pattern_view", viewLayoutBlock: nil)
         initBgView()
     }
     

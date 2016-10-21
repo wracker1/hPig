@@ -28,13 +28,13 @@ class hEnglishDictionaryView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        XibService.shared.layoutXibViews(superview: self, nibName: "eng_dic_view_cell", viewLayoutBlock: nil)
+        LayoutService.shared.layoutXibViews(superview: self, nibName: "eng_dic_view_cell", viewLayoutBlock: nil)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        XibService.shared.layoutXibViews(superview: self, nibName: "eng_dic_view", viewLayoutBlock: nil)
+        LayoutService.shared.layoutXibViews(superview: self, nibName: "eng_dic_view", viewLayoutBlock: nil)
     }
     
     override func awakeFromNib() {

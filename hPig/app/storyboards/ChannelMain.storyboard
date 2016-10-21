@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aOD-q5-erO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2548a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aOD-q5-erO">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -140,7 +140,7 @@
                                             <constraint firstItem="fhO-4C-jod" firstAttribute="top" secondItem="m7S-hs-l0v" secondAttribute="top" id="W3J-Xg-QU0"/>
                                             <constraint firstItem="A8H-NM-efy" firstAttribute="top" secondItem="2Oa-7a-zU9" secondAttribute="bottom" constant="10" id="bRo-sn-k06"/>
                                             <constraint firstItem="fhO-4C-jod" firstAttribute="leading" secondItem="m7S-hs-l0v" secondAttribute="leading" id="cOJ-qD-CYr"/>
-                                            <constraint firstItem="v5y-Ik-R1c" firstAttribute="top" secondItem="6pu-wQ-RLx" secondAttribute="bottom" constant="8" id="cab-J5-f7T"/>
+                                            <constraint firstItem="v5y-Ik-R1c" firstAttribute="top" secondItem="6pu-wQ-RLx" secondAttribute="bottom" constant="9" id="cab-J5-f7T"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="A8H-NM-efy" secondAttribute="trailing" id="dMD-rV-i83"/>
                                             <constraint firstItem="v5y-Ik-R1c" firstAttribute="centerX" secondItem="m7S-hs-l0v" secondAttribute="centerX" id="lIX-9Y-IJr"/>
                                             <constraint firstAttribute="bottom" secondItem="A8H-NM-efy" secondAttribute="bottom" id="vfN-1Z-eJ9"/>
@@ -171,6 +171,7 @@
                         <outlet property="descLabel" destination="vG5-oZ-55Z" id="mzx-Nv-Ehu"/>
                         <outlet property="flowLayout" destination="j29-Bn-kOg" id="ZAp-RX-33n"/>
                         <outlet property="imageView" destination="6pu-wQ-RLx" id="Bd2-Ki-rYy"/>
+                        <outlet property="mainScroller" destination="yzT-dh-WFA" id="JYe-Dg-HS4"/>
                         <outlet property="sessionsView" destination="A8H-NM-efy" id="eDq-uk-uqY"/>
                         <outlet property="titleLabel" destination="v5y-Ik-R1c" id="gBt-Ya-ewo"/>
                         <outlet property="watcherCntLabel" destination="zqe-C2-hYy" id="3UW-Tm-qPk"/>

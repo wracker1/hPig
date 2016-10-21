@@ -55,7 +55,7 @@ class hPlayerView: UIView {
         
         super.init(coder: aDecoder)
         
-        XibService.shared.layoutXibViews(superview: self, nibName: "st_player_view") { (view) in
+        LayoutService.shared.layoutXibViews(superview: self, nibName: "st_player_view") { (view) in
             self.controlView = view
         }
         

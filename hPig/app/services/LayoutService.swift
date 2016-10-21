@@ -1,5 +1,5 @@
 //
-//  XibService.swift
+//  LayoutService.swift
 //  hPig
 //
 //  Created by Jesse on 2016. 9. 22..
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class XibService {
-    static let shared: XibService = {
-        let instance = XibService()
+class LayoutService {
+    static let shared: LayoutService = {
+        let instance = LayoutService()
         return instance
     }()
     
@@ -31,5 +31,17 @@ class XibService {
     
     func layoutXibView(superview: UIView, nibName: String) {
         Bundle(for: type(of: superview)).loadNibNamed(nibName, owner: superview, options: nil)
+    }
+    
+    func adjustContentSize(_ mainScroller: UIScrollView, subScroller: UIScrollView) {
+        if subScroller.contentSize.height > 0 {
+            var subScrollerFrame = subScroller.frame
+            subScrollerFrame.size.height = subScroller.contentSize.height
+            subScroller.frame = subScrollerFrame
+            
+            var contentSize = mainScroller.contentSize
+            contentSize.height = subScrollerFrame.origin.y + subScrollerFrame.size.height
+            mainScroller.contentSize = contentSize
+        }
     }
 }
