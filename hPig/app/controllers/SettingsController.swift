@@ -12,6 +12,7 @@ import Toast_Swift
 
 enum SettingCellType {
     case login
+    case deleteData
     case sendMail
     case faq
     case version
@@ -33,10 +34,12 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
         }
         
         let items = [
+            ["type": SettingCellType.login, "id": "ActionCell"],
             ["type": SettingCellType.version, "id": "SettingCell" , "value": "\(appVersion) (\(buildVersion))"],
+            ["type": SettingCellType.deleteData, "id": "ActionCell"],
             ["type": SettingCellType.faq, "id": "FAQCell"],
-            ["type": SettingCellType.sendMail, "id": "ActionCell"],
-            ["type": SettingCellType.login, "id": "ActionCell"]
+            ["type": SettingCellType.sendMail, "id": "ActionCell"]
+            
         ]
         
         return items
@@ -92,6 +95,10 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
         case .login:
             cell.textLabel?.text = AuthenticateService.shared.isOn() ? "로그아웃" : "로그인"
             
+        case .deleteData:
+            cell.textLabel?.text = "데이터삭제"
+            cell.textLabel?.textColor = UIColor.red
+            
         case .sendMail:
             cell.textLabel?.text = "고객의견"
             
@@ -122,6 +129,19 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
                     }
                 }
             }
+            
+        case .deleteData:
+            AlertService.shared.presentConfirm(
+                self,
+                title: "모든 데이터를 삭제 합니다. 진행 하시겠습니까?",
+                message: nil,
+                cancel: nil,
+                confirm: {
+                    AuthenticateService.shared.user { (user) in
+                        CoreDataService.shared.deleteAll(user)
+                        self.view.presentToast("삭제 하였습니다.")
+                    }
+            })
         case .sendMail:
             if MFMailComposeViewController.canSendMail() {
                 var version = "unknown"

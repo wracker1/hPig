@@ -50,4 +50,35 @@ class CoreDataService {
             }
         }
     }
+    
+    func deleteAll(_ user: TubeUserInfo?) {
+        let id = user?.id ?? Global.guestId
+
+        let patternReq: NSFetchRequest<PATTERN> = PATTERN.fetchRequest()
+        patternReq.predicate = NSPredicate(format: "uid = '\(id)'")
+        easeDelete(patternReq)
+        
+        let historyReq: NSFetchRequest<HISTORY> = HISTORY.fetchRequest()
+        historyReq.predicate = NSPredicate(format: "uid = '\(id)'")
+        easeDelete(historyReq)
+        
+        let wordReq: NSFetchRequest<WORD> = WORD.fetchRequest()
+        wordReq.predicate = NSPredicate(format: "uid = '\(id)'")
+        easeDelete(wordReq)
+        
+        let timeReq: NSFetchRequest<TIME_LOG> = TIME_LOG.fetchRequest()
+        timeReq.predicate = NSPredicate(format: "uid = '\(id)'")
+        easeDelete(timeReq)
+        
+        save()
+    }
+    
+    private func easeDelete<T>(_ req: NSFetchRequest<T>) {
+        select(request: req) { (items, _) in
+            items.forEach({ (item) in
+                self.delete(model: item)
+            })
+        }
+    }
+
 }
