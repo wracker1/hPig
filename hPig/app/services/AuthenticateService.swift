@@ -21,13 +21,14 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         return instance
     }()
     
-    private let naverConnection: NaverThirdPartyLoginConnection = NaverThirdPartyLoginConnection.getSharedInstance()!
+    var userMap = [String: User]()
+    var userDataMap = [String: TubeUserInfo]()
+    let naverConnection: NaverThirdPartyLoginConnection = NaverThirdPartyLoginConnection.getSharedInstance()!
+    
     private weak var viewController: UIViewController? = nil
     private var completionHandler: ((TubeUserInfo?) -> Void)? = nil
-    private var userMap = [String: User]()
-    private var userDataMap = [String: TubeUserInfo]()
     
-    func prepare() {
+    func prepare(_ completion: ((TubeUserInfo?) -> Void)?) {
         naverConnection.serviceUrlScheme = kServiceAppUrlScheme
         naverConnection.consumerKey = kConsumerKey
         naverConnection.consumerSecret = kConsumerSecret
@@ -37,7 +38,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         naverConnection.isInAppOauthEnable = true
         naverConnection.delegate = self
         
-        user(nil)
+        user(completion)
     }
     
     func isOn() -> Bool {

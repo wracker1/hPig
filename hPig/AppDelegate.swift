@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 import Toast_Swift
 import UserNotifications
+import Fabric
+import Crashlytics
                
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,11 +26,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().tintColor = UIColor.black
         
-        AuthenticateService.shared.prepare()
+        AuthenticateService.shared.prepare { (user) in
+            self.logUser(user)
+        }
+        
         ToastManager.shared.style.verticalPadding = 10
+        
+        Fabric.with([Crashlytics.self])
         
         return true
     }
+    
+    func logUser(_ item: TubeUserInfo?) {
+        let auth = AuthenticateService.shared
+        
+        if item != nil,
+            let naverInfo = auth.userMap[auth.naverConnection.accessToken],
+            let email = naverInfo.email,
+            let accountId = naverInfo.accountId,
+            let name = naverInfo.name {
+            
+            Crashlytics.sharedInstance().setUserEmail(email)
+            Crashlytics.sharedInstance().setUserIdentifier(accountId)
+            Crashlytics.sharedInstance().setUserName(name)
+        }
+    }
+
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         

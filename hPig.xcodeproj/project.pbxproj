@@ -644,6 +644,7 @@
 				88CDB9E71D92BDA30058ECFE /* Resources */,
 				955595A85587B6E27083A090 /* [CP] Embed Pods Frameworks */,
 				845E55956050DBF70FCF3559 /* [CP] Copy Pods Resources */,
+				881076BC1DBB3D570038C21C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -773,6 +774,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hPig/Pods-hPig-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		881076BC1DBB3D570038C21C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/Fabric/run 9c4adc8729efbaafe5a36eb0532e02034f04d169 23596079d1cb68401fd128c78e5c3d33b4834e1f89911d4cd1253b896ba8fdbf";
 		};
 		955595A85587B6E27083A090 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
