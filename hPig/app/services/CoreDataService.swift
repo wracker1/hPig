@@ -51,25 +51,36 @@ class CoreDataService {
         }
     }
     
-    func deleteAll(_ user: TubeUserInfo?) {
+    func deleteUserData(_ user: TubeUserInfo?, itemIds: [String]) {
         let id = user?.id ?? Global.guestId
+        
+        itemIds.forEach { (itemId) in
+            switch itemId {
+            case "delTimelog":
+                let timeReq: NSFetchRequest<TIME_LOG> = TIME_LOG.fetchRequest()
+                timeReq.predicate = NSPredicate(format: "uid = '\(id)'")
+                easeDelete(timeReq)
+                
+            case "delWord":
+                let wordReq: NSFetchRequest<WORD> = WORD.fetchRequest()
+                wordReq.predicate = NSPredicate(format: "uid = '\(id)'")
+                easeDelete(wordReq)
+                
+            case "delHistory":
+                let historyReq: NSFetchRequest<HISTORY> = HISTORY.fetchRequest()
+                historyReq.predicate = NSPredicate(format: "uid = '\(id)'")
+                easeDelete(historyReq)
+                
+            case "delPattern":
+                let patternReq: NSFetchRequest<PATTERN> = PATTERN.fetchRequest()
+                patternReq.predicate = NSPredicate(format: "uid = '\(id)'")
+                easeDelete(patternReq)
+                
+            default:
+                print(itemId)
+            }
+        }
 
-        let patternReq: NSFetchRequest<PATTERN> = PATTERN.fetchRequest()
-        patternReq.predicate = NSPredicate(format: "uid = '\(id)'")
-        easeDelete(patternReq)
-        
-        let historyReq: NSFetchRequest<HISTORY> = HISTORY.fetchRequest()
-        historyReq.predicate = NSPredicate(format: "uid = '\(id)'")
-        easeDelete(historyReq)
-        
-        let wordReq: NSFetchRequest<WORD> = WORD.fetchRequest()
-        wordReq.predicate = NSPredicate(format: "uid = '\(id)'")
-        easeDelete(wordReq)
-        
-        let timeReq: NSFetchRequest<TIME_LOG> = TIME_LOG.fetchRequest()
-        timeReq.predicate = NSPredicate(format: "uid = '\(id)'")
-        easeDelete(timeReq)
-        
         save()
     }
     

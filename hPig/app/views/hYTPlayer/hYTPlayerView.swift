@@ -109,7 +109,14 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
      * @param state YTPlayerState designating the new playback state.
      */
     func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
-    
+//        kYTPlayerStateUnstarted,
+//        kYTPlayerStateEnded,
+//        kYTPlayerStatePlaying,
+//        kYTPlayerStatePaused,
+//        kYTPlayerStateBuffering,
+//        kYTPlayerStateQueued,
+//        kYTPlayerStateUnknown
+        print("\(state)")
     }
     
     

@@ -73,8 +73,6 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     func user(_ completion: ((TubeUserInfo?) -> Void)?) {
         let callback = completion ?? {(_) in }
         
-        print(naverConnection.accessToken ?? "empty")
-        
         if let token = naverConnection.accessToken {
             if let user = userMap[token], let info = userDataMap[user.id] {
                 callback(info)

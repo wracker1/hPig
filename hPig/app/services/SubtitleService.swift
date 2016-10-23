@@ -41,7 +41,12 @@ class SubtitleService {
                 let subtitles = data.enumerated().map({ (i: Int, element: (CMTime, String, String)) -> BasicStudy in
                     let start = element.0
                     let end = i + 1 < data.count ? data[i + 1].0 : data[data.count - 1].0
-                    return BasicStudy(timeRange: CMTimeRange(start: start, end: end), english: element.1, korean: element.2)
+                    
+                    return BasicStudy(
+                        timeRange: CMTimeRange(start: start, end: end),
+                        english: element.1,
+                        korean: element.2
+                    )
                 })
                 
                 completion(subtitles)
