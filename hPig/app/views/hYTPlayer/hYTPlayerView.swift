@@ -116,7 +116,7 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
 //        kYTPlayerStateBuffering,
 //        kYTPlayerStateQueued,
 //        kYTPlayerStateUnknown
-        print("\(state)")
+        print("\(state.rawValue)")
     }
     
     
