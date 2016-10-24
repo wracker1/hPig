@@ -69,7 +69,7 @@ class CategoryService: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
                                   level: String,
                                   completion: @escaping (_ sort: String?, _ category: String?, _ level: String?) -> Void) {
         
-        self.picker.controller?.popoverPresentationController?.barButtonItem = viewController.navigationItem.rightBarButtonItem
+        self.picker.controller?.popoverPresentationController?.barButtonItem = viewController.navigationItem.leftBarButtonItem
         
         self.initPicker {
             self.viewController = viewController

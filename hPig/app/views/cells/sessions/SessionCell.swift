@@ -79,20 +79,9 @@ class SessionCell: UITableViewCell, hTableViewCell {
         self.channelNameLabel.text = item.channelName
         self.descriptionLabel.text = item.sessionDescription
         
-        if let category = item.category, let cateImage = UIImage(named: "cate_\(category.lowercased())") {
-            let aspect = cateImage.size.width / cateImage.size.height
-            let const = NSLayoutConstraint(
-                item: self.categoryImageView,
-                attribute: .width,
-                relatedBy: .equal,
-                toItem: self.categoryImageView,
-                attribute: .height,
-                multiplier: aspect,
-                constant: 0.0)
-            
-            self.constCateImage = const
+        if let category = item.categoryName,
+            let cateImage = UIImage(named: "cate_\(category.lowercased())") {
             self.categoryImageView.image = cateImage
-            self.categoryImageView.addConstraint(const)
         }
         
         if let level = item.level {

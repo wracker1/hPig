@@ -33,9 +33,7 @@ class SessionsController: UITableViewController {
         self.listFilterButton.target = self
         self.listFilterButton.action = #selector(self.showListFilterPicker)
         
-        loadPage(sort: sort, category: category, level: level, page: 1) {
-            
-        }
+        loadPage(sort: sort, category: category, level: level, page: 1, completion: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -63,7 +61,7 @@ class SessionsController: UITableViewController {
         }
     }
 
-    private func loadPage(sort: String, category: String, level: String, page: Int, completion: @escaping () -> Void) -> Void {
+    private func loadPage(sort: String, category: String, level: String, page: Int, completion: (() -> Void)?) -> Void {
         if page == 1 {
             self.hasNext = true
         }
@@ -90,7 +88,9 @@ class SessionsController: UITableViewController {
                     }
                 }
                 
-                completion()
+                if let callback = completion {
+                    callback()
+                }
                 
                 self.sort = sort
                 self.category = category
@@ -98,8 +98,8 @@ class SessionsController: UITableViewController {
                 self.currentPage = page
                 self.isLoading = false
             })
-        } else {
-            completion()
+        } else if let callback = completion {
+            callback()
         }
     }
     
@@ -127,7 +127,7 @@ class SessionsController: UITableViewController {
             let isChanged = self.sort != sort || self.category != category || self.level != level
             
             if isChanged {
-                self.loadPage(sort: sort ?? "new", category: category ?? "0", level: level ?? "0", page: 1, completion: {})
+                self.loadPage(sort: sort ?? "new", category: category ?? "0", level: level ?? "0", page: 1, completion: nil)
             }
         }
     }
@@ -142,9 +142,7 @@ class SessionsController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if (self.sessions.count - 2) < indexPath.row {
-            loadPage(sort: sort, category: category, level: level, page: currentPage + 1) {
-                
-            }
+            loadPage(sort: sort, category: category, level: level, page: currentPage + 1, completion: nil)
         }
     }
 

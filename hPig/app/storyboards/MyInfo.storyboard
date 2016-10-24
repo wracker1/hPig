@@ -192,6 +192,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6cc-8t-YB9">
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="146" id="O5a-bd-Ea3"/>
+                                                    <constraint firstAttribute="height" constant="28" id="jbl-vo-5Pi"/>
+                                                </constraints>
                                                 <segments>
                                                     <segment title="전체"/>
                                                     <segment title="진행중"/>
