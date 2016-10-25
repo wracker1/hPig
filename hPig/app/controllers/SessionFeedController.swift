@@ -18,7 +18,7 @@ class SessionFeedController: UICollectionViewController, UICollectionViewDataSou
     private var sort = "new"
     private var category = "0"
     private var level = "0"
-    
+    private var tableViewVelocity: CGPoint? = nil
     private let minWidth: CGFloat = 375
     
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
@@ -86,6 +86,54 @@ class SessionFeedController: UICollectionViewController, UICollectionViewDataSou
         super.viewWillTransition(to: size, with: coordinator)
         
         NotificationCenter.default.post(name: Global.kViewWillTransition, object: NSValue(cgSize: size))
+    }
+    
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if (decelerate) {
+            tableViewVelocity.fold({ () -> Void in
+                self.navigationController?.setNavigationBarHidden(false, animated: false)
+                }, f: { (velocity) -> Void in
+                    if velocity.y > 0 {
+                        self.navigationController?.setNavigationBarHidden(true, animated: true)
+                    } else {
+                        self.navigationController?.setNavigationBarHidden(false, animated: true)
+                    }
+            })
+        }
+    }
+    
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        self.tableViewVelocity = velocity
+    }
+    
+    override func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let channelController = segue.destination as? ChannelController,
+            let button = sender as? ChannelButton,
+            let session = button.session {
+            
+            channelController.id = session.channelId
+        } else {
+            if let index = self.collectionView?.indexPathsForSelectedItems?.first?.row {
+                let session = self.sessions[index]
+                
+                if let type = session.type?.lowercased(), type != "banner" {
+                    let vc = segue.destination as! SessionController
+                    vc.session = session
+                }
+            }
+        }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if let index = self.collectionView?.indexPathsForSelectedItems?.first?.row, let session = self.sessions.get(index) {
+            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, sender: sender, session: session)
+        } else {
+            return AuthenticateService.shared.shouldPerform(identifier, viewController: self, sender: sender, session: nil)
+        }
     }
 
     // MARK: UICollectionViewDelegate

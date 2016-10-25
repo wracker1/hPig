@@ -96,6 +96,9 @@
                                                                         <constraint firstAttribute="width" constant="40" id="XdX-ce-XOr"/>
                                                                     </constraints>
                                                                     <state key="normal" title="Button"/>
+                                                                    <connections>
+                                                                        <segue destination="JpA-lb-9Nb" kind="show" id="oeN-Gv-mFn"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="eSc-tU-Fjy">
                                                                     <subviews>
@@ -180,6 +183,7 @@
                                     <outlet property="titleLabel" destination="vCf-Oy-ow6" id="PBB-1X-IaB"/>
                                     <outlet property="viewCountLabel" destination="nOi-5F-nDl" id="lyh-hw-ttl"/>
                                     <outlet property="wrapper" destination="sob-zD-uO6" id="9jp-Mf-x0F"/>
+                                    <segue destination="czX-U4-l8z" kind="show" id="zQz-0W-aww"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -196,6 +200,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uwb-Id-hhb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="65" y="18"/>
+        </scene>
+        <!--SessionMain-->
+        <scene sceneID="WE9-08-we3">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SessionMain" id="czX-U4-l8z" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zXv-O9-VXL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="704" y="18"/>
+        </scene>
+        <!--ChannelMain-->
+        <scene sceneID="adV-bk-Oon">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ChannelMain" id="JpA-lb-9Nb" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p9S-6b-OW7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="64" y="443"/>
         </scene>
     </scenes>
     <resources>
