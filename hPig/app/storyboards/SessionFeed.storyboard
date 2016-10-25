@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Session Feed Controller-->
+        <scene sceneID="rJ4-LN-ham">
+            <objects>
+                <collectionViewController id="r2o-VP-gao" customClass="SessionFeedController" customModule="hPig" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="pIN-2j-ppS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewLayout key="collectionViewLayout" id="zEk-tT-Z4J"/>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="971-qU-uec">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WIS-3E-HAD">
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="WIS-3E-HAD" secondAttribute="trailing" id="Ar6-g6-PtV"/>
+                                    <constraint firstAttribute="bottom" secondItem="WIS-3E-HAD" secondAttribute="bottom" id="FUb-l0-x4i"/>
+                                    <constraint firstItem="WIS-3E-HAD" firstAttribute="leading" secondItem="971-qU-uec" secondAttribute="leading" id="c2O-ZF-xcb"/>
+                                    <constraint firstItem="WIS-3E-HAD" firstAttribute="top" secondItem="971-qU-uec" secondAttribute="top" id="rGH-no-0dc"/>
+                                </constraints>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="r2o-VP-gao" id="TvE-7e-9MH"/>
+                            <outlet property="delegate" destination="r2o-VP-gao" id="uId-ZE-Mq9"/>
+                        </connections>
+                    </collectionView>
+                    <connections>
+                        <outlet property="layout" destination="zEk-tT-Z4J" id="aZ0-MY-3Jr"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uwb-Id-hhb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="65" y="18"/>
+        </scene>
+    </scenes>
+</document>

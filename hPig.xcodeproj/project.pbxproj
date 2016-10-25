@@ -32,6 +32,9 @@
 		884523091DBF44CF00802510 /* HISTORY+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884523071DBF44CF00802510 /* HISTORY+CoreDataClass.swift */; };
 		8845230A1DBF44CF00802510 /* HISTORY+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884523081DBF44CF00802510 /* HISTORY+CoreDataProperties.swift */; };
 		8845230C1DBF482400802510 /* ChannelInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8845230B1DBF482400802510 /* ChannelInfoCell.swift */; };
+		8845230E1DBF55BD00802510 /* SessionFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8845230D1DBF55BD00802510 /* SessionFeed.storyboard */; };
+		884523101DBF561B00802510 /* SessionFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8845230F1DBF561B00802510 /* SessionFeedController.swift */; };
+		884523121DBF573A00802510 /* SessionFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884523111DBF573A00802510 /* SessionFeedCell.swift */; };
 		884B0E861D939B13009748FF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884B0E841D939B13009748FF /* AVFoundation.framework */; };
 		884B0E871D939B13009748FF /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884B0E851D939B13009748FF /* AVKit.framework */; };
 		884B0E891D939B1D009748FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884B0E881D939B1D009748FF /* CoreGraphics.framework */; };
@@ -153,6 +156,9 @@
 		884523071DBF44CF00802510 /* HISTORY+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HISTORY+CoreDataClass.swift"; sourceTree = "<group>"; };
 		884523081DBF44CF00802510 /* HISTORY+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HISTORY+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8845230B1DBF482400802510 /* ChannelInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChannelInfoCell.swift; path = channel/ChannelInfoCell.swift; sourceTree = "<group>"; };
+		8845230D1DBF55BD00802510 /* SessionFeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SessionFeed.storyboard; sourceTree = "<group>"; };
+		8845230F1DBF561B00802510 /* SessionFeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionFeedController.swift; sourceTree = "<group>"; };
+		884523111DBF573A00802510 /* SessionFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionFeedCell.swift; sourceTree = "<group>"; };
 		884B0E841D939B13009748FF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		884B0E851D939B13009748FF /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		884B0E881D939B1D009748FF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -386,6 +392,7 @@
 			children = (
 				8877415C1DB0738C00198666 /* LaunchScreen.storyboard */,
 				8877415D1DB0738C00198666 /* Main.storyboard */,
+				8845230D1DBF55BD00802510 /* SessionFeed.storyboard */,
 				8877415E1DB0738C00198666 /* MyInfo.storyboard */,
 				887741601DB0738C00198666 /* PatternStudy.storyboard */,
 				887741621DB0738C00198666 /* Sessions.storyboard */,
@@ -460,6 +467,7 @@
 			children = (
 				88BE97CE1D9D04B2002903E3 /* BannerCell.swift */,
 				88BE97CF1D9D04B2002903E3 /* SessionCell.swift */,
+				884523111DBF573A00802510 /* SessionFeedCell.swift */,
 			);
 			path = sessions;
 			sourceTree = "<group>";
@@ -537,6 +545,7 @@
 			children = (
 				881076C11DBC76460038C21C /* settings */,
 				881ED01F1D93BAFC00D612EF /* commons */,
+				8845230F1DBF561B00802510 /* SessionFeedController.swift */,
 				88CDBA181D92CB350058ECFE /* WorkBookController.swift */,
 				881076C41DBC76500038C21C /* SessionsController.swift */,
 				88CDBA1B1D92CB4A0058ECFE /* MyInfoController.swift */,
@@ -741,6 +750,7 @@
 				88DEDEF41DB5ED7300781123 /* BasicStudy.storyboard in Resources */,
 				88DEDEFC1DB75CF700781123 /* eng_dic_view_cell.xib in Resources */,
 				88DEDEFE1DB7637B00781123 /* ChannelMain.storyboard in Resources */,
+				8845230E1DBF55BD00802510 /* SessionFeed.storyboard in Resources */,
 				88DEDF091DB7794300781123 /* SessionMain.storyboard in Resources */,
 				886EF1741D9C2B58009DA8E8 /* NaverAuth.bundle in Resources */,
 				887741661DB0738C00198666 /* LaunchScreen.storyboard in Resources */,
@@ -831,8 +841,10 @@
 			files = (
 				88CDBA231D92D1FF0058ECFE /* Model.swift in Sources */,
 				88DEDF001DB7644600781123 /* Channel.swift in Sources */,
+				884523101DBF561B00802510 /* SessionFeedController.swift in Sources */,
 				881ED01C1D93B5B700D612EF /* TimeFormatServide.swift in Sources */,
 				884B0E8D1D93A0BB009748FF /* ImageDownloadService.swift in Sources */,
+				884523121DBF573A00802510 /* SessionFeedCell.swift in Sources */,
 				884523061DBF265700802510 /* MyInfoHeaderCell.swift in Sources */,
 				8853766C1DB65C5D0076D1BF /* WordData.swift in Sources */,
 				88DEDEF61DB605CC00781123 /* UIViewOps.swift in Sources */,
