@@ -76,8 +76,10 @@ class ChannelController: UIViewController, UICollectionViewDelegate, UICollectio
         if channelHeader == nil, let channel = data {
             self.channelHeader = item
             
-            item.loadData(channel, completion: {
-                
+            item.loadData(channel, completion: { (height) in
+                var size = self.flowLayout.headerReferenceSize
+                size.height = height
+                self.flowLayout.headerReferenceSize = size
             })
             
             self.title = channel.name

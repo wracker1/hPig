@@ -22,29 +22,29 @@ class ChannelInfoCell: UICollectionViewCell {
         imageView.layer.cornerRadius = 20
     }
     
-    func loadData(_ channel: Channel, completion: (() -> Void)?) {
+    func loadData(_ channel: Channel, completion: ((CGFloat) -> Void)?) {
         self.titleLabel.text = channel.name
         self.watcherCntLabel.text = channel.subCnt
         self.descLabel.text = channel.desc
+        self.descLabel.sizeToFit()
         
-        var i = 0
+        let frame = self.descLabel.frame
+        let height = frame.origin.y + frame.size.height + 21
         
         ImageDownloadService.shared.get(url: channel.image, filter: nil, completionHandler: { (res) in
             self.imageView.image = res.result.value
-            i += 1
-            
-            if let callback = completion, i == 2 {
-                callback()
-            }
         })
         
         ImageDownloadService.shared.get(url: channel.banner, filter: nil, completionHandler: { (res) in
             self.bannerView.image = res.result.value
-            i += 1
-            
-            if let callback = completion, i == 2 {
-                callback()
-            }
         })
+        
+        
+        
+        if let callback = completion {
+            callback(height)
+        }
     }
+    
+    
 }
