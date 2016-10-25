@@ -147,10 +147,6 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
         }
     }
     
-    override func viewWillLayoutSubviews() {
-//        LayoutService.shared.adjustContentSize(mainScroller, subScroller: relatedSessionsView)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navigator = segue.destination as? UINavigationController {
             if let basic = navigator.topViewController as? BasicStudyController {

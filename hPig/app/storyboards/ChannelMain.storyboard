@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aOD-q5-erO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2548a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aOD-q5-erO">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -22,17 +22,17 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="A8H-NM-efy">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="j29-Bn-kOg">
-                                    <size key="itemSize" width="150" height="150"/>
+                                    <size key="itemSize" width="170" height="150"/>
                                     <size key="headerReferenceSize" width="375" height="300"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="channelSessionCell" id="49b-dP-abL" customClass="ChannelSessionCell" customModule="hPig" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="300" width="150" height="150"/>
+                                        <rect key="frame" x="8" y="300" width="170" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="170" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eef-yT-hGb">
@@ -47,6 +47,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Phs-Ku-glX">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="170" id="bGb-Ac-gs3"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -59,6 +62,7 @@
                                             <constraint firstItem="eef-yT-hGb" firstAttribute="leading" secondItem="49b-dP-abL" secondAttribute="leading" id="6U3-fx-pDH"/>
                                             <constraint firstItem="Phs-Ku-glX" firstAttribute="top" secondItem="Tbh-Qx-QlF" secondAttribute="bottom" constant="3" id="Av9-mO-a6z"/>
                                             <constraint firstAttribute="trailing" secondItem="eef-yT-hGb" secondAttribute="trailing" id="Msi-vc-0MT"/>
+                                            <constraint firstAttribute="bottom" secondItem="Phs-Ku-glX" secondAttribute="bottom" id="Tqo-f9-SoM"/>
                                             <constraint firstAttribute="trailing" secondItem="Tbh-Qx-QlF" secondAttribute="trailing" id="YPz-xZ-nmw"/>
                                             <constraint firstItem="eef-yT-hGb" firstAttribute="top" secondItem="49b-dP-abL" secondAttribute="top" id="hob-Lz-XQz"/>
                                             <constraint firstItem="Phs-Ku-glX" firstAttribute="leading" secondItem="49b-dP-abL" secondAttribute="leading" id="z6q-hJ-uYx"/>

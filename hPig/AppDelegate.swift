@@ -96,7 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         */
         let container = NSPersistentContainer(name: "hPig")
         
-        print("\(NSPersistentContainer.defaultDirectoryURL())")
+        print("### defaultDirectoryURL: \(NSPersistentContainer.defaultDirectoryURL())")
         
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {

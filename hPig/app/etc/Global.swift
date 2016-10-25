@@ -11,6 +11,7 @@ import UIKit
 struct Global {
     static let kToggleKoreanLabelVisible = Notification.Name("kToggleKoreanLabelVisible")
     static let kToggleEnglishLabelVisible = Notification.Name("kToggleEnglishLabelVisible")
+    static let kViewWillTransition = Notification.Name("viewWillTransition")
     
     static let guestId = "guest"
 }

@@ -134,10 +134,10 @@
             </objects>
             <point key="canvasLocation" x="1302" y="2173"/>
         </scene>
-        <!--Sessions-->
+        <!--SessionFeed-->
         <scene sceneID="bzB-pb-SWG">
             <objects>
-                <viewControllerPlaceholder storyboardName="Sessions" referencedIdentifier="Sessions" id="OQq-WN-AUg" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="SessionFeed" id="OQq-WN-AUg" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="qlp-SI-9a9"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xcs-cb-yVR" userLabel="First Responder" sceneMemberID="firstResponder"/>

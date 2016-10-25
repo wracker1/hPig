@@ -7,23 +7,31 @@
 //
 
 import UIKit
+import Alamofire
 
-private let reuseIdentifier = "Cell"
+class SessionFeedController: UICollectionViewController, UICollectionViewDataSourcePrefetching {
 
-class SessionFeedController: UICollectionViewController {
-
-    @IBOutlet weak var layout: UICollectionViewLayout!
+    private var currentPage = 1
+    private var hasNext = true
+    private var isLoading = false
+    private var sessions: [Session] = []
+    private var sort = "new"
+    private var category = "0"
+    private var level = "0"
+    
+    private let minWidth: CGFloat = 375
+    
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        
+        self.navigationItem.titleView = UIImageView(image: UIImage(named: "speaking_tube"))
+//        self.collectionView!.register(SessionFeedCell.self, forCellWithReuseIdentifier: "sessionFeedCell")
+        
+        flowLayout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
+        
+        loadPage(sort: sort, category: category, level: level, page: currentPage, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,22 +52,40 @@ class SessionFeedController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return sessions.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "sessionFeedCell", for: indexPath)
+        
+        if let feedCell = cell as? SessionFeedCell, let data = sessions.get(indexPath.row) {
+            feedCell.update(data: data)
+        }
     
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "sessionFeedCell", for: indexPath)
+//        
+//        if let feedCell = cell as? SessionFeedCell, let data = sessions.get(indexPath.row) {
+//            feedCell.update(data: data)
+//        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        print(indexPaths)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        NotificationCenter.default.post(name: Global.kViewWillTransition, object: NSValue(cgSize: size))
     }
 
     // MARK: UICollectionViewDelegate
@@ -92,5 +118,46 @@ class SessionFeedController: UICollectionViewController {
     
     }
     */
-
+    
+    private func loadPage(sort: String, category: String, level: String, page: Int, completion: (() -> Void)?) -> Void {
+        if page == 1 {
+            self.hasNext = true
+        }
+        
+        if hasNext && !isLoading {
+            
+            self.isLoading = true
+            
+            NetService.shared.getCollection(path: "/svc/api/list/\(sort)/\(category)/\(level)/\(page)", completionHandler: { (res: DataResponse<[Session]>) in
+                
+                if let items = res.result.value?.filter({ (session) -> Bool in
+                    return session.status == "Y"
+                }) {
+                    self.hasNext = items.count > 9
+                    
+//                    let current = self.sessions.count
+                    
+                    if page == 1 {
+                        self.sessions = items
+                        self.collectionView?.reloadData()
+                    } else {
+                        self.sessions += items
+//                        self.insertRows(from: current, size: items.count)
+                    }
+                }
+                
+                if let callback = completion {
+                    callback()
+                }
+                
+                self.sort = sort
+                self.category = category
+                self.level = level
+                self.currentPage = page
+                self.isLoading = false
+            })
+        } else if let callback = completion {
+            callback()
+        }
+    }
 }

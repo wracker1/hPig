@@ -21,12 +21,14 @@ class ChannelController: UIViewController, UICollectionViewDelegate, UICollectio
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let ratio: CGFloat = 1
-        let margin: CGFloat = 15
-        let width = (view.bounds.size.width / 2) - margin
+//
+//        let ratio: CGFloat = 1
+//        let margin: CGFloat = 15
+//        let width = (view.bounds.size.width / 2) - margin
+//        
+//        flowLayout.itemSize = CGSize(width: width, height: width * ratio)
         
-        flowLayout.itemSize = CGSize(width: width, height: width * ratio)
+        flowLayout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
         
         if let channelId = id {
             NetService.shared.getObject(path: "/svc/api/channel/\(channelId)", completionHandler: { (res: DataResponse<Channel>) in
