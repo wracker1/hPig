@@ -31,6 +31,7 @@
 		884523061DBF265700802510 /* MyInfoHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884523051DBF265700802510 /* MyInfoHeaderCell.swift */; };
 		884523091DBF44CF00802510 /* HISTORY+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884523071DBF44CF00802510 /* HISTORY+CoreDataClass.swift */; };
 		8845230A1DBF44CF00802510 /* HISTORY+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884523081DBF44CF00802510 /* HISTORY+CoreDataProperties.swift */; };
+		8845230C1DBF482400802510 /* ChannelInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8845230B1DBF482400802510 /* ChannelInfoCell.swift */; };
 		884B0E861D939B13009748FF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884B0E841D939B13009748FF /* AVFoundation.framework */; };
 		884B0E871D939B13009748FF /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884B0E851D939B13009748FF /* AVKit.framework */; };
 		884B0E891D939B1D009748FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884B0E881D939B1D009748FF /* CoreGraphics.framework */; };
@@ -151,6 +152,7 @@
 		884523051DBF265700802510 /* MyInfoHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoHeaderCell.swift; sourceTree = "<group>"; };
 		884523071DBF44CF00802510 /* HISTORY+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HISTORY+CoreDataClass.swift"; sourceTree = "<group>"; };
 		884523081DBF44CF00802510 /* HISTORY+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HISTORY+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8845230B1DBF482400802510 /* ChannelInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChannelInfoCell.swift; path = channel/ChannelInfoCell.swift; sourceTree = "<group>"; };
 		884B0E841D939B13009748FF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		884B0E851D939B13009748FF /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		884B0E881D939B1D009748FF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -618,6 +620,7 @@
 		88DEDF051DB7753700781123 /* channel */ = {
 			isa = PBXGroup;
 			children = (
+				8845230B1DBF482400802510 /* ChannelInfoCell.swift */,
 				88DEDF061DB7757800781123 /* ChannelSessionCell.swift */,
 			);
 			name = channel;
@@ -837,6 +840,7 @@
 				887933831DBA1D5C001CB925 /* WORD+CoreDataProperties.swift in Sources */,
 				88BE97D91D9D0C37002903E3 /* AuthenticateService.swift in Sources */,
 				881ED0061D93AC0100D612EF /* CategoryService.swift in Sources */,
+				8845230C1DBF482400802510 /* ChannelInfoCell.swift in Sources */,
 				884523091DBF44CF00802510 /* HISTORY+CoreDataClass.swift in Sources */,
 				881ED0081D93AEA200D612EF /* LayoutService.swift in Sources */,
 				881ED0181D93B2B300D612EF /* YoutubeService.swift in Sources */,

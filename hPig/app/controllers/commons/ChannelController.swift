@@ -8,67 +8,43 @@
 
 import UIKit
 import Alamofire
-import CoreGraphics
 
 class ChannelController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var id: String? = nil
     var data: Channel? = nil
+    
+    private var channelHeader: ChannelInfoCell? = nil
 
-    @IBOutlet weak var mainScroller: UIScrollView!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var bannerView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var watcherCntLabel: UILabel!
-    @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var sessionsView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        imageView.layer.cornerRadius = 20
-        
+
         let ratio: CGFloat = 1
         let margin: CGFloat = 15
         let width = (view.bounds.size.width / 2) - margin
         
         flowLayout.itemSize = CGSize(width: width, height: width * ratio)
-
+        
         if let channelId = id {
             NetService.shared.getObject(path: "/svc/api/channel/\(channelId)", completionHandler: { (res: DataResponse<Channel>) in
                 self.data = res.result.value
-                self.loadData()
                 self.sessionsView.reloadData()
             })
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-    }
-    
-    override func viewWillLayoutSubviews() {
-        LayoutService.shared.adjustContentSize(mainScroller, subScroller: sessionsView)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    private func loadData() {
-        if let channel = data {
-            self.title = channel.name
-            self.titleLabel.text = channel.name
-            self.watcherCntLabel.text = channel.subCnt
-            self.descLabel.text = channel.desc
-            
-            ImageDownloadService.shared.get(url: channel.image, filter: nil, completionHandler: { (res) in
-                self.imageView.image = res.result.value
-            })
-            
-            ImageDownloadService.shared.get(url: channel.banner, filter: nil, completionHandler: { (res) in
-                self.bannerView.image = res.result.value
-            })
+        let cell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "channelInfoCell", for: indexPath)
+        
+        if let header = cell as? ChannelInfoCell {
+            initHeader(header)
         }
+        
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -93,6 +69,19 @@ class ChannelController: UIViewController, UICollectionViewDelegate, UICollectio
             let session = data?.videoList.get(indexPath.row) {
             
             sessionMain.session = session
+        }
+    }
+    
+    private func initHeader(_ item: ChannelInfoCell) {
+        if channelHeader == nil, let channel = data {
+            self.channelHeader = item
+            
+            item.loadData(channel, completion: {
+                
+            })
+            
+            self.title = channel.name
+            
         }
     }
 }
