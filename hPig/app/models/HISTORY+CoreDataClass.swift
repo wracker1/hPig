@@ -2,7 +2,7 @@
 //  HISTORY+CoreDataClass.swift
 //  hPig
 //
-//  Created by Jesse on 2016. 10. 20..
+//  Created by Jesse on 2016. 10. 25..
 //  Copyright © 2016년 wearespeakingtube. All rights reserved.
 //
 
@@ -26,11 +26,12 @@ public class HISTORY: NSManagedObject {
         self.uid = userId
         self.lastdate = date
         self.studytime = studyTime
-        self.maxposition = String(maxPosition)
+        self.maxposition = Int64(maxPosition)
         
-        let old = Int(self.position ?? "0") ?? 0
-        if old < position {
-            self.position = String(position)
+        let newPosition = Int64(position)
+        
+        if self.position <  newPosition {
+            self.position = newPosition
         }
     }
 }

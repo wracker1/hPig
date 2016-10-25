@@ -8,244 +8,32 @@
 
 import UIKit
 import AlamofireImage
-import CoreGraphics
 import CoreData
-import Charts
 
 class MyInfoController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-
-    @IBOutlet weak var mainScroller: UIScrollView!
-    @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var idLabel: UILabel!
-    @IBOutlet weak var passNameLabel: UILabel!
-    @IBOutlet weak var passDurationLabel: UILabel!
-    @IBOutlet weak var studyTotalDurationView: UIView!
-    @IBOutlet weak var totalDurationLabel: UILabel!
-    @IBOutlet weak var numberOfVideoLabel: UILabel!
-    @IBOutlet weak var historyCollectionView: UICollectionView!
-    @IBOutlet weak var historySegControl: UISegmentedControl!
+    
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
-    @IBOutlet weak var chartView: BarChartView!
-    @IBOutlet weak var passInfoTitleLabel: UILabel!
-    @IBOutlet weak var purchaseButton: UIButton!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var passInfoView: UIStackView!
+    @IBOutlet weak var historyCollectionView: UICollectionView!
     
     private var histories = [HISTORY]()
+    private var infoHeader: MyInfoHeaderCell? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "학습 현황"
         
-        studyTotalDurationView.layer.cornerRadius = 5.0
-        studyTotalDurationView.layer.borderColor = UIColor.lightGray.cgColor
-        studyTotalDurationView.layer.borderWidth = 1.0
-        
         let ratio: CGFloat = 0.85
         let margin: CGFloat = 18
         let width = (view.bounds.size.width / 2) - margin
         
         flowLayout.itemSize = CGSize(width: width, height: width * ratio)
-        
-        purchaseButton.layer.borderColor = UIColor.red.cgColor
-        purchaseButton.layer.borderWidth = 1.0
-        purchaseButton.layer.cornerRadius = 8
-        
-        loginButton.layer.borderColor = UIColor.black.cgColor
-        loginButton.layer.borderWidth = 1.0
-        loginButton.layer.cornerRadius = 8
-        loginButton.addTarget(self, action: #selector(self.login), for: .touchUpInside)
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        AuthenticateService.shared.user { (user) in
-            self.loadUserInfo(user)
-        }
-    }
-    
-    override func viewWillLayoutSubviews() {
-        LayoutService.shared.adjustContentSize(mainScroller, subScroller: historyCollectionView)
-    }
-    
-    @IBAction func historySegChanged(_ sender: UISegmentedControl) {
-        AuthenticateService.shared.user { (user) in
-            let id = user?.id ?? Global.guestId
-            let historyReq: NSFetchRequest<HISTORY> = HISTORY.fetchRequest()
-            historyReq.sortDescriptors = [NSSortDescriptor(key: "lastdate", ascending: false)]
-            
-            switch sender.selectedSegmentIndex {
-            case 1:
-                historyReq.predicate = NSPredicate(format: "uid = '\(id)' AND position != maxposition")
-            case 2:
-                historyReq.predicate = NSPredicate(format: "uid = '\(id)' AND position == maxposition")
-            default:
-                historyReq.predicate = NSPredicate(format: "uid = '\(id)'")
-            }
-            
-            CoreDataService.shared.select(request: historyReq) { (items, error) in
-                self.histories = items
-                self.historyCollectionView.reloadData()
-            }
-        }
-    }
-    
-    private func presentPassInfoButton(_ user: TubeUserInfo?) {
-        if let tubeUser = user {
-            self.passInfoTitleLabel.text = "보유 이용권 정보"
-            
-            if let endDate = tubeUser.enddt, tubeUser.isActiveUser {
-                self.passInfoView.isHidden = false
-                self.purchaseButton.isHidden = true
-                self.loginButton.isHidden = true
-                self.passDurationLabel.text = "\(endDate) 까지"
-            } else {
-                self.passInfoView.isHidden = true
-                self.purchaseButton.isHidden = false
-                self.loginButton.isHidden = true
-            }
-        } else {
-            self.passInfoTitleLabel.text = ""
-            self.passInfoView.isHidden = true
-            self.purchaseButton.isHidden = true
-            self.loginButton.isHidden = false
-        }
-    }
-    
-    private func loadUserInfo(_ user: TubeUserInfo?) {
-        self.loadPersonalInfoView(user)
-        
-        let id = user?.id ?? Global.guestId
-        let logReq: NSFetchRequest<TIME_LOG> = TIME_LOG.fetchRequest()
-        logReq.predicate = NSPredicate(format: "uid = '\(id)'")
-        
-        CoreDataService.shared.select(request: logReq) { (items, error) in
-            self.loadStudyTimeInfoView(logs: items)
-        }
-        
-        let sixDaysLogReq: NSFetchRequest<TIME_LOG> = TIME_LOG.fetchRequest()
-        let sixDaysAgo = self.daysFromNow(days: -6)
-        sixDaysLogReq.predicate = NSPredicate(format: "uid = '\(id)' AND regdt >= %@", sixDaysAgo as NSDate)
-        
-        CoreDataService.shared.select(request: sixDaysLogReq) { (items, error) in
-            self.loadChart(logs: items)
-        }
-        
-        self.presentPassInfoButton(user)
-        self.historySegChanged(historySegControl)
-    }
-    
-    func login() {
-        AuthenticateService.shared.tryLogin(self) { (user) in
-            self.loadUserInfo(user)
-        }
-    }
-    
-    private func loadPersonalInfoView(_ user: TubeUserInfo?) {
-        let name = user?.nickname ?? "게스트"
-        let id = user?.id ?? Global.guestId
-        let url = user?.image ?? "https://ssl.pstatic.net/static/pwe/address/nodata_45x45.gif"
-        
-        nameLabel.text = "\(name) 님"
-        idLabel.text = "| \(id)"
-        
-        ImageDownloadService.shared.get(
-            url: url,
-            filter: nil,
-            completionHandler: { (res) in
-                if let image = res.result.value {
-                    self.profileImageView.image = image
-                }
-        })
-    }
-    
-    private func loadStudyTimeInfoView(logs: [TIME_LOG]) {
-        var totalTime: Double = 0
-        var vids = Set<String>()
-        
-        logs.forEach({ (log) in
-            totalTime += log.studytime
-            
-            if let vid = log.vid {
-                vids.insert(vid)
-            }
-        })
-        
-        totalDurationLabel.text = secondsToHoursMinutesSeconds(seconds: Int(totalTime))
-        numberOfVideoLabel.text = "\(vids.count)개"
-    }
-    
-    private func loadChart(logs: [TIME_LOG]) {
-        chartView.noDataText = ""
-        chartView.descriptionText = ""
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM.dd"
-        
-        var days = [String]()
-        for day in -6...0 {
-            let newDate = daysFromNow(days: day)
-            let dateString = formatter.string(from: newDate)
-            days.append(dateString)
-        }
-        
-        var logMap = [String : [TIME_LOG]]()
-        
-        for log in logs {
-            if let regdt = log.regdt {
-                let dateString = formatter.string(from: regdt as Date)
-                var dayLogs = logMap[dateString] ?? [TIME_LOG]()
-                dayLogs.append(log)
-                logMap[dateString] = dayLogs
-            }
-        }
-        
-        let studyTimes = days.map { (dateString) -> Double in
-            let dayLogs = logMap[dateString] ?? [TIME_LOG]()
-            var sum: Double = 0
-            
-            for log in dayLogs {
-                sum += log.studytime
-            }
-            
-            return sum / 60
-        }
-        
-        setChartData(dataPoints: days, values: studyTimes)
-    }
-    
-    private func daysFromNow(days: Int) -> Date {
-        let date = Date()
-        let interval = Double(days * 24 * 60 * 60)
-        return date.addingTimeInterval(interval)
-    }
-    
-    private func setChartData(dataPoints: [String], values: [Double]) {
-        var dataEntries: [BarChartDataEntry] = []
-        
-        for i in 0..<dataPoints.count {
-            let dataEntry = BarChartDataEntry(value: values[i], xIndex: i)
-            dataEntries.append(dataEntry)
-        }
-        
-        let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "학습시간(분)")
-        chartDataSet.colors = [pointColor]
-        
-        let chartData = BarChartData(xVals: dataPoints, dataSet: chartDataSet)
-        chartView.data = chartData
-        chartView.xAxis.labelPosition = .bottom
-        chartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInExpo)
-        
-    }
-    
-    private func secondsToHoursMinutesSeconds(seconds : Int) -> String {
-        let h = String(format: "%02d", seconds / 3600)
-        let m = String(format: "%02d", (seconds % 3600) / 60)
-        let s = String(format: "%02d", (seconds % 3600) % 60)
-        return "\(h):\(m):\(s)"
+        self.loadUserData()
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -266,6 +54,19 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+
+        let item = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+                                                               withReuseIdentifier: "myInfoHeaderView",
+                                                               for: indexPath)
+    
+        if let header = item as? MyInfoHeaderCell {
+            self.initInfoHeader(header)
+        }
+        
+        return item
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = (segue.destination as! UINavigationController).topViewController,
             let basic = viewController as? BasicStudyController,
@@ -273,7 +74,7 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
             let history = cell.history {
             
             basic.session = Session(history)
-            basic.currentIndex = Int(history.position ?? "0")!
+            basic.currentIndex = Int(history.position)
         }
     }
     
@@ -286,6 +87,48 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
             return AuthenticateService.shared.shouldPerform(identifier, viewController: self, sender: sender, session: session)
         } else {
             return AuthenticateService.shared.shouldPerform(identifier, viewController: self, sender: sender, session: nil)
+        }
+    }
+    
+    private func initInfoHeader(_ header: MyInfoHeaderCell) {
+        if self.infoHeader == nil {
+            self.infoHeader = header
+            
+            header.viewController = self
+            header.historySegControl.addTarget(self, action: #selector(self.historySegChanged(_:)), for: .valueChanged)
+            
+            loadUserData()
+        }
+    }
+    
+    private func loadUserData() {
+        if let header = infoHeader {
+            AuthenticateService.shared.user { (user) in
+                header.loadUserInfo(user)
+                self.historySegChanged(header.historySegControl)
+            }
+        }
+    }
+    
+    func historySegChanged(_ sender: UISegmentedControl) {
+        AuthenticateService.shared.user { (user) in
+            let id = user?.id ?? Global.guestId
+            let historyReq: NSFetchRequest<HISTORY> = HISTORY.fetchRequest()
+            historyReq.sortDescriptors = [NSSortDescriptor(key: "lastdate", ascending: false)]
+            
+            switch sender.selectedSegmentIndex {
+            case 1:
+                historyReq.predicate = NSPredicate(format: "uid = '\(id)' AND position < maxposition")
+            case 2:
+                historyReq.predicate = NSPredicate(format: "uid = '\(id)' AND position == maxposition")
+            default:
+                historyReq.predicate = NSPredicate(format: "uid = '\(id)'")
+            }
+            
+            CoreDataService.shared.select(request: historyReq) { (items, error) in
+                self.histories = items
+                self.historyCollectionView.reloadData()
+            }
         }
     }
     

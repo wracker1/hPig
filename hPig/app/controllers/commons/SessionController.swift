@@ -96,11 +96,9 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
                 let hasHistory = items.count > 0
                 self.continueButton.isHidden = !hasHistory
                 
-                if let history = items.first,
-                    let pos = history.position,
-                    let maxPos = history.maxposition,
-                    let position = Int(pos),
-                    let maxPosition = Int(maxPos) {
+                if let history = items.first {
+                    let position = Int(history.position)
+                    let maxPosition = Int(history.maxposition)
                     
                     let value = Float(position) / Float(maxPosition)
                     self.progress.progress = value

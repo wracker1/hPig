@@ -42,12 +42,13 @@ class StudyHistoryCell: UICollectionViewCell {
         
         if let url = history.image,
             let title = history.title,
-            let duration = history.duration,
-            let maxposition = Int(history.maxposition ?? "1"),
-            let position = Int(history.position ?? "0") {
+            let duration = history.duration {
             
             titleLabel.text = title
             durationLabel.text = duration
+            
+            let position = Int(history.position)
+            let maxposition = Int(history.maxposition)
             
             if position == maxposition {
                 completeLabel.isHidden = false
