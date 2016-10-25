@@ -25,6 +25,8 @@ class SessionFeedCell: UICollectionViewCell {
     @IBOutlet weak var outerWidth: NSLayoutConstraint!
     @IBOutlet weak var innerWidth: NSLayoutConstraint!
     
+    private let maxWidth: CGFloat = 414
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -47,10 +49,12 @@ class SessionFeedCell: UICollectionViewCell {
     }
     
     private func adjustConsts(_ size: CGSize) {
-        if size.width > size.height {
-            let width = size.width / 2
+        if size.width > maxWidth {
+            let i = Int(size.width) / Int(maxWidth)
+            let width = floor((size.width / CGFloat(i + 1)))
+            
             self.outerWidth.constant = width
-            self.innerWidth.constant = width - 10
+            self.innerWidth.constant = width - 8
         } else {
             self.outerWidth.constant = size.width
             self.innerWidth.constant = size.width
