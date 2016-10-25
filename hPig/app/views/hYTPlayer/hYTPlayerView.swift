@@ -41,6 +41,9 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
     }
     
     func prepareToPlay(_ id: String, range: CMTimeRange, completion: ((YTPlayerError?) -> Void)?) {
+        
+//        https://developers.google.com/youtube/player_parameters?playerVersion=HTML5
+        
         let playerVars: [String: Any] = [
             "controls": 2
             , "playsinline": 1
@@ -49,6 +52,7 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
             , "modestbranding": 0
             , "autoplay": 1
             , "rel": 0
+            , "fs": 0
             , "theme": "light"
             , "cc_load_policy": 0
             , "origin" : "https://www.example.com"
