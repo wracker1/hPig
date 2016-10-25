@@ -141,7 +141,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Jnq-2R-VJA">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="w97-xO-0sl">
+                        <barButtonItem key="leftBarButtonItem" style="done" id="w97-xO-0sl">
                             <button key="customView" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Jui-6O-xDX">
                                 <rect key="frame" x="16" y="-1" width="45" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
