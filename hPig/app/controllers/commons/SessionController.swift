@@ -77,12 +77,6 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
         
         patternExButton.layer.cornerRadius = 3
         patternExButton.layer.masksToBounds = true
-        
-        let ratio: CGFloat = 1.3
-        let margin: CGFloat = 10
-        let width = (view.bounds.size.width / 3) - margin
-        
-        flowLayout.itemSize = CGSize(width: width, height: width * ratio)
     }
     
     private func loadHistory(session: Session) {

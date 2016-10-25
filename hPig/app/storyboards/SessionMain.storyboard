@@ -151,22 +151,22 @@
                                                             <constraint firstAttribute="height" constant="160" id="bGW-k9-r5h"/>
                                                         </constraints>
                                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="FcO-hU-YyL">
-                                                            <size key="itemSize" width="110" height="160"/>
+                                                            <size key="itemSize" width="111" height="160"/>
                                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
                                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="relatedSessionView" id="5PK-Xa-KQc" customClass="RelatedSessionCell" customModule="hPig" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="110" height="160"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="111" height="160"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="110" height="160"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="111" height="160"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lRn-lW-eoO">
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" secondItem="lRn-lW-eoO" secondAttribute="height" multiplier="7:4" priority="750" id="bJO-zA-hzQ"/>
+                                                                                <constraint firstAttribute="width" secondItem="lRn-lW-eoO" secondAttribute="height" multiplier="9:5" priority="750" id="bJO-zA-hzQ"/>
                                                                             </constraints>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BP-94-zDm">
