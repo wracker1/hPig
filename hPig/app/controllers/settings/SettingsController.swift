@@ -12,18 +12,24 @@ import Toast_Swift
 
 class SettingsController: UITableViewController, MFMailComposeViewControllerDelegate {
     
-    private let cellIds = ["versionCell", "loginCell", "mailCell", "faqCell", "delDataCell"]
+    private func cellIds() -> [String] {
+        if AuthenticateService.shared.isOn() {
+            return ["versionCell", "loginCell", "mailCell", "pushCell", "faqCell", "delDataCell"]
+        } else {
+            return ["versionCell", "loginCell", "mailCell", "faqCell", "delDataCell"]
+        }
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellIds.count
+        return cellIds().count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let id = cellIds[indexPath.row]
+        let id = cellIds()[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath)
         
         switch id {
@@ -41,7 +47,7 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let id = cellIds[indexPath.row]
+        let id = cellIds()[indexPath.row]
         
         switch id {
         case "loginCell":
@@ -55,6 +61,25 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
             }
         default:
             print(id)
+        }
+    }
+    
+    @IBAction func updatePushNotiSetting(_ sender: AnyObject) {
+        if let sw = sender as? UISwitch {
+            AuthenticateService.shared.user({ (user) in
+                if let tubeUser = user {
+                    let param = [
+                        "id": tubeUser.id,
+                        "pushyn": sw.isOn ? "Y" : "N"
+                    ]
+                    
+                    NetService.shared.get(path: "/svc/api/user/update/pushyn", parameters: param).responseString(completionHandler: { (res) in
+                        if let message = res.result.value {
+                            print(message)
+                        }
+                    })
+                }
+            })
         }
     }
     

@@ -34,9 +34,19 @@ class SessionCell: UITableViewCell, hTableViewCell {
         contentWrapView.layer.shadowColor = UIColor.black.cgColor
         contentWrapView.layer.shadowOffset = CGSize(width: 0.1, height: 0.1)
         
-        channelButton.clipsToBounds = true
         channelButton.contentMode = .scaleAspectFill
         channelButton.layer.cornerRadius = 20.0
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.sessionImageView.image = nil
+        self.channelButton.imageView?.image = nil
+        
+        if let const = constCateImage {
+            categoryImageView.removeConstraint(const)
+        }
     }
     
     private func levelText(level: String) -> String {
@@ -54,14 +64,6 @@ class SessionCell: UITableViewCell, hTableViewCell {
     
     func update(data item: Session) -> UITableViewCell {
         self.channelButton.session = item
-        
-        sessionImageView.clipsToBounds = true
-        self.sessionImageView.image = nil
-        self.channelButton.imageView?.image = nil
-        
-        if let const = constCateImage {
-            categoryImageView.removeConstraint(const)
-        }
         
         if let imageUrl = item.image {
             ImageDownloadService.shared.get(url: imageUrl, filter: nil) { (res: DataResponse<Image>) in

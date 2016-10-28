@@ -21,12 +21,19 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         return instance
     }()
     
+    private var pushToken: String? = nil
+    private let tokenKey = "deviceToken"
+    
     var userMap = [String: User]()
     var userDataMap = [String: TubeUserInfo]()
     let naverConnection: NaverThirdPartyLoginConnection = NaverThirdPartyLoginConnection.getSharedInstance()!
     
     private weak var viewController: UIViewController? = nil
     private var completionHandler: ((TubeUserInfo?) -> Void)? = nil
+    
+    private func deviceToken() -> String? {
+        return UserDefaults.standard.value(forKey: tokenKey) as? String ?? pushToken
+    }
     
     func prepare(_ completion: ((TubeUserInfo?) -> Void)?) {
         naverConnection.serviceUrlScheme = kServiceAppUrlScheme
@@ -39,6 +46,25 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         naverConnection.delegate = self
         
         user(completion)
+    }
+    
+    func registerAPNSToken(_ token: String) {
+        self.pushToken = token
+        
+        UserDefaults.standard.set(token, forKey: tokenKey)
+    }
+    
+    func updateVisitCount() {
+        user { (info) in
+            if let data = info, let token = self.deviceToken() {
+                let param = ["id": data.id, "token": token]
+                NetService.shared.get(path: "/svc/api/user/update/visitcnt", parameters: param).responseString(completionHandler: { (res) in
+                    if let messaage = res.result.value {
+                        print(messaage)
+                    }
+                })
+            }
+        }
     }
     
     func isOn() -> Bool {
@@ -74,6 +100,16 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         let callback = completion ?? {(_) in }
         
         if let token = naverConnection.accessToken {
+            tubeUserInfo(token: token, retry: 3, completion: completion)
+        } else {
+            callback(nil)
+        }
+    }
+    
+    private func tubeUserInfo(token: String, retry: Int, completion: ((TubeUserInfo?) -> Void)?) {
+        let callback = completion ?? {(_) in }
+        
+        if retry > 0 {
             if let user = userMap[token], let info = userDataMap[user.id] {
                 callback(info)
             } else {
@@ -83,11 +119,23 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
                 NetService.shared.get(req: req).response { (res) in
                     if let data = res.data, let user = User(data: data), user.id != Global.guestId {
                         self.userMap[token] = user
-                        self.tubeUser(user.id, completion: completion)
+                        self.tubeUser(user.id, completion: { (tubeUser) in
+                            if let userInfo = tubeUser {
+                                callback(userInfo)
+                            } else {
+                                self.joinUser(user: user, completion: { (success) in
+                                    if success {
+                                        self.tubeUser(user.id, completion: completion)
+                                    } else {
+                                        callback(nil)
+                                    }
+                                })
+                            }
+                        })
                     } else {
                         self.userMap.removeValue(forKey: self.naverConnection.accessToken)
                         self.naverConnection.requestAccessTokenWithRefreshToken()
-                        callback(nil)
+                        self.tubeUserInfo(token: token, retry: retry - 1, completion: completion)
                     }
                 }
             }
@@ -96,10 +144,58 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         }
     }
     
+    private func joinUser(user: User, completion: ((Bool) -> Void)?) {
+        if user.id.isEmpty {
+            if let callback = completion {
+                callback(false)
+            }
+        } else {
+            let path = "/svc/api/user/join"
+            var parameters: [String: Any] = ["id": user.id, "os": "I"]
+            
+            if let age = user.age {
+                do {
+                    let regex = try NSRegularExpression(pattern: "[^-d]*", options: .caseInsensitive)
+                    let range = NSRange(location: 0, length: age.characters.count)
+                    
+                    if let match = regex.firstMatch(in: age, options: [], range: range) {
+                        parameters["age"] = (age as NSString).substring(with: match.range)
+                    }
+                } catch let e {
+                    print("\(e)")
+                }
+            }
+            
+            if let gender = user.gender {
+                parameters["gender"] = gender
+            }
+            
+            
+            if let nickname = user.nickname {
+                parameters["nickname"] = nickname
+            }
+            
+            if let image = user.profileImage {
+                parameters["image"] = image
+            }
+            
+            if let token = deviceToken() {
+                parameters["token"] = token
+            }
+            
+            NetService.shared.post(path: path, parameters: parameters).responseString(completionHandler: { (res) in
+                if let callback = completion {
+                    callback(res.result.value != nil)
+                }
+            })
+        }
+    }
+    
     private func tubeUser(_ id: String, completion: ((TubeUserInfo?) -> Void)?) {
         let callback = completion ?? {(_) in }
         
         NetService.shared.getObject(path: "/svc/api/user/info?id=\(id)", completionHandler: { (res: DataResponse<TubeUserInfo>) in
+
             if let userInfo = res.result.value {
                 self.userDataMap[id] = userInfo
                 

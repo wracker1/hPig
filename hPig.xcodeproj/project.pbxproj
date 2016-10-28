@@ -78,6 +78,8 @@
 		887933821DBA1D5C001CB925 /* WORD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887933801DBA1D5C001CB925 /* WORD+CoreDataClass.swift */; };
 		887933831DBA1D5C001CB925 /* WORD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887933811DBA1D5C001CB925 /* WORD+CoreDataProperties.swift */; };
 		888684FE1D99282D00989028 /* PatternStudyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888684FD1D99282D00989028 /* PatternStudyController.swift */; };
+		88B4BAC21DC1B91000AFFE3A /* UIScrollViewOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B4BAC11DC1B91000AFFE3A /* UIScrollViewOps.swift */; };
+		88B4BAC41DC1F62F00AFFE3A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B4BAC31DC1F62F00AFFE3A /* StoreKit.framework */; };
 		88B9ED981DB49B0600EC86D6 /* hYTPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9ED941DB49B0600EC86D6 /* hYTPlayerView.swift */; };
 		88B9ED991DB49B0600EC86D6 /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = 88B9ED951DB49B0600EC86D6 /* YTPlayerView-iframe-player.html */; };
 		88B9ED9A1DB49B0600EC86D6 /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B9ED971DB49B0600EC86D6 /* YTPlayerView.m */; };
@@ -212,6 +214,8 @@
 		887933801DBA1D5C001CB925 /* WORD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataClass.swift"; sourceTree = "<group>"; };
 		887933811DBA1D5C001CB925 /* WORD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		888684FD1D99282D00989028 /* PatternStudyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PatternStudyController.swift; path = commons/PatternStudyController.swift; sourceTree = "<group>"; };
+		88B4BAC11DC1B91000AFFE3A /* UIScrollViewOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewOps.swift; sourceTree = "<group>"; };
+		88B4BAC31DC1F62F00AFFE3A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		88B9ED941DB49B0600EC86D6 /* hYTPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hYTPlayerView.swift; sourceTree = "<group>"; };
 		88B9ED951DB49B0600EC86D6 /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "YTPlayerView-iframe-player.html"; sourceTree = "<group>"; };
 		88B9ED961DB49B0600EC86D6 /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
@@ -261,6 +265,7 @@
 				8879337D1DB8B315001CB925 /* NotificationCenter.framework in Frameworks */,
 				8879337E1DB8B315001CB925 /* UserNotifications.framework in Frameworks */,
 				8879337F1DB8B315001CB925 /* UserNotificationsUI.framework in Frameworks */,
+				88B4BAC41DC1F62F00AFFE3A /* StoreKit.framework in Frameworks */,
 				88DEDEED1DB4CE2F00781123 /* CoreData.framework in Frameworks */,
 				887741531DAE29E700198666 /* MessageUI.framework in Frameworks */,
 				886EF1751D9C2B58009DA8E8 /* libNaverLogin.a in Frameworks */,
@@ -285,6 +290,7 @@
 		21B261A3D92EB5396488C94B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88B4BAC31DC1F62F00AFFE3A /* StoreKit.framework */,
 				8879337A1DB8B315001CB925 /* NotificationCenter.framework */,
 				8879337B1DB8B315001CB925 /* UserNotifications.framework */,
 				8879337C1DB8B315001CB925 /* UserNotificationsUI.framework */,
@@ -559,6 +565,7 @@
 				881ED01D1D93B92100D612EF /* ArrayOps.swift */,
 				881ED0241D93D07400D612EF /* OptionOps.swift */,
 				88DEDEF51DB605CC00781123 /* UIViewOps.swift */,
+				88B4BAC11DC1B91000AFFE3A /* UIScrollViewOps.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -698,12 +705,18 @@
 				TargetAttributes = {
 					88CDB9E81D92BDA30058ECFE = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = FY7JU9WRTC;
+						DevelopmentTeam = 86536G6WG7;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
 							com.apple.InterAppAudio = {
 								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
 							};
 						};
 					};
@@ -879,6 +892,7 @@
 				887741731DB0A2AD00198666 /* PatternView.swift in Sources */,
 				8877415A1DAF8D1F00198666 /* User.swift in Sources */,
 				886085271D97D342009A9B3C /* BasicStudyController.swift in Sources */,
+				88B4BAC21DC1B91000AFFE3A /* UIScrollViewOps.swift in Sources */,
 				88DEDF041DB76A5500781123 /* ChannelButton.swift in Sources */,
 				887933611DB861F3001CB925 /* TubeUserInfo.swift in Sources */,
 				887933741DB8A56A001CB925 /* PATTERN+CoreDataProperties.swift in Sources */,
@@ -1037,7 +1051,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = FY7JU9WRTC;
+				CODE_SIGN_ENTITLEMENTS = hPig/hPig.entitlements;
+				DEVELOPMENT_TEAM = 86536G6WG7;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = hPig/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1045,7 +1060,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ThirdPartyModule",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wearespeakingtube.hPig;
+				PRODUCT_BUNDLE_IDENTIFIER = com.speakingtube.hPig;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "hPig-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1060,7 +1075,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = FY7JU9WRTC;
+				CODE_SIGN_ENTITLEMENTS = hPig/hPig.entitlements;
+				DEVELOPMENT_TEAM = 86536G6WG7;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = hPig/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1068,7 +1084,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ThirdPartyModule",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wearespeakingtube.hPig;
+				PRODUCT_BUNDLE_IDENTIFIER = com.speakingtube.hPig;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "hPig-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

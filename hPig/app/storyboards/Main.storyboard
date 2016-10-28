@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2548a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zVx-pS-ww8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zVx-pS-ww8">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -134,10 +134,10 @@
             </objects>
             <point key="canvasLocation" x="1302" y="2173"/>
         </scene>
-        <!--SessionFeed-->
+        <!--Sessions-->
         <scene sceneID="bzB-pb-SWG">
             <objects>
-                <viewControllerPlaceholder storyboardName="SessionFeed" id="OQq-WN-AUg" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Sessions" id="OQq-WN-AUg" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="qlp-SI-9a9"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xcs-cb-yVR" userLabel="First Responder" sceneMemberID="firstResponder"/>

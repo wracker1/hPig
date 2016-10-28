@@ -88,15 +88,15 @@ class SessionsController: UITableViewController {
                     }
                 }
                 
-                if let callback = completion {
-                    callback()
-                }
-                
                 self.sort = sort
                 self.category = category
                 self.level = level
                 self.currentPage = page
                 self.isLoading = false
+                
+                if let callback = completion {
+                    callback()
+                }
             })
         } else if let callback = completion {
             callback()
@@ -140,8 +140,8 @@ class SessionsController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if (self.sessions.count - 2) < indexPath.row {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.shouldLoadNext(tableViewVelocity, hasNext: hasNext, isLoading: isLoading) {
             loadPage(sort: sort, category: category, level: level, page: currentPage + 1, completion: nil)
         }
     }
