@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="120" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j2Z-0h-yl3" id="aEC-2r-l0s">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="버전 정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2uj-8c-HeB">
@@ -44,7 +44,7 @@
                                 <rect key="frame" x="0.0" y="164" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WXY-59-Bnm" id="WFP-Pm-9Vr">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="로그인" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AcQ-ya-W0z">
@@ -57,14 +57,34 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mailCell" textLabel="uEv-Ou-qZS" style="IBUITableViewCellStyleDefault" id="dua-nW-uKV">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="buyPassCell" textLabel="hbH-zM-Ktt" style="IBUITableViewCellStyleDefault" id="r0R-Ms-SOd">
                                 <rect key="frame" x="0.0" y="208" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r0R-Ms-SOd" id="saB-Ix-5gU">
+                                    <frame key="frameInset" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="패스 구매" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hbH-zM-Ktt">
+                                            <frame key="frameInset" minX="15" width="345" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="8PR-G7-Bdr" kind="presentation" id="wDr-AP-3ef"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mailCell" textLabel="uEv-Ou-qZS" style="IBUITableViewCellStyleDefault" id="dua-nW-uKV">
+                                <rect key="frame" x="0.0" y="252" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dua-nW-uKV" id="oTD-Wf-rou">
                                     <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="고객의견" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uEv-Ou-qZS">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="고객 의견" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uEv-Ou-qZS">
                                             <frame key="frameInset" minX="15" width="345" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -75,7 +95,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pushCell" id="e8Y-SG-sTT">
-                                <rect key="frame" x="0.0" y="252" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="296" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e8Y-SG-sTT" id="P1u-w5-gCh">
                                     <frame key="frameInset" width="375" height="43"/>
@@ -102,10 +122,10 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="faqCell" textLabel="okG-nv-G8h" style="IBUITableViewCellStyleDefault" id="INE-vi-eqw">
-                                <rect key="frame" x="0.0" y="296" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="340" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="INE-vi-eqw" id="BQ6-Nb-At6">
-                                    <frame key="frameInset" width="342" height="43"/>
+                                    <frame key="frameInset" width="342" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="자주 묻는 질문" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="okG-nv-G8h">
@@ -122,10 +142,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="delDataCell" textLabel="jAA-Dq-Sah" style="IBUITableViewCellStyleDefault" id="ZKn-fb-aeO">
-                                <rect key="frame" x="0.0" y="340" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="384" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZKn-fb-aeO" id="aao-Or-puy">
-                                    <frame key="frameInset" width="342" height="43"/>
+                                    <frame key="frameInset" width="342" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="데이터 삭제" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jAA-Dq-Sah">
@@ -277,7 +297,15 @@
                 <viewControllerPlaceholder storyboardIdentifier="hWebView" storyboardName="WebView" id="v3p-ut-AyN" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="326-4I-yGD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1301" y="2624"/>
+            <point key="canvasLocation" x="1072" y="2618"/>
+        </scene>
+        <!--BuyPass-->
+        <scene sceneID="I9I-4T-7jZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="BuyPass" id="8PR-G7-Bdr" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6TR-LS-kwe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1534" y="2618"/>
         </scene>
     </scenes>
 </document>

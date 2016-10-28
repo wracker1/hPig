@@ -14,9 +14,9 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
     
     private func cellIds() -> [String] {
         if AuthenticateService.shared.isOn() {
-            return ["versionCell", "loginCell", "mailCell", "pushCell", "faqCell", "delDataCell"]
+            return ["versionCell", "loginCell", "buyPassCell", "pushCell", "mailCell", "faqCell", "delDataCell"]
         } else {
-            return ["versionCell", "loginCell", "mailCell", "faqCell", "delDataCell"]
+            return ["versionCell", "loginCell", "buyPassCell", "mailCell", "faqCell", "delDataCell"]
         }
     }
     
@@ -141,5 +141,9 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
             webController.url = "http://speakingtube.cafe24.com/faq.html"
             webController.title = "자주 묻는 질문"
         }
+    }
+    
+    @IBAction func returnFromBuyPass(segue: UIStoryboardSegue) {
+    
     }
 }
