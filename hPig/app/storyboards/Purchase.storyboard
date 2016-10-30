@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RGi-1b-EgI">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="8x2-VF-qco">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RGi-1b-EgI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uYD-Mz-1eb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4jF-xa-XgO" kind="relationship" relationship="rootViewController" id="SzV-Q4-OZi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y9w-Rh-hMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="141.59999999999999" y="127.28635682158921"/>
+        </scene>
+        <!--패스 구매-->
+        <scene sceneID="xfM-SY-Fyg">
+            <objects>
+                <viewController title="패스 구매" id="4jF-xa-XgO" customClass="PurchaseController" customModule="hPig" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SNz-XT-fbx"/>
+                        <viewControllerLayoutGuide type="bottom" id="fuO-Fx-A2f"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fV5-w0-122">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mj5-Z5-sf5">
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ah3-S5-gmh">
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="paC-5W-UpT">
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUb-VJ-JXL">
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1개월 이용권" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mI6-Zt-9or">
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="1month" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fcz-yf-X2q">
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="90" id="pOQ-54-Pn9"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                                <state key="normal" title="구매하기">
+                                                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="purchase:" destination="4jF-xa-XgO" eventType="touchUpInside" id="bB1-lL-GZ1"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="65" id="3dK-H2-Vgq"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Fcz-yf-X2q" secondAttribute="trailing" constant="10" id="5lV-ma-BII"/>
+                                                            <constraint firstItem="Fcz-yf-X2q" firstAttribute="leading" secondItem="mI6-Zt-9or" secondAttribute="trailing" constant="10" id="C45-Fd-fO1"/>
+                                                            <constraint firstItem="Fcz-yf-X2q" firstAttribute="centerY" secondItem="cUb-VJ-JXL" secondAttribute="centerY" id="EVr-12-idz"/>
+                                                            <constraint firstItem="mI6-Zt-9or" firstAttribute="leading" secondItem="cUb-VJ-JXL" secondAttribute="leading" constant="10" id="pb6-Sn-wUD"/>
+                                                            <constraint firstItem="mI6-Zt-9or" firstAttribute="centerY" secondItem="cUb-VJ-JXL" secondAttribute="centerY" id="xXf-1u-dHZ"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BHj-ne-6LM">
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3개월 이용권" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kiV-6N-Rjq">
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="3month" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6FL-vo-LxP">
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="90" id="p2N-st-x1I"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                                <state key="normal" title="구매하기">
+                                                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="purchase:" destination="4jF-xa-XgO" eventType="touchUpInside" id="862-u7-cRY"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstItem="6FL-vo-LxP" firstAttribute="leading" secondItem="kiV-6N-Rjq" secondAttribute="trailing" constant="10" id="6a9-KD-gFK"/>
+                                                            <constraint firstItem="kiV-6N-Rjq" firstAttribute="leading" secondItem="BHj-ne-6LM" secondAttribute="leading" constant="10" id="QAt-FG-x2g"/>
+                                                            <constraint firstItem="6FL-vo-LxP" firstAttribute="centerY" secondItem="BHj-ne-6LM" secondAttribute="centerY" id="cgr-Rt-kJJ"/>
+                                                            <constraint firstItem="kiV-6N-Rjq" firstAttribute="centerY" secondItem="BHj-ne-6LM" secondAttribute="centerY" id="dy0-mg-bgg"/>
+                                                            <constraint firstAttribute="height" constant="65" id="iao-XF-PZe"/>
+                                                            <constraint firstAttribute="trailing" secondItem="6FL-vo-LxP" secondAttribute="trailing" constant="10" id="pvw-eE-gTy"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yAT-oM-e6W">
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6개월 이용권" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rv0-NP-zTK">
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="6month" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKb-0p-INg">
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="90" id="sUf-sS-5uU"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                                <state key="normal" title="구매하기">
+                                                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="purchase:" destination="4jF-xa-XgO" eventType="touchUpInside" id="ZZ9-1P-cOj"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstItem="rv0-NP-zTK" firstAttribute="centerY" secondItem="yAT-oM-e6W" secondAttribute="centerY" id="04u-ad-WQv"/>
+                                                            <constraint firstAttribute="height" constant="65" id="2bf-Wm-1aW"/>
+                                                            <constraint firstItem="rv0-NP-zTK" firstAttribute="leading" secondItem="yAT-oM-e6W" secondAttribute="leading" constant="10" id="2j6-2H-Q6c"/>
+                                                            <constraint firstItem="KKb-0p-INg" firstAttribute="centerY" secondItem="yAT-oM-e6W" secondAttribute="centerY" id="CiR-II-KP0"/>
+                                                            <constraint firstAttribute="trailing" secondItem="KKb-0p-INg" secondAttribute="trailing" constant="10" id="RnK-wW-WXn"/>
+                                                            <constraint firstItem="KKb-0p-INg" firstAttribute="leading" secondItem="rv0-NP-zTK" secondAttribute="trailing" constant="10" id="YPI-6s-zhQ"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5sY-ut-vIw">
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12개월 이용권" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKg-p7-OUA">
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="12month" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aX2-qj-plR">
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="90" id="FvI-iX-SZd"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                                <state key="normal" title="구매하기">
+                                                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="purchase:" destination="4jF-xa-XgO" eventType="touchUpInside" id="xD0-EL-TZV"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstItem="aX2-qj-plR" firstAttribute="centerY" secondItem="5sY-ut-vIw" secondAttribute="centerY" id="POl-NW-Drf"/>
+                                                            <constraint firstItem="yKg-p7-OUA" firstAttribute="leading" secondItem="5sY-ut-vIw" secondAttribute="leading" constant="10" id="TE6-GN-j7f"/>
+                                                            <constraint firstAttribute="trailing" secondItem="aX2-qj-plR" secondAttribute="trailing" constant="10" id="dyb-xV-9ET"/>
+                                                            <constraint firstItem="aX2-qj-plR" firstAttribute="leading" secondItem="yKg-p7-OUA" secondAttribute="trailing" constant="10" id="izZ-dP-TWD"/>
+                                                            <constraint firstAttribute="height" constant="65" id="nuB-dX-PLN"/>
+                                                            <constraint firstItem="yKg-p7-OUA" firstAttribute="centerY" secondItem="5sY-ut-vIw" secondAttribute="centerY" id="tGe-u8-UZI"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="yAT-oM-e6W" secondAttribute="trailing" id="5zz-hs-1Ax"/>
+                                                    <constraint firstItem="BHj-ne-6LM" firstAttribute="leading" secondItem="paC-5W-UpT" secondAttribute="leading" id="6vs-M7-TXN"/>
+                                                    <constraint firstAttribute="trailing" secondItem="5sY-ut-vIw" secondAttribute="trailing" id="ODL-X8-dGB"/>
+                                                    <constraint firstItem="5sY-ut-vIw" firstAttribute="leading" secondItem="paC-5W-UpT" secondAttribute="leading" id="Vtc-GC-TtJ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="BHj-ne-6LM" secondAttribute="trailing" id="YXP-Us-QSF"/>
+                                                    <constraint firstItem="yAT-oM-e6W" firstAttribute="leading" secondItem="paC-5W-UpT" secondAttribute="leading" id="iCA-Yh-9e3"/>
+                                                    <constraint firstAttribute="trailing" secondItem="cUb-VJ-JXL" secondAttribute="trailing" id="ppR-q2-40U"/>
+                                                    <constraint firstItem="cUb-VJ-JXL" firstAttribute="leading" secondItem="paC-5W-UpT" secondAttribute="leading" id="ydS-As-u9f"/>
+                                                </constraints>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="토탈패스를 구매하시면 스피킹튜브의 300개가 넘는 영상을 해당 기간동안 무제한 학습하실 수 있습니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLa-Ow-cbH">
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="패스는 영상에 대한 한영 자막, 따라읽기 기능, 패턴학습 기능을 이용하기 위한 것이며, 유투브 영상은 무료로 제공됩니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQR-OF-y2j">
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FGh-43-nzM">
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="HcJ-de-VwW"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                <state key="normal" title="패스 구매에 대한 FAQ">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="zLa-Ow-cbH" secondAttribute="trailing" constant="5" id="1hF-Lh-GVW"/>
+                                            <constraint firstItem="paC-5W-UpT" firstAttribute="top" secondItem="zLa-Ow-cbH" secondAttribute="bottom" constant="12" id="KFF-7v-Xck"/>
+                                            <constraint firstItem="RQR-OF-y2j" firstAttribute="top" secondItem="paC-5W-UpT" secondAttribute="bottom" constant="12" id="KlZ-HF-rP9"/>
+                                            <constraint firstItem="FGh-43-nzM" firstAttribute="leading" secondItem="ah3-S5-gmh" secondAttribute="leadingMargin" id="QLa-h2-ak6"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="paC-5W-UpT" secondAttribute="trailing" id="Wgw-PP-p7d"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="FGh-43-nzM" secondAttribute="trailing" id="Ytb-fC-GJm"/>
+                                            <constraint firstItem="FGh-43-nzM" firstAttribute="top" secondItem="RQR-OF-y2j" secondAttribute="bottom" constant="12" id="Yus-bW-toE"/>
+                                            <constraint firstItem="zLa-Ow-cbH" firstAttribute="top" secondItem="ah3-S5-gmh" secondAttribute="topMargin" constant="5" id="hSy-24-MSm"/>
+                                            <constraint firstItem="paC-5W-UpT" firstAttribute="leading" secondItem="ah3-S5-gmh" secondAttribute="leadingMargin" id="hqX-Ic-8jx"/>
+                                            <constraint firstItem="RQR-OF-y2j" firstAttribute="leading" secondItem="ah3-S5-gmh" secondAttribute="leadingMargin" constant="5" id="nnl-4b-rBb"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="FGh-43-nzM" secondAttribute="bottom" priority="750" constant="5" id="ps0-c7-EvP"/>
+                                            <constraint firstItem="zLa-Ow-cbH" firstAttribute="leading" secondItem="ah3-S5-gmh" secondAttribute="leadingMargin" constant="5" id="qSb-6z-uxe"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="RQR-OF-y2j" secondAttribute="trailing" constant="5" id="xz1-dn-hWW"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ah3-S5-gmh" firstAttribute="top" secondItem="Mj5-Z5-sf5" secondAttribute="top" id="Pby-EH-dXc"/>
+                                    <constraint firstItem="ah3-S5-gmh" firstAttribute="leading" secondItem="Mj5-Z5-sf5" secondAttribute="leading" id="bnY-M1-Ylx"/>
+                                    <constraint firstItem="ah3-S5-gmh" firstAttribute="centerX" secondItem="Mj5-Z5-sf5" secondAttribute="centerX" id="iHi-NI-ECL"/>
+                                    <constraint firstAttribute="trailing" secondItem="ah3-S5-gmh" secondAttribute="trailing" id="ufo-aW-k4M"/>
+                                    <constraint firstAttribute="bottom" secondItem="ah3-S5-gmh" secondAttribute="bottom" id="zLH-R4-DbP"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Mj5-Z5-sf5" firstAttribute="leading" secondItem="fV5-w0-122" secondAttribute="leading" id="0zx-ID-fHb"/>
+                            <constraint firstItem="ah3-S5-gmh" firstAttribute="width" secondItem="fV5-w0-122" secondAttribute="width" id="3jC-P3-pZ9"/>
+                            <constraint firstAttribute="trailing" secondItem="Mj5-Z5-sf5" secondAttribute="trailing" id="Zze-ii-xjt"/>
+                            <constraint firstAttribute="bottom" secondItem="Mj5-Z5-sf5" secondAttribute="bottom" id="cOq-C1-hhO"/>
+                            <constraint firstItem="Mj5-Z5-sf5" firstAttribute="centerX" secondItem="fV5-w0-122" secondAttribute="centerX" id="udq-tA-mMs"/>
+                            <constraint firstItem="Mj5-Z5-sf5" firstAttribute="top" secondItem="fV5-w0-122" secondAttribute="top" id="xpK-gO-t8Q"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="SaC-Y3-Dsm">
+                        <barButtonItem key="leftBarButtonItem" style="done" id="ZSR-Lt-Cgv">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Vyn-GY-mSv">
+                                <rect key="frame" x="16" y="-1" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="btn_close"/>
+                                <connections>
+                                    <segue destination="4Y3-fS-yi1" kind="unwind" unwindAction="returnFromPurchaseWithSegue:" id="wwH-iE-XoP"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="oneButton" destination="Fcz-yf-X2q" id="Djn-zV-gO3"/>
+                        <outlet property="oneWrap" destination="cUb-VJ-JXL" id="Ktm-MH-ged"/>
+                        <outlet property="sixButton" destination="KKb-0p-INg" id="LU4-oe-FoP"/>
+                        <outlet property="sixWrap" destination="yAT-oM-e6W" id="BB1-dP-9jJ"/>
+                        <outlet property="threeButton" destination="6FL-vo-LxP" id="Vdc-DB-rNA"/>
+                        <outlet property="threeWrap" destination="BHj-ne-6LM" id="0DN-Mz-sph"/>
+                        <outlet property="twelveButton" destination="aX2-qj-plR" id="VoK-VW-vM5"/>
+                        <outlet property="twelveWrap" destination="5sY-ut-vIw" id="32k-yx-9BB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FfR-Ba-OCB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="4Y3-fS-yi1" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="997.60000000000002" y="126.38680659670166"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="btn_close" width="55" height="55"/>
+    </resources>
+</document>

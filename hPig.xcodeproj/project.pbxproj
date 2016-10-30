@@ -34,14 +34,14 @@
 		8845230E1DBF55BD00802510 /* SessionFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8845230D1DBF55BD00802510 /* SessionFeed.storyboard */; };
 		884523101DBF561B00802510 /* SessionFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8845230F1DBF561B00802510 /* SessionFeedController.swift */; };
 		884523121DBF573A00802510 /* SessionFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884523111DBF573A00802510 /* SessionFeedCell.swift */; };
-		88468A1D1DC343C100ACC60D /* BuyPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88468A1C1DC343C100ACC60D /* BuyPass.storyboard */; };
+		88468A1D1DC343C100ACC60D /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88468A1C1DC343C100ACC60D /* Purchase.storyboard */; };
 		88468A251DC344D800ACC60D /* BasicStudyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88468A1F1DC344D800ACC60D /* BasicStudyController.swift */; };
 		88468A261DC344D800ACC60D /* ChannelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88468A201DC344D800ACC60D /* ChannelController.swift */; };
 		88468A271DC344D800ACC60D /* hActionPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88468A211DC344D800ACC60D /* hActionPickerController.swift */; };
 		88468A281DC344D800ACC60D /* hWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88468A221DC344D800ACC60D /* hWebViewController.swift */; };
 		88468A291DC344D800ACC60D /* PatternStudyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88468A231DC344D800ACC60D /* PatternStudyController.swift */; };
 		88468A2A1DC344D800ACC60D /* SessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88468A241DC344D800ACC60D /* SessionController.swift */; };
-		88468A2C1DC3451F00ACC60D /* BuyPassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88468A2B1DC3451F00ACC60D /* BuyPassController.swift */; };
+		88468A2C1DC3451F00ACC60D /* PurchaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88468A2B1DC3451F00ACC60D /* PurchaseController.swift */; };
 		884B0E861D939B13009748FF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884B0E841D939B13009748FF /* AVFoundation.framework */; };
 		884B0E871D939B13009748FF /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884B0E851D939B13009748FF /* AVKit.framework */; };
 		884B0E891D939B1D009748FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884B0E881D939B1D009748FF /* CoreGraphics.framework */; };
@@ -162,14 +162,14 @@
 		8845230D1DBF55BD00802510 /* SessionFeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SessionFeed.storyboard; sourceTree = "<group>"; };
 		8845230F1DBF561B00802510 /* SessionFeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionFeedController.swift; sourceTree = "<group>"; };
 		884523111DBF573A00802510 /* SessionFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionFeedCell.swift; sourceTree = "<group>"; };
-		88468A1C1DC343C100ACC60D /* BuyPass.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BuyPass.storyboard; sourceTree = "<group>"; };
+		88468A1C1DC343C100ACC60D /* Purchase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Purchase.storyboard; sourceTree = "<group>"; };
 		88468A1F1DC344D800ACC60D /* BasicStudyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicStudyController.swift; sourceTree = "<group>"; };
 		88468A201DC344D800ACC60D /* ChannelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelController.swift; sourceTree = "<group>"; };
 		88468A211DC344D800ACC60D /* hActionPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hActionPickerController.swift; sourceTree = "<group>"; };
 		88468A221DC344D800ACC60D /* hWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hWebViewController.swift; sourceTree = "<group>"; };
 		88468A231DC344D800ACC60D /* PatternStudyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatternStudyController.swift; sourceTree = "<group>"; };
 		88468A241DC344D800ACC60D /* SessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionController.swift; sourceTree = "<group>"; };
-		88468A2B1DC3451F00ACC60D /* BuyPassController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyPassController.swift; sourceTree = "<group>"; };
+		88468A2B1DC3451F00ACC60D /* PurchaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseController.swift; sourceTree = "<group>"; };
 		884B0E841D939B13009748FF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		884B0E851D939B13009748FF /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		884B0E881D939B1D009748FF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -359,7 +359,7 @@
 		88468A1E1DC344D800ACC60D /* modal */ = {
 			isa = PBXGroup;
 			children = (
-				88468A2B1DC3451F00ACC60D /* BuyPassController.swift */,
+				88468A2B1DC3451F00ACC60D /* PurchaseController.swift */,
 				88468A1F1DC344D800ACC60D /* BasicStudyController.swift */,
 				88468A201DC344D800ACC60D /* ChannelController.swift */,
 				88468A211DC344D800ACC60D /* hActionPickerController.swift */,
@@ -411,7 +411,7 @@
 				88DEDEF31DB5ED7300781123 /* BasicStudy.storyboard */,
 				887741631DB0738C00198666 /* Settings.storyboard */,
 				887741641DB0738C00198666 /* WebView.storyboard */,
-				88468A1C1DC343C100ACC60D /* BuyPass.storyboard */,
+				88468A1C1DC343C100ACC60D /* Purchase.storyboard */,
 				887741651DB0738C00198666 /* WorkBook.storyboard */,
 				88DEDEFD1DB7637B00781123 /* ChannelMain.storyboard */,
 			);
@@ -763,7 +763,7 @@
 				887741711DB0743C00198666 /* pattern_view.xib in Resources */,
 				881ED0111D93B02100D612EF /* session_nav_view.xib in Resources */,
 				887741681DB0738C00198666 /* MyInfo.storyboard in Resources */,
-				88468A1D1DC343C100ACC60D /* BuyPass.storyboard in Resources */,
+				88468A1D1DC343C100ACC60D /* Purchase.storyboard in Resources */,
 				8877416A1DB0738C00198666 /* PatternStudy.storyboard in Resources */,
 				8877416C1DB0738C00198666 /* Sessions.storyboard in Resources */,
 				881ED0101D93B02100D612EF /* picker_action_view.xib in Resources */,
@@ -880,7 +880,7 @@
 				881ED0181D93B2B300D612EF /* YoutubeService.swift in Sources */,
 				88BE97D31D9D04B2002903E3 /* BannerCell.swift in Sources */,
 				887933731DB8A56A001CB925 /* PATTERN+CoreDataClass.swift in Sources */,
-				88468A2C1DC3451F00ACC60D /* BuyPassController.swift in Sources */,
+				88468A2C1DC3451F00ACC60D /* PurchaseController.swift in Sources */,
 				8829124E1DAFD32700E5B6E4 /* AlertService.swift in Sources */,
 				880549A21DAA5083001CF3F8 /* hInteractedLabel.swift in Sources */,
 				88DEDEF01DB4D53700781123 /* StudyHistoryCell.swift in Sources */,

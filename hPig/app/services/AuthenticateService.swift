@@ -242,6 +242,24 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
             } else {
                 return false
             }
+        case "showPurchase":
+            if AuthenticateService.shared.isOn() {
+                return true
+            } else {
+                AlertService.shared.presentConfirm(
+                    viewController,
+                    title: "로그인이 필요합니다. 로그인 하시겠습니까?",
+                    message: nil,
+                    cancel: nil,
+                    confirm: {
+                        self.tryLogin(viewController, completion: { (success) in
+                            viewController.performSegue(withIdentifier: id, sender: sender)
+                        })
+                })
+                
+                return false
+            }
+            
         default:
             return true
         }

@@ -14,9 +14,9 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
     
     private func cellIds() -> [String] {
         if AuthenticateService.shared.isOn() {
-            return ["versionCell", "loginCell", "buyPassCell", "pushCell", "mailCell", "faqCell", "delDataCell"]
+            return ["versionCell", "loginCell", "purchaseCell", "pushCell", "mailCell", "faqCell", "delDataCell"]
         } else {
-            return ["versionCell", "loginCell", "buyPassCell", "mailCell", "faqCell", "delDataCell"]
+            return ["versionCell", "loginCell", "purchaseCell", "mailCell", "faqCell", "delDataCell"]
         }
     }
     
@@ -143,7 +143,11 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
         }
     }
     
-    @IBAction func returnFromBuyPass(segue: UIStoryboardSegue) {
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return AuthenticateService.shared.shouldPerform(identifier, viewController: self, sender: sender, session: nil)
+    }
+    
+    @IBAction func returnFromPurchase(segue: UIStoryboardSegue) {
     
     }
 }
