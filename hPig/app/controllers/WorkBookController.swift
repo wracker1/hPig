@@ -132,17 +132,17 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     private func toggleTableView() {
         switch segMenu.selectedSegmentIndex {
         case 0:
-            loadWordData {
-                self.patternTableView.isHidden = true
-                self.wordTableView.isHidden = false
-                self.selectedTableView = self.wordTableView
-            }
-            
-        case 1:
             loadPatternData {
                 self.patternTableView.isHidden = false
                 self.wordTableView.isHidden = true
                 self.selectedTableView = self.patternTableView
+            }
+            
+        case 1:
+            loadWordData {
+                self.patternTableView.isHidden = true
+                self.wordTableView.isHidden = false
+                self.selectedTableView = self.wordTableView
             }
             
         default:

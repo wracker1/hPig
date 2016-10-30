@@ -17,6 +17,7 @@ class hEnglishDictionaryView: UIView {
     private var viewController: UIViewController? = nil
     private var videoPlayer: hYTPlayerView? = nil
     private var audioPlayer: AVAudioPlayer? = nil
+    private var sentence: String? = nil
     private var visible = false
     
     @IBOutlet weak var wordLabel: UILabel!
@@ -48,9 +49,11 @@ class hEnglishDictionaryView: UIView {
         }
     }
     
-    func present(_ controller: UIViewController, data: WordData, videoPlayer: hYTPlayerView?) {
+    func present(_ controller: UIViewController, data: WordData, sentence: String, videoPlayer: hYTPlayerView?) {
         self.viewController = controller
         self.videoPlayer = videoPlayer
+        self.sentence = sentence
+        
         self.update(data: data) {
             let size = controller.view.bounds.size
             self.frame = CGRect(x: 0, y: size.height, width: size.width, height: 0)
@@ -204,7 +207,7 @@ class hEnglishDictionaryView: UIView {
                     } else {
                         let (desc, ctx) = CoreDataService.shared.entityDescription("word")
                         let word = WORD(entity: desc!, insertInto: ctx)
-                        word.mutating(data: item, uid: uid)
+                        word.mutating(data: item, uid: uid, sentence: self.sentence)
                         word.count += 1
                         superview.presentToast("저장 하였습니다.\n학습 정보에서 확인 해보세요.")
                     }

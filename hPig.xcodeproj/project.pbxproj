@@ -79,8 +79,10 @@
 		8879337D1DB8B315001CB925 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8879337A1DB8B315001CB925 /* NotificationCenter.framework */; };
 		8879337E1DB8B315001CB925 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8879337B1DB8B315001CB925 /* UserNotifications.framework */; };
 		8879337F1DB8B315001CB925 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8879337C1DB8B315001CB925 /* UserNotificationsUI.framework */; };
-		887933821DBA1D5C001CB925 /* WORD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887933801DBA1D5C001CB925 /* WORD+CoreDataClass.swift */; };
-		887933831DBA1D5C001CB925 /* WORD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887933811DBA1D5C001CB925 /* WORD+CoreDataProperties.swift */; };
+		888EB0141DC646010022A906 /* SessionsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888EB0131DC646010022A906 /* SessionsHeader.swift */; };
+		888EB0161DC6463C0022A906 /* sessions_header.xib in Resources */ = {isa = PBXBuildFile; fileRef = 888EB0151DC6463C0022A906 /* sessions_header.xib */; };
+		888EB0191DC652850022A906 /* WORD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888EB0171DC652850022A906 /* WORD+CoreDataClass.swift */; };
+		888EB01A1DC652850022A906 /* WORD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888EB0181DC652850022A906 /* WORD+CoreDataProperties.swift */; };
 		88B4BAC21DC1B91000AFFE3A /* UIScrollViewOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B4BAC11DC1B91000AFFE3A /* UIScrollViewOps.swift */; };
 		88B4BAC41DC1F62F00AFFE3A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B4BAC31DC1F62F00AFFE3A /* StoreKit.framework */; };
 		88B9ED981DB49B0600EC86D6 /* hYTPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9ED941DB49B0600EC86D6 /* hYTPlayerView.swift */; };
@@ -217,8 +219,10 @@
 		8879337A1DB8B315001CB925 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		8879337B1DB8B315001CB925 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		8879337C1DB8B315001CB925 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
-		887933801DBA1D5C001CB925 /* WORD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataClass.swift"; sourceTree = "<group>"; };
-		887933811DBA1D5C001CB925 /* WORD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		888EB0131DC646010022A906 /* SessionsHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionsHeader.swift; path = uiviews/SessionsHeader.swift; sourceTree = "<group>"; };
+		888EB0151DC6463C0022A906 /* sessions_header.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = sessions_header.xib; sourceTree = "<group>"; };
+		888EB0171DC652850022A906 /* WORD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		888EB0181DC652850022A906 /* WORD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		88B4BAC11DC1B91000AFFE3A /* UIScrollViewOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewOps.swift; sourceTree = "<group>"; };
 		88B4BAC31DC1F62F00AFFE3A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		88B9ED941DB49B0600EC86D6 /* hYTPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hYTPlayerView.swift; sourceTree = "<group>"; };
@@ -339,6 +343,7 @@
 				8853766F1DB662850076D1BF /* hEnglishDictionaryView.swift */,
 				88DEDF031DB76A5500781123 /* ChannelButton.swift */,
 				887933781DB8A7FC001CB925 /* PatternImageButton.swift */,
+				888EB0131DC646010022A906 /* SessionsHeader.swift */,
 			);
 			name = uiviews;
 			sourceTree = "<group>";
@@ -352,6 +357,7 @@
 				887741701DB0743C00198666 /* pattern_view.xib */,
 				8853766D1DB660540076D1BF /* eng_dic_view.xib */,
 				88DEDEFB1DB75CF700781123 /* eng_dic_view_cell.xib */,
+				888EB0151DC6463C0022A906 /* sessions_header.xib */,
 			);
 			path = xib;
 			sourceTree = "<group>";
@@ -421,10 +427,10 @@
 		887FA9A21DA112BF00821495 /* db */ = {
 			isa = PBXGroup;
 			children = (
+				888EB0171DC652850022A906 /* WORD+CoreDataClass.swift */,
+				888EB0181DC652850022A906 /* WORD+CoreDataProperties.swift */,
 				884523071DBF44CF00802510 /* HISTORY+CoreDataClass.swift */,
 				884523081DBF44CF00802510 /* HISTORY+CoreDataProperties.swift */,
-				887933801DBA1D5C001CB925 /* WORD+CoreDataClass.swift */,
-				887933811DBA1D5C001CB925 /* WORD+CoreDataProperties.swift */,
 				887933711DB8A56A001CB925 /* PATTERN+CoreDataClass.swift */,
 				887933721DB8A56A001CB925 /* PATTERN+CoreDataProperties.swift */,
 				88DEDEE81DB4BC1200781123 /* TIME_LOG+CoreDataClass.swift */,
@@ -760,6 +766,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				887741671DB0738C00198666 /* Main.storyboard in Resources */,
+				888EB0161DC6463C0022A906 /* sessions_header.xib in Resources */,
 				887741711DB0743C00198666 /* pattern_view.xib in Resources */,
 				881ED0111D93B02100D612EF /* session_nav_view.xib in Resources */,
 				887741681DB0738C00198666 /* MyInfo.storyboard in Resources */,
@@ -870,7 +877,6 @@
 				88468A271DC344D800ACC60D /* hActionPickerController.swift in Sources */,
 				8853766C1DB65C5D0076D1BF /* WordData.swift in Sources */,
 				88DEDEF61DB605CC00781123 /* UIViewOps.swift in Sources */,
-				887933831DBA1D5C001CB925 /* WORD+CoreDataProperties.swift in Sources */,
 				88BE97D91D9D0C37002903E3 /* AuthenticateService.swift in Sources */,
 				881ED0061D93AC0100D612EF /* CategoryService.swift in Sources */,
 				88468A2A1DC344D800ACC60D /* SessionController.swift in Sources */,
@@ -882,9 +888,9 @@
 				887933731DB8A56A001CB925 /* PATTERN+CoreDataClass.swift in Sources */,
 				88468A2C1DC3451F00ACC60D /* PurchaseController.swift in Sources */,
 				8829124E1DAFD32700E5B6E4 /* AlertService.swift in Sources */,
+				888EB0141DC646010022A906 /* SessionsHeader.swift in Sources */,
 				880549A21DAA5083001CF3F8 /* hInteractedLabel.swift in Sources */,
 				88DEDEF01DB4D53700781123 /* StudyHistoryCell.swift in Sources */,
-				887933821DBA1D5C001CB925 /* WORD+CoreDataClass.swift in Sources */,
 				881ED0141D93B0AA00D612EF /* hSessionControlView.swift in Sources */,
 				88CDBA1C1D92CB4A0058ECFE /* MyInfoController.swift in Sources */,
 				886EF1761D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m in Sources */,
@@ -899,11 +905,13 @@
 				8877415A1DAF8D1F00198666 /* User.swift in Sources */,
 				88B4BAC21DC1B91000AFFE3A /* UIScrollViewOps.swift in Sources */,
 				88DEDF041DB76A5500781123 /* ChannelButton.swift in Sources */,
+				888EB01A1DC652850022A906 /* WORD+CoreDataProperties.swift in Sources */,
 				887933611DB861F3001CB925 /* TubeUserInfo.swift in Sources */,
 				887933741DB8A56A001CB925 /* PATTERN+CoreDataProperties.swift in Sources */,
 				88CDBA191D92CB350058ECFE /* WorkBookController.swift in Sources */,
 				88DEDF071DB7757800781123 /* ChannelSessionCell.swift in Sources */,
 				88BE97D01D9D04B2002903E3 /* SubtitleCell.swift in Sources */,
+				888EB0191DC652850022A906 /* WORD+CoreDataClass.swift in Sources */,
 				88DEDEEB1DB4BC1200781123 /* TIME_LOG+CoreDataProperties.swift in Sources */,
 				88468A281DC344D800ACC60D /* hWebViewController.swift in Sources */,
 				887933791DB8A7FC001CB925 /* PatternImageButton.swift in Sources */,

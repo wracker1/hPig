@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="16A323" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="16B2555" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="HISTORY" representedClassName=".HISTORY" syncable="YES">
         <attribute name="channelId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="channelImage" optional="YES" attributeType="String" syncable="YES"/>
@@ -47,6 +47,7 @@
         <attribute name="pron" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pronfile" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="regdt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="sentence" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="word" optional="YES" attributeType="String" syncable="YES"/>
@@ -55,6 +56,6 @@
         <element name="HISTORY" positionX="-353" positionY="-135" width="128" height="270"/>
         <element name="PATTERN" positionX="169" positionY="-135" width="128" height="270"/>
         <element name="TIME_LOG" positionX="-180" positionY="-135" width="128" height="120"/>
-        <element name="WORD" positionX="-2" positionY="-135" width="128" height="165"/>
+        <element name="WORD" positionX="-2" positionY="-135" width="128" height="180"/>
     </elements>
 </model>

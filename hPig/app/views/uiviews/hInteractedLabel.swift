@@ -35,9 +35,10 @@ class hInteractedLabel: UILabel {
         let loc = recognizer.location(in: self)
         
         let textView = UITextView(frame: self.bounds)
+        let sentence = self.text
         textView.textContainerInset = UIEdgeInsetsMake(0, -0.5, 0, -0.5)
         textView.font = self.font
-        textView.text = self.text
+        textView.text = sentence
         textView.textAlignment = self.textAlignment
         
         
@@ -48,14 +49,14 @@ class hInteractedLabel: UILabel {
             
             NetService.shared.getObject(path: "/svc/api/dictionary/\(text)", completionHandler: { (res: DataResponse<WordData>) in
                 if let data = res.result.value {
-                    self.present(viewController: controller, data: data)
+                    self.present(viewController: controller, data: data, sentence: sentence ?? "")
                 }
             })
             
         }
     }
     
-    private func present(viewController: UIViewController, data: WordData) {
-        englishDictionaryView.present(viewController, data: data, videoPlayer: videoPlayer)
+    private func present(viewController: UIViewController, data: WordData, sentence: String) {
+        englishDictionaryView.present(viewController, data: data, sentence: sentence, videoPlayer: videoPlayer)
     }
 }

@@ -26,13 +26,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().tintColor = UIColor.black
         
-        AuthenticateService.shared.prepare { (user) in
-            self.logUser(user)
-        }
-        
         ToastManager.shared.style.verticalPadding = 10
         
-        Fabric.with([Crashlytics.self])
+        DispatchQueue.global().async {
+            AuthenticateService.shared.prepare { (user) in
+                self.logUser(user)
+            }
+            
+            Fabric.with([Crashlytics.self])
+        }
         
         return true
     }
