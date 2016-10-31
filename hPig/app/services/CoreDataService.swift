@@ -18,6 +18,10 @@ class CoreDataService {
         return instance
     }()
     
+    let appDelegate: AppDelegate = {
+        return UIApplication.shared.delegate as! AppDelegate
+    }()
+    
     let context: NSManagedObjectContext = {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }()
@@ -42,13 +46,7 @@ class CoreDataService {
     }
     
     func save() {
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch let e {
-                print("core data sava error: \(e)")
-            }
-        }
+        self.appDelegate.saveContext()
     }
     
     func deleteUserData(_ user: TubeUserInfo?, itemIds: [String]) {
@@ -80,14 +78,13 @@ class CoreDataService {
                 print(itemId)
             }
         }
-
-        save()
     }
     
     private func easeDelete<T>(_ req: NSFetchRequest<T>) {
         select(request: req) { (items, _) in
             items.forEach({ (item) in
                 self.delete(model: item)
+                self.save()
             })
         }
     }

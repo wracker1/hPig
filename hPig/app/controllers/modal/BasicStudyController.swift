@@ -52,6 +52,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         
         englishSubLabel.viewController = self
         englishSubLabel.videoPlayer = playerView
+        englishSubLabel.session = session
         englishSubLabel.text = ""
         koreanSubLabel.text = ""
         

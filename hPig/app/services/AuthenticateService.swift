@@ -24,9 +24,9 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     private var pushToken: String? = nil
     private let tokenKey = "deviceToken"
     
-    var userMap = [String: User]()
-    var userDataMap = [String: TubeUserInfo]()
-    let naverConnection: NaverThirdPartyLoginConnection = NaverThirdPartyLoginConnection.getSharedInstance()!
+    private var userMap = [String: User]()
+    private var userDataMap = [String: TubeUserInfo]()
+    private let naverConnection: NaverThirdPartyLoginConnection = NaverThirdPartyLoginConnection.getSharedInstance()!
     
     private weak var viewController: UIViewController? = nil
     private var completionHandler: ((TubeUserInfo?) -> Void)? = nil
@@ -36,16 +36,28 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     }
     
     func prepare(_ completion: ((TubeUserInfo?) -> Void)?) {
-        naverConnection.serviceUrlScheme = kServiceAppUrlScheme
-        naverConnection.consumerKey = kConsumerKey
-        naverConnection.consumerSecret = kConsumerSecret
-        naverConnection.appName = kServiceAppName
+        DispatchQueue.global().async {
+            self.naverConnection.serviceUrlScheme = kServiceAppUrlScheme
+            self.naverConnection.consumerKey = kConsumerKey
+            self.naverConnection.consumerSecret = kConsumerSecret
+            self.naverConnection.appName = kServiceAppName
+            
+            self.naverConnection.isNaverAppOauthEnable = true
+            self.naverConnection.isInAppOauthEnable = true
+            self.naverConnection.delegate = self
+            
+            self.user(completion)
+        }
+    }
+    
+    @discardableResult func refreshToken() -> AuthenticateService {
+        DispatchQueue.global().async {
+            if self.isOn() {
+                self.naverConnection.requestAccessTokenWithRefreshToken()
+            }
+        }
         
-        naverConnection.isNaverAppOauthEnable = true
-        naverConnection.isInAppOauthEnable = true
-        naverConnection.delegate = self
-        
-        user(completion)
+        return self
     }
     
     func registerAPNSToken(_ token: String) {
@@ -54,17 +66,22 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         UserDefaults.standard.set(token, forKey: tokenKey)
     }
     
-    func updateVisitCount() {
-        user { (info) in
-            if let data = info, let token = self.deviceToken() {
-                let param = ["id": data.id, "token": token]
-                NetService.shared.get(path: "/svc/api/user/update/visitcnt", parameters: param).responseString(completionHandler: { (res) in
-                    if let messaage = res.result.value {
-                        print(messaage)
-                    }
-                })
+    @discardableResult func updateVisitCount() -> AuthenticateService {
+        DispatchQueue.global().async {
+            self.user { (info) in
+                if let data = info, let token = self.deviceToken() {
+                    let param = ["id": data.id, "token": token]
+                    
+                    NetService.shared.get(path: "/svc/api/user/update/visitcnt", parameters: param).responseString(completionHandler: { (res) in
+                        if let messaage = res.result.value {
+                            print(messaage)
+                        }
+                    })
+                }
             }
         }
+        
+        return self
     }
     
     func isOn() -> Bool {
@@ -93,6 +110,14 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         
         if let handler = completion {
             handler()
+        }
+    }
+    
+    func naverInfo() -> User? {
+        if let token = naverConnection.accessToken, let user = userMap[token] {
+            return user
+        } else {
+            return nil
         }
     }
     
@@ -133,13 +158,13 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
                             }
                         })
                     } else {
-                        self.userMap.removeValue(forKey: self.naverConnection.accessToken)
-                        self.naverConnection.requestAccessTokenWithRefreshToken()
+                        self.refreshToken()
                         self.tubeUserInfo(token: token, retry: retry - 1, completion: completion)
                     }
                 }
             }
         } else {
+            logout(completion: nil)
             callback(nil)
         }
     }

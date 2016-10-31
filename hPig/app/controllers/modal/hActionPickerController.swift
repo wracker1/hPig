@@ -53,6 +53,8 @@ class hActionPickerController {
         alertController.view.addSubview(picker)
         picker.titleLabel.text = title
         
+        alertController.addAction(UIAlertAction(title: "", style: .cancel, handler: nil))
+        
         self.controller = alertController
         self.pickerView = picker
         

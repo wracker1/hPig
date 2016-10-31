@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,19 +26,24 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQs-yD-aww">
+                    <rect key="frame" x="8" y="209" width="359" height="450"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                     <state key="normal" title="확인"/>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xqy-kI-jkk">
+                    <rect key="frame" x="12" y="11" width="351" height="188"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FYY-Ym-ZfT">
+                            <rect key="frame" x="8" y="0.0" width="335" height="63"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEc-1e-hIK">
+                                    <rect key="frame" x="8" y="8" width="319" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQm-5o-lnf">
+                                    <rect key="frame" x="8" y="34" width="319" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -53,26 +61,31 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="뜻/의미" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MuD-Lb-gV2">
+                            <rect key="frame" x="8" y="71" width="50" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="743" image="stroke_dot" translatesAutoresizingMaskIntoConstraints="NO" id="YhF-9O-rCF">
+                            <rect key="frame" x="8" y="129" width="335" height="1"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="Y2x-tG-Oej"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="튜브의 한마디" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3g-gA-w02">
+                            <rect key="frame" x="8" y="138" width="335" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oad-ih-YHj">
+                            <rect key="frame" x="8" y="167" width="335" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4U0-iE-g0Y">
+                            <rect key="frame" x="8" y="100" width="335" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -107,8 +120,10 @@
                 <constraint firstItem="xqy-kI-jkk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="3KO-j4-LzY"/>
                 <constraint firstItem="HQs-yD-aww" firstAttribute="top" secondItem="xqy-kI-jkk" secondAttribute="bottom" constant="10" id="3Le-CP-3V7"/>
                 <constraint firstAttribute="trailing" secondItem="xqy-kI-jkk" secondAttribute="trailing" constant="12" id="Mlb-B7-dDa"/>
+                <constraint firstItem="HQs-yD-aww" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="Ni8-9Y-XFY"/>
                 <constraint firstItem="xqy-kI-jkk" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="SmJ-S0-NPF"/>
-                <constraint firstAttribute="bottomMargin" secondItem="HQs-yD-aww" secondAttribute="bottom" constant="5" id="Zlh-Rq-TbR"/>
+                <constraint firstAttribute="bottomMargin" secondItem="HQs-yD-aww" secondAttribute="bottom" id="Zlh-Rq-TbR"/>
+                <constraint firstAttribute="trailingMargin" secondItem="HQs-yD-aww" secondAttribute="trailing" id="dmo-by-7hH"/>
                 <constraint firstItem="xqy-kI-jkk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" constant="3" id="zh2-2z-pTl"/>
             </constraints>
             <point key="canvasLocation" x="-143.5" y="34.5"/>

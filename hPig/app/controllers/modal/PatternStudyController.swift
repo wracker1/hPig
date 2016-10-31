@@ -43,6 +43,7 @@ class PatternStudyController: UIViewController {
         englishLabel.text = ""
         englishLabel.viewController = self
         englishLabel.videoPlayer = playerView
+        englishLabel.session = session
         
         koreanLabel.text = ""
         meaningLabel.text = ""

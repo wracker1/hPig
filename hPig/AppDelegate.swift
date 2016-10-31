@@ -40,10 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func logUser(_ item: TubeUserInfo?) {
-        let auth = AuthenticateService.shared
-        
-        if item != nil,
-            let naverInfo = auth.userMap[auth.naverConnection.accessToken],
+        if let naverInfo = AuthenticateService.shared.naverInfo(),
             let email = naverInfo.email,
             let accountId = naverInfo.accountId,
             let name = naverInfo.name {
@@ -56,9 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-        
-        AuthenticateService.shared.registerAPNSToken(deviceTokenString)
+        AuthenticateService.shared.registerAPNSToken(deviceToken.reduce("", {$0 + String(format: "%02X", $1)}))
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -73,6 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        self.saveContext()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

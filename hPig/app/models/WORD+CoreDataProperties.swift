@@ -2,7 +2,7 @@
 //  WORD+CoreDataProperties.swift
 //  hPig
 //
-//  Created by 이동현 on 2016. 10. 31..
+//  Created by 이동현 on 2016. 11. 1..
 //  Copyright © 2016년 wearespeakingtube. All rights reserved.
 //
 
@@ -21,9 +21,19 @@ extension WORD {
     @NSManaged public var pron: String?
     @NSManaged public var pronfile: String?
     @NSManaged public var regdt: NSDate?
+    @NSManaged public var sentence: String?
     @NSManaged public var summary: String?
     @NSManaged public var uid: String?
     @NSManaged public var word: String?
-    @NSManaged public var sentence: String?
+    @NSManaged public var korean: String?
+    @NSManaged public var vid: String?
+    @NSManaged public var part: String?
+    @NSManaged public var svctype: String?
+    @NSManaged public var image: String?
+    @NSManaged public var channelId: String?
+    @NSManaged public var channelImage: String?
+    @NSManaged public var channelName: String?
+    @NSManaged public var title: String?
+    @NSManaged public var time: Float
 
 }

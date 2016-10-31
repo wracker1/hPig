@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,19 +25,24 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0J0-xy-Fln">
+                    <rect key="frame" x="12" y="8" width="54" height="27"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="R8Q-1D-u3c"/>
+                    </constraints>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNb-2r-Peg">
+                    <rect key="frame" x="74" y="11" width="42" height="21"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7l-XB-myE">
-                    <frame key="frameInset" minX="126" minY="10.5" width="30" height="22"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7l-XB-myE">
+                    <rect key="frame" x="126" y="10.5" width="30" height="22"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="25" id="3aq-xC-p3Z"/>
+                        <constraint firstAttribute="width" constant="30" id="3aq-xC-p3Z"/>
                     </constraints>
                     <state key="normal" title="재생" image="btn_speaker"/>
                     <connections>
@@ -42,6 +50,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LO6-xc-Iad">
+                    <rect key="frame" x="161" y="11" width="35" height="22"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="35" id="sJP-2L-6fw"/>
                     </constraints>
@@ -51,6 +60,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oR1-pE-cRC">
+                    <rect key="frame" x="328" y="4" width="35" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="35" id="AmD-0a-AK4"/>
+                    </constraints>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                     <state key="normal" title="확인"/>
                     <connections>
@@ -58,6 +71,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYe-XO-wSF">
+                    <rect key="frame" x="12" y="45" width="363" height="18"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -67,10 +81,11 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="oR1-pE-cRC" secondAttribute="trailing" constant="12" id="3n9-Aa-KdR"/>
                 <constraint firstItem="gYe-XO-wSF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="8I3-Ty-1nE"/>
-                <constraint firstAttribute="trailingMargin" secondItem="gYe-XO-wSF" secondAttribute="trailing" id="EZa-ou-Oqc"/>
+                <constraint firstAttribute="trailingMargin" secondItem="gYe-XO-wSF" secondAttribute="trailing" constant="-8" id="EZa-ou-Oqc"/>
                 <constraint firstItem="oNb-2r-Peg" firstAttribute="leading" secondItem="0J0-xy-Fln" secondAttribute="trailing" constant="8" id="IzW-DP-SyR"/>
-                <constraint firstItem="LO6-xc-Iad" firstAttribute="leading" secondItem="O7l-XB-myE" secondAttribute="trailing" constant="10" id="JNV-0V-0rg"/>
+                <constraint firstItem="LO6-xc-Iad" firstAttribute="leading" secondItem="O7l-XB-myE" secondAttribute="trailing" constant="5" id="JNV-0V-0rg"/>
                 <constraint firstItem="O7l-XB-myE" firstAttribute="centerY" secondItem="0J0-xy-Fln" secondAttribute="centerY" id="R0x-yu-X50"/>
+                <constraint firstItem="oR1-pE-cRC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LO6-xc-Iad" secondAttribute="trailing" constant="5" id="SGh-Uh-Gk3"/>
                 <constraint firstItem="LO6-xc-Iad" firstAttribute="centerY" secondItem="0J0-xy-Fln" secondAttribute="centerY" id="axZ-gH-fHq"/>
                 <constraint firstItem="0J0-xy-Fln" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="ct5-WM-4Ic"/>
                 <constraint firstItem="O7l-XB-myE" firstAttribute="leading" secondItem="oNb-2r-Peg" secondAttribute="trailing" constant="10" id="oPl-18-va4"/>

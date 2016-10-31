@@ -42,7 +42,7 @@ class AlertService {
     }
     
     @discardableResult private func embed(_ viewController: UIViewController, alert: UIAlertController, view: UIView, completion: (() -> Void)?) -> UIAlertController {
-
+        alert.addAction(UIAlertAction(title: "", style: .cancel, handler: nil))
         alert.view.addSubview(view)
         alert.view.translatesAutoresizingMaskIntoConstraints = false
         view.translatesAutoresizingMaskIntoConstraints = false

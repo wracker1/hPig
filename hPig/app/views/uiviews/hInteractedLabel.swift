@@ -12,8 +12,10 @@ import CoreGraphics
 
 class hInteractedLabel: UILabel {
     
-    var viewController: UIViewController? = nil
-    var videoPlayer: hYTPlayerView? = nil
+    weak var viewController: UIViewController? = nil
+    weak var videoPlayer: hYTPlayerView? = nil
+    
+    var session: Session? = nil
     
     private let englishDictionaryView = hEnglishDictionaryView(frame: CGRectZero)
     
@@ -32,10 +34,11 @@ class hInteractedLabel: UILabel {
     override var canBecomeFirstResponder: Bool { get { return true } }
     
     func handleTap(_ recognizer: UITapGestureRecognizer) {
+        let time = videoPlayer?.currentTime() ?? 0
         let loc = recognizer.location(in: self)
-        
         let textView = UITextView(frame: self.bounds)
         let sentence = self.text
+        
         textView.textContainerInset = UIEdgeInsetsMake(0, -0.5, 0, -0.5)
         textView.font = self.font
         textView.text = sentence
@@ -49,14 +52,23 @@ class hInteractedLabel: UILabel {
             
             NetService.shared.getObject(path: "/svc/api/dictionary/\(text)", completionHandler: { (res: DataResponse<WordData>) in
                 if let data = res.result.value {
-                    self.present(viewController: controller, data: data, sentence: sentence ?? "")
+                    
+                    self.present(viewController: controller,
+                                 data: data,
+                                 sentence: sentence ?? "",
+                                 time: time)
                 }
             })
             
         }
     }
     
-    private func present(viewController: UIViewController, data: WordData, sentence: String) {
-        englishDictionaryView.present(viewController, data: data, sentence: sentence, videoPlayer: videoPlayer)
+    private func present(viewController: UIViewController, data: WordData, sentence: String, time: Float) {
+        englishDictionaryView.present(viewController,
+                                      data: data,
+                                      sentence: sentence,
+                                      session: session,
+                                      time: time,
+                                      videoPlayer: videoPlayer)
     }
 }
