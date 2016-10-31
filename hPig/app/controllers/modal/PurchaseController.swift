@@ -22,6 +22,8 @@ class PurchaseController: UIViewController, SKPaymentTransactionObserver, SKProd
     @IBOutlet weak var twelveWrap: UIView!
     
     private let paymentQueue = SKPaymentQueue.default()
+    
+    var controller: UIViewController? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +73,7 @@ class PurchaseController: UIViewController, SKPaymentTransactionObserver, SKProd
         for transaction in transactions {
             switch transaction.transactionState {
             case .purchased:
+                updatePurchaseInfo(transaction.payment.productIdentifier)
                 finishTransaction(transaction)
                 
             case .failed:
@@ -82,7 +85,23 @@ class PurchaseController: UIViewController, SKPaymentTransactionObserver, SKProd
         }
     }
     
+    private func updatePurchaseInfo(_ id: String) {
+//        http://speakingtube.cafe24.com/svc/api/user/update/pass?id="+userId+"&passtype="+passtype+"&info=" + info
+        AuthenticateService.shared.user { (user) in
+            if let tubeUser = user {
+//                tubeUser.id
+//                NetService.shared.get(path: "/svc/api/user/update/pass", para)
+            }
+        }
+    }
+    
     private func finishTransaction(_ transaction: SKPaymentTransaction) {
         paymentQueue.finishTransaction(transaction)
+    }
+    
+    @IBAction func dismiss(_ sender: AnyObject) {
+        if let vc = controller {
+            vc.dismiss(animated: true, completion: nil)
+        }
     }
 }

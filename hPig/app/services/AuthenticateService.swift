@@ -100,7 +100,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         let callback = completion ?? {(_) in }
         
         if let token = naverConnection.accessToken {
-            tubeUserInfo(token: token, retry: 3, completion: completion)
+            tubeUserInfo(token: token, retry: 2, completion: completion)
         } else {
             callback(nil)
         }
@@ -204,6 +204,21 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
                 callback(nil)
             }
         })
+    }
+    
+    func prepare(_ viewController: UIViewController, for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "showPurchase":
+                if let nav = segue.destination as? UINavigationController,
+                    let top = nav.topViewController as? PurchaseController {
+                    
+                    top.controller = viewController
+                }
+            default:
+                print("others")
+            }
+        }
     }
     
     func shouldPerform(_ id: String, viewController: UIViewController, sender: Any?, session: Session?) -> Bool {

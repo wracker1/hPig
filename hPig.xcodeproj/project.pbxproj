@@ -12,6 +12,7 @@
 		881076C31DBC76460038C21C /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881076C21DBC76460038C21C /* SettingsController.swift */; };
 		881076C51DBC76500038C21C /* SessionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881076C41DBC76500038C21C /* SessionsController.swift */; };
 		881076C71DBC76E40038C21C /* DataDeleteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881076C61DBC76E40038C21C /* DataDeleteController.swift */; };
+		881235BE1DC7466C002EC49A /* hTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881235BD1DC7466C002EC49A /* hTabBarController.swift */; };
 		881ED0041D93AB6400D612EF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0031D93AB6400D612EF /* Category.swift */; };
 		881ED0061D93AC0100D612EF /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0051D93AC0100D612EF /* CategoryService.swift */; };
 		881ED0081D93AEA200D612EF /* LayoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0071D93AEA200D612EF /* LayoutService.swift */; };
@@ -79,8 +80,6 @@
 		8879337D1DB8B315001CB925 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8879337A1DB8B315001CB925 /* NotificationCenter.framework */; };
 		8879337E1DB8B315001CB925 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8879337B1DB8B315001CB925 /* UserNotifications.framework */; };
 		8879337F1DB8B315001CB925 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8879337C1DB8B315001CB925 /* UserNotificationsUI.framework */; };
-		888EB0141DC646010022A906 /* SessionsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888EB0131DC646010022A906 /* SessionsHeader.swift */; };
-		888EB0161DC6463C0022A906 /* sessions_header.xib in Resources */ = {isa = PBXBuildFile; fileRef = 888EB0151DC6463C0022A906 /* sessions_header.xib */; };
 		888EB0191DC652850022A906 /* WORD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888EB0171DC652850022A906 /* WORD+CoreDataClass.swift */; };
 		888EB01A1DC652850022A906 /* WORD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888EB0181DC652850022A906 /* WORD+CoreDataProperties.swift */; };
 		88B4BAC21DC1B91000AFFE3A /* UIScrollViewOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B4BAC11DC1B91000AFFE3A /* UIScrollViewOps.swift */; };
@@ -138,6 +137,7 @@
 		881076C21DBC76460038C21C /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		881076C41DBC76500038C21C /* SessionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsController.swift; sourceTree = "<group>"; };
 		881076C61DBC76E40038C21C /* DataDeleteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDeleteController.swift; sourceTree = "<group>"; };
+		881235BD1DC7466C002EC49A /* hTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hTabBarController.swift; sourceTree = "<group>"; };
 		881A76E91DB4633A00CF6409 /* youtube_ios_player_helper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = youtube_ios_player_helper.framework; path = "Pods/../build/Debug-iphoneos/youtube-ios-player-helper/youtube_ios_player_helper.framework"; sourceTree = "<group>"; };
 		881A76EB1DB464FC00CF6409 /* YouTubePlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YouTubePlayer.framework; path = "Pods/../build/Debug-iphoneos/YouTubePlayer/YouTubePlayer.framework"; sourceTree = "<group>"; };
 		881A76EF1DB465C100CF6409 /* youtube_ios_player_helper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = youtube_ios_player_helper.framework; path = "../../../Library/Developer/Xcode/DerivedData/hPig-byqselxxffzlqhcolurdyikdjjha/Build/Products/Debug-iphonesimulator/youtube-ios-player-helper/youtube_ios_player_helper.framework"; sourceTree = "<group>"; };
@@ -219,8 +219,6 @@
 		8879337A1DB8B315001CB925 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		8879337B1DB8B315001CB925 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		8879337C1DB8B315001CB925 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
-		888EB0131DC646010022A906 /* SessionsHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionsHeader.swift; path = uiviews/SessionsHeader.swift; sourceTree = "<group>"; };
-		888EB0151DC6463C0022A906 /* sessions_header.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = sessions_header.xib; sourceTree = "<group>"; };
 		888EB0171DC652850022A906 /* WORD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataClass.swift"; sourceTree = "<group>"; };
 		888EB0181DC652850022A906 /* WORD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		88B4BAC11DC1B91000AFFE3A /* UIScrollViewOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewOps.swift; sourceTree = "<group>"; };
@@ -343,7 +341,6 @@
 				8853766F1DB662850076D1BF /* hEnglishDictionaryView.swift */,
 				88DEDF031DB76A5500781123 /* ChannelButton.swift */,
 				887933781DB8A7FC001CB925 /* PatternImageButton.swift */,
-				888EB0131DC646010022A906 /* SessionsHeader.swift */,
 			);
 			name = uiviews;
 			sourceTree = "<group>";
@@ -357,7 +354,6 @@
 				887741701DB0743C00198666 /* pattern_view.xib */,
 				8853766D1DB660540076D1BF /* eng_dic_view.xib */,
 				88DEDEFB1DB75CF700781123 /* eng_dic_view_cell.xib */,
-				888EB0151DC6463C0022A906 /* sessions_header.xib */,
 			);
 			path = xib;
 			sourceTree = "<group>";
@@ -567,6 +563,7 @@
 				88CDBA181D92CB350058ECFE /* WorkBookController.swift */,
 				881076C41DBC76500038C21C /* SessionsController.swift */,
 				88CDBA1B1D92CB4A0058ECFE /* MyInfoController.swift */,
+				881235BD1DC7466C002EC49A /* hTabBarController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -766,7 +763,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				887741671DB0738C00198666 /* Main.storyboard in Resources */,
-				888EB0161DC6463C0022A906 /* sessions_header.xib in Resources */,
 				887741711DB0743C00198666 /* pattern_view.xib in Resources */,
 				881ED0111D93B02100D612EF /* session_nav_view.xib in Resources */,
 				887741681DB0738C00198666 /* MyInfo.storyboard in Resources */,
@@ -888,11 +884,11 @@
 				887933731DB8A56A001CB925 /* PATTERN+CoreDataClass.swift in Sources */,
 				88468A2C1DC3451F00ACC60D /* PurchaseController.swift in Sources */,
 				8829124E1DAFD32700E5B6E4 /* AlertService.swift in Sources */,
-				888EB0141DC646010022A906 /* SessionsHeader.swift in Sources */,
 				880549A21DAA5083001CF3F8 /* hInteractedLabel.swift in Sources */,
 				88DEDEF01DB4D53700781123 /* StudyHistoryCell.swift in Sources */,
 				881ED0141D93B0AA00D612EF /* hSessionControlView.swift in Sources */,
 				88CDBA1C1D92CB4A0058ECFE /* MyInfoController.swift in Sources */,
+				881235BE1DC7466C002EC49A /* hTabBarController.swift in Sources */,
 				886EF1761D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m in Sources */,
 				886085301D97D74B009A9B3C /* SubtitleService.swift in Sources */,
 				88CDBA281D92D34F0058ECFE /* Session.swift in Sources */,

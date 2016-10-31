@@ -240,6 +240,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="btn_close"/>
                                 <connections>
+                                    <action selector="dismiss:" destination="4jF-xa-XgO" eventType="touchUpInside" id="v6N-MW-f9y"/>
                                     <segue destination="4Y3-fS-yi1" kind="unwind" unwindAction="returnFromPurchaseWithSegue:" id="wwH-iE-XoP"/>
                                 </connections>
                             </button>
@@ -259,7 +260,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FfR-Ba-OCB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="4Y3-fS-yi1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="997.60000000000002" y="126.38680659670166"/>
+            <point key="canvasLocation" x="873" y="127"/>
         </scene>
     </scenes>
     <resources>

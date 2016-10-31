@@ -140,14 +140,12 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
         if let webController = segue.destination as? hWebViewController {
             webController.url = "http://speakingtube.cafe24.com/faq.html"
             webController.title = "자주 묻는 질문"
+        } else {
+            AuthenticateService.shared.prepare(self, for: segue, sender: sender)
         }
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         return AuthenticateService.shared.shouldPerform(identifier, viewController: self, sender: sender, session: nil)
-    }
-    
-    @IBAction func returnFromPurchase(segue: UIStoryboardSegue) {
-    
     }
 }

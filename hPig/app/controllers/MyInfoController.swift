@@ -75,6 +75,8 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
             
             basic.session = Session(history)
             basic.currentIndex = Int(history.position)
+        } else {
+            AuthenticateService.shared.prepare(self, for: segue, sender: sender)
         }
     }
     

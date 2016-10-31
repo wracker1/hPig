@@ -15,6 +15,22 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
     private var ignoreRange = false
     private var id: String? = nil
     
+    //        https://developers.google.com/youtube/player_parameters?playerVersion=HTML5
+    
+    var playerVars: [String: Any] = [
+        "controls": 2
+        , "playsinline": 1
+        , "autohide": 1
+        , "showinfo": 0
+        , "modestbranding": 0
+        , "autoplay": 1
+        , "rel": 0
+        , "fs": 0
+        , "theme": "light"
+        , "cc_load_policy": 0
+        , "origin" : "https://www.example.com"
+    ]
+    
     var ticker: ((CMTime) -> Void)? = nil
     var playRange: CMTimeRange? = nil
     
@@ -41,23 +57,6 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
     }
     
     func prepareToPlay(_ id: String, range: CMTimeRange, completion: ((YTPlayerError?) -> Void)?) {
-        
-//        https://developers.google.com/youtube/player_parameters?playerVersion=HTML5
-        
-        let playerVars: [String: Any] = [
-            "controls": 2
-            , "playsinline": 1
-            , "autohide": 1
-            , "showinfo": 0
-            , "modestbranding": 0
-            , "autoplay": 1
-            , "rel": 0
-            , "fs": 0
-            , "theme": "light"
-            , "cc_load_policy": 0
-            , "origin" : "https://www.example.com"
-        ]
-        
         self.id = id
         self.completion = completion
         

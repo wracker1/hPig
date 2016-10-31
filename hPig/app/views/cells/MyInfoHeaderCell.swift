@@ -23,7 +23,6 @@ class MyInfoHeaderCell: UICollectionViewCell {
     @IBOutlet weak var historySegControl: UISegmentedControl!
     @IBOutlet weak var chartView: BarChartView!
     @IBOutlet weak var passInfoTitleLabel: UILabel!
-    @IBOutlet weak var purchaseButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var passInfoView: UIStackView!
     
@@ -35,10 +34,6 @@ class MyInfoHeaderCell: UICollectionViewCell {
         studyTotalDurationView.layer.cornerRadius = 5.0
         studyTotalDurationView.layer.borderColor = UIColor.lightGray.cgColor
         studyTotalDurationView.layer.borderWidth = 1.0
-        
-        purchaseButton.layer.borderColor = UIColor.red.cgColor
-        purchaseButton.layer.borderWidth = 1.0
-        purchaseButton.layer.cornerRadius = 8
         
         loginButton.layer.borderColor = UIColor.black.cgColor
         loginButton.layer.borderWidth = 1.0
@@ -94,18 +89,15 @@ class MyInfoHeaderCell: UICollectionViewCell {
 
             if let endDate = tubeUser.enddt, tubeUser.isActiveUser {
                 self.passInfoView.isHidden = false
-                self.purchaseButton.isHidden = true
                 self.loginButton.isHidden = true
                 self.passDurationLabel.text = "\(endDate) 까지"
             } else {
                 self.passInfoView.isHidden = true
-                self.purchaseButton.isHidden = false
                 self.loginButton.isHidden = true
             }
         } else {
             self.passInfoTitleLabel.text = ""
             self.passInfoView.isHidden = true
-            self.purchaseButton.isHidden = true
             self.loginButton.isHidden = false
         }
     }

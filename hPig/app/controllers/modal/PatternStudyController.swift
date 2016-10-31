@@ -38,6 +38,8 @@ class PatternStudyController: UIViewController {
         let id = session?.id ?? ""
         let part = Int(session?.part ?? "0")!
         
+        playerView.playerVars["controls"] = 0
+        
         englishLabel.text = ""
         englishLabel.viewController = self
         englishLabel.videoPlayer = playerView

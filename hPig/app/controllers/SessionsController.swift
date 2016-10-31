@@ -22,6 +22,8 @@ class SessionsController: UITableViewController {
     
     @IBOutlet weak var listFilterButton: UIBarButtonItem!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +31,7 @@ class SessionsController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 400
         self.tableView.estimatedSectionHeaderHeight = 40
-        self.tableView.register(SessionsHeader.self, forHeaderFooterViewReuseIdentifier: "sessionsHeader")
+        
         self.refreshControl?.addTarget(self, action: #selector(self.reloadSessions), for: .valueChanged)
         
         self.listFilterButton.target = self
@@ -63,11 +65,13 @@ class SessionsController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "sessionsHeader")
-        
-        return header
-    }
+//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        return sessionsHeader
+//    }
+//    
+//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 20
+//    }
 
     private func loadPage(sort: String, category: String, level: String, page: Int, completion: (() -> Void)?) -> Void {
         if page == 1 {
