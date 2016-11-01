@@ -96,6 +96,12 @@
 		88BE97E01DA50499002903E3 /* PatternCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97DF1DA50499002903E3 /* PatternCell.swift */; };
 		88CD3BA41DC79CB700BC3B78 /* WORD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CD3BA21DC79CB700BC3B78 /* WORD+CoreDataClass.swift */; };
 		88CD3BA51DC79CB700BC3B78 /* WORD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CD3BA31DC79CB700BC3B78 /* WORD+CoreDataProperties.swift */; };
+		88CD3BA81DC8C78C00BC3B78 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CD3BA61DC8C78C00BC3B78 /* Alamofire.framework */; };
+		88CD3BA91DC8C78C00BC3B78 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CD3BA71DC8C78C00BC3B78 /* AlamofireImage.framework */; };
+		88CD3BAD1DC8C79500BC3B78 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CD3BAA1DC8C79500BC3B78 /* Charts.framework */; };
+		88CD3BAE1DC8C79500BC3B78 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CD3BAB1DC8C79500BC3B78 /* SWXMLHash.framework */; };
+		88CD3BAF1DC8C79500BC3B78 /* Toast_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CD3BAC1DC8C79500BC3B78 /* Toast_Swift.framework */; };
+		88CD3BB21DC8FA0500BC3B78 /* PaymentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CD3BB11DC8FA0500BC3B78 /* PaymentCell.swift */; };
 		88CDB9ED1D92BDA30058ECFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDB9EC1D92BDA30058ECFE /* AppDelegate.swift */; };
 		88CDB9F71D92BDA30058ECFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88CDB9F61D92BDA30058ECFE /* Assets.xcassets */; };
 		88CDBA051D92BDA40058ECFE /* hPigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA041D92BDA40058ECFE /* hPigTests.swift */; };
@@ -238,6 +244,12 @@
 		88BE97DF1DA50499002903E3 /* PatternCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PatternCell.swift; path = workBook/PatternCell.swift; sourceTree = "<group>"; };
 		88CD3BA21DC79CB700BC3B78 /* WORD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataClass.swift"; sourceTree = "<group>"; };
 		88CD3BA31DC79CB700BC3B78 /* WORD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		88CD3BA61DC8C78C00BC3B78 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "DerivedData/hPig/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		88CD3BA71DC8C78C00BC3B78 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "DerivedData/hPig/Build/Products/Debug-iphonesimulator/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
+		88CD3BAA1DC8C79500BC3B78 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = "DerivedData/hPig/Build/Products/Debug-iphonesimulator/Charts/Charts.framework"; sourceTree = "<group>"; };
+		88CD3BAB1DC8C79500BC3B78 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = "DerivedData/hPig/Build/Products/Debug-iphonesimulator/SWXMLHash/SWXMLHash.framework"; sourceTree = "<group>"; };
+		88CD3BAC1DC8C79500BC3B78 /* Toast_Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Toast_Swift.framework; path = "DerivedData/hPig/Build/Products/Debug-iphonesimulator/Toast-Swift/Toast_Swift.framework"; sourceTree = "<group>"; };
+		88CD3BB11DC8FA0500BC3B78 /* PaymentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentCell.swift; path = purchase/PaymentCell.swift; sourceTree = "<group>"; };
 		88CDB9E91D92BDA30058ECFE /* hPig.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hPig.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88CDB9EC1D92BDA30058ECFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88CDB9F61D92BDA30058ECFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -272,6 +284,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88CD3BAD1DC8C79500BC3B78 /* Charts.framework in Frameworks */,
+				88CD3BAE1DC8C79500BC3B78 /* SWXMLHash.framework in Frameworks */,
+				88CD3BAF1DC8C79500BC3B78 /* Toast_Swift.framework in Frameworks */,
+				88CD3BA81DC8C78C00BC3B78 /* Alamofire.framework in Frameworks */,
+				88CD3BA91DC8C78C00BC3B78 /* AlamofireImage.framework in Frameworks */,
 				8879337D1DB8B315001CB925 /* NotificationCenter.framework in Frameworks */,
 				8879337E1DB8B315001CB925 /* UserNotifications.framework in Frameworks */,
 				8879337F1DB8B315001CB925 /* UserNotificationsUI.framework in Frameworks */,
@@ -300,6 +317,11 @@
 		21B261A3D92EB5396488C94B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88CD3BAA1DC8C79500BC3B78 /* Charts.framework */,
+				88CD3BAB1DC8C79500BC3B78 /* SWXMLHash.framework */,
+				88CD3BAC1DC8C79500BC3B78 /* Toast_Swift.framework */,
+				88CD3BA61DC8C78C00BC3B78 /* Alamofire.framework */,
+				88CD3BA71DC8C78C00BC3B78 /* AlamofireImage.framework */,
 				88B4BAC31DC1F62F00AFFE3A /* StoreKit.framework */,
 				8879337A1DB8B315001CB925 /* NotificationCenter.framework */,
 				8879337B1DB8B315001CB925 /* UserNotifications.framework */,
@@ -450,6 +472,7 @@
 		88BE97C71D9D04B2002903E3 /* cells */ = {
 			isa = PBXGroup;
 			children = (
+				88CD3BB01DC8F9D400BC3B78 /* purchase */,
 				88DEDF051DB7753700781123 /* channel */,
 				88DEDEEE1DB4D4F700781123 /* myinfo */,
 				88BE97DE1DA50452002903E3 /* workBook */,
@@ -494,6 +517,14 @@
 				885376711DB671710076D1BF /* WordCell.swift */,
 			);
 			name = workBook;
+			sourceTree = "<group>";
+		};
+		88CD3BB01DC8F9D400BC3B78 /* purchase */ = {
+			isa = PBXGroup;
+			children = (
+				88CD3BB11DC8FA0500BC3B78 /* PaymentCell.swift */,
+			);
+			name = purchase;
 			sourceTree = "<group>";
 		};
 		88CDB9E01D92BDA30058ECFE = {
@@ -928,6 +959,7 @@
 				887933771DB8A670001CB925 /* hPig.xcdatamodeld in Sources */,
 				881ED0041D93AB6400D612EF /* Category.swift in Sources */,
 				885376721DB671710076D1BF /* WordCell.swift in Sources */,
+				88CD3BB21DC8FA0500BC3B78 /* PaymentCell.swift in Sources */,
 				88BE97D41D9D04B2002903E3 /* SessionCell.swift in Sources */,
 				88BE97E01DA50499002903E3 /* PatternCell.swift in Sources */,
 				8860852E1D97D435009A9B3C /* Global.swift in Sources */,
@@ -1073,7 +1105,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = hPig/hPig.entitlements;
 				DEVELOPMENT_TEAM = 86536G6WG7;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DerivedData/hPig/Build/Products/Debug-iphonesimulator/Alamofire",
+					"$(PROJECT_DIR)/DerivedData/hPig/Build/Products/Debug-iphonesimulator/AlamofireImage",
+					"$(PROJECT_DIR)/DerivedData/hPig/Build/Products/Debug-iphonesimulator/Charts",
+					"$(PROJECT_DIR)/DerivedData/hPig/Build/Products/Debug-iphonesimulator/SWXMLHash",
+					"$(PROJECT_DIR)/DerivedData/hPig/Build/Products/Debug-iphonesimulator/Toast-Swift",
+				);
 				INFOPLIST_FILE = hPig/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1097,7 +1136,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = hPig/hPig.entitlements;
 				DEVELOPMENT_TEAM = 86536G6WG7;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DerivedData/hPig/Build/Products/Debug-iphonesimulator/Alamofire",
+					"$(PROJECT_DIR)/DerivedData/hPig/Build/Products/Debug-iphonesimulator/AlamofireImage",
+					"$(PROJECT_DIR)/DerivedData/hPig/Build/Products/Debug-iphonesimulator/Charts",
+					"$(PROJECT_DIR)/DerivedData/hPig/Build/Products/Debug-iphonesimulator/SWXMLHash",
+					"$(PROJECT_DIR)/DerivedData/hPig/Build/Products/Debug-iphonesimulator/Toast-Swift",
+				);
 				INFOPLIST_FILE = hPig/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (

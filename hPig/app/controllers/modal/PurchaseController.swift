@@ -9,94 +9,60 @@ import UIKit
 import StoreKit
 import CoreGraphics
 
-class PurchaseController: UIViewController, SKPaymentTransactionObserver, SKProductsRequestDelegate {
-    
-    @IBOutlet weak var oneButton: UIButton!
-    @IBOutlet weak var threeButton: UIButton!
-    @IBOutlet weak var sixButton: UIButton!
-    @IBOutlet weak var twelveButton: UIButton!
-    
-    @IBOutlet weak var oneWrap: UIView!
-    @IBOutlet weak var threeWrap: UIView!
-    @IBOutlet weak var sixWrap: UIView!
-    @IBOutlet weak var twelveWrap: UIView!
-    
-    private let paymentQueue = SKPaymentQueue.default()
+class PurchaseController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var controller: UIViewController? = nil
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    private let purchaseService = PurchaseService.shared
+    private var passes = [String : hPass]()
+    private var payments = [SKPayment]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        [oneButton, threeButton, sixButton, twelveButton].forEach { (button) in
-            button!.layer.borderColor = UIColor.red.cgColor
-            button!.layer.borderWidth = 1.0
-        }
-        
-        [oneWrap, threeWrap, sixWrap, twelveWrap].forEach { (wrap) in
-            wrap!.layer.borderColor = UIColor.lightGray.cgColor
-            wrap!.layer.borderWidth = 1.0
-        }
-        
-        paymentQueue.add(self)
     }
     
-    deinit {
-        paymentQueue.remove(self)
-    }
-    
-    @IBAction func purchase(_ sender: AnyObject) {
-        if let button = sender as? UIButton, let id = button.restorationIdentifier {
-            if SKPaymentQueue.canMakePayments() {
-                let purchaseId = Set(arrayLiteral: id)
-                let req = SKProductsRequest(productIdentifiers: purchaseId)
-                req.delegate = self
-                req.start()
-            } else {
-                self.view.presentToast("구매를 활성화 할 수 없습니다.")
-            }
-        }
-    }
-    
-    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        let products = response.products
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        if let product = products.get(0) {
-            let payment = SKPayment(product: product)
-            paymentQueue.add(payment)
-        } else {
-            self.view.presentToast("상품을 찾을 수 없습니다.")
-        }
-    }
-    
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        for transaction in transactions {
-            switch transaction.transactionState {
-            case .purchased:
-                updatePurchaseInfo(transaction.payment.productIdentifier)
-                finishTransaction(transaction)
+        purchaseService.requestPassItems { (passItems) in
+            passItems.forEach({ (pass) in
+                self.passes[pass.id] = pass
+            })
+            
+            self.purchaseService.requestPayments(ids: self.purchaseService.passesToIds(passes: passItems), completion: { (payments) in
+                self.payments = payments
                 
-            case .failed:
-                finishTransaction(transaction)
-                
-            default:
-                break
-            }
+                self.tableView.reloadData()
+            })
         }
     }
     
-    private func updatePurchaseInfo(_ id: String) {
-//        http://speakingtube.cafe24.com/svc/api/user/update/pass?id="+userId+"&passtype="+passtype+"&info=" + info
-        AuthenticateService.shared.user { (user) in
-            if let tubeUser = user {
-//                tubeUser.id
-//                NetService.shared.get(path: "/svc/api/user/update/pass", para)
-            }
-        }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return payments.count
     }
     
-    private func finishTransaction(_ transaction: SKPaymentTransaction) {
-        paymentQueue.finishTransaction(transaction)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let payment = payments[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "paymentCell", for: indexPath)
+        
+        if let item = passes[payment.productIdentifier], let paymentCell = cell as? PaymentCell {
+            paymentCell.payment = payment
+            paymentCell.passTitle.text = "\(item.name) (\(item.value))"
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let payment = payments[indexPath.row]
+        
+        purchaseService.purchase(payment: payment) { (error) in
+            if let reason = error {
+                print(reason.localizedDescription)
+            }
+        }
     }
     
     @IBAction func dismiss(_ sender: AnyObject) {

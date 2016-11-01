@@ -22,10 +22,10 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     }()
     
     private var pushToken: String? = nil
-    private let tokenKey = "deviceToken"
+    private var naverUserMap = [String: User]()
+    private var tubeUserMap = [String: TubeUserInfo]()
     
-    private var userMap = [String: User]()
-    private var userDataMap = [String: TubeUserInfo]()
+    private let tokenKey = "deviceToken"
     private let naverConnection: NaverThirdPartyLoginConnection = NaverThirdPartyLoginConnection.getSharedInstance()!
     
     private weak var viewController: UIViewController? = nil
@@ -62,6 +62,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         self.pushToken = token
         
         UserDefaults.standard.set(token, forKey: tokenKey)
+        UserDefaults.standard.synchronize()
     }
     
     @discardableResult func updateVisitCount(_ completion: ((TubeUserInfo?) -> Void)?) {
@@ -93,14 +94,6 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         return naverConnection.accessToken != nil
     }
     
-    func userId(completion: ((String) -> Void)?) {
-        let callback = completion ?? {(_) in }
-        
-        user { (opt) in
-            callback(opt?.id ?? Global.guestId)
-        }
-    }
-    
     func tryLogin(_ viewController: UIViewController, completion: ((TubeUserInfo?) -> Void)?) {
         self.viewController = viewController
         self.completionHandler = completion
@@ -109,8 +102,11 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     }
     
     func logout(completion: (() -> Void)?) {
-        userMap.removeAll()
-        userDataMap.removeAll()
+        if let token = naverConnection.accessToken {
+            naverUser(token, user: nil)
+            tubeUser(token, user: nil)
+        }
+        
         naverConnection.resetToken()
         
         if let handler = completion {
@@ -118,11 +114,39 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         }
     }
     
-    func naverInfo() -> User? {
-        if let token = naverConnection.accessToken, let user = userMap[token] {
-            return user
-        } else {
-            return nil
+    private func naverUserKey(_ accessToken: String) -> String {
+        return "naver_user_\(accessToken)"
+    }
+    
+    private func tubeUserKey(_ accessToken: String) -> String {
+        return "tube_user_\(accessToken)"
+    }
+    
+    func naverUser(_ accessToken: String) -> User? {
+        return naverUserMap[naverUserKey(accessToken)]
+    }
+    
+    func tubeUser(_ accessToken: String) -> TubeUserInfo? {
+        return tubeUserMap[tubeUserKey(accessToken)]
+    }
+    
+    func naverUser(_ accessToken: String, user: User?) {
+        naverUserMap[accessToken] = user
+    }
+    
+    func tubeUser(_ accessToken: String, user: TubeUserInfo?) {
+        tubeUserMap[accessToken] = user
+    }
+    
+    func accessToken() -> String? {
+        return naverConnection.accessToken
+    }
+    
+    func userId(completion: ((String) -> Void)?) {
+        let callback = completion ?? {(_) in }
+        
+        user { (opt) in
+            callback(opt?.id ?? Global.guestId)
         }
     }
     
@@ -134,33 +158,33 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         let callback = completion ?? {(_) in }
         
         if retry > 0, let token = naverConnection.accessToken {
-            if let user = userMap[token], let info = userDataMap[user.id] {
+            if let info = tubeUser(token) {
                 callback(info)
             } else {
-                var req = URLRequest(url: URL(string: "https://apis.naver.com/nidlogin/nid/getUserProfile.xml")!)
-                req.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-                
-                NetService.shared.get(req: req).response { (res) in
-                    if let data = res.data, let user = User(data: data), user.id != Global.guestId {
-                        self.userMap[token] = user
-                        self.tubeUser(user.id, completion: { (tubeUser) in
-                            if let userInfo = tubeUser {
-                                callback(userInfo)
-                            } else {
-                                self.joinUser(user: user, completion: { (success) in
-                                    if success {
-                                        self.tubeUser(user.id, completion: completion)
-                                    } else {
-                                        callback(nil)
-                                    }
-                                })
-                            }
-                        })
-                    } else {
-                        self.refreshToken()
-                        self.userInfo(retry: retry - 1, completion: completion)
-                    }
-                }
+                NetService.shared.get("https://apis.naver.com/nidlogin/nid/getUserProfile.xml",
+                                      parameters: nil,
+                                      headers: ["Authorization": "Bearer \(token)"]).response(completionHandler: { (res) in
+                                        if let data = res.data, let user = User(data: data), user.id != Global.guestId {
+                                            self.naverUser(token, user: user)
+                                            
+                                            self.tubeUser(user.id, completion: { (tubeUser) in
+                                                if let userInfo = tubeUser {
+                                                    callback(userInfo)
+                                                } else {
+                                                    self.joinUser(user: user, completion: { (success) in
+                                                        if success {
+                                                            self.tubeUser(user.id, completion: completion)
+                                                        } else {
+                                                            callback(nil)
+                                                        }
+                                                    })
+                                                }
+                                            })
+                                        } else {
+                                            self.refreshToken()
+                                            self.userInfo(retry: retry - 1, completion: completion)
+                                        }
+                                      })
             }
         } else {
             logout(completion: nil)
@@ -221,7 +245,9 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         NetService.shared.getObject(path: "/svc/api/user/info?id=\(id)", completionHandler: { (res: DataResponse<TubeUserInfo>) in
 
             if let userInfo = res.result.value {
-                self.userDataMap[id] = userInfo
+                if let token = self.naverConnection.accessToken {
+                    self.tubeUser(token, user: userInfo)
+                }
                 
                 callback(userInfo)
             } else {
@@ -305,11 +331,8 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     }
     
     private func isActiveUser() throws -> Bool {
-        if let token = naverConnection.accessToken,
-            let user = userMap[token],
-            let info = userDataMap[user.id] {
-            
-            if info.isActiveUser {
+        if let token = naverConnection.accessToken, let tubeUser = tubeUser(token) {
+            if tubeUser.isActiveUser {
                 return true
             } else {
                 throw AuthError.unauthorized

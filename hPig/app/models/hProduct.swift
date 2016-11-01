@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct hProduct: ResponseObjectSerializable, ResponseCollectionSerializable, CustomStringConvertible {
+struct hPass: ResponseObjectSerializable, ResponseCollectionSerializable, CustomStringConvertible {
     
     let id: String
     let name: String
@@ -19,6 +19,21 @@ struct hProduct: ResponseObjectSerializable, ResponseCollectionSerializable, Cus
     }
     
     init?(response: HTTPURLResponse, representation: Any) {
+        guard
+            let representation = representation as? [String: Any],
+            let id = representation["id"] as? String,
+            let name = representation["name"] as? String,
+            let value = representation["value"] as? String
+            
+            else { return nil }
+        
+        self.id = id
+        self.name = name
+        self.value = value
+        
+    }
+    
+    init?(_ representation: Any) {
         guard
             let representation = representation as? [String: Any],
             let id = representation["id"] as? String,

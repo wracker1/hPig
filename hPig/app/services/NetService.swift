@@ -36,13 +36,17 @@ class NetService {
     }
     
     func get(path: String, parameters: Parameters?) -> DataRequest {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        
         let url = "\(host)\(path)"
         
+        return self.get(url, parameters: parameters, headers: nil)
+    }
+    
+    func get(_ url: String, parameters: Parameters?, headers: HTTPHeaders?) -> DataRequest {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
         print("GET =======================> url: \(url), parameter: \(parameters)")
-
-        return Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.methodDependent).response(completionHandler: { _ in
+        
+        return Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.methodDependent, headers: headers).response(completionHandler: { _ in
             DispatchQueue.main.async {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }

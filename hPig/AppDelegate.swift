@@ -34,7 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func logUser(_ item: TubeUserInfo?) {
-        if let naverInfo = AuthenticateService.shared.naverInfo(),
+        if let token = AuthenticateService.shared.accessToken(),
+            let naverInfo = AuthenticateService.shared.naverUser(token),
             let email = naverInfo.email,
             let accountId = naverInfo.accountId,
             let name = naverInfo.name {
@@ -72,13 +73,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (timer) in
-            DispatchQueue.global().async {
-                AuthenticateService.shared.prepare().updateVisitCount({ (user) in
-                    self.logUser(user)
-                })
-            }
-        }
+        PurchaseService.shared.update()
+        
+        AuthenticateService.shared.prepare().updateVisitCount({ (user) in
+            self.logUser(user)
+        })
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
