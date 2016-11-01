@@ -28,6 +28,7 @@
 		881ED01E1D93B92100D612EF /* ArrayOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED01D1D93B92100D612EF /* ArrayOps.swift */; };
 		881ED0251D93D07400D612EF /* OptionOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0241D93D07400D612EF /* OptionOps.swift */; };
 		8829124E1DAFD32700E5B6E4 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8829124D1DAFD32700E5B6E4 /* AlertService.swift */; };
+		882CD2EA1DC8607600BB611A /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882CD2E91DC8607600BB611A /* PurchaseService.swift */; };
 		884523061DBF265700802510 /* MyInfoHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884523051DBF265700802510 /* MyInfoHeaderCell.swift */; };
 		884523091DBF44CF00802510 /* HISTORY+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884523071DBF44CF00802510 /* HISTORY+CoreDataClass.swift */; };
 		8845230A1DBF44CF00802510 /* HISTORY+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884523081DBF44CF00802510 /* HISTORY+CoreDataProperties.swift */; };
@@ -80,6 +81,7 @@
 		8879337D1DB8B315001CB925 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8879337A1DB8B315001CB925 /* NotificationCenter.framework */; };
 		8879337E1DB8B315001CB925 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8879337B1DB8B315001CB925 /* UserNotifications.framework */; };
 		8879337F1DB8B315001CB925 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8879337C1DB8B315001CB925 /* UserNotificationsUI.framework */; };
+		8880D7C41DC8638E00398D9A /* hProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8880D7C31DC8638E00398D9A /* hProduct.swift */; };
 		88B4BAC21DC1B91000AFFE3A /* UIScrollViewOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B4BAC11DC1B91000AFFE3A /* UIScrollViewOps.swift */; };
 		88B4BAC41DC1F62F00AFFE3A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B4BAC31DC1F62F00AFFE3A /* StoreKit.framework */; };
 		88B9ED981DB49B0600EC86D6 /* hYTPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9ED941DB49B0600EC86D6 /* hYTPlayerView.swift */; };
@@ -157,6 +159,7 @@
 		881ED0241D93D07400D612EF /* OptionOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionOps.swift; sourceTree = "<group>"; };
 		8829124D1DAFD32700E5B6E4 /* AlertService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		882912501DAFD85C00E5B6E4 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "../../../../Library/Developer/Xcode/DerivedData/hPig-cgamwanqckhvsufhcxkvajblacum/Build/Products/Debug-iphonesimulator/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
+		882CD2E91DC8607600BB611A /* PurchaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseService.swift; sourceTree = "<group>"; };
 		884523051DBF265700802510 /* MyInfoHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoHeaderCell.swift; sourceTree = "<group>"; };
 		884523071DBF44CF00802510 /* HISTORY+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HISTORY+CoreDataClass.swift"; sourceTree = "<group>"; };
 		884523081DBF44CF00802510 /* HISTORY+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HISTORY+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -219,6 +222,7 @@
 		8879337A1DB8B315001CB925 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		8879337B1DB8B315001CB925 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		8879337C1DB8B315001CB925 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		8880D7C31DC8638E00398D9A /* hProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hProduct.swift; sourceTree = "<group>"; };
 		88B4BAC11DC1B91000AFFE3A /* UIScrollViewOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewOps.swift; sourceTree = "<group>"; };
 		88B4BAC31DC1F62F00AFFE3A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		88B9ED941DB49B0600EC86D6 /* hYTPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hYTPlayerView.swift; sourceTree = "<group>"; };
@@ -593,6 +597,7 @@
 				886085281D97D393009A9B3C /* BasicStudy.swift */,
 				887741591DAF8D1F00198666 /* User.swift */,
 				887933601DB861F3001CB925 /* TubeUserInfo.swift */,
+				8880D7C31DC8638E00398D9A /* hProduct.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -610,6 +615,7 @@
 				88BE97D81D9D0C37002903E3 /* AuthenticateService.swift */,
 				8865F0721DA115410025D0B9 /* CoreDataService.swift */,
 				8829124D1DAFD32700E5B6E4 /* AlertService.swift */,
+				882CD2E91DC8607600BB611A /* PurchaseService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -891,6 +897,7 @@
 				881235BE1DC7466C002EC49A /* hTabBarController.swift in Sources */,
 				886EF1761D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m in Sources */,
 				886085301D97D74B009A9B3C /* SubtitleService.swift in Sources */,
+				882CD2EA1DC8607600BB611A /* PurchaseService.swift in Sources */,
 				88CDBA281D92D34F0058ECFE /* Session.swift in Sources */,
 				88BE97D21D9D04B2002903E3 /* RelatedSessionCell.swift in Sources */,
 				885376701DB662850076D1BF /* hEnglishDictionaryView.swift in Sources */,
@@ -913,6 +920,7 @@
 				887933791DB8A7FC001CB925 /* PatternImageButton.swift in Sources */,
 				881076C71DBC76E40038C21C /* DataDeleteController.swift in Sources */,
 				881076C31DBC76460038C21C /* SettingsController.swift in Sources */,
+				8880D7C41DC8638E00398D9A /* hProduct.swift in Sources */,
 				881076C51DBC76500038C21C /* SessionsController.swift in Sources */,
 				886085321D97DAD8009A9B3C /* PatternStudy.swift in Sources */,
 				88B9ED9A1DB49B0600EC86D6 /* YTPlayerView.m in Sources */,

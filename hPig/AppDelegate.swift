@@ -26,15 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().tintColor = UIColor.black
         
-        ToastManager.shared.style.verticalPadding = 10
+        Fabric.with([Crashlytics.self])
         
-        DispatchQueue.global().async {
-            AuthenticateService.shared.prepare { (user) in
-                self.logUser(user)
-            }
-            
-            Fabric.with([Crashlytics.self])
-        }
+        ToastManager.shared.style.verticalPadding = 10
         
         return true
     }
@@ -78,7 +72,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        AuthenticateService.shared.updateVisitCount()
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (timer) in
+            DispatchQueue.global().async {
+                AuthenticateService.shared.prepare().updateVisitCount({ (user) in
+                    self.logUser(user)
+                })
+            }
+        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

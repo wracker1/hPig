@@ -14,9 +14,9 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
     
     private func cellIds() -> [String] {
         if AuthenticateService.shared.isOn() {
-            return ["versionCell", "loginCell", "purchaseCell", "pushCell", "mailCell", "faqCell", "delDataCell"]
+            return ["versionCell", "pushCell", "faqCell", "mailCell", "purchaseCell", "delDataCell", "loginCell"]
         } else {
-            return ["versionCell", "loginCell", "purchaseCell", "mailCell", "faqCell", "delDataCell"]
+            return ["versionCell", "faqCell", "mailCell", "purchaseCell", "delDataCell", "loginCell"]
         }
     }
     

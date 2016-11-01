@@ -35,19 +35,17 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         return UserDefaults.standard.value(forKey: tokenKey) as? String ?? pushToken
     }
     
-    func prepare(_ completion: ((TubeUserInfo?) -> Void)?) {
-        DispatchQueue.global().async {
-            self.naverConnection.serviceUrlScheme = kServiceAppUrlScheme
-            self.naverConnection.consumerKey = kConsumerKey
-            self.naverConnection.consumerSecret = kConsumerSecret
-            self.naverConnection.appName = kServiceAppName
-            
-            self.naverConnection.isNaverAppOauthEnable = true
-            self.naverConnection.isInAppOauthEnable = true
-            self.naverConnection.delegate = self
-            
-            self.user(completion)
-        }
+    @discardableResult func prepare() -> AuthenticateService {
+        self.naverConnection.serviceUrlScheme = kServiceAppUrlScheme
+        self.naverConnection.consumerKey = kConsumerKey
+        self.naverConnection.consumerSecret = kConsumerSecret
+        self.naverConnection.appName = kServiceAppName
+        
+        self.naverConnection.isNaverAppOauthEnable = true
+        self.naverConnection.isInAppOauthEnable = true
+        self.naverConnection.delegate = self
+        
+        return self
     }
     
     @discardableResult func refreshToken() -> AuthenticateService {
@@ -66,22 +64,29 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         UserDefaults.standard.set(token, forKey: tokenKey)
     }
     
-    @discardableResult func updateVisitCount() -> AuthenticateService {
+    @discardableResult func updateVisitCount(_ completion: ((TubeUserInfo?) -> Void)?) {
+        let callback = completion ?? {(_) in }
+        
         DispatchQueue.global().async {
             self.user { (info) in
-                if let data = info, let token = self.deviceToken() {
-                    let param = ["id": data.id, "token": token]
+                if let data = info {
+                    let param = [
+                        "id": data.id,
+                        "token": self.deviceToken() ?? ""
+                    ]
                     
                     NetService.shared.get(path: "/svc/api/user/update/visitcnt", parameters: param).responseString(completionHandler: { (res) in
                         if let messaage = res.result.value {
                             print(messaage)
                         }
+                        
+                        callback(info)
                     })
+                } else {
+                    callback(info)
                 }
             }
         }
-        
-        return self
     }
     
     func isOn() -> Bool {
@@ -122,19 +127,13 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     }
     
     func user(_ completion: ((TubeUserInfo?) -> Void)?) {
-        let callback = completion ?? {(_) in }
-        
-        if let token = naverConnection.accessToken {
-            tubeUserInfo(token: token, retry: 2, completion: completion)
-        } else {
-            callback(nil)
-        }
+        userInfo(retry: 2, completion: completion)
     }
     
-    private func tubeUserInfo(token: String, retry: Int, completion: ((TubeUserInfo?) -> Void)?) {
+    private func userInfo(retry: Int, completion: ((TubeUserInfo?) -> Void)?) {
         let callback = completion ?? {(_) in }
         
-        if retry > 0 {
+        if retry > 0, let token = naverConnection.accessToken {
             if let user = userMap[token], let info = userDataMap[user.id] {
                 callback(info)
             } else {
@@ -159,7 +158,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
                         })
                     } else {
                         self.refreshToken()
-                        self.tubeUserInfo(token: token, retry: retry - 1, completion: completion)
+                        self.userInfo(retry: retry - 1, completion: completion)
                     }
                 }
             }
@@ -316,12 +315,6 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
                 throw AuthError.unauthorized
             }
         } else {
-            // log on
-            
-            user({ (_) in
-                
-            })
-            
             throw AuthError.needToLogin
         }
     }
@@ -332,6 +325,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         if url.scheme ?? "" == "speakingtube" {
             if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true), let queryItems = urlComponents.queryItems {
                 print(queryItems)
+                print("\(naverConnection.accessToken)")
             }
             
             return true
@@ -341,8 +335,6 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     }
     
     func oauth20ConnectionDidOpenInAppBrowser(forOAuth request: URLRequest!) {
-        print("1 ==============")
-        
         if let vc = viewController {
             let navigator = UINavigationController(rootViewController: NLoginThirdPartyOAuth20InAppBrowserViewController(request: request))
             

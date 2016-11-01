@@ -87,13 +87,10 @@ class MyInfoHeaderCell: UICollectionViewCell {
         if let tubeUser = user {
             self.passInfoTitleLabel.text = "보유 이용권 정보"
 
-            if let endDate = tubeUser.enddt, tubeUser.isActiveUser {
+            if let endDate = tubeUser.enddt {
+                self.loginButton.isHidden = true
                 self.passInfoView.isHidden = false
-                self.loginButton.isHidden = true
                 self.passDurationLabel.text = "\(endDate) 까지"
-            } else {
-                self.passInfoView.isHidden = true
-                self.loginButton.isHidden = true
             }
         } else {
             self.passInfoTitleLabel.text = ""
