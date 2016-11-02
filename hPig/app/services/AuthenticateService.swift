@@ -15,6 +15,21 @@ enum AuthError: Error {
     case unauthorized
 }
 
+enum NaverLoginResult: Int {
+    case success = 0
+    case parameterNotSet = 1
+    case cancelByUser = 2
+    case naverAppNotInstalled = 3
+    case naverAppVersionInvalid = 4
+    case oauthMethodNotSet = 5
+    case InvalidRequest = 6
+    case clientNetworkProblem = 7
+    case unauthorizedClient = 8
+    case unsupportedResponseType = 9
+    case networkError = 10
+    case unkownError = 11
+}
+
 class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     static let shared: AuthenticateService = {
         let instance = AuthenticateService()
@@ -346,9 +361,18 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         print("0 ============== \(url)")
         
         if url.scheme ?? "" == "speakingtube" {
-            if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true), let queryItems = urlComponents.queryItems {
-                print(queryItems)
-                print("\(naverConnection.accessToken)")
+            if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true),
+                
+                let queryItems = urlComponents.queryItems,
+                
+                let code = queryItems.find({ (item) -> Bool in
+                    return item.name == "code"
+                }),
+                
+                let loginResult = code.value {
+                
+                    let loginResult = NaverLoginResult(rawValue: Int(loginResult)!)
+                    print("result: \(loginResult)")
             }
             
             return true

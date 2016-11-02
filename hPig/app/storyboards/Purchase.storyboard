@@ -44,20 +44,24 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ah3-S5-gmh">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="446.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="421.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="토탈패스를 구매하시면 스피킹튜브의 300개가 넘는 영상을 해당 기간동안 무제한 학습하실 수 있습니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLa-Ow-cbH">
-                                                <rect key="frame" x="13" y="13" width="349" height="42.5"/>
+                                                <rect key="frame" x="13" y="18" width="349" height="42.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="7W3-Df-tnh">
-                                                <rect key="frame" x="10" y="65.5" width="355" height="300"/>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="7W3-Df-tnh">
+                                                <rect key="frame" x="10" y="70.5" width="355" height="260"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="300" id="6gY-2U-Meu"/>
+                                                    <constraint firstAttribute="height" constant="260" id="6gY-2U-Meu"/>
                                                 </constraints>
+                                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="paymentCell" id="AiI-YW-9hD" customClass="PaymentCell" customModule="hPig" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="56" width="355" height="50"/>
@@ -101,7 +105,7 @@
                                                 </connections>
                                             </tableView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="패스는 영상에 대한 한영 자막, 따라읽기 기능, 패턴학습 기능을 이용하기 위한 것이며, 유투브 영상은 무료로 제공됩니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQR-OF-y2j">
-                                                <rect key="frame" x="13" y="375.5" width="349" height="61"/>
+                                                <rect key="frame" x="13" y="350.5" width="349" height="61"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -110,12 +114,12 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailingMargin" secondItem="zLa-Ow-cbH" secondAttribute="trailing" constant="5" id="1hF-Lh-GVW"/>
-                                            <constraint firstItem="RQR-OF-y2j" firstAttribute="top" secondItem="7W3-Df-tnh" secondAttribute="bottom" constant="10" id="5Tp-Ps-gDR"/>
+                                            <constraint firstItem="RQR-OF-y2j" firstAttribute="top" secondItem="7W3-Df-tnh" secondAttribute="bottom" constant="20" id="5Tp-Ps-gDR"/>
                                             <constraint firstItem="7W3-Df-tnh" firstAttribute="leading" secondItem="ah3-S5-gmh" secondAttribute="leading" constant="10" id="DGE-sY-6lo"/>
                                             <constraint firstItem="7W3-Df-tnh" firstAttribute="top" secondItem="zLa-Ow-cbH" secondAttribute="bottom" constant="10" id="FAS-xp-q27"/>
                                             <constraint firstAttribute="bottom" secondItem="RQR-OF-y2j" secondAttribute="bottom" constant="10" id="UDB-ZB-X1S"/>
                                             <constraint firstAttribute="trailing" secondItem="7W3-Df-tnh" secondAttribute="trailing" constant="10" id="etl-Z9-h4I"/>
-                                            <constraint firstItem="zLa-Ow-cbH" firstAttribute="top" secondItem="ah3-S5-gmh" secondAttribute="topMargin" constant="5" id="hSy-24-MSm"/>
+                                            <constraint firstItem="zLa-Ow-cbH" firstAttribute="top" secondItem="ah3-S5-gmh" secondAttribute="topMargin" constant="10" id="hSy-24-MSm"/>
                                             <constraint firstItem="RQR-OF-y2j" firstAttribute="leading" secondItem="ah3-S5-gmh" secondAttribute="leadingMargin" constant="5" id="nnl-4b-rBb"/>
                                             <constraint firstItem="zLa-Ow-cbH" firstAttribute="leading" secondItem="ah3-S5-gmh" secondAttribute="leadingMargin" constant="5" id="qSb-6z-uxe"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="RQR-OF-y2j" secondAttribute="trailing" constant="5" id="xz1-dn-hWW"/>

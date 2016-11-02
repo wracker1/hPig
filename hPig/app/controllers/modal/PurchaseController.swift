@@ -16,39 +16,42 @@ class PurchaseController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     
     private let purchaseService = PurchaseService.shared
-    private var passes = [String : hPass]()
-    private var payments = [SKPayment]()
+    private var passes = [hPass]()
+    private var payments = [String: SKPayment]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "패스 구매"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         purchaseService.requestPassItems { (passItems) in
-            passItems.forEach({ (pass) in
-                self.passes[pass.id] = pass
-            })
-            
             self.purchaseService.requestPayments(ids: self.purchaseService.passesToIds(passes: passItems), completion: { (payments) in
-                self.payments = payments
+                payments.forEach({ (payment) in
+                    self.payments[payment.productIdentifier] = payment
+                })
                 
+                self.passes = passItems.filter({ (pass) -> Bool in
+                    return self.payments[pass.id] != nil
+                })
+
                 self.tableView.reloadData()
             })
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return payments.count
+        return passes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let payment = payments[indexPath.row]
+        let item = passes[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "paymentCell", for: indexPath)
         
-        if let item = passes[payment.productIdentifier], let paymentCell = cell as? PaymentCell {
-            paymentCell.payment = payment
+        if let paymentCell = cell as? PaymentCell {
             paymentCell.passTitle.text = "\(item.name) (\(item.value))"
         }
         
@@ -56,13 +59,20 @@ class PurchaseController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let payment = payments[indexPath.row]
-        
-        purchaseService.purchase(payment: payment) { (error) in
-            if let reason = error {
-                print(reason.localizedDescription)
+        let pass = passes[indexPath.row]
+        if let payment = payments[pass.id] {
+            purchaseService.purchase(payment: payment) { (error) in
+                if let reason = error {
+                    self.view.presentToast(reason.localizedDescription)
+                }
+                
+                tableView.deselectRow(at: indexPath, animated: true)
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "스피킹튜브 이용권"
     }
     
     @IBAction func dismiss(_ sender: AnyObject) {
