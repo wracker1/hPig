@@ -11,6 +11,10 @@ import Toast_Swift
 
 extension UIView {
     func presentToast(_ message: String) {
+        self.presentToast(message, completion: nil)
+    }
+    
+    func presentToast(_ message: String, completion: (() -> Void)?) {
         do {
             let toast = try self.toastViewForMessage(message,
                                                      title: nil,
@@ -22,7 +26,14 @@ extension UIView {
                 y: (self.bounds.size.height - (toast.frame.size.height / 2.0)) - 200
             )
 
-            self.makeToast(message, duration: 2.0, position: position)
+            let duration = 2.0
+            self.makeToast(message, duration: duration, position: position)
+            
+            if let callback = completion {
+                Timer.scheduledTimer(withTimeInterval: duration, repeats: false, block: { (_) in
+                    callback()
+                })
+            }
         } catch {}
     }
 }

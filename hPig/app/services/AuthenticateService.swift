@@ -146,11 +146,11 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     }
     
     func naverUser(_ accessToken: String, user: User?) {
-        naverUserMap[accessToken] = user
+        naverUserMap[naverUserKey(accessToken)] = user
     }
     
     func tubeUser(_ accessToken: String, user: TubeUserInfo?) {
-        tubeUserMap[accessToken] = user
+        tubeUserMap[tubeUserKey(accessToken)] = user
     }
     
     func accessToken() -> String? {
@@ -182,13 +182,13 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
                                         if let data = res.data, let user = User(data: data), user.id != Global.guestId {
                                             self.naverUser(token, user: user)
                                             
-                                            self.tubeUser(user.id, completion: { (tubeUser) in
+                                            self.updateTubeUserInfo(user.id, completion: { (tubeUser) in
                                                 if let userInfo = tubeUser {
                                                     callback(userInfo)
                                                 } else {
                                                     self.joinUser(user: user, completion: { (success) in
                                                         if success {
-                                                            self.tubeUser(user.id, completion: completion)
+                                                            self.updateTubeUserInfo(user.id, completion: completion)
                                                         } else {
                                                             callback(nil)
                                                         }
@@ -254,7 +254,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         }
     }
     
-    private func tubeUser(_ id: String, completion: ((TubeUserInfo?) -> Void)?) {
+    func updateTubeUserInfo(_ id: String, completion: ((TubeUserInfo?) -> Void)?) {
         let callback = completion ?? {(_) in }
         
         NetService.shared.getObject(path: "/svc/api/user/info?id=\(id)", completionHandler: { (res: DataResponse<TubeUserInfo>) in
@@ -286,7 +286,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         }
     }
     
-    func shouldPerform(_ id: String, viewController: UIViewController, sender: Any?, session: Session?) -> Bool {
+    @discardableResult func shouldPerform(_ id: String, viewController: UIViewController, sender: Any?, session: Session?) -> Bool {
         switch id {
         case "basicStudyFromMyInfo"
         , "basicStudyFromSessionMain"
@@ -299,21 +299,9 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
                     do {
                         return try isActiveUser()
                     } catch AuthError.needToLogin {
-                        AlertService.shared.presentConfirm(
-                            viewController,
-                            title: "로그인이 필요합니다. 로그인 하시겠습니까?",
-                            message: nil,
-                            cancel: nil,
-                            confirm: {
-                                self.tryLogin(viewController, completion: { (success) in
-                                    viewController.performSegue(withIdentifier: id, sender: sender)
-                                })
-                        })
-                        
-                        return false
+                        return self.handleNotLoginUser(id, viewController: viewController, sender: sender, session: session)
                     } catch AuthError.unauthorized {
-                        viewController.view.presentToast("이용권을 구매해주세요.")
-                        return false
+                        return self.handleUnauthrizedUser(viewController)
                     } catch let e {
                         viewController.view.presentToast(e.localizedDescription)
                         return false
@@ -326,23 +314,56 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
             if AuthenticateService.shared.isOn() {
                 return true
             } else {
-                AlertService.shared.presentConfirm(
-                    viewController,
-                    title: "로그인이 필요합니다. 로그인 하시겠습니까?",
-                    message: nil,
-                    cancel: nil,
-                    confirm: {
-                        self.tryLogin(viewController, completion: { (success) in
-                            viewController.performSegue(withIdentifier: id, sender: sender)
-                        })
-                })
-                
-                return false
+                return self.handleNotLoginUser(id, viewController: viewController, sender: sender, session: session)
             }
             
         default:
             return true
         }
+    }
+    
+    func confirmLogin(_ viewController: UIViewController, completion: ((TubeUserInfo?) -> Void)?) {
+        AlertService.shared.presentConfirm(
+            viewController,
+            title: "로그인이 필요합니다. 로그인 하시겠습니까?",
+            message: nil,
+            cancel: nil,
+            confirm: {
+                self.tryLogin(viewController, completion: completion)
+        })
+    }
+    
+    private func handleNotLoginUser(_ id: String, viewController: UIViewController, sender: Any?, session: Session?) -> Bool {
+        confirmLogin(viewController, completion: { (data) in
+            if data != nil {
+                self.shouldPerform(id, viewController: viewController, sender: sender, session: session)
+            }
+        })
+        
+        return false
+    }
+    
+    private func handleUnauthrizedUser(_ viewController: UIViewController) -> Bool {
+        let keyUnauthActionCount = "kUnauthActionCount"
+        var count = UserDefaults.standard.value(forKey: keyUnauthActionCount) as? Int ?? 0
+        
+        if count > 3 {
+            AlertService.shared.presentConfirm(viewController, title: "이용권이 필요한 영상입니다. 이용권을 구매해보세요.", message: nil, cancel: nil, confirm: {
+                let purchaseController = UIStoryboard(name: "Purchase", bundle: Bundle.main).instantiateViewController(withIdentifier: "purchaseNavController")
+                viewController.present(purchaseController, animated: true, completion: nil)
+            })
+            
+            count = 0
+        } else {
+            viewController.view.presentToast("이용권을 구매해주세요.")
+            count += 1
+            
+        }
+        
+        UserDefaults.standard.set(count, forKey: keyUnauthActionCount)
+        UserDefaults.standard.synchronize()
+        
+        return false
     }
     
     private func isActiveUser() throws -> Bool {
@@ -358,21 +379,17 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     }
     
     func processAccessToken(url: URL) -> Bool {
-        print("0 ============== \(url)")
-        
         if url.scheme ?? "" == "speakingtube" {
             if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true),
-                
                 let queryItems = urlComponents.queryItems,
-                
                 let code = queryItems.find({ (item) -> Bool in
                     return item.name == "code"
                 }),
+                let resultCode = code.value,
+                let loginResult = NaverLoginResult(rawValue: Int(resultCode)!),
+                let controller = self.viewController {
                 
-                let loginResult = code.value {
-                
-                    let loginResult = NaverLoginResult(rawValue: Int(loginResult)!)
-                    print("result: \(loginResult)")
+                    controller.view.presentToast("\(loginResult)")
             }
             
             return true
@@ -390,8 +407,6 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     }
     
     func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
-        print("2 ==============")
-        
         if let completion = completionHandler {
             user(completion)
             self.completionHandler = nil
@@ -399,15 +414,15 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     }
     
     func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {
-        print("3 ==============")
+        print("1 ==============")
         
     }
     
     func oauth20ConnectionDidFinishDeleteToken() {
-        print("4 ==============")
+        print("2 ==============")
     }
     
     func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailWithError error: Error!) {
-        print("5 ============== \(oauthConnection), \(error)")
+        print("3 ============== \(oauthConnection), \(error)")
     }
 }

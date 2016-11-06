@@ -13,7 +13,8 @@
         <!--Navigation Controller-->
         <scene sceneID="8x2-VF-qco">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RGi-1b-EgI" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y9w-Rh-hMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="purchaseNavController" automaticallyAdjustsScrollViewInsets="NO" id="RGi-1b-EgI" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uYD-Mz-1eb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -24,7 +25,6 @@
                         <segue destination="4jF-xa-XgO" kind="relationship" relationship="rootViewController" id="SzV-Q4-OZi"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="y9w-Rh-hMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="141.59999999999999" y="127.28635682158921"/>
         </scene>
@@ -64,10 +64,10 @@
                                                 <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="paymentCell" id="AiI-YW-9hD" customClass="PaymentCell" customModule="hPig" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="56" width="355" height="50"/>
+                                                        <rect key="frame" x="0.0" y="55" width="355" height="50"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AiI-YW-9hD" id="8W7-Tf-1Ic">
-                                                            <rect key="frame" x="0.0" y="0.0" width="355" height="49"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12개월 이용권" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCz-M4-JEC">
@@ -152,8 +152,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="btn_close"/>
                                 <connections>
-                                    <action selector="dismiss:" destination="4jF-xa-XgO" eventType="touchUpInside" id="v6N-MW-f9y"/>
-                                    <segue destination="4Y3-fS-yi1" kind="unwind" unwindAction="returnFromPurchaseWithSegue:" id="wwH-iE-XoP"/>
+                                    <action selector="dismiss:" destination="4jF-xa-XgO" eventType="touchUpInside" id="mko-pC-NcX"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -163,7 +162,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FfR-Ba-OCB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="4Y3-fS-yi1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="873" y="127"/>
         </scene>

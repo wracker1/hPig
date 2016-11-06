@@ -25,6 +25,10 @@ class PurchaseController: UIViewController, UITableViewDelegate, UITableViewData
         self.title = "패스 구매"
     }
     
+    @IBAction func dismiss(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -61,23 +65,23 @@ class PurchaseController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let pass = passes[indexPath.row]
         if let payment = payments[pass.id] {
-            purchaseService.purchase(payment: payment) { (error) in
+            purchaseService.purchase(self, payment: payment, completion: { (userId, error) in
                 if let reason = error {
                     self.view.presentToast(reason.localizedDescription)
+                } else if let id = userId {
+                    AuthenticateService.shared.updateTubeUserInfo(id, completion: nil)
+                    
+                    self.view.presentToast("패스 구매가 완료되었습니다.", completion: { 
+                        self.dismiss(animated: true, completion: nil)
+                    })
                 }
                 
                 tableView.deselectRow(at: indexPath, animated: true)
-            }
+            })
         }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "스피킹튜브 이용권"
-    }
-    
-    @IBAction func dismiss(_ sender: AnyObject) {
-        if let vc = controller {
-            vc.dismiss(animated: true, completion: nil)
-        }
     }
 }

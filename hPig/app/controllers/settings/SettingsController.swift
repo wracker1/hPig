@@ -12,6 +12,12 @@ import Toast_Swift
 
 class SettingsController: UITableViewController, MFMailComposeViewControllerDelegate {
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
+    
     private func cellIds() -> [String] {
         if AuthenticateService.shared.isOn() {
             return ["versionCell", "pushCell", "faqCell", "mailCell", "purchaseCell", "delDataCell", "loginCell"]
