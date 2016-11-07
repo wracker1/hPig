@@ -141,15 +141,20 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         return naverUserMap[naverUserKey(accessToken)]
     }
     
-    func tubeUser(_ accessToken: String) -> TubeUserInfo? {
-        return tubeUserMap[tubeUserKey(accessToken)]
-    }
-    
     func naverUser(_ accessToken: String, user: User?) {
         naverUserMap[naverUserKey(accessToken)] = user
     }
     
+    func tubeUser(_ accessToken: String) -> TubeUserInfo? {
+        return tubeUserMap[tubeUserKey(accessToken)]
+    }
+    
     func tubeUser(_ accessToken: String, user: TubeUserInfo?) {
+        if let data = user {
+            let archivedUser = NSKeyedArchiver.archivedData(withRootObject: data)
+            UserDefaults.standard.set(archivedUser, forKey: "archivedUserInfo")
+        }
+        
         tubeUserMap[tubeUserKey(accessToken)] = user
     }
     
@@ -407,10 +412,8 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     }
     
     func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
-        if let completion = completionHandler {
-            user(completion)
-            self.completionHandler = nil
-        }
+        user(completionHandler)
+        self.completionHandler = nil
     }
     
     func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {
