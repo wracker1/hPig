@@ -16,7 +16,7 @@ public class WORD: NSManagedObject {
     }
     
     
-    func mutating(data: WordData, uid: String, sentence: String?, session: Session?, time: Float) {
+    func mutating(data: WordData, uid: String, sentence: String?, desc: String?, session: Session?, time: Float) {
         self.id = WORD.wordId(item: data.word)
         self.uid = uid
         self.word = data.word
@@ -24,6 +24,7 @@ public class WORD: NSManagedObject {
         self.pron = data.pronunciation
         self.pronfile = data.soundUrl
         self.sentence = sentence
+        self.korean = desc
         self.regdt = Date() as NSDate
         self.time = time
         

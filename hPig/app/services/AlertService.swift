@@ -42,7 +42,12 @@ class AlertService {
     }
     
     @discardableResult private func embed(_ viewController: UIViewController, alert: UIAlertController, view: UIView, completion: (() -> Void)?) -> UIAlertController {
-        alert.addAction(UIAlertAction(title: "", style: .cancel, handler: nil))
+        
+        view.clipsToBounds = true
+        alert.view.clipsToBounds = true
+        
+        view.frame = alert.view.bounds
+        alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
         alert.view.addSubview(view)
         alert.view.translatesAutoresizingMaskIntoConstraints = false
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -59,7 +64,7 @@ class AlertService {
         
         alert.view.addConstraints(
             NSLayoutConstraint.constraints(
-                withVisualFormat: "V:|-[view]-|",
+                withVisualFormat: "V:|-[view]-(65)-|",
                 options: .alignAllCenterX,
                 metrics: nil,
                 views: views))

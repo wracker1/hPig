@@ -14,6 +14,10 @@ class LayoutService {
         return instance
     }()
     
+    func loadNib(_ nibName: String, superview: UIView) {
+        layoutXibView(superview: superview, nibName: nibName)
+    }
+    
     func layoutXibViews(superview: UIView, nibName: String, viewLayoutBlock: ((UIView) -> Void)?) {
         if let items = UINib(nibName: nibName, bundle: nil).instantiate(withOwner: superview, options: nil) as? [UIView] {
             items.forEach({ (view) in
@@ -30,7 +34,7 @@ class LayoutService {
     }
     
     func layoutXibView(superview: UIView, nibName: String) {
-        Bundle(for: type(of: superview)).loadNibNamed(nibName, owner: superview, options: nil)
+        self.layoutXibViews(superview: superview, nibName: nibName, viewLayoutBlock: nil)
     }
     
     func adjustContentSize(_ mainScroller: UIScrollView, subScroller: UIScrollView) {

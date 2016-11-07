@@ -88,12 +88,23 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let pattern = patternData.get(indexPath.row) {
-            let item = PatternView(frame: CGRectZero)
-            AlertService.shared.presentActionSheet(self, view: item, completion: nil)
-            item.update(pattern: pattern)
+        switch tableView {
+        case patternTableView:
+            if let pattern = patternData.get(indexPath.row) {
+                let item = PatternView(frame: CGRectZero)
+                AlertService.shared.presentActionSheet(self, view: item, completion: nil)
+                item.update(pattern: pattern)
+            }
             
-            item.confirmButton.addTarget(self, action: #selector(self.dismissAlert), for: .touchUpInside)
+        case wordTableView:
+            if let word = wordData.get(indexPath.row) {
+                let item = SentenceLayer(frame: self.view.bounds)
+                AlertService.shared.presentActionSheet(self, view: item, completion: nil)
+                item.update(word)
+            }
+            
+        default:
+            break
         }
     }
     

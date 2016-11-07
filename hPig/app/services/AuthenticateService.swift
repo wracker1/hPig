@@ -56,7 +56,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         self.naverConnection.consumerSecret = kConsumerSecret
         self.naverConnection.appName = kServiceAppName
         
-        self.naverConnection.isNaverAppOauthEnable = true
+        self.naverConnection.isNaverAppOauthEnable = false
         self.naverConnection.isInAppOauthEnable = true
         self.naverConnection.delegate = self
         

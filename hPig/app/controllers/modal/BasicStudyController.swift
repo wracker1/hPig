@@ -246,6 +246,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         
         if let subtitle = subtitles.get(index) {
             self.englishSubLabel.text = subtitle.english
+            self.englishSubLabel.desc = subtitle.korean
             self.koreanSubLabel.text = subtitle.korean
             
             if useAutoScroll {

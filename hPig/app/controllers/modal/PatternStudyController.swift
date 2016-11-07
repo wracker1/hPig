@@ -98,6 +98,7 @@ class PatternStudyController: UIViewController {
     private func changeLabels(_ index: Int) {
         if let data = patternStudyData.get(index), let range = data.timeRange() {
             englishLabel.attributedText = SubtitleService.shared.buildAttributedString(data.english)
+            englishLabel.desc = data.korean
             koreanLabel.text = data.korean
             meaningLabel.text = data.meaning
             infoLabel.text = data.info

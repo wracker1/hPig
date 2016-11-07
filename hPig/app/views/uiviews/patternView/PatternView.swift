@@ -16,7 +16,6 @@ class PatternView: UIView {
     @IBOutlet weak var koreanLabel: UILabel!
     @IBOutlet weak var meaningLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
-    @IBOutlet weak var confirmButton: UIButton!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

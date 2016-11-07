@@ -16,6 +16,7 @@ class hInteractedLabel: UILabel {
     weak var videoPlayer: hYTPlayerView? = nil
     
     var session: Session? = nil
+    var desc: String? = nil
     
     private let englishDictionaryView = hEnglishDictionaryView(frame: CGRectZero)
     
@@ -38,12 +39,12 @@ class hInteractedLabel: UILabel {
         let loc = recognizer.location(in: self)
         let textView = UITextView(frame: self.bounds)
         let sentence = self.text
+        let desc = self.desc
         
         textView.textContainerInset = UIEdgeInsetsMake(0, -0.5, 0, -0.5)
         textView.font = self.font
-        textView.text = sentence
+        textView.text = self.text
         textView.textAlignment = self.textAlignment
-        
         
         if let pos = textView.closestPosition(to: loc),
             let range = textView.tokenizer.rangeEnclosingPosition(pos, with: .word, inDirection: 0),
@@ -55,7 +56,8 @@ class hInteractedLabel: UILabel {
                     
                     self.present(viewController: controller,
                                  data: data,
-                                 sentence: sentence ?? "",
+                                 sentence: sentence,
+                                 desc: desc,
                                  time: time)
                 }
             })
@@ -63,10 +65,11 @@ class hInteractedLabel: UILabel {
         }
     }
     
-    private func present(viewController: UIViewController, data: WordData, sentence: String, time: Float) {
+    private func present(viewController: UIViewController, data: WordData, sentence: String?, desc: String?, time: Float) {
         englishDictionaryView.present(viewController,
                                       data: data,
                                       sentence: sentence,
+                                      desc: desc,
                                       session: session,
                                       time: time,
                                       videoPlayer: videoPlayer)
