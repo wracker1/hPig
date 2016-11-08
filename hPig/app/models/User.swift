@@ -9,7 +9,7 @@
 import Foundation
 import SWXMLHash
 
-struct User {
+class User: NSObject, NSCoding {
     let email: String?
     let nickname: String?
     let encId: String?
@@ -19,6 +19,34 @@ struct User {
     let name: String?
     let birthDay: String?
     let accountId: String?
+    
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(email, forKey: "email")
+        aCoder.encode(nickname, forKey: "nickname")
+        aCoder.encode(encId, forKey: "encId")
+        aCoder.encode(profileImage, forKey: "profileImage")
+        aCoder.encode(age, forKey: "age")
+        aCoder.encode(gender, forKey: "gender")
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(birthDay, forKey: "birthDay")
+        aCoder.encode(accountId, forKey: "accountId")
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        guard let email = aDecoder.decodeObject(forKey: "email") as? String else {
+            return nil
+        }
+        
+        self.email = email
+        self.nickname = aDecoder.decodeObject(forKey: "nickname") as? String
+        self.encId = aDecoder.decodeObject(forKey: "encId") as? String
+        self.profileImage = aDecoder.decodeObject(forKey: "profileImage") as? String
+        self.age = aDecoder.decodeObject(forKey: "age") as? String
+        self.gender = aDecoder.decodeObject(forKey: "gender") as? String
+        self.name = aDecoder.decodeObject(forKey: "name") as? String
+        self.birthDay = aDecoder.decodeObject(forKey: "birthDay") as? String
+        self.accountId = aDecoder.decodeObject(forKey: "accountId") as? String
+    }
     
     init?(data: Data) {
         let xml = SWXMLHash.parse(data)
