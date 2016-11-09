@@ -20,9 +20,11 @@ class SessionsController: UITableViewController {
     private var level = "0"
     private var tableViewVelocity: CGPoint? = nil
     
+    private let filterHeaderViewHeight: CGFloat = 25
+    @IBOutlet var filterHeaderView: UIView!
+    @IBOutlet weak var filterLabel: UILabel!
+    
     @IBOutlet weak var listFilterButton: UIBarButtonItem!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,8 @@ class SessionsController: UITableViewController {
         self.tableView.estimatedSectionHeaderHeight = 40
         
         self.refreshControl?.addTarget(self, action: #selector(self.reloadSessions), for: .valueChanged)
+        
+        Bundle.main.loadNibNamed("sessionFilterHeader", owner: self, options: nil)
         
         self.listFilterButton.target = self
         self.listFilterButton.action = #selector(self.showListFilterPicker)
@@ -65,13 +69,13 @@ class SessionsController: UITableViewController {
         }
     }
     
-//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        return sessionsHeader
-//    }
-//    
-//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 20
-//    }
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return filterHeaderView
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return filterHeaderViewHeight
+    }
 
     private func loadPage(sort: String, category: String, level: String, page: Int, completion: (() -> Void)?) -> Void {
         if page == 1 {
@@ -100,9 +104,7 @@ class SessionsController: UITableViewController {
                     }
                 }
                 
-                self.sort = sort
-                self.category = category
-                self.level = level
+                self.filterData(sort, category: category, level: level)
                 self.currentPage = page
                 self.isLoading = false
                 
@@ -113,6 +115,19 @@ class SessionsController: UITableViewController {
         } else if let callback = completion {
             callback()
         }
+    }
+    
+    private func filterData(_ sort: String, category: String, level: String) {
+        self.sort = sort
+        self.category = category
+        self.level = level
+        
+        let cateService = CategoryService.shared
+        let categoryName = cateService.categoryById(category) ?? "All Topics"
+        let levelName = cateService.levelById(level) ?? "전체"
+        let sortName = cateService.sortById(sort) ?? "최신"
+        
+        self.filterLabel.text = "\(categoryName) ㆍ \(levelName) ㆍ \(sortName)"
     }
     
     private func insertRows(from: Int, size: Int) {

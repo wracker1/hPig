@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16C32f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SessionsController" customModule="hPig" customModuleProvider="target">
+            <connections>
+                <outlet property="filterHeaderView" destination="iN0-l3-epB" id="dSu-1t-8kK"/>
+                <outlet property="filterLabel" destination="BAq-Kc-s18" id="W8d-6N-4CG"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="All Topics ㆍ 전체 ㆍ 최신" text="All Topics ㆍ 전체 ㆍ 최신" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAq-Kc-s18">
+                    <rect key="frame" x="0.0" y="321" width="375" height="25"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="F1q-tw-a66"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="BAq-Kc-s18" secondAttribute="bottom" priority="750" id="72Q-N8-Wcw"/>
+                <constraint firstItem="BAq-Kc-s18" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="b6I-7I-9lY"/>
+                <constraint firstAttribute="trailing" secondItem="BAq-Kc-s18" secondAttribute="trailing" id="f6g-I0-4FY"/>
+                <constraint firstItem="BAq-Kc-s18" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="i3I-2j-Sef"/>
+                <constraint firstItem="BAq-Kc-s18" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" priority="750" id="nIk-Jm-pVN"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

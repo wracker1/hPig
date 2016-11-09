@@ -26,6 +26,38 @@ class CategoryService: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     private let sortData = [["name": "최신", "id": "new"], ["name": "인기", "id": "viewcnt"], ["name": "무료", "id": "free"]]
     private let levelData = [["name": "전체", "id": "0"], ["name": "초급", "id": "1"], ["name": "중급", "id": "2"], ["name": "고급", "id": "3"]]
     
+    func categoryById(_ id: String) -> String? {
+        return categories.find({ (item) -> Bool in
+            return item.id == id
+        }).map({ (item) -> String in
+            return item.name
+        })
+    }
+    
+    func sortById(_ id: String) -> String? {
+        return sortData.find({ (dict) -> Bool in
+            if let itemId = dict["id"] {
+                return itemId == id
+            } else {
+                return false
+            }
+        }).flatMap({ (dict) -> String? in
+            return dict["name"]
+        })
+    }
+    
+    func levelById(_ id: String) -> String? {
+        return levelData.find({ (dict) -> Bool in
+            if let itemId = dict["id"] {
+                return itemId == id
+            } else {
+                return false
+            }
+        }).flatMap({ (dict) -> String? in
+            return dict["name"]
+        })
+    }
+    
     private func initPicker(completion: @escaping () -> Void) {
         if initialized {
             completion()
