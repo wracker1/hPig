@@ -27,18 +27,17 @@
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaS-9R-azQ">
                             <rect key="frame" x="8" y="13" width="359" height="20.5"/>
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKX-DE-Dqk">
-                            <rect key="frame" x="8" y="38.5" width="359" height="615.5"/>
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <rect key="frame" x="8" y="53.5" width="359" height="600.5"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                     <constraints>
                         <constraint firstAttribute="bottomMargin" secondItem="eKX-DE-Dqk" secondAttribute="bottom" constant="5" id="EXI-qz-B8y"/>
                         <constraint firstAttribute="trailingMargin" secondItem="eKX-DE-Dqk" secondAttribute="trailing" id="G1v-p9-3Qz"/>
@@ -46,7 +45,7 @@
                         <constraint firstItem="MaS-9R-azQ" firstAttribute="top" secondItem="IHw-mD-YLt" secondAttribute="topMargin" constant="5" id="LgC-0H-nDS"/>
                         <constraint firstItem="MaS-9R-azQ" firstAttribute="leading" secondItem="IHw-mD-YLt" secondAttribute="leadingMargin" id="Z5p-zN-lah"/>
                         <constraint firstItem="eKX-DE-Dqk" firstAttribute="leading" secondItem="IHw-mD-YLt" secondAttribute="leadingMargin" id="aqX-9d-jj0"/>
-                        <constraint firstItem="eKX-DE-Dqk" firstAttribute="top" secondItem="MaS-9R-azQ" secondAttribute="bottom" constant="5" id="tRX-ge-Fpt"/>
+                        <constraint firstItem="eKX-DE-Dqk" firstAttribute="top" secondItem="MaS-9R-azQ" secondAttribute="bottom" constant="20" id="tRX-ge-Fpt"/>
                     </constraints>
                 </view>
             </subviews>
