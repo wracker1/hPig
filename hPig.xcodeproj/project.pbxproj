@@ -67,6 +67,7 @@
 		8879337E1DB8B315001CB925 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8879337B1DB8B315001CB925 /* UserNotifications.framework */; };
 		8879337F1DB8B315001CB925 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8879337C1DB8B315001CB925 /* UserNotificationsUI.framework */; };
 		8880D7C41DC8638E00398D9A /* hProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8880D7C31DC8638E00398D9A /* hProduct.swift */; };
+		889BCF401DD45E830023031C /* UIAlertControllerOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889BCF3F1DD45E830023031C /* UIAlertControllerOps.swift */; };
 		88B4BAC21DC1B91000AFFE3A /* UIScrollViewOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B4BAC11DC1B91000AFFE3A /* UIScrollViewOps.swift */; };
 		88B4BAC41DC1F62F00AFFE3A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B4BAC31DC1F62F00AFFE3A /* StoreKit.framework */; };
 		88BE97D91D9D0C37002903E3 /* AuthenticateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97D81D9D0C37002903E3 /* AuthenticateService.swift */; };
@@ -217,6 +218,7 @@
 		8879337B1DB8B315001CB925 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		8879337C1DB8B315001CB925 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		8880D7C31DC8638E00398D9A /* hProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hProduct.swift; sourceTree = "<group>"; };
+		889BCF3F1DD45E830023031C /* UIAlertControllerOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerOps.swift; sourceTree = "<group>"; };
 		88B4BAC11DC1B91000AFFE3A /* UIScrollViewOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewOps.swift; sourceTree = "<group>"; };
 		88B4BAC31DC1F62F00AFFE3A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		88BE97D81D9D0C37002903E3 /* AuthenticateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticateService.swift; sourceTree = "<group>"; };
@@ -691,6 +693,7 @@
 				881ED0241D93D07400D612EF /* OptionOps.swift */,
 				88DEDEF51DB605CC00781123 /* UIViewOps.swift */,
 				88B4BAC11DC1B91000AFFE3A /* UIScrollViewOps.swift */,
+				889BCF3F1DD45E830023031C /* UIAlertControllerOps.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -1020,6 +1023,7 @@
 				88C6EA861DD039DF0087FE9C /* SessionFeedCell.swift in Sources */,
 				8860852E1D97D435009A9B3C /* Global.swift in Sources */,
 				88C6EA8C1DD039DF0087FE9C /* ChannelButton.swift in Sources */,
+				889BCF401DD45E830023031C /* UIAlertControllerOps.swift in Sources */,
 				8845230A1DBF44CF00802510 /* HISTORY+CoreDataProperties.swift in Sources */,
 				88CDB9ED1D92BDA30058ECFE /* AppDelegate.swift in Sources */,
 				88CDBA2B1D92D6EE0058ECFE /* NetService.swift in Sources */,

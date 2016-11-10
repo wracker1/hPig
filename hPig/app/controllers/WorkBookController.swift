@@ -93,33 +93,16 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
             if let pattern = patternData.get(indexPath.row) {
                 let item = PatternView(frame: CGRectZero)
                 //AlertService.shared.presentActionSheet(self, view: item, completion: nil)
-                let alert = AlertService.shared.alert(item)
+                let alert = AlertService.shared.actionSheet(item)
                 
-                self.present(alert, animated: true, completion: {
-                    /*
-                    alert.view.subviews.find({ view in
-                        
-                        return view != item
-                    }).map({ view in
-                        
-                        view.backgroundColor = UIColor.white
-                        
-                        return view
-                    })
- 
-                    
-                    print(alert.view)
-                    print(alert.view.superview)
-                    print(alert.view.superview?.superview)
- */
-                })
+                self.present(alert, animated: true, completion: nil)
                 
                 item.update(pattern: pattern)
             }
             
         case wordTableView:
             if let word = wordData.get(indexPath.row) {
-                let item = SentenceLayer(frame: self.view.bounds)
+                let item = SentenceLayer(frame: CGRectZero)
                 AlertService.shared.presentActionSheet(self, view: item, completion: nil)
                 item.update(word)
             }

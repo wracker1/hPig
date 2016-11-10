@@ -25,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xqy-kI-jkk">
-                    <rect key="frame" x="12" y="11" width="351" height="645"/>
+                    <rect key="frame" x="0.0" y="8" width="375" height="651"/>
                     <subviews>
                         <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FYY-Ym-ZfT">
                             <rect key="frame" x="8" y="0.0" width="335" height="63"/>
@@ -110,11 +110,10 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="xqy-kI-jkk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="3KO-j4-LzY"/>
-                <constraint firstAttribute="bottomMargin" secondItem="xqy-kI-jkk" secondAttribute="bottom" constant="3" id="E2v-Pk-ejn"/>
-                <constraint firstAttribute="trailing" secondItem="xqy-kI-jkk" secondAttribute="trailing" constant="12" id="Mlb-B7-dDa"/>
-                <constraint firstItem="xqy-kI-jkk" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="SmJ-S0-NPF"/>
-                <constraint firstItem="xqy-kI-jkk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" constant="3" id="zh2-2z-pTl"/>
+                <constraint firstItem="xqy-kI-jkk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3KO-j4-LzY"/>
+                <constraint firstAttribute="bottomMargin" secondItem="xqy-kI-jkk" secondAttribute="bottom" id="E2v-Pk-ejn"/>
+                <constraint firstAttribute="trailing" secondItem="xqy-kI-jkk" secondAttribute="trailing" id="Mlb-B7-dDa"/>
+                <constraint firstItem="xqy-kI-jkk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="zh2-2z-pTl"/>
             </constraints>
             <point key="canvasLocation" x="-143.5" y="34.5"/>
         </view>

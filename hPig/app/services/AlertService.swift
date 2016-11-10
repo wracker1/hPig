@@ -15,26 +15,26 @@ class AlertService {
     }()
     
     func alert(_ view: UIView) -> UIAlertController {
-        let alert = UIAlertController(title: "SpeakingTube", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "", message: nil, preferredStyle: .alert)
         return embed(alert, view: view)
     }
     
     func actionSheet(_ view: UIView) -> UIAlertController {
-        let alert = UIAlertController(title: "SpeakingTube", message: nil, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
         return embed(alert, view: view)
     }
     
     func presentAlert(_ viewController: UIViewController, view: UIView, completion: (() -> Void)?) {
-        let alert = UIAlertController(title: "SpeakingTube", message: nil, preferredStyle: .alert)
-        
+        let alert = UIAlertController(title: "", message: nil, preferredStyle: .alert)
         embed(alert, view: view)
         
         viewController.present(alert, animated: true, completion: completion)
     }
     
     func presentActionSheet(_ viewController: UIViewController, view: UIView, completion: (() -> Void)?) {
-        let alert = UIAlertController(title: "SpeakingTube", message: nil, preferredStyle: .actionSheet)
-        
+        let alert = UIAlertController(title: "", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
         embed(alert, view: view)
         
         viewController.present(alert, animated: true, completion: completion)
@@ -58,14 +58,9 @@ class AlertService {
     }
     
     @discardableResult private func embed(_ alert: UIAlertController, view: UIView) -> UIAlertController {
+        alert.dimmingKnockoutBackdropView()?.addSubview(view)
         
-        view.clipsToBounds = true
-        alert.view.clipsToBounds = true
-        
-        view.frame = alert.view.bounds
-        alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
-        alert.view.addSubview(view)
-        alert.view.translatesAutoresizingMaskIntoConstraints = false
+        view.superview?.translatesAutoresizingMaskIntoConstraints = false
         view.translatesAutoresizingMaskIntoConstraints = false
         
         let views = ["view": view]
@@ -80,7 +75,7 @@ class AlertService {
         
         alert.view.addConstraints(
             NSLayoutConstraint.constraints(
-                withVisualFormat: "V:|-[view]-(65)-|",
+                withVisualFormat: "V:|-[view]-|",
                 options: .alignAllCenterX,
                 metrics: nil,
                 views: views))

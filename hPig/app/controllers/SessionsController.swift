@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import CoreGraphics
 
 class SessionsController: UITableViewController {
 
