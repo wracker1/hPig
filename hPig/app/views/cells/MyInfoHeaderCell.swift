@@ -123,7 +123,7 @@ class MyInfoHeaderCell: UICollectionViewCell {
 
     private func loadChart(logs: [TIME_LOG]) {
         chartView.noDataText = ""
-        chartView.descriptionText = ""
+        chartView.chartDescription?.text = ""
 
         let formatter = DateFormatter()
         formatter.dateFormat = "MM.dd"
@@ -173,14 +173,14 @@ class MyInfoHeaderCell: UICollectionViewCell {
         var dataEntries: [BarChartDataEntry] = []
 
         for i in 0..<dataPoints.count {
-            let dataEntry = BarChartDataEntry(value: values[i], xIndex: i)
+            let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
             dataEntries.append(dataEntry)
         }
 
-        let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "학습시간(분)")
+        let chartDataSet = BarChartDataSet(values: dataEntries, label: "학습시간(분)")
         chartDataSet.colors = [pointColor]
 
-        let chartData = BarChartData(xVals: dataPoints, dataSet: chartDataSet)
+        let chartData = BarChartData(dataSet: chartDataSet)
         chartView.data = chartData
         chartView.xAxis.labelPosition = .bottom
         chartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInExpo)

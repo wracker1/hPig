@@ -92,7 +92,28 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
         case patternTableView:
             if let pattern = patternData.get(indexPath.row) {
                 let item = PatternView(frame: CGRectZero)
-                AlertService.shared.presentActionSheet(self, view: item, completion: nil)
+                //AlertService.shared.presentActionSheet(self, view: item, completion: nil)
+                let alert = AlertService.shared.alert(item)
+                
+                self.present(alert, animated: true, completion: {
+                    /*
+                    alert.view.subviews.find({ view in
+                        
+                        return view != item
+                    }).map({ view in
+                        
+                        view.backgroundColor = UIColor.white
+                        
+                        return view
+                    })
+ 
+                    
+                    print(alert.view)
+                    print(alert.view.superview)
+                    print(alert.view.superview?.superview)
+ */
+                })
+                
                 item.update(pattern: pattern)
             }
             

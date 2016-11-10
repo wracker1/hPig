@@ -381,7 +381,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gPK-xm-RWJ">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="XmZ-Np-coq">
+                        <barButtonItem key="rightBarButtonItem" id="XmZ-Np-coq">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9mf-3R-Osb">
                                 <rect key="frame" x="304" y="7" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

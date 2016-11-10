@@ -14,14 +14,30 @@ class AlertService {
         return instance
     }()
     
+    func alert(_ view: UIView) -> UIAlertController {
+        let alert = UIAlertController(title: "SpeakingTube", message: nil, preferredStyle: .alert)
+        return embed(alert, view: view)
+    }
+    
+    func actionSheet(_ view: UIView) -> UIAlertController {
+        let alert = UIAlertController(title: "SpeakingTube", message: nil, preferredStyle: .actionSheet)
+        return embed(alert, view: view)
+    }
+    
     func presentAlert(_ viewController: UIViewController, view: UIView, completion: (() -> Void)?) {
         let alert = UIAlertController(title: "SpeakingTube", message: nil, preferredStyle: .alert)
-        embed(viewController, alert: alert, view: view, completion: completion)
+        
+        embed(alert, view: view)
+        
+        viewController.present(alert, animated: true, completion: completion)
     }
     
     func presentActionSheet(_ viewController: UIViewController, view: UIView, completion: (() -> Void)?) {
         let alert = UIAlertController(title: "SpeakingTube", message: nil, preferredStyle: .actionSheet)
-        embed(viewController, alert: alert, view: view, completion: completion)
+        
+        embed(alert, view: view)
+        
+        viewController.present(alert, animated: true, completion: completion)
     }
     
     func presentConfirm(_ viewController: UIViewController, title: String, message: String?, cancel: (() -> Void)?, confirm: (() -> Void)?) {
@@ -41,7 +57,7 @@ class AlertService {
         viewController.present(alert, animated: true, completion: nil)
     }
     
-    @discardableResult private func embed(_ viewController: UIViewController, alert: UIAlertController, view: UIView, completion: (() -> Void)?) -> UIAlertController {
+    @discardableResult private func embed(_ alert: UIAlertController, view: UIView) -> UIAlertController {
         
         view.clipsToBounds = true
         alert.view.clipsToBounds = true
@@ -53,7 +69,7 @@ class AlertService {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         let views = ["view": view]
-        let width = viewController.view.bounds.width
+        let width = alert.view.bounds.size.width
         
         alert.view.addConstraints(
             NSLayoutConstraint.constraints(
@@ -68,12 +84,6 @@ class AlertService {
                 options: .alignAllCenterX,
                 metrics: nil,
                 views: views))
-        
-        viewController.present(alert, animated: true) {
-            if let callback = completion {
-                callback()
-            }
-        }
         
         return alert
     }
