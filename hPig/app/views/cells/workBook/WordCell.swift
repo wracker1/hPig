@@ -15,10 +15,6 @@ class WordCell: UITableViewCell, hTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        if let button = englishDictionaryView.confirmButton {
-            button.isHidden = true
-        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

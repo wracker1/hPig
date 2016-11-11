@@ -13,20 +13,19 @@ import AVFoundation
 
 class hEnglishDictionaryView: UIView {
 
-    private var data: WordData? = nil
-    private var viewController: UIViewController? = nil
-    private var videoPlayer: hYTPlayerView? = nil
     private var audioPlayer: AVAudioPlayer? = nil
     private var sentence: String? = nil
     private var desc: String? = nil
-    private var session: Session? = nil
     private var time: Float = 0
-    private var visible = false
+    private var data: WordData? = nil
+    private var session: Session? = nil
+    
+    private weak var viewController: UIViewController? = nil
+    private weak var videoPlayer: hYTPlayerView? = nil
     
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var meaningLabel: UILabel!
     @IBOutlet weak var pronunciationLabel: UILabel!
-    @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,10 +45,6 @@ class hEnglishDictionaryView: UIView {
         
         self.clipsToBounds = true
         self.layer.cornerRadius = 10.0
-        
-        if let button = self.confirmButton {
-            button.addTarget(self, action: #selector(self.dismiss), for: .touchUpInside)
-        }
     }
     
     func present(_ controller: UIViewController,
@@ -68,42 +63,12 @@ class hEnglishDictionaryView: UIView {
         self.time = time
         
         self.update(data: data) {
-            let size = controller.view.bounds.size
-            self.frame = CGRect(x: 0, y: size.height, width: size.width, height: 0)
-            self.sizeToFit()
+            let alert = AlertService.shared.actionSheet(self, handleCancel: { (_) in
+                self.videoPlayer?.playVideo()
+            })
             
-            if self.visible {
-                self.positioning()
-            } else {
-                controller.view.addSubview(self)
-                
-                UIView.animate(withDuration: 0.3) {
-                    self.positioning()
-                    self.visible = true
-                }
-            }
+            controller.present(alert, animated: true, completion: nil)
         }
-    }
-    
-    private func positioning() {
-        if let controller = self.viewController {
-            let size = controller.view.bounds.size
-            var frame = self.frame
-            frame.origin.y = size.height - self.bounds.size.height
-            self.frame = frame
-        }
-    }
-    
-    override func sizeThatFits(_ size: CGSize) -> CGSize {
-        self.wordLabel.sizeToFit()
-        self.meaningLabel.sizeToFit()
-        self.pronunciationLabel.sizeToFit()
-        
-        let wordSize = wordLabel.bounds.size
-        let meanLabelSize = meaningLabel.bounds.size
-        let padding: CGFloat = 120
-        let thatSize = CGSize(width: size.width, height: wordSize.height + meanLabelSize.height + padding)
-        return thatSize
     }
     
     func update(data: WordData, completion: (() -> Void)?) {
@@ -147,30 +112,6 @@ class hEnglishDictionaryView: UIView {
                     }
                 }
             }
-        }
-    }
-    
-    @IBAction func dismiss(_ sender: AnyObject) {
-        if self.superview != nil && self.visible, let controller = viewController {
-            let size = controller.view.bounds.size
-            
-            UIView.animate(
-                withDuration: 0.3,
-                animations: {
-                    var frame = self.frame
-                    frame.origin.y = size.height
-                    self.frame = frame
-                },
-                completion: { (finish) in
-                    self.removeFromSuperview()
-                    self.visible = false
-                    
-                    if let vPlayer = self.videoPlayer {
-                        if vPlayer.playerState() == .paused {
-                            vPlayer.playVideo()
-                        }
-                    }
-            })
         }
     }
 

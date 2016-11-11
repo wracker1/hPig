@@ -19,9 +19,9 @@ class AlertService {
         return embed(alert, view: view)
     }
     
-    func actionSheet(_ view: UIView) -> UIAlertController {
+    func actionSheet(_ view: UIView, handleCancel: ((UIAlertAction) -> Void)? = nil) -> UIAlertController {
         let alert = UIAlertController(title: "", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: handleCancel))
         return embed(alert, view: view)
     }
     
@@ -32,9 +32,9 @@ class AlertService {
         viewController.present(alert, animated: true, completion: completion)
     }
     
-    func presentActionSheet(_ viewController: UIViewController, view: UIView, completion: (() -> Void)?) {
+    func presentActionSheet(_ viewController: UIViewController, view: UIView, completion: (() -> Void)?, handleCancel: ((UIAlertAction) -> Void)? = nil) {
         let alert = UIAlertController(title: "", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: handleCancel))
         embed(alert, view: view)
         
         viewController.present(alert, animated: true, completion: completion)

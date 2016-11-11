@@ -35,13 +35,15 @@ class hInteractedLabel: UILabel {
     override var canBecomeFirstResponder: Bool { get { return true } }
     
     func handleTap(_ recognizer: UITapGestureRecognizer) {
+        videoPlayer?.pauseVideo()
+        
         let time = videoPlayer?.currentTime() ?? 0
         let loc = recognizer.location(in: self)
         let textView = UITextView(frame: self.bounds)
         let sentence = self.text
         let desc = self.desc
         
-        textView.textContainerInset = UIEdgeInsetsMake(0, -0.5, 0, -0.5)
+        textView.textContainerInset = UIEdgeInsetsMake(0.0, -5.0, 0.0, -5.0)
         textView.font = self.font
         textView.text = self.text
         textView.textAlignment = self.textAlignment
