@@ -68,12 +68,18 @@ class hInteractedLabel: UILabel {
     }
     
     private func present(viewController: UIViewController, data: WordData, sentence: String?, desc: String?, time: Float) {
-        englishDictionaryView.present(viewController,
-                                      data: data,
-                                      sentence: sentence,
-                                      desc: desc,
-                                      session: session,
-                                      time: time,
-                                      videoPlayer: videoPlayer)
+        
+        let alert = AlertService.shared.actionSheet(englishDictionaryView, handleCancel: { (_) in
+            self.videoPlayer?.playVideo()
+        })
+        
+        englishDictionaryView.sentence = sentence
+        englishDictionaryView.desc = desc
+        englishDictionaryView.session = session
+        englishDictionaryView.time = time
+        englishDictionaryView.update(data: data, completion: nil)
+        
+        viewController.present(alert, animated: true, completion: nil)
+        
     }
 }

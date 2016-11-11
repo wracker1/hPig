@@ -8,20 +8,17 @@
 
 import UIKit
 import CoreData
-import CoreGraphics
 import AVFoundation
 
 class hEnglishDictionaryView: UIView {
 
     private var audioPlayer: AVAudioPlayer? = nil
-    private var sentence: String? = nil
-    private var desc: String? = nil
-    private var time: Float = 0
     private var data: WordData? = nil
-    private var session: Session? = nil
     
-    private weak var viewController: UIViewController? = nil
-    private weak var videoPlayer: hYTPlayerView? = nil
+    var sentence: String? = nil
+    var desc: String? = nil
+    var time: Float = 0
+    var session: Session? = nil
     
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var meaningLabel: UILabel!
@@ -40,42 +37,6 @@ class hEnglishDictionaryView: UIView {
         LayoutService.shared.layoutXibViews(superview: self, nibName: "eng_dic_view", viewLayoutBlock: nil)
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        self.clipsToBounds = true
-        self.layer.cornerRadius = 10.0
-    }
-    
-    func present(_ controller: UIViewController,
-                 data: WordData,
-                 sentence: String?,
-                 desc: String?,
-                 session: Session?,
-                 time: Float,
-                 videoPlayer: hYTPlayerView?) {
-        
-        self.viewController = controller
-        self.videoPlayer = videoPlayer
-        self.sentence = sentence
-        self.desc = desc
-        self.session = session
-        self.time = time
-        
-        self.update(data: data) {
-            let alert = AlertService.shared.actionSheet(self, handleCancel: { (_) in
-                self.videoPlayer?.playVideo()
-            })
-            
-            controller.present(alert, animated: true, completion: {
-                traceView(alert.view, find: { (depth, item) in
-                    item.isUserInteractionEnabled = true
-                    print("=========>\n\(item.isUserInteractionEnabled), \(item)\ndepth: \(depth)\nparent: \(item.superview)\n\n")
-                })
-            })
-        }
-    }
-    
     func update(data: WordData, completion: (() -> Void)?) {
         self.data = data
         
@@ -89,16 +50,16 @@ class hEnglishDictionaryView: UIView {
                 CoreDataService.shared.select(request: req) { (items, error) in
                     let hasWord = items.count != 0
                     self.saveButton.setImage(UIImage(named: hasWord ? "btn_bookmark_enable" : "btn_bookmark_disable"), for: .normal)
-                    
-                    let regex = try! NSRegularExpression(pattern: "<\\/?daum:pron>", options: .caseInsensitive)
-                    let range = NSRange(location: 0, length: data.pronunciation.characters.count)
+
+                    let pron = data.pronunciation as NSString
+                    let regex = try! NSRegularExpression(pattern: "<[^>]*?>", options: .caseInsensitive)
+                    let range = NSRange(location: 0, length: pron.length)
                     
                     self.wordLabel.text = data.word
                     self.meaningLabel.text = data.summary
                     
                     let pronunciation = regex.stringByReplacingMatches(
-                        in: data.pronunciation,
-                        options: [],
+                        in: pron as String,
                         range: range,
                         withTemplate: "")
                     
@@ -129,10 +90,6 @@ class hEnglishDictionaryView: UIView {
                 
                 if let data = res.result.value {
                     DispatchQueue.main.async {
-                        if let vPlayer = self.videoPlayer {
-                            vPlayer.pauseVideo()
-                        }
-                        
                         do {
                             self.audioPlayer = try AVAudioPlayer(data: data, fileTypeHint: AVFileTypeMPEGLayer3)
                             

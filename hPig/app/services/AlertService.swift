@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 class AlertService {
     static let shared: AlertService = {
@@ -21,6 +22,7 @@ class AlertService {
     
     func actionSheet(_ view: UIView, handleCancel: ((UIAlertAction) -> Void)? = nil) -> UIAlertController {
         let alert = UIAlertController(title: "", message: nil, preferredStyle: .actionSheet)
+        
         alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: handleCancel))
         return embed(alert, view: view)
     }
@@ -58,28 +60,40 @@ class AlertService {
     }
     
     @discardableResult private func embed(_ alert: UIAlertController, view: UIView) -> UIAlertController {
-        alert.dimmingKnockoutBackdropView()?.addSubview(view)
         
-        view.superview?.translatesAutoresizingMaskIntoConstraints = false
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        let views = ["view": view]
-        let width = alert.view.bounds.size.width
-        
-        alert.view.addConstraints(
-            NSLayoutConstraint.constraints(
-                withVisualFormat: "H:|-[view(<=\(width)@1000)]-|",
-                options: .alignAllCenterY,
-                metrics: nil,
-                views: views))
-        
-        alert.view.addConstraints(
-            NSLayoutConstraint.constraints(
-                withVisualFormat: "V:|-[view]-|",
-                options: .alignAllCenterX,
-                metrics: nil,
-                views: views))
+        if let actionGroupView = alert.alertControllerInterfaceActionGroupView(),
+            let target = alert.dimmingKnockoutBackdropView() {
+            
+            actionGroupView.backgroundColor = UIColor.white
+            actionGroupView.layer.cornerRadius = 15.0
+            target.addSubview(view)
+            
+            setupConstraints(view, width: alert.view.bounds.size.width)
+        }
         
         return alert
+    }
+    
+    private func setupConstraints(_ item: UIView?, width: CGFloat) {
+        if let view = item, let target = view.superview {
+            target.translatesAutoresizingMaskIntoConstraints = false
+            view.translatesAutoresizingMaskIntoConstraints = false
+            
+            let views = ["view": view]
+            
+            target.addConstraints(
+                NSLayoutConstraint.constraints(
+                    withVisualFormat: "H:|-[view(<=\(width)@1000)]-|",
+                    options: .alignAllCenterY,
+                    metrics: nil,
+                    views: views))
+            
+            target.addConstraints(
+                NSLayoutConstraint.constraints(
+                    withVisualFormat: "V:|-[view]-|",
+                    options: .alignAllCenterX,
+                    metrics: nil,
+                    views: views))
+        }
     }
 }

@@ -8,24 +8,9 @@
 
 import UIKit
 
-extension UIAlertController {
-    private func className(item: Any) -> String {
-        let mirror = Mirror(reflecting: item)
-        return String(describing: mirror.subjectType)
-    }
-    
-    private func search(_ item: UIView?, name: String) -> UIView? {
-        if let view = item {
-            return view.subviews.filter({ (v) -> Bool in
-                return className(item: v) == name
-            }).first
-        } else {
-            return nil
-        }
-    }
-    
-    func contentView() -> UIView {
-        return self.view.subviews.first!
+extension UIAlertController {    
+    func contentView() -> UIView? {
+        return self.view.subviews.first
     }
     
     func alertControllerInterfaceActionGroupView() -> UIView? {
