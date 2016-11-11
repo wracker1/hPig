@@ -24,6 +24,7 @@ class hEnglishDictionaryView: UIView {
     @IBOutlet weak var meaningLabel: UILabel!
     @IBOutlet weak var pronunciationLabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var confirmButton: UIButton!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -63,7 +64,7 @@ class hEnglishDictionaryView: UIView {
                         range: range,
                         withTemplate: "")
                     
-                    self.pronunciationLabel.text = "[\(pronunciation)]"
+                    self.pronunciationLabel.text = pronunciation.characters.count > 0 ? "[\(pronunciation)]" : ""
                     self.wordLabel.sizeToFit()
                     self.meaningLabel.sizeToFit()
                     self.pronunciationLabel.sizeToFit()

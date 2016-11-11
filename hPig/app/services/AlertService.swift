@@ -74,7 +74,7 @@ class AlertService {
         return alert
     }
     
-    private func setupConstraints(_ item: UIView?, width: CGFloat) {
+    func setupConstraints(_ item: UIView?, width: CGFloat) {
         if let view = item, let target = view.superview {
             target.translatesAutoresizingMaskIntoConstraints = false
             view.translatesAutoresizingMaskIntoConstraints = false
@@ -83,14 +83,14 @@ class AlertService {
             
             target.addConstraints(
                 NSLayoutConstraint.constraints(
-                    withVisualFormat: "H:|-[view(<=\(width)@1000)]-|",
+                    withVisualFormat: "H:|-[view(==\(width)@750)]-|",
                     options: .alignAllCenterY,
                     metrics: nil,
                     views: views))
             
             target.addConstraints(
                 NSLayoutConstraint.constraints(
-                    withVisualFormat: "V:|-[view]-|",
+                    withVisualFormat: "V:|[view]|",
                     options: .alignAllCenterX,
                     metrics: nil,
                     views: views))

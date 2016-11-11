@@ -68,8 +68,6 @@
 		8879337F1DB8B315001CB925 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8879337C1DB8B315001CB925 /* UserNotificationsUI.framework */; };
 		8880D7C41DC8638E00398D9A /* hProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8880D7C31DC8638E00398D9A /* hProduct.swift */; };
 		889BCF401DD45E830023031C /* UIAlertControllerOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889BCF3F1DD45E830023031C /* UIAlertControllerOps.swift */; };
-		889BCF441DD5B1860023031C /* hAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889BCF431DD5B1860023031C /* hAlertController.swift */; };
-		889BCF461DD5B19E0023031C /* AlertController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889BCF451DD5B19E0023031C /* AlertController.storyboard */; };
 		88B4BAC21DC1B91000AFFE3A /* UIScrollViewOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B4BAC11DC1B91000AFFE3A /* UIScrollViewOps.swift */; };
 		88B4BAC41DC1F62F00AFFE3A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B4BAC31DC1F62F00AFFE3A /* StoreKit.framework */; };
 		88BE97D91D9D0C37002903E3 /* AuthenticateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97D81D9D0C37002903E3 /* AuthenticateService.swift */; };
@@ -221,8 +219,6 @@
 		8879337C1DB8B315001CB925 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		8880D7C31DC8638E00398D9A /* hProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hProduct.swift; sourceTree = "<group>"; };
 		889BCF3F1DD45E830023031C /* UIAlertControllerOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerOps.swift; sourceTree = "<group>"; };
-		889BCF431DD5B1860023031C /* hAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hAlertController.swift; sourceTree = "<group>"; };
-		889BCF451DD5B19E0023031C /* AlertController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AlertController.storyboard; sourceTree = "<group>"; };
 		88B4BAC11DC1B91000AFFE3A /* UIScrollViewOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewOps.swift; sourceTree = "<group>"; };
 		88B4BAC31DC1F62F00AFFE3A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		88BE97D81D9D0C37002903E3 /* AuthenticateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticateService.swift; sourceTree = "<group>"; };
@@ -375,7 +371,6 @@
 				88468A1F1DC344D800ACC60D /* BasicStudyController.swift */,
 				88468A211DC344D800ACC60D /* hActionPickerController.swift */,
 				88468A231DC344D800ACC60D /* PatternStudyController.swift */,
-				889BCF431DD5B1860023031C /* hAlertController.swift */,
 			);
 			path = modal;
 			sourceTree = "<group>";
@@ -424,7 +419,6 @@
 				88468A1C1DC343C100ACC60D /* Purchase.storyboard */,
 				887741651DB0738C00198666 /* WorkBook.storyboard */,
 				88DEDEFD1DB7637B00781123 /* ChannelMain.storyboard */,
-				889BCF451DD5B19E0023031C /* AlertController.storyboard */,
 			);
 			path = storyboards;
 			sourceTree = "<group>";
@@ -875,7 +869,6 @@
 				88C6EA991DD039DF0087FE9C /* session_nav_view.xib in Resources */,
 				88C6EA921DD039DF0087FE9C /* pattern_view.xib in Resources */,
 				88DEDF091DB7794300781123 /* SessionMain.storyboard in Resources */,
-				889BCF461DD5B19E0023031C /* AlertController.storyboard in Resources */,
 				88C6EA8D1DD039DF0087FE9C /* eng_dic_view.xib in Resources */,
 				886EF1741D9C2B58009DA8E8 /* NaverAuth.bundle in Resources */,
 				887741661DB0738C00198666 /* LaunchScreen.storyboard in Resources */,
@@ -1017,7 +1010,6 @@
 				88468A281DC344D800ACC60D /* hWebViewController.swift in Sources */,
 				88C6EA9E1DD03AD70087FE9C /* SentenceLayer.swift in Sources */,
 				881076C71DBC76E40038C21C /* DataDeleteController.swift in Sources */,
-				889BCF441DD5B1860023031C /* hAlertController.swift in Sources */,
 				881076C31DBC76460038C21C /* SettingsController.swift in Sources */,
 				88C6EA801DD039DF0087FE9C /* StudyHistoryCell.swift in Sources */,
 				88C6EA931DD039DF0087FE9C /* PatternView.swift in Sources */,

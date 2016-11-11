@@ -25,7 +25,12 @@ class hInteractedLabel: UILabel {
         
         self.isUserInteractionEnabled = true
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        
         self.addGestureRecognizer(gestureRecognizer)
+        
+        englishDictionaryView.layer.cornerRadius = 10.0
+        englishDictionaryView.clipsToBounds = true
+        englishDictionaryView.confirmButton.addTarget(self, action: #selector(self.dismiss), for: .touchUpInside)
     }
     
     override func awakeFromNib() {
@@ -68,18 +73,28 @@ class hInteractedLabel: UILabel {
     }
     
     private func present(viewController: UIViewController, data: WordData, sentence: String?, desc: String?, time: Float) {
-        
-        let alert = AlertService.shared.actionSheet(englishDictionaryView, handleCancel: { (_) in
+        let alert = UIAlertController(title: "", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "", style: .cancel, handler: { (_) in
             self.videoPlayer?.playVideo()
-        })
+        }))
+            
+        alert.view.addSubview(englishDictionaryView)
+        AlertService.shared.setupConstraints(englishDictionaryView, width: alert.view.bounds.size.width - 20)
         
         englishDictionaryView.sentence = sentence
         englishDictionaryView.desc = desc
         englishDictionaryView.session = session
         englishDictionaryView.time = time
         englishDictionaryView.update(data: data, completion: nil)
-        
+
         viewController.present(alert, animated: true, completion: nil)
-        
+    }
+    
+    func dismiss() {
+        if let controller = viewController {
+            controller.dismiss(animated: true, completion: { 
+                self.videoPlayer?.playVideo()
+            })
+        }
     }
 }
