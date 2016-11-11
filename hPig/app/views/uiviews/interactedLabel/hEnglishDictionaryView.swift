@@ -67,7 +67,12 @@ class hEnglishDictionaryView: UIView {
                 self.videoPlayer?.playVideo()
             })
             
-            controller.present(alert, animated: true, completion: nil)
+            controller.present(alert, animated: true, completion: {
+                traceView(alert.view, find: { (depth, item) in
+                    item.isUserInteractionEnabled = true
+                    print("=========>\n\(item.isUserInteractionEnabled), \(item)\ndepth: \(depth)\nparent: \(item.superview)\n\n")
+                })
+            })
         }
     }
     
