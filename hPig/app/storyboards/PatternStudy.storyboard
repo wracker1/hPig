@@ -27,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="csf-c9-rlA">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="3129.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="3131.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7d1-3i-QNd" customClass="hYTPlayerView" customModule="hPig" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
@@ -36,8 +36,12 @@
                                                     <constraint firstAttribute="width" secondItem="7d1-3i-QNd" secondAttribute="height" multiplier="16:9" priority="750" id="pmx-5f-cJq"/>
                                                 </constraints>
                                             </view>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YQF-x8-kL7">
+                                                <rect key="frame" x="0.0" y="1000" width="375" height="2"/>
+                                                <color key="tintColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            </progressView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="stk-IG-zsP">
-                                                <rect key="frame" x="0.0" y="1000" width="375" height="1000"/>
+                                                <rect key="frame" x="0.0" y="1002" width="375" height="1000"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ho8-NZ-eBj" customClass="hInteractedLabel" customModule="hPig" customModuleProvider="target">
                                                         <rect key="frame" x="15" y="15" width="345" height="931"/>
@@ -64,7 +68,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nFI-y3-QP8">
-                                                <rect key="frame" x="0.0" y="2000" width="375" height="1129.5"/>
+                                                <rect key="frame" x="0.0" y="2002" width="375" height="1129.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ytj-gN-oSi">
                                                         <rect key="frame" x="20" y="20" width="335" height="1089.5"/>
@@ -127,6 +131,10 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="YQF-x8-kL7" firstAttribute="leading" secondItem="csf-c9-rlA" secondAttribute="leading" id="C85-KI-2jy"/>
+                                            <constraint firstAttribute="trailing" secondItem="YQF-x8-kL7" secondAttribute="trailing" id="dr1-Pa-VFU"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -181,6 +189,7 @@
                         <outlet property="koreanLabel" destination="9pr-bD-f01" id="hum-ZV-yaE"/>
                         <outlet property="meaningLabel" destination="zJ2-ff-iRx" id="uLK-aU-Rbu"/>
                         <outlet property="playerView" destination="7d1-3i-QNd" id="fgk-sT-BAC"/>
+                        <outlet property="progressView" destination="YQF-x8-kL7" id="ycF-KO-fTE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T3P-gv-UPs" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -41,6 +41,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     
     @IBOutlet weak var englishSubLabel: hInteractedLabel!
     @IBOutlet weak var koreanSubLabel: UILabel!
+    @IBOutlet weak var progressView: UIProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -251,8 +252,10 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     
     private func changeSubtitle(_ time: CMTime) {
         let index = currentIndex(time)
+        let maxIndex = subtitles.count - 1
+        
         self.currentIndex = index
-        let isEndIndex = index == subtitles.count - 1
+        let isEndIndex = index == maxIndex
         
         if isEndIndex {
             Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { (_) in
@@ -279,6 +282,8 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
                 self.subtitleTableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
             }
         }
+        
+        progressView.progress = Float(index) / Float(maxIndex)
         
         checkSubtitleNavigationButtons(
             index,

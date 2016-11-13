@@ -29,6 +29,7 @@ class PatternStudyController: UIViewController {
     @IBOutlet weak var meaningLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var channelButton: UIButton!
+    @IBOutlet weak var progressView: UIProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,6 +115,8 @@ class PatternStudyController: UIViewController {
             })
         }
         
+        progressView.progress = Float(index) / Float(patternStudyData.count - 1)
+        
         checkSubtitleNavigationButtons(index, length: patternStudyData.count, prevButton: prevButton!, nextButton: nextButton!)
     }
     
@@ -190,9 +193,11 @@ class PatternStudyController: UIViewController {
                                       message: "해당 영상에 대한 패턴학습을 완료하셨습니다.",
                                       preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "완료", style: .cancel, handler: { (_) in
-            //self.dismiss(animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "닫기", style: .default, handler: { (_) in
+            self.dismiss(animated: true, completion: nil)
         }))
+        
+        alert.addAction(UIAlertAction(title: "완료", style: .cancel, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
     }
