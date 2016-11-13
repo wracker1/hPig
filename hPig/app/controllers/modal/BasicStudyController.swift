@@ -29,7 +29,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     private var btnEnglish: UIBarButtonItem? = nil
     private var btnSubtitles: UIBarButtonItem? = nil
     private var btnReading: UIBarButtonItem? = nil
-    private var selectedCell: SubtitleCell? = nil
+    private var selectedIndex: IndexPath? = nil
     private var startStudyTime: Date? = nil
     
     
@@ -266,18 +266,15 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
             self.koreanSubLabel.text = subtitle.korean
             
             if useAutoScroll {
-                if let didSelected = selectedCell {
-                    didSelected.englishLabel.textColor = UIColor.black
-                    didSelected.koreanLabel.textColor = UIColor.black
+                if let didSelected = selectedIndex {
+                    deactiveTableViewCell(didSelected)
                 }
                 
                 let indexPath = IndexPath(row: index, section: 0)
                 
-                if let willSelected = self.subtitleTableView.cellForRow(at: indexPath) as? SubtitleCell {
-                    self.selectedCell = willSelected
-                    willSelected.englishLabel.textColor = SubtitlePointColor
-                    willSelected.koreanLabel.textColor = UIColor.white
-                }
+                self.selectedIndex = indexPath
+                
+                activeTableViewCell(indexPath)
                 
                 self.subtitleTableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
             }
@@ -338,7 +335,6 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     
     private func setButtonState(_ button: UIButton, enable: Bool) {
         button.isUserInteractionEnabled = enable
-//        button.backgroundColor = enable ? UIColor.clear : RGBA(237, g: 237, b: 237, a: 0.5)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -354,9 +350,29 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let subtitle = self.subtitles[indexPath.row]
-        
+
         if let time = subtitle.timeRange {
             playerView.seek(toTime: time.start)
+        }
+        
+        activeTableViewCell(indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        deactiveTableViewCell(indexPath)
+    }
+    
+    private func activeTableViewCell(_ indexPath: IndexPath) {
+        if let cell = subtitleTableView.cellForRow(at: indexPath) as? SubtitleCell {
+            cell.englishLabel.textColor = SubtitlePointColor
+            cell.koreanLabel.textColor = UIColor.white
+        }
+    }
+    
+    private func deactiveTableViewCell(_ indexPath: IndexPath) {
+        if let cell = subtitleTableView.cellForRow(at: indexPath) as? SubtitleCell {
+            cell.englishLabel.textColor = UIColor.black
+            cell.koreanLabel.textColor = UIColor.black
         }
     }
     
@@ -370,7 +386,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if decelerate {
-            Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false, block: { (_) in
+            Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (_) in
                 self.useAutoScroll = true
             })
         }

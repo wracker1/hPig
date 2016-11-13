@@ -36,6 +36,13 @@ class SubtitleCell: UITableViewCell {
         NotificationCenter.default.removeObserver(self)
     }
     
+    override func prepareForReuse() {
+        englishLabel.textColor = UIColor.black
+        koreanLabel.textColor = UIColor.black
+        
+        super.prepareForReuse()
+    }
+    
     func update(_ subtitle: BasicStudy) {
         englishLabel.text = subtitle.english
         koreanLabel.text = subtitle.korean
