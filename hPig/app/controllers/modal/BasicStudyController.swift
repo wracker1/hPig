@@ -23,6 +23,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     private var isActiveEnglish = true
     private var isActiveKorean = true
     private var isActiveSubtitles = false
+    private var isPresentingAlert = false
     
     private var btnKorean: UIBarButtonItem? = nil
     private var btnEnglish: UIBarButtonItem? = nil
@@ -65,6 +66,14 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         
         if let channelImage = session?.channelImage {
             ImageDownloadService.shared.decorateChannelButton(self.channelButton, imageUrl: channelImage)
+        }
+        
+        playerView.pauseHook = { (time) in
+            if self.currentIndex < self.subtitles.count {
+                Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
+                    self.view.presentToast("한 문장씩 따라 읽어 보세요.")
+                })
+            }
         }
         
         sessionControlView.repeatButton.addTarget(self, action: #selector(self.repeatCurrentIndex), for: .touchUpInside)
@@ -243,7 +252,14 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     private func changeSubtitle(_ time: CMTime) {
         let index = currentIndex(time)
         self.currentIndex = index
+        let isEndIndex = index == subtitles.count - 1
         
+        if isEndIndex {
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { (_) in
+                self.endStudy()
+            })
+        }
+
         if let subtitle = subtitles.get(index) {
             self.englishSubLabel.text = subtitle.english
             self.englishSubLabel.desc = subtitle.korean
@@ -273,6 +289,46 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
             prevButton: sessionControlView.prevButton,
             nextButton: sessionControlView.nextButton
         )
+    }
+    
+    private func endStudy() {
+        if !isPresentingAlert {
+            isPresentingAlert = true
+            
+            playerView.pauseVideo()
+            
+            presentAlert()
+        }
+    }
+    
+    private func presentAlert() {
+        let alert = UIAlertController(title: "기본학습 완료", message: "해당영상에 대한 기본학습은 완료하셨습니다. 패턴학습을 통해 중요한 문장을 복습해보세요.", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "나중에 하기", style: .cancel, handler: { (_) in
+            self.isPresentingAlert = false
+        }))
+        
+        alert.addAction(UIAlertAction(title: "패턴학습", style: .default, handler: { (_) in
+            self.isPresentingAlert = false
+            let item = self.session
+            
+            if let presentingViewController = presentController(viewController: self) {
+                self.dismiss(animated: true, completion: {
+                    Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { (_) in
+                        if let navigator = UIStoryboard(name: "PatternStudy", bundle: Bundle.main).instantiateInitialViewController() as? UINavigationController,
+                            let patternStudyController = navigator.topViewController as? PatternStudyController {
+                            
+                            patternStudyController.session = item
+                            presentingViewController.present(navigator, animated: true, completion: nil)
+                        }
+                    })
+                })
+            }
+        }))
+        
+        alert.messageLabel()?.textAlignment = .left
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     func checkSubtitleNavigationButtons(_ index: Int, length: Int, prevButton: UIButton, nextButton: UIButton) {

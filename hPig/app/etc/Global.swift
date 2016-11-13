@@ -22,6 +22,17 @@ let pointColor = RGBA(246, g: 0, b: 29, a: 1)
 
 let CGRectZero = CGRectFromString("{{0, 0}, {0, 0}}")
 
+func presentController(viewController: UIViewController) -> UIViewController? {
+    if let tabBarController = viewController.navigationController?.presentingViewController as? hTabBarController,
+        let navigationController = tabBarController.selectedViewController as? UINavigationController,
+        let topViewController = navigationController.topViewController {
+        
+        return topViewController
+    } else {
+        return nil
+    }
+}
+
 func RGBA(_ r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) -> UIColor {
     return UIColor(red: r/255, green: g/255, blue: b/255, alpha: a)
 }

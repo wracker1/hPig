@@ -30,7 +30,7 @@ class TimeFormatService {
         return "\(min):\(sec)"
     }
     
-    func stringToCMTime(timeString: String) -> CMTime {
+    func stringToCMTime(_ timeString: String) -> CMTime {
         let items = timeString.components(separatedBy: ":")
         switch items.count {
         case 1:

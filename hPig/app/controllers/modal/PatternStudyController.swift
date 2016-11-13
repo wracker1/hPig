@@ -38,8 +38,6 @@ class PatternStudyController: UIViewController {
         let id = session?.id ?? ""
         let part = Int(session?.part ?? "0")!
         
-        playerView.playerVars["controls"] = 0
-        
         englishLabel.text = ""
         englishLabel.viewController = self
         englishLabel.videoPlayer = playerView
@@ -56,6 +54,14 @@ class PatternStudyController: UIViewController {
         setupToolbar()
         
         play(id: id, part: part, retry: 0)
+        
+        playerView.pauseHook = { (time) in
+            if self.currentIndex < self.patternStudyData.count {
+                Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
+                    self.view.presentToast("한 문장씩 따라 읽어 보세요.")
+                })
+            }
+        }
     }
     
     deinit {
@@ -85,7 +91,7 @@ class PatternStudyController: UIViewController {
     private func setupToolbar() {
         self.prevButton = barButtonItem("btn_sub_prev", size: CGSize(width: 74, height: 43), target: self, selector: #selector(self.prevPattern))
         self.nextButton = barButtonItem("btn_sub_next", size: CGSize(width: 74, height: 43), target: self, selector: #selector(self.nextPattern))
-        self.repeatButton = barButtonItem("btn_sub_repeat", size: CGSize(width: 43, height: 43), target: self, selector: #selector(self.repeatPattern))
+        self.repeatButton = barButtonItem("btn_repeat", size: CGSize(width: 43, height: 43), target: self, selector: #selector(self.repeatPattern))
         self.saveButton = barButtonItem("btn_save", size: CGSize(width: 43, height: 43), target: self, selector: #selector(self.savePattern))
         
         let lspace1 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -113,7 +119,6 @@ class PatternStudyController: UIViewController {
     
     func checkSubtitleNavigationButtons(_ index: Int, length: Int, prevButton: UIBarButtonItem, nextButton: UIBarButtonItem) {
         setButtonState(prevButton, enable: index != 0)
-        setButtonState(nextButton, enable: index != (length - 1))
     }
     
     private func setButtonState(_ button: UIBarButtonItem, enable: Bool) {
@@ -138,7 +143,13 @@ class PatternStudyController: UIViewController {
     }
     
     func nextPattern() {
-        changeLabels(currentIndex + 1)
+        let nextIndex = currentIndex + 1
+        
+        if nextIndex < patternStudyData.count {
+            changeLabels(currentIndex + 1)
+        } else {
+            presentAlert()
+        }
     }
     
     func repeatPattern() {
@@ -172,6 +183,18 @@ class PatternStudyController: UIViewController {
         }
         
         
+    }
+    
+    private func presentAlert() {
+        let alert = UIAlertController(title: "Good job!",
+                                      message: "해당 영상에 대한 패턴학습을 완료하셨습니다.",
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "완료", style: .cancel, handler: { (_) in
+            //self.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AVFoundation
 
 struct Session: ResponseObjectSerializable, ResponseCollectionSerializable, CustomStringConvertible {
     let id: String
@@ -161,6 +162,13 @@ struct Session: ResponseObjectSerializable, ResponseCollectionSerializable, Cust
     var isFree: Bool {
         get {
             return svctype == "F"
+        }
+    }
+    
+    var durationTime: CMTime {
+        get {
+            let value = duration ?? "00:00"
+            return TimeFormatService.shared.stringToCMTime(value)
         }
     }
 }

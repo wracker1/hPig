@@ -18,7 +18,7 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
     //        https://developers.google.com/youtube/player_parameters?playerVersion=HTML5
     
     var playerVars: [String: Any] = [
-        "controls": 2
+        "controls": 0
         , "playsinline": 1
         , "autohide": 1
         , "showinfo": 0
@@ -32,6 +32,7 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
     ]
     
     var ticker: ((CMTime) -> Void)? = nil
+    var pauseHook: ((CMTime) -> Void)? = nil
     var playRange: CMTimeRange? = nil
     
     let currentTimeScale: CMTimeScale = 600
@@ -59,8 +60,6 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
     func prepareToPlay(_ id: String, range: CMTimeRange, completion: ((YTPlayerError?) -> Void)?) {
         self.id = id
         self.completion = completion
-        
-        loadVideo(byId: id, startSeconds: timeToFloat(time: range.start), endSeconds: timeToFloat(time: range.end), suggestedQuality: YTPlaybackQuality.medium)
         
         load(withVideoId: id, playerVars: playerVars)
     }
@@ -112,14 +111,28 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
      * @param state YTPlayerState designating the new playback state.
      */
     func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
-//        kYTPlayerStateUnstarted,
-//        kYTPlayerStateEnded,
-//        kYTPlayerStatePlaying,
-//        kYTPlayerStatePaused,
-//        kYTPlayerStateBuffering,
-//        kYTPlayerStateQueued,
-//        kYTPlayerStateUnknown
-        print("\(state.rawValue)")
+        switch state {
+        case .unstarted:
+            print("player state: unstarted")
+            
+        case .ended:
+            print("player state: ended")
+            
+        case .playing:
+            print("player state: playing")
+            
+        case .paused:
+            print("player state: paused")
+            
+        case .buffering:
+            print("player state: buffering")
+            
+        case .queued:
+            print("player state: queued")
+            
+        case .unknown:
+            print("player state: unknown")
+        }
     }
     
     
@@ -159,6 +172,10 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
         if let timeRange = playRange {
             if !ignoreRange && !timeRange.containsTime(time) {
                 self.pauseVideo()
+                
+                if let hook = pauseHook {
+                    hook(time)
+                }
             } else {
                 if let action = ticker {
                     action(time)
