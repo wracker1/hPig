@@ -31,7 +31,7 @@ class NetService {
         })
     }
     
-    func get(path: String) -> DataRequest {
+    @discardableResult func get(path: String) -> DataRequest {
         return self.get(path: path, parameters: nil)
     }
     

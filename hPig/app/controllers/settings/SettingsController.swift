@@ -20,7 +20,7 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
     
     private func cellIds() -> [String] {
         if AuthenticateService.shared.isOn() {
-            return ["versionCell", "pushCell", "faqCell", "mailCell", "purchaseCell", "delDataCell", "loginCell"]
+            return ["versionCell", "pushCell", "faqCell", "mailCell", "purchaseCell", "couponRegisterCell", "delDataCell", "loginCell"]
         } else {
             return ["versionCell", "faqCell", "mailCell", "purchaseCell", "delDataCell", "loginCell"]
         }
@@ -59,6 +59,9 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
         case "loginCell":
             toggleLogin()
             
+        case "couponRegisterCell":
+            presentRegisterCouponAlert()
+            
         case "mailCell":
             if MFMailComposeViewController.canSendMail() {
                 presentMailComposer()
@@ -68,6 +71,55 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
         default:
             print(id)
         }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    private func presentRegisterCouponAlert() {
+        AuthenticateService.shared.user({ (userInfo) in
+            if let user = userInfo {
+                let alert = UIAlertController(title: "쿠폰 등록", message: "ㆍ쿠폰 번호를 입력해주세요.\nㆍ쿠폰 번호는 10자리입니다.\nㆍ쿠폰 패스 내역이 통합되어 반영됩니다.", preferredStyle: .alert)
+                
+                alert.messageLabel()?.textAlignment = .left
+                
+                alert.addTextField(configurationHandler: { (textField) in
+                    textField.placeholder = "쿠폰 번호 입력"
+                })
+                
+                alert.addAction(UIAlertAction(title: "닫기", style: .cancel, handler: nil))
+                
+                alert.addAction(UIAlertAction(title: "등록", style: .default, handler: { (_) in
+                    if let couponNumber = alert.textFields?.first?.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) {
+                        if couponNumber.characters.count == 10 {
+                            let params = ["id": user.id, "coupon": String("couponNumber")!]
+                            
+                            NetService.shared.get(path: "/svc/api/user/update/coupon", parameters: params).responseString(completionHandler: { (res) in
+                                if let result = res.result.value {
+                                    switch result.lowercased() {
+                                        case "success":
+                                        AuthenticateService.shared.updateTubeUserInfo(user.id, completion: nil)
+                                        self.view.presentToast("등록 하였습니다.")
+
+                                        case "duplicated":
+                                        self.view.presentToast("이미 등록된 쿠폰 번호입니다.")
+                                        
+                                        case "not_available":
+                                        self.view.presentToast("유효하지 않은 쿠폰 번호입니다.")
+                                        
+                                        default:
+                                        self.view.presentToast("등록에 실패하였습니다. 다시 시도해주세요.")
+                                    }
+                                }
+                            })
+                        } else {
+                            self.view.presentToast("정확한 쿠폰번호를 입력해주세요.")
+                        }
+                    }
+                }))
+                
+                self.present(alert, animated: true, completion: nil)
+            }
+        })
     }
     
     @IBAction func updatePushNotiSetting(_ sender: AnyObject) {

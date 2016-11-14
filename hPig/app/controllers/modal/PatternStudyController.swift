@@ -65,6 +65,37 @@ class PatternStudyController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.startStudyTime = Date()
+        
+        if let id = session?.id, let part = session?.part {
+            NetService.shared.get(path: "/svc/api/video/update/playcnt?id=\(id)&part=\(part)")
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if let time = startStudyTime {
+            AuthenticateService.shared.userId(completion: { (userId) in
+                let dataService = CoreDataService.shared
+                let (entity, ctx) = dataService.entityDescription("time_log")
+                let log = TIME_LOG(entity: entity!, insertInto: ctx)
+                let vid = self.session?.id ?? ""
+                
+                log.mutating(userId: userId, vid: vid, startTime: time, type: "pattern")
+                dataService.save()
+                
+                let studySec = Int(time.timeIntervalSinceNow * -1)
+                NetService.shared.get(path: "/svc/api/user/update/studytime?id=\(userId)&time=\(studySec)")
+            })
+        }
+        
+        playerView.stopVideo()
+    }
+    
     deinit {
         playerView.stopVideo()
     }
@@ -200,30 +231,6 @@ class PatternStudyController: UIViewController {
         alert.addAction(UIAlertAction(title: "완료", style: .cancel, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.startStudyTime = Date()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        if let time = startStudyTime {
-            AuthenticateService.shared.userId(completion: { (userId) in
-                let dataService = CoreDataService.shared
-                let (entity, ctx) = dataService.entityDescription("time_log")
-                let log = TIME_LOG(entity: entity!, insertInto: ctx)
-                let vid = self.session?.id ?? ""
-                
-                log.mutating(userId: userId, vid: vid, startTime: time, type: "pattern")
-                dataService.save()
-            })
-        }
-        
-        playerView.stopVideo()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

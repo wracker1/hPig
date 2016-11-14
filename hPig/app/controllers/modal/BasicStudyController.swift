@@ -82,6 +82,37 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         sessionControlView.nextButton.addTarget(self, action: #selector(self.playNextIndex), for: .touchUpInside)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.startStudyTime = Date()
+        
+        if let id = session?.id, let part = session?.part {
+            NetService.shared.get(path: "/svc/api/video/update/playcnt?id=\(id)&part=\(part)")
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if let time = startStudyTime {
+            AuthenticateService.shared.userId(completion: { (userId) in
+                let (entity, ctx) = CoreDataService.shared.entityDescription("time_log")
+                let log = TIME_LOG(entity: entity!, insertInto: ctx)
+                let id = self.session?.id ?? ""
+                
+                log.mutating(userId: userId, vid: id, startTime: time, type: "basic")
+                CoreDataService.shared.save()
+            
+                let studySec = Int(time.timeIntervalSinceNow * -1)
+                NetService.shared.get(path: "/svc/api/user/update/studytime?id=\(userId)&time=\(studySec)")
+            })
+        }
+        
+        playerView.stopVideo()
+        saveStudyLog()
+    }
+    
     private func saveStudyLog() {
         if let item = session {
             AuthenticateService.shared.userId(completion: { (userId) in
@@ -169,30 +200,6 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     
     private func playAtTime(_ time: CMTime) {
         playerView.seek(toTime: time)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.startStudyTime = Date()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        if let time = startStudyTime {
-            AuthenticateService.shared.userId(completion: { (userId) in
-                let (entity, ctx) = CoreDataService.shared.entityDescription("time_log")
-                let log = TIME_LOG(entity: entity!, insertInto: ctx)
-                let id = self.session?.id ?? ""
-                
-                log.mutating(userId: userId, vid: id, startTime: time, type: "basic")
-                CoreDataService.shared.save()
-            })
-        }
-        
-        playerView.stopVideo()
-        saveStudyLog()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -329,7 +336,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         }))
         
         alert.messageLabel()?.textAlignment = .left
-        
+
         self.present(alert, animated: true, completion: nil)
     }
     

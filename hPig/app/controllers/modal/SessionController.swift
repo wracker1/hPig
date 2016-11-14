@@ -32,6 +32,7 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
     @IBOutlet weak var progress: UIProgressView!
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var completionLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +78,11 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
         
         patternExButton.layer.cornerRadius = 3
         patternExButton.layer.masksToBounds = true
+        
+        completionLabel.layer.borderColor = UIColor.red.cgColor
+        completionLabel.layer.borderWidth = 1.0
+        completionLabel.layer.cornerRadius = 5.0
+        
     }
     
     private func loadHistory(session: Session) {
@@ -93,10 +99,13 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
                 if let history = items.first {
                     let position = Int(history.position)
                     let maxPosition = Int(history.maxposition)
+                    let isFinished = position == maxPosition
                     
                     let value = Float(position) / Float(maxPosition)
                     self.progress.progress = value
                     self.latestStudyPosition = position
+                    self.continueButton.isHidden = isFinished
+                    self.completionLabel.isHidden = !isFinished
                 }
             }
         }
