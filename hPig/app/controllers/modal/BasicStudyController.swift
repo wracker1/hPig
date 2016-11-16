@@ -32,7 +32,6 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     private var selectedIndex: IndexPath? = nil
     private var startStudyTime: Date? = nil
     
-    
     @IBOutlet weak var channelButton: UIButton!
     @IBOutlet weak var playerView: hYTPlayerView!
     @IBOutlet weak var subtitleTableView: UITableView!
@@ -361,10 +360,14 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let subtitle = self.subtitles[indexPath.row]
-
-        if let time = subtitle.timeRange() {
-            playerView.seek(toTime: time.start)
+        if let selfReadingButton = btnReading?.customView as? UISwitch, selfReadingButton.isOn {
+            playAtIndex(indexPath.row)
+        } else {
+            let subtitle = self.subtitles[indexPath.row]
+            
+            if let time = subtitle.timeRange() {
+                playerView.seek(toTime: time.start)
+            }
         }
         
         activeTableViewCell(indexPath)
