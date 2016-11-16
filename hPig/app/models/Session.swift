@@ -167,8 +167,12 @@ struct Session: ResponseObjectSerializable, ResponseCollectionSerializable, Cust
     
     var durationTime: CMTime {
         get {
-            let value = duration ?? "00:00"
-            return TimeFormatService.shared.stringToCMTime(value)
+            if let value = duration,
+                let time = TimeFormatService.shared.stringToCMTime(value) {
+                return time
+            } else {
+                return CMTimeMake(0, 600)
+            }
         }
     }
 }

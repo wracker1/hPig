@@ -16,43 +16,19 @@ class SubtitleService {
         return instance
     }()
     
-    func subtitleData(_ id: String, part: Int, completion: @escaping ([BasicStudy]) -> Void) {
-        NetService.shared.get(path: "/svc/api/caption/\(id)/\(part)").responseString(completionHandler: { (res) in
-            if let value = res.result.value {
-                let data = self.matchesInStringWithRegex("((\\d+?):(\\d+?))\\n+?(.*)\\n+?(.*)\\n*?", string: value).map({ (result) -> (CMTime, String, String) in
-                    /**
-                     *   0 - 전체
-                     *   1 - 시간
-                     *   2 - 분
-                     *   3 - 초
-                     *   4 - 영어
-                     *   5 - 한글
-                     */
-                    let str = value as NSString
-                    let min = str.substring(with: result.rangeAt(2))
-                    let sec = str.substring(with: result.rangeAt(3))
-                    let time = TimeFormatService.shared.stringToCMTime(min: min, sec: sec)
-                    let english = str.substring(with: result.rangeAt(4))
-                    let korean = str.substring(with: result.rangeAt(5))
-                    
-                    return (time, english, korean)
+    func subtitleData(_ id: String, part: Int, duration: String?, completion: @escaping ([BasicStudy]) -> Void) {
+        NetService.shared.getCollection(path: "/svc/api/v2/caption/\(id)/\(part)") { (res: DataResponse<[BasicStudy]>) in
+            if let data = res.result.value {
+                let basicData = data.enumerated().map({ (i, item) -> BasicStudy in
+                    var sub = item
+                    let next = data.get(i + 1)
+                    sub.endTime = next == nil ? duration : next?.startTime
+                    return sub
                 })
                 
-                let subtitles = data.enumerated().map({ (i: Int, element: (CMTime, String, String)) -> BasicStudy in
-                    let start = element.0
-                    let end = i + 1 < data.count ? data[i + 1].0 : data[data.count - 1].0
-                    
-                    return BasicStudy(
-                        timeRange: CMTimeRange(start: start, end: end),
-                        english: element.1,
-                        korean: element.2
-                    )
-                })
-                
-                completion(subtitles)
+                completion(basicData)
             }
-            
-        })
+        }
     }
     
     func patternStudyData(_ id: String, part: Int, completion: @escaping ([PatternStudy]) -> Void) {

@@ -24,13 +24,15 @@ class TimeFormatService {
     }
     
     func timeStringFromCMTime(time: CMTime) -> String {
+        //^(\d*):(\d*)([\.\:](\d*))?$
+        
         let total = Int(secondsFromCMTime(time: time))
         let min = String(format: "%02d", total / 60)
         let sec = String(format: "%02d", total % 60)
         return "\(min):\(sec)"
     }
     
-    func stringToCMTime(_ timeString: String) -> CMTime {
+    func stringToCMTime(_ timeString: String) -> CMTime? {
         let items = timeString.components(separatedBy: ":")
         switch items.count {
         case 1:
@@ -41,7 +43,7 @@ class TimeFormatService {
             let sec = Float(items[1])!
             return CMTimeMakeWithSeconds(Float64(min + sec), 600)
         default:
-            return CMTimeMakeWithSeconds(Float64(0), 600)
+            return nil
         }
     }
     

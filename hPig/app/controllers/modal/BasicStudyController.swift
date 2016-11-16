@@ -143,11 +143,11 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     
     private func play(id: String, part: Int, retry: Int) {
         if retry < 2 {
-            SubtitleService.shared.subtitleData(id, part: part, completion: { (data) in
+            SubtitleService.shared.subtitleData(id, part: part, duration: session?.duration, completion: { (data) in
                 self.subtitles = data
                 self.subtitleTableView.reloadData()
                 
-                if let start = data.first?.timeRange?.start, let end = data.last?.timeRange?.end {
+                if let start = data.first?.timeRange()?.start, let end = data.last?.timeRange()?.end {
                     self.playerView.prepareToPlay(id, range: CMTimeRange(start: start, end: end), completion: { (error) in
                         if let cause = error {
                             print(cause)
@@ -155,7 +155,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
                         } else {
                             self.playerView.ticker = self.changeSubtitle
                             
-                            if let sub = data.get(self.currentIndex), let range = sub.timeRange {
+                            if let sub = data.get(self.currentIndex), let range = sub.timeRange() {
                                 self.playerView.seek(toTime: range.start)
                             }
                         }
@@ -184,7 +184,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
             if btnSwitch.isOn {
                 let index = currentIndex(time)
                 
-                if let subtitle = subtitles.get(index), let timeRange = subtitle.timeRange {
+                if let subtitle = subtitles.get(index), let timeRange = subtitle.timeRange() {
                     playerView.playRange = timeRange
                     self.currentIndex = index
                 }
@@ -234,7 +234,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
             self.sessionControlView.alpha = 1.0
             self.currentIndex = currentIndex(playerView.currentCMTime())
             
-            if let subtitle = subtitles.get(currentIndex), let timeRange = subtitle.timeRange {
+            if let subtitle = subtitles.get(currentIndex), let timeRange = subtitle.timeRange() {
                 playerView.playRange = timeRange
             }
         } else {
@@ -244,7 +244,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     }
     
     private func playAtIndex(_ index: Int) {
-        if let subtitle = subtitles.get(index), let timeRange = subtitle.timeRange {
+        if let subtitle = subtitles.get(index), let timeRange = subtitle.timeRange() {
             playerView.playInTimeRange(timeRange, completion: { (result) in
                 self.currentIndex = index
             })
@@ -253,7 +253,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     
     private func currentIndex(_ time: CMTime) -> Int {
         return SubtitleService.shared.currentIndex(time, items: self.subtitles, rangeBlock: { (sub) -> CMTimeRange? in
-            return sub.timeRange
+            return sub.timeRange()
         })
     }
     
@@ -363,7 +363,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let subtitle = self.subtitles[indexPath.row]
 
-        if let time = subtitle.timeRange {
+        if let time = subtitle.timeRange() {
             playerView.seek(toTime: time.start)
         }
         

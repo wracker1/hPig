@@ -42,18 +42,10 @@ struct PatternStudy: ResponseObjectSerializable, ResponseCollectionSerializable,
     }
     
     func timeRange() -> CMTimeRange? {
-        if let start = stringToTime(startTime), let end = stringToTime(endTime) {
-            return CMTimeRange(start: start, end: end)
-        } else {
-            return nil
-        }
-    }
-    
-    private func stringToTime(_ value: String) -> CMTime? {
-        let values = value.components(separatedBy: ":")
-        
-        if values.count > 1 {
-            return TimeFormatService.shared.stringToCMTime(min: values[0], sec: values[1])
+        if let start = TimeFormatService.shared.stringToCMTime(startTime),
+            let end = TimeFormatService.shared.stringToCMTime(endTime) {
+            let margin = CMTimeMakeWithSeconds(0.3, 600)
+            return CMTimeRange(start: start - margin, end: end + margin)
         } else {
             return nil
         }

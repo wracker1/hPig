@@ -88,7 +88,6 @@ class SessionsController: UITableViewController {
             self.isLoading = true
     
             NetService.shared.getCollection(path: "/svc/api/list/\(sort)/\(category)/\(level)/\(page)", completionHandler: { (res: DataResponse<[Session]>) in
-                
                 if let items = res.result.value?.filter({ (session) -> Bool in
                     return session.status == "Y"
                 }) {
