@@ -24,7 +24,6 @@ class hEnglishDictionaryView: UIView {
     @IBOutlet weak var meaningLabel: UILabel!
     @IBOutlet weak var pronunciationLabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var confirmButton: UIButton!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

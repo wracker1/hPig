@@ -63,16 +63,17 @@ class DataDeleteController: UITableViewController {
             return v.isOn ? k : nil
         }
         
-        AlertService.shared.presentConfirm(
-            self,
-            title: "데이터를 삭제 합니다. 진행 하시겠습니까?",
-            message: nil,
-            cancel: nil,
-            confirm: {
-                AuthenticateService.shared.user { (user) in
-                    CoreDataService.shared.deleteUserData(user, itemIds: targetIds)
-                    self.view.presentToast("삭제 하였습니다.")
-                }
+        let alert = AlertService.shared.confirm(self,
+                                                title: "데이터를 삭제 합니다. 진행 하시겠습니까?",
+                                                message: nil,
+                                                cancel: nil,
+                                                confirm: {
+                                                    AuthenticateService.shared.user { (user) in
+                                                        CoreDataService.shared.deleteUserData(user, itemIds: targetIds)
+                                                        self.view.presentToast("삭제 하였습니다.")
+                                                    }
         })
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }

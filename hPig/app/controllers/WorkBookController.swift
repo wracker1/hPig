@@ -15,6 +15,12 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var patternTableView: UITableView!
     @IBOutlet weak var wordTableView: UITableView!
     
+    @IBOutlet var patternView: UIView!
+    @IBOutlet weak var ptEnglishLabel: UILabel!
+    @IBOutlet weak var ptKoreanLabel: UILabel!
+    @IBOutlet weak var ptMeaningLabel: UILabel!
+    @IBOutlet weak var ptInfoLabel: UILabel!
+    
     private var patternData = [PATTERN]()
     private var wordData = [WORD]()
     
@@ -22,6 +28,8 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Bundle.main.loadNibNamed("pattern_view", owner: self, options: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -88,31 +96,33 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var alert: UIAlertController? = nil
+        
         switch tableView {
         case patternTableView:
             if let pattern = patternData.get(indexPath.row) {
-                let item = PatternView(frame: CGRectZero)
-                let alert = AlertService.shared.actionSheet(item)
-                self.present(alert, animated: true, completion: {
-                    tableView.deselectRow(at: indexPath, animated: true)
-                })
-                
-                item.update(pattern: pattern)
+                alert = AlertService.shared.actionSheet(patternView, width: self.view.bounds.size.width)
+                updatePatternView(pattern)
             }
             
         case wordTableView:
             if let word = wordData.get(indexPath.row) {
                 let item = SentenceLayer(frame: CGRectZero)
-                AlertService.shared.presentActionSheet(self, view: item, completion: {
-                    tableView.deselectRow(at: indexPath, animated: true)
-                })
-                
+                alert = AlertService.shared.actionSheet(item, width: self.view.bounds.size.width)
                 item.update(word)
             }
             
         default:
             break
         }
+        
+        if let alertController = alert {
+            alertController.popoverPresentationController?.sourceView = tableView
+            alertController.popoverPresentationController?.sourceRect = tableView.rectForRow(at: indexPath)
+            self.present(alertController, animated: true, completion: nil)
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -121,6 +131,15 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+    
+    func updatePatternView(_ pattern: PATTERN) {
+        if let english = pattern.english, let korean = pattern.korean, let meaning = pattern.mean, let info = pattern.info {
+            ptEnglishLabel.attributedText = SubtitleService.shared.buildAttributedString(english)
+            ptKoreanLabel.text = korean
+            ptMeaningLabel.text = meaning
+            ptInfoLabel.text = info
+        }
     }
     
     func dismissAlert() {

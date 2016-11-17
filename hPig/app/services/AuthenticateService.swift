@@ -357,14 +357,15 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     }
     
     func confirmLogin(_ viewController: UIViewController, completion: ((TubeUserInfo?) -> Void)?) {
-        AlertService.shared.presentConfirm(
-            viewController,
-            title: "로그인이 필요합니다. 로그인 하시겠습니까?",
-            message: nil,
-            cancel: nil,
-            confirm: {
-                self.tryLogin(viewController, completion: completion)
+        let alert = AlertService.shared.confirm(viewController,
+                                    title: "로그인이 필요합니다. 로그인 하시겠습니까?",
+                                    message: nil,
+                                    cancel: nil,
+                                    confirm: {
+                                        self.tryLogin(viewController, completion: completion)
         })
+        
+        viewController.present(alert, animated: true, completion: nil)
     }
     
     private func handleNotLoginUser(_ id: String, viewController: UIViewController, sender: Any?, session: Session?) -> Bool {
@@ -382,10 +383,16 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         var count = UserDefaults.standard.value(forKey: keyUnauthActionCount) as? Int ?? 0
         
         if count > 3 {
-            AlertService.shared.presentConfirm(viewController, title: "이용권이 필요한 영상입니다. 이용권을 구매해보세요.", message: nil, cancel: nil, confirm: {
+            let alert = AlertService.shared.confirm(viewController,
+                                                    title: "이용권이 필요한 영상입니다. 이용권을 구매해보세요.",
+                                                    message: nil,
+                                                    cancel: nil,
+                                                    confirm: { 
                 let purchaseController = UIStoryboard(name: "Purchase", bundle: Bundle.main).instantiateViewController(withIdentifier: "purchaseNavController")
                 viewController.present(purchaseController, animated: true, completion: nil)
             })
+            
+            viewController.present(alert, animated: true, completion: nil)
             
             count = 0
         } else {

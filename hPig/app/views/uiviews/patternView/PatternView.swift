@@ -17,24 +17,24 @@ class PatternView: UIView {
     @IBOutlet weak var meaningLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        LayoutService.shared.layoutXibViews(superview: self, nibName: "pattern_view", viewLayoutBlock: nil)
-        initBgView()
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        LayoutService.shared.layoutXibViews(superview: self, nibName: "pattern_view", viewLayoutBlock: nil)
-        initBgView()
-    }
-    
-    private func initBgView() {
+//    required init?(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//        
+//        LayoutService.shared.layoutXibViews(superview: self, nibName: "pattern_view", viewLayoutBlock: nil)
+//        initBgView()
+//    }
+//    
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        
+//        LayoutService.shared.layoutXibViews(superview: self, nibName: "pattern_view", viewLayoutBlock: nil)
+//        initBgView()
+//    }
+//
+//    private func initBgView() {
 //        bgView.clipsToBounds = true
 //        bgView.layer.cornerRadius = 8.0
-    }
+//    }
     
     func update(pattern: PATTERN) {
         if let english = pattern.english, let korean = pattern.korean, let meaning = pattern.mean, let info = pattern.info {

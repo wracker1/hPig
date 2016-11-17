@@ -22,12 +22,13 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
         , "playsinline": 1
         , "autohide": 1
         , "showinfo": 0
-        , "modestbranding": 0
+        , "modestbranding": 1
         , "autoplay": 1
         , "rel": 0
         , "fs": 0
         , "theme": "light"
         , "cc_load_policy": 0
+        , "iv_load_policy": 3
         , "origin" : "https://www.example.com"
     ]
     

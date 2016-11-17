@@ -44,8 +44,7 @@ struct PatternStudy: ResponseObjectSerializable, ResponseCollectionSerializable,
     func timeRange() -> CMTimeRange? {
         if let start = TimeFormatService.shared.stringToCMTime(startTime),
             let end = TimeFormatService.shared.stringToCMTime(endTime) {
-            let margin = CMTimeMakeWithSeconds(0.3, 600)
-            return CMTimeRange(start: start - margin, end: end + margin)
+            return CMTimeRange(start: start - preTimeMargin, end: end + postTimeMargin)
         } else {
             return nil
         }

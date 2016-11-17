@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 struct Global {
     static let kToggleKoreanLabelVisible = Notification.Name("kToggleKoreanLabelVisible")
@@ -15,6 +16,9 @@ struct Global {
     
     static let guestId = "guest"
 }
+
+let preTimeMargin = CMTimeMakeWithSeconds(0.2, 600)
+let postTimeMargin = CMTimeMakeWithSeconds(0.45, 600)
 
 let SubtitlePointColor = RGBA(213, g: 135, b: 125, a: 1)
 
