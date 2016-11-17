@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EcJ-Mi-5z1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16C48b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EcJ-Mi-5z1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -122,13 +122,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="푸시 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hM-4P-Ya4">
-                                            <rect key="frame" x="16" y="11.5" width="63.5" height="20.5"/>
+                                            <rect key="frame" x="15" y="11.5" width="63.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QPC-3l-kG0">
-                                            <rect key="frame" x="310" y="6.5" width="51" height="31"/>
+                                            <rect key="frame" x="311" y="6.5" width="51" height="31"/>
                                             <color key="onTintColor" red="0.96470588239999999" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="updatePushNotiSetting:" destination="EcJ-Mi-5z1" eventType="valueChanged" id="bu6-0p-Xwg"/>
@@ -137,9 +137,9 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="7hM-4P-Ya4" firstAttribute="centerY" secondItem="P1u-w5-gCh" secondAttribute="centerY" id="Fe4-0l-7iY"/>
-                                        <constraint firstItem="7hM-4P-Ya4" firstAttribute="leading" secondItem="P1u-w5-gCh" secondAttribute="leadingMargin" constant="8" id="Qc8-Yd-ZJ5"/>
+                                        <constraint firstItem="7hM-4P-Ya4" firstAttribute="leading" secondItem="P1u-w5-gCh" secondAttribute="leading" constant="15" id="Qc8-Yd-ZJ5"/>
                                         <constraint firstItem="QPC-3l-kG0" firstAttribute="centerY" secondItem="P1u-w5-gCh" secondAttribute="centerY" id="pSf-rf-fep"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="QPC-3l-kG0" secondAttribute="trailing" constant="8" id="vLb-5i-9sH"/>
+                                        <constraint firstAttribute="trailing" secondItem="QPC-3l-kG0" secondAttribute="trailing" constant="15" id="vLb-5i-9sH"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
