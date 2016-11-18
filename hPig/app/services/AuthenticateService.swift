@@ -94,7 +94,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
                     
                     NetService.shared.get(path: "/svc/api/user/update/visitcnt", parameters: param).responseString(completionHandler: { (res) in
                         if let messaage = res.result.value {
-                            print(messaage)
+                            print("update visitcnt message: \(messaage)")
                         }
                         
                         callback(info)
@@ -188,7 +188,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         let callback = completion ?? {(_) in }
         
         user { (opt) in
-            callback(opt?.id ?? Global.guestId)
+            callback(opt?.id ?? kGuestId)
         }
     }
     
@@ -208,7 +208,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
                 NetService.shared.get("https://apis.naver.com/nidlogin/nid/getUserProfile.xml",
                                       parameters: nil,
                                       headers: ["Authorization": "Bearer \(token)"]).response(completionHandler: { (res) in
-                                        if let data = res.data, let user = User(data: data), user.id != Global.guestId {
+                                        if let data = res.data, let user = User(data: data), user.id != kGuestId {
                                             self.naverUser(token, user: user)
                                             self.tubeUserInfo(from: user, completion: completion)
                                         } else {

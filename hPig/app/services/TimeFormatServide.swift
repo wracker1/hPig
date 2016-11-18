@@ -24,37 +24,30 @@ class TimeFormatService {
     }
     
     func timeStringFromCMTime(time: CMTime) -> String {
-        //^(\d*):(\d*)([\.\:](\d*))?$
-        
-        let total = Int(secondsFromCMTime(time: time))
-        let min = String(format: "%02d", total / 60)
-        let sec = String(format: "%02d", total % 60)
+        let total = secondsFromCMTime(time: time)
+        let min = String(format: "%02d", Int(total) / 60)
+        let sec = String(format: "%02d", Int(total) % 60)
         return "\(min):\(sec)"
     }
     
-    func stringToCMTime(_ timeString: String) -> CMTime? {
-        let items = timeString.components(separatedBy: ":")
-        switch items.count {
-        case 1:
-            let sec = Float(items[0])!
-            return CMTimeMakeWithSeconds(Float64(sec), 600)
-        case 2:
-            let min = Float(items[0])! * 60.0
-            let sec = Float(items[1])!
-            return CMTimeMakeWithSeconds(Float64(min + sec), 600)
-        default:
-            return nil
+    private func substringTime(string: String, range: NSRange) -> String {
+        if range.length > 0 {
+            return string.substring(range: range)
+        } else {
+            return "00"
         }
     }
     
-    func stringToCMTime(min: String, sec: String) -> CMTime {
-        return CMTimeMakeWithSeconds(Float64(min)! * 60 + Float64(sec)!, 600)
-    }
-    
-    func stringToCMTimeRange(startMin: String, startSec: String, endMin: String, endSec: String, timeScale: Int32?) -> CMTimeRange {
-        return CMTimeRange(
-            start: stringToCMTime(min: startMin, sec: startSec),
-            end: stringToCMTime(min: endMin, sec: endSec)
-        )
+    func stringToCMTime(_ timeString: String) -> CMTime? {
+        let regex = "^(\\d*):(\\d*)([\\.\\:](\\d*))?$".r()
+        if let matche: NSTextCheckingResult = regex.firstMatch(in: timeString, options: .reportProgress, range: timeString.range()) {
+            let min = Float(substringTime(string: timeString, range: matche.rangeAt(1))) ?? 0
+            let sec = Float(substringTime(string: timeString, range: matche.rangeAt(2))) ?? 0
+            let millisec = Float(substringTime(string: timeString, range: matche.rangeAt(4))) ?? 0
+            let total = Float64((min * 60) + sec + (millisec * 0.01))
+            return CMTimeMakeWithSeconds(total, 600)
+        } else {
+            return nil
+        }
     }
 }

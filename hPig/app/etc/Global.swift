@@ -9,13 +9,11 @@
 import UIKit
 import AVFoundation
 
-struct Global {
-    static let kToggleKoreanLabelVisible = Notification.Name("kToggleKoreanLabelVisible")
-    static let kToggleEnglishLabelVisible = Notification.Name("kToggleEnglishLabelVisible")
-    static let kViewWillTransition = Notification.Name("viewWillTransition")
-    
-    static let guestId = "guest"
-}
+let kToggleKoreanLabelVisible = Notification.Name("kToggleKoreanLabelVisible")
+let kToggleEnglishLabelVisible = Notification.Name("kToggleEnglishLabelVisible")
+let kSelectCellWithIndexPath = Notification.Name("kSelectRowWithIndexPath")
+let kViewWillTransition = Notification.Name("viewWillTransition")
+let kGuestId = "guest"
 
 let preTimeMargin = CMTimeMakeWithSeconds(0.2, 600)
 let postTimeMargin = CMTimeMakeWithSeconds(0.45, 600)

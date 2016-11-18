@@ -46,7 +46,7 @@ class MyInfoHeaderCell: UICollectionViewCell {
     func loadUserInfo(_ user: TubeUserInfo?) {
         self.loadPersonalInfoView(user)
 
-        let id = user?.id ?? Global.guestId
+        let id = user?.id ?? kGuestId
         let logReq: NSFetchRequest<TIME_LOG> = TIME_LOG.fetchRequest()
         logReq.predicate = NSPredicate(format: "uid = '\(id)'")
 
@@ -67,7 +67,7 @@ class MyInfoHeaderCell: UICollectionViewCell {
     
     private func loadPersonalInfoView(_ user: TubeUserInfo?) {
         let name = user?.nickname ?? "게스트"
-        let id = user?.id ?? Global.guestId
+        let id = user?.id ?? kGuestId
         let url = user?.image ?? "https://ssl.pstatic.net/static/pwe/address/nodata_45x45.gif"
 
         nameLabel.text = "\(name) 님"

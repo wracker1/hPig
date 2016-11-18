@@ -40,7 +40,7 @@ class SessionFeedCell: UICollectionViewCell {
         
         self.adjustConsts(UIScreen.main.bounds.size)
         
-        NotificationCenter.default.addObserver(forName: Global.kViewWillTransition, object: nil, queue: nil) { (notif) in
+        NotificationCenter.default.addObserver(forName: kViewWillTransition, object: nil, queue: nil) { (notif) in
             if let value = notif.object as? NSValue {
                 let size = value.cgSizeValue
                 self.adjustConsts(size)

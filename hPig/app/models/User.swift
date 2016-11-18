@@ -71,10 +71,10 @@ class User: NSObject, NSCoding {
                 case 1, 2:
                     return items[0]
                 default:
-                    return Global.guestId
+                    return kGuestId
                 }
             } else {
-                return Global.guestId
+                return kGuestId
             }
         }
     }

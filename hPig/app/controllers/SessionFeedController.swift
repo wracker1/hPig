@@ -85,7 +85,7 @@ class SessionFeedController: UICollectionViewController, UICollectionViewDataSou
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
-        NotificationCenter.default.post(name: Global.kViewWillTransition, object: NSValue(cgSize: size))
+        NotificationCenter.default.post(name: kViewWillTransition, object: NSValue(cgSize: size))
     }
     
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {

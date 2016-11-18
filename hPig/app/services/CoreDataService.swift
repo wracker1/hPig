@@ -50,7 +50,7 @@ class CoreDataService {
     }
     
     func deleteUserData(_ user: TubeUserInfo?, itemIds: [String]) {
-        let id = user?.id ?? Global.guestId
+        let id = user?.id ?? kGuestId
         
         itemIds.forEach { (itemId) in
             switch itemId {

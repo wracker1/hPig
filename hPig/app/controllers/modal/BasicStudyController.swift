@@ -29,7 +29,6 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     private var btnEnglish: UIBarButtonItem? = nil
     private var btnSubtitles: UIBarButtonItem? = nil
     private var btnReading: UIBarButtonItem? = nil
-    private var selectedIndex: IndexPath? = nil
     private var startStudyTime: Date? = nil
     
     @IBOutlet weak var channelButton: UIButton!
@@ -149,7 +148,8 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
                 if let start = data.first?.timeRange()?.start, let end = data.last?.timeRange()?.end {
                     self.playerView.prepareToPlay(id, range: CMTimeRange(start: start, end: end), completion: { (error) in
                         if let cause = error {
-                            print(cause)
+                            print("RETRY playing video: \(cause)")
+                            
                             self.play(id: id, part: part, retry: retry + 1)
                         } else {
                             self.playerView.ticker = self.changeSubtitle
@@ -275,17 +275,9 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
             self.koreanSubLabel.text = subtitle.korean
             
             if useAutoScroll {
-                if let didSelected = selectedIndex {
-                    deactiveTableViewCell(didSelected)
-                }
-                
                 let indexPath = IndexPath(row: index, section: 0)
-                
-                self.selectedIndex = indexPath
-                
-                activeTableViewCell(indexPath)
-                
                 self.subtitleTableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+                NotificationCenter.default.post(name: kSelectCellWithIndexPath, object: nil, userInfo: ["indexPath": indexPath])
             }
         }
         
@@ -355,7 +347,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let subtitle = self.subtitles[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "SubtitleCell", for: indexPath) as! SubtitleCell
-        cell.update(subtitle)
+        cell.update(subtitle, indexPath: indexPath)
         return cell
     }
     
@@ -369,26 +361,8 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
                 playerView.seek(toTime: time.start)
             }
         }
-        
-        activeTableViewCell(indexPath)
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        deactiveTableViewCell(indexPath)
-    }
-    
-    private func activeTableViewCell(_ indexPath: IndexPath) {
-        if let cell = subtitleTableView.cellForRow(at: indexPath) as? SubtitleCell {
-            cell.englishLabel.textColor = SubtitlePointColor
-            cell.koreanLabel.textColor = UIColor.white
-        }
-    }
-    
-    private func deactiveTableViewCell(_ indexPath: IndexPath) {
-        if let cell = subtitleTableView.cellForRow(at: indexPath) as? SubtitleCell {
-            cell.englishLabel.textColor = UIColor.black
-            cell.koreanLabel.textColor = UIColor.black
-        }
+     
+        NotificationCenter.default.post(name: kSelectCellWithIndexPath, object: nil, userInfo: ["indexPath": indexPath])
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -436,7 +410,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
             }
         }
         
-        NotificationCenter.default.post(name: Global.kToggleKoreanLabelVisible, object: nil, userInfo: ["value": isActiveKorean])
+        NotificationCenter.default.post(name: kToggleKoreanLabelVisible, object: nil, userInfo: ["value": isActiveKorean])
     }
     
     func toggleEnglishSubtitle(sender: AnyObject) {
@@ -452,7 +426,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
             }
         }
         
-        NotificationCenter.default.post(name: Global.kToggleEnglishLabelVisible, object: nil, userInfo: ["value": isActiveEnglish])
+        NotificationCenter.default.post(name: kToggleEnglishLabelVisible, object: nil, userInfo: ["value": isActiveEnglish])
     }
 }
   
