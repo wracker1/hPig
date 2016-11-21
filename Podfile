@@ -10,4 +10,5 @@ target 'hPig' do
     pod 'Charts'
     pod 'Fabric'
     pod 'Crashlytics'
+    pod 'Cosmos', '~> 7.0'
 end

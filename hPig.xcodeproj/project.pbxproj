@@ -24,6 +24,11 @@
 		8829124E1DAFD32700E5B6E4 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8829124D1DAFD32700E5B6E4 /* AlertService.swift */; };
 		882CD2EA1DC8607600BB611A /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882CD2E91DC8607600BB611A /* PurchaseService.swift */; };
 		88377CB61DDE8E5800ABADC9 /* StringOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88377CB51DDE8E5800ABADC9 /* StringOps.swift */; };
+		88377CC21DE2D81000ABADC9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88377CB81DE2D81000ABADC9 /* Info.plist */; };
+		88377CC31DE2D81000ABADC9 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 88377CB91DE2D81000ABADC9 /* iRate.bundle */; };
+		88377CC41DE2D81000ABADC9 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88377CBB1DE2D81000ABADC9 /* iRate.m */; };
+		88377CC51DE2D81000ABADC9 /* libNaverLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88377CBD1DE2D81000ABADC9 /* libNaverLogin.a */; };
+		88377CC61DE2D81000ABADC9 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88377CC11DE2D81000ABADC9 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m */; };
 		884523091DBF44CF00802510 /* HISTORY+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884523071DBF44CF00802510 /* HISTORY+CoreDataClass.swift */; };
 		8845230A1DBF44CF00802510 /* HISTORY+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884523081DBF44CF00802510 /* HISTORY+CoreDataProperties.swift */; };
 		8845230E1DBF55BD00802510 /* SessionFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8845230D1DBF55BD00802510 /* SessionFeed.storyboard */; };
@@ -48,8 +53,6 @@
 		886085321D97DAD8009A9B3C /* PatternStudy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886085311D97DAD8009A9B3C /* PatternStudy.swift */; };
 		8865F0731DA115410025D0B9 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865F0721DA115410025D0B9 /* CoreDataService.swift */; };
 		886EF1741D9C2B58009DA8E8 /* NaverAuth.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 886EF16D1D9C2B58009DA8E8 /* NaverAuth.bundle */; };
-		886EF1751D9C2B58009DA8E8 /* libNaverLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 886EF16F1D9C2B58009DA8E8 /* libNaverLogin.a */; };
-		886EF1761D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886EF1731D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m */; };
 		887741531DAE29E700198666 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887741521DAE29E700198666 /* MessageUI.framework */; };
 		8877415A1DAF8D1F00198666 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887741591DAF8D1F00198666 /* User.swift */; };
 		887741661DB0738C00198666 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8877415C1DB0738C00198666 /* LaunchScreen.storyboard */; };
@@ -166,6 +169,15 @@
 		882912501DAFD85C00E5B6E4 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "../../../../Library/Developer/Xcode/DerivedData/hPig-cgamwanqckhvsufhcxkvajblacum/Build/Products/Debug-iphonesimulator/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
 		882CD2E91DC8607600BB611A /* PurchaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseService.swift; sourceTree = "<group>"; };
 		88377CB51DDE8E5800ABADC9 /* StringOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringOps.swift; sourceTree = "<group>"; };
+		88377CB81DE2D81000ABADC9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88377CB91DE2D81000ABADC9 /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
+		88377CBA1DE2D81000ABADC9 /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
+		88377CBB1DE2D81000ABADC9 /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
+		88377CBD1DE2D81000ABADC9 /* libNaverLogin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libNaverLogin.a; sourceTree = "<group>"; };
+		88377CBE1DE2D81000ABADC9 /* NaverThirdPartyConstantsForApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NaverThirdPartyConstantsForApp.h; sourceTree = "<group>"; };
+		88377CBF1DE2D81000ABADC9 /* NaverThirdPartyLoginConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NaverThirdPartyLoginConnection.h; sourceTree = "<group>"; };
+		88377CC01DE2D81000ABADC9 /* NLoginThirdPartyOAuth20InAppBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLoginThirdPartyOAuth20InAppBrowserViewController.h; sourceTree = "<group>"; };
+		88377CC11DE2D81000ABADC9 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLoginThirdPartyOAuth20InAppBrowserViewController.m; sourceTree = "<group>"; };
 		884523071DBF44CF00802510 /* HISTORY+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HISTORY+CoreDataClass.swift"; sourceTree = "<group>"; };
 		884523081DBF44CF00802510 /* HISTORY+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HISTORY+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8845230D1DBF55BD00802510 /* SessionFeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SessionFeed.storyboard; sourceTree = "<group>"; };
@@ -197,11 +209,6 @@
 		8865F0721DA115410025D0B9 /* CoreDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		886EF1691D9C2AC5009DA8E8 /* hPig-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hPig-Bridging-Header.h"; sourceTree = "<group>"; };
 		886EF16D1D9C2B58009DA8E8 /* NaverAuth.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NaverAuth.bundle; sourceTree = "<group>"; };
-		886EF16F1D9C2B58009DA8E8 /* libNaverLogin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libNaverLogin.a; sourceTree = "<group>"; };
-		886EF1701D9C2B58009DA8E8 /* NaverThirdPartyConstantsForApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NaverThirdPartyConstantsForApp.h; sourceTree = "<group>"; };
-		886EF1711D9C2B58009DA8E8 /* NaverThirdPartyLoginConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NaverThirdPartyLoginConnection.h; sourceTree = "<group>"; };
-		886EF1721D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLoginThirdPartyOAuth20InAppBrowserViewController.h; sourceTree = "<group>"; };
-		886EF1731D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLoginThirdPartyOAuth20InAppBrowserViewController.m; sourceTree = "<group>"; };
 		887741521DAE29E700198666 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		887741591DAF8D1F00198666 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8877415C1DB0738C00198666 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -297,6 +304,7 @@
 				88CD3BAD1DC8C79500BC3B78 /* Charts.framework in Frameworks */,
 				88CD3BAE1DC8C79500BC3B78 /* SWXMLHash.framework in Frameworks */,
 				88CD3BAF1DC8C79500BC3B78 /* Toast_Swift.framework in Frameworks */,
+				88377CC51DE2D81000ABADC9 /* libNaverLogin.a in Frameworks */,
 				88CD3BA81DC8C78C00BC3B78 /* Alamofire.framework in Frameworks */,
 				88CD3BA91DC8C78C00BC3B78 /* AlamofireImage.framework in Frameworks */,
 				8879337D1DB8B315001CB925 /* NotificationCenter.framework in Frameworks */,
@@ -305,7 +313,6 @@
 				88B4BAC41DC1F62F00AFFE3A /* StoreKit.framework in Frameworks */,
 				88DEDEED1DB4CE2F00781123 /* CoreData.framework in Frameworks */,
 				887741531DAE29E700198666 /* MessageUI.framework in Frameworks */,
-				886EF1751D9C2B58009DA8E8 /* libNaverLogin.a in Frameworks */,
 				884B0E8B1D939B34009748FF /* QuartzCore.framework in Frameworks */,
 				884B0E891D939B1D009748FF /* CoreGraphics.framework in Frameworks */,
 				884B0E861D939B13009748FF /* AVFoundation.framework in Frameworks */,
@@ -366,6 +373,29 @@
 			path = settings;
 			sourceTree = "<group>";
 		};
+		88377CB71DE2D81000ABADC9 /* iRate */ = {
+			isa = PBXGroup;
+			children = (
+				88377CB81DE2D81000ABADC9 /* Info.plist */,
+				88377CB91DE2D81000ABADC9 /* iRate.bundle */,
+				88377CBA1DE2D81000ABADC9 /* iRate.h */,
+				88377CBB1DE2D81000ABADC9 /* iRate.m */,
+			);
+			path = iRate;
+			sourceTree = "<group>";
+		};
+		88377CBC1DE2D81000ABADC9 /* NaverLogin */ = {
+			isa = PBXGroup;
+			children = (
+				88377CBD1DE2D81000ABADC9 /* libNaverLogin.a */,
+				88377CBE1DE2D81000ABADC9 /* NaverThirdPartyConstantsForApp.h */,
+				88377CBF1DE2D81000ABADC9 /* NaverThirdPartyLoginConnection.h */,
+				88377CC01DE2D81000ABADC9 /* NLoginThirdPartyOAuth20InAppBrowserViewController.h */,
+				88377CC11DE2D81000ABADC9 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m */,
+			);
+			path = NaverLogin;
+			sourceTree = "<group>";
+		};
 		88468A1E1DC344D800ACC60D /* modal */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,11 +426,8 @@
 		886EF16E1D9C2B58009DA8E8 /* ThirdPartyModule */ = {
 			isa = PBXGroup;
 			children = (
-				886EF16F1D9C2B58009DA8E8 /* libNaverLogin.a */,
-				886EF1701D9C2B58009DA8E8 /* NaverThirdPartyConstantsForApp.h */,
-				886EF1711D9C2B58009DA8E8 /* NaverThirdPartyLoginConnection.h */,
-				886EF1721D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.h */,
-				886EF1731D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m */,
+				88377CB71DE2D81000ABADC9 /* iRate */,
+				88377CBC1DE2D81000ABADC9 /* NaverLogin */,
 			);
 			path = ThirdPartyModule;
 			sourceTree = "<group>";
@@ -876,10 +903,12 @@
 				886EF1741D9C2B58009DA8E8 /* NaverAuth.bundle in Resources */,
 				887741661DB0738C00198666 /* LaunchScreen.storyboard in Resources */,
 				8877416E1DB0738C00198666 /* WebView.storyboard in Resources */,
+				88377CC31DE2D81000ABADC9 /* iRate.bundle in Resources */,
 				88C6EA9C1DD03ABB0087FE9C /* sentence_layer.xib in Resources */,
 				8877416D1DB0738C00198666 /* Settings.storyboard in Resources */,
 				88CDB9F71D92BDA30058ECFE /* Assets.xcassets in Resources */,
 				8877416F1DB0738C00198666 /* WorkBook.storyboard in Resources */,
+				88377CC21DE2D81000ABADC9 /* Info.plist in Resources */,
 				88C6EA971DD039DF0087FE9C /* st_player_view.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -994,7 +1023,6 @@
 				88CDBA1C1D92CB4A0058ECFE /* MyInfoController.swift in Sources */,
 				88C6EA7C1DD039DF0087FE9C /* SubtitleCell.swift in Sources */,
 				881235BE1DC7466C002EC49A /* hTabBarController.swift in Sources */,
-				886EF1761D9C2B58009DA8E8 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m in Sources */,
 				88C6EA841DD039DF0087FE9C /* BannerCell.swift in Sources */,
 				886085301D97D74B009A9B3C /* SubtitleService.swift in Sources */,
 				882CD2EA1DC8607600BB611A /* PurchaseService.swift in Sources */,
@@ -1029,10 +1057,12 @@
 				88C6EA8C1DD039DF0087FE9C /* ChannelButton.swift in Sources */,
 				889BCF401DD45E830023031C /* UIAlertControllerOps.swift in Sources */,
 				8845230A1DBF44CF00802510 /* HISTORY+CoreDataProperties.swift in Sources */,
+				88377CC41DE2D81000ABADC9 /* iRate.m in Sources */,
 				88CDB9ED1D92BDA30058ECFE /* AppDelegate.swift in Sources */,
 				88CDBA2B1D92D6EE0058ECFE /* NetService.swift in Sources */,
 				88C6EA941DD039DF0087FE9C /* hPickerView.swift in Sources */,
 				88468A291DC344D800ACC60D /* PatternStudyController.swift in Sources */,
+				88377CC61DE2D81000ABADC9 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m in Sources */,
 				88DEDEEA1DB4BC1200781123 /* TIME_LOG+CoreDataClass.swift in Sources */,
 				88468A251DC344D800ACC60D /* BasicStudyController.swift in Sources */,
 				8865F0731DA115410025D0B9 /* CoreDataService.swift in Sources */,
@@ -1179,10 +1209,7 @@
 				);
 				INFOPLIST_FILE = hPig/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/ThirdPartyModule",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.speakingtube.hPig;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "hPig-Bridging-Header.h";
@@ -1210,10 +1237,7 @@
 				);
 				INFOPLIST_FILE = hPig/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/ThirdPartyModule",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.speakingtube.hPig;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "hPig-Bridging-Header.h";
