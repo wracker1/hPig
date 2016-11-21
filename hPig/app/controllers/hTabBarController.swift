@@ -21,6 +21,8 @@ class hTabBarController: UITabBarController, iRateDelegate {
         
         Bundle.main.loadNibNamed("rate_view", owner: self, options: nil)
         
+        rateItem?.onlyPromptIfLatestVersion = false
+        rateItem?.previewMode = true
         rateItem?.delegate = self
         
         rateView.clipsToBounds = true

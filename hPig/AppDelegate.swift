@@ -30,9 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         ToastManager.shared.style.verticalPadding = 10
         
-        iRate.sharedInstance().onlyPromptIfLatestVersion = false
-        iRate.sharedInstance().previewMode = true
-        
         return true
     }
     
