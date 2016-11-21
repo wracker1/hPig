@@ -29,6 +29,7 @@
 		88377CC41DE2D81000ABADC9 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88377CBB1DE2D81000ABADC9 /* iRate.m */; };
 		88377CC51DE2D81000ABADC9 /* libNaverLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88377CBD1DE2D81000ABADC9 /* libNaverLogin.a */; };
 		88377CC61DE2D81000ABADC9 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88377CC11DE2D81000ABADC9 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m */; };
+		8844D0991DE2E37A009E84AE /* rate_view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8844D0981DE2E37A009E84AE /* rate_view.xib */; };
 		884523091DBF44CF00802510 /* HISTORY+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884523071DBF44CF00802510 /* HISTORY+CoreDataClass.swift */; };
 		8845230A1DBF44CF00802510 /* HISTORY+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884523081DBF44CF00802510 /* HISTORY+CoreDataProperties.swift */; };
 		8845230E1DBF55BD00802510 /* SessionFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8845230D1DBF55BD00802510 /* SessionFeed.storyboard */; };
@@ -178,6 +179,7 @@
 		88377CBF1DE2D81000ABADC9 /* NaverThirdPartyLoginConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NaverThirdPartyLoginConnection.h; sourceTree = "<group>"; };
 		88377CC01DE2D81000ABADC9 /* NLoginThirdPartyOAuth20InAppBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLoginThirdPartyOAuth20InAppBrowserViewController.h; sourceTree = "<group>"; };
 		88377CC11DE2D81000ABADC9 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLoginThirdPartyOAuth20InAppBrowserViewController.m; sourceTree = "<group>"; };
+		8844D0981DE2E37A009E84AE /* rate_view.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = rate_view.xib; path = rateView/rate_view.xib; sourceTree = "<group>"; };
 		884523071DBF44CF00802510 /* HISTORY+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HISTORY+CoreDataClass.swift"; sourceTree = "<group>"; };
 		884523081DBF44CF00802510 /* HISTORY+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HISTORY+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8845230D1DBF55BD00802510 /* SessionFeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SessionFeed.storyboard; sourceTree = "<group>"; };
@@ -396,6 +398,14 @@
 			path = NaverLogin;
 			sourceTree = "<group>";
 		};
+		8844D0971DE2E35F009E84AE /* rateView */ = {
+			isa = PBXGroup;
+			children = (
+				8844D0981DE2E37A009E84AE /* rate_view.xib */,
+			);
+			name = rateView;
+			sourceTree = "<group>";
+		};
 		88468A1E1DC344D800ACC60D /* modal */ = {
 			isa = PBXGroup;
 			children = (
@@ -573,6 +583,7 @@
 		88C6EA681DD039DF0087FE9C /* uiviews */ = {
 			isa = PBXGroup;
 			children = (
+				8844D0971DE2E35F009E84AE /* rateView */,
 				88C6EA9A1DD03A760087FE9C /* sentenceLayer */,
 				88C6EA6A1DD039DF0087FE9C /* interactedLabel */,
 				88C6EA701DD039DF0087FE9C /* patternView */,
@@ -898,6 +909,7 @@
 				88064FF21DD2FE0800084C6A /* sessionFilterHeader.xib in Resources */,
 				88C6EA991DD039DF0087FE9C /* session_nav_view.xib in Resources */,
 				88C6EA921DD039DF0087FE9C /* pattern_view.xib in Resources */,
+				8844D0991DE2E37A009E84AE /* rate_view.xib in Resources */,
 				88DEDF091DB7794300781123 /* SessionMain.storyboard in Resources */,
 				88C6EA8D1DD039DF0087FE9C /* eng_dic_view.xib in Resources */,
 				886EF1741D9C2B58009DA8E8 /* NaverAuth.bundle in Resources */,
@@ -1209,7 +1221,10 @@
 				);
 				INFOPLIST_FILE = hPig/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PROJECT_DIR}/ThirdPartyModule/**",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.speakingtube.hPig;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "hPig-Bridging-Header.h";
@@ -1237,7 +1252,10 @@
 				);
 				INFOPLIST_FILE = hPig/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PROJECT_DIR}/ThirdPartyModule/**",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.speakingtube.hPig;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "hPig-Bridging-Header.h";

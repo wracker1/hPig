@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="hTabBarController" customModule="hPig" customModuleProvider="target">
+            <connections>
+                <outlet property="rateView" destination="iN0-l3-epB" id="k3p-2s-UhH"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="review_back" translatesAutoresizingMaskIntoConstraints="NO" id="Vsz-is-rlh">
+                    <rect key="frame" x="0.0" y="111" width="375" height="445"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Vsz-is-rlh" secondAttribute="height" multiplier="0.8428" id="2gR-u0-BCh"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07i-fc-SXA">
+                    <rect key="frame" x="35" y="399" width="305" height="57.5"/>
+                    <color key="backgroundColor" red="0.98431372549019602" green="0.22745098039215686" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="07i-fc-SXA" secondAttribute="height" multiplier="53:10" id="Ngu-Sm-f0p"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                    <state key="normal" title="네, 지금 리뷰할게요.">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="rateNow:" destination="-1" eventType="touchUpInside" id="eNv-Pt-T0W"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMC-fC-O12">
+                    <rect key="frame" x="35" y="468.5" width="305" height="57.5"/>
+                    <color key="backgroundColor" red="0.75686274509803919" green="0.75686274509803919" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="yMC-fC-O12" secondAttribute="height" multiplier="53:10" id="eCd-Gs-zTY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                    <state key="normal" title="아뇨 다음에 할게요.">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="rateLater:" destination="-1" eventType="touchUpInside" id="KxC-Nh-jNq"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="yMC-fC-O12" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="6qQ-nA-oWL"/>
+                <constraint firstItem="07i-fc-SXA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="35" id="CfO-oj-Re4"/>
+                <constraint firstItem="Vsz-is-rlh" firstAttribute="bottom" secondItem="yMC-fC-O12" secondAttribute="bottom" constant="30" id="ELZ-Mx-Ovs"/>
+                <constraint firstItem="07i-fc-SXA" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="FBU-XH-AEa"/>
+                <constraint firstItem="yMC-fC-O12" firstAttribute="top" secondItem="07i-fc-SXA" secondAttribute="bottom" constant="12" id="IlA-Ie-swu"/>
+                <constraint firstAttribute="trailing" secondItem="Vsz-is-rlh" secondAttribute="trailing" id="ME1-Rm-snR"/>
+                <constraint firstItem="Vsz-is-rlh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="RaQ-ch-kiU"/>
+                <constraint firstItem="yMC-fC-O12" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="35" id="bMU-lF-obV"/>
+                <constraint firstItem="Vsz-is-rlh" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="jhA-lL-pyQ"/>
+                <constraint firstItem="Vsz-is-rlh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="k3X-YB-Fhl"/>
+                <constraint firstAttribute="trailing" secondItem="07i-fc-SXA" secondAttribute="trailing" constant="35" id="lGP-1t-HKF"/>
+                <constraint firstAttribute="bottom" secondItem="Vsz-is-rlh" secondAttribute="bottom" priority="750" id="sot-RK-9cv"/>
+                <constraint firstItem="Vsz-is-rlh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" priority="750" id="xRe-wM-IkH"/>
+                <constraint firstAttribute="trailing" secondItem="yMC-fC-O12" secondAttribute="trailing" constant="35" id="xm9-Oe-TNH"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="review_back" width="370" height="439"/>
+    </resources>
+</document>
