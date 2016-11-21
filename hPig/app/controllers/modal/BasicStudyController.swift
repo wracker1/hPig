@@ -80,6 +80,18 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         sessionControlView.nextButton.addTarget(self, action: #selector(self.playNextIndex), for: .touchUpInside)
     }
     
+    func repeatCurrentIndex() {
+        playAtIndex(currentIndex)
+    }
+    
+    func playPrevIndex() {
+        playAtIndex(currentIndex - 1)
+    }
+    
+    func playNextIndex() {
+        playAtIndex(currentIndex + 1)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -164,18 +176,6 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
-    func repeatCurrentIndex() {
-        playAtIndex(currentIndex)
-    }
-    
-    func playPrevIndex() {
-        playAtIndex(currentIndex - 1)
-    }
-    
-    func playNextIndex() {
-        playAtIndex(currentIndex + 1)
-    }
-    
     func seekBySlider(_ time: CMTime, result: Bool) {
         if result {
             let btnSwitch = self.btnReading!.customView! as! UISwitch
@@ -244,31 +244,17 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     
     private func playAtIndex(_ index: Int) {
         if let subtitle = subtitles.get(index), let timeRange = subtitle.timeRange() {
-            playerView.playInTimeRange(timeRange, completion: { (result) in
-                self.currentIndex = index
+            let range = CMTimeRange(start: timeRange.start - preTimeMargin, end: timeRange.end + postTimeMargin)
+            
+            playerView.playInTimeRange(range, completion: { (result) in
+                self.showCaption(at: index)
             })
         }
     }
     
-    private func currentIndex(_ time: CMTime) -> Int {
-        return SubtitleService.shared.currentIndex(time, items: self.subtitles, rangeBlock: { (sub) -> CMTimeRange? in
-            return sub.timeRange()
-        })
-    }
-    
-    private func changeSubtitle(_ time: CMTime) {
-        let index = currentIndex(time)
-        let maxIndex = subtitles.count - 1
-        
+    private func showCaption(at index: Int) {
         self.currentIndex = index
-        let isEndIndex = index == maxIndex
         
-        if isEndIndex {
-            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { (_) in
-                self.endStudy()
-            })
-        }
-
         if let subtitle = subtitles.get(index) {
             self.englishSubLabel.text = subtitle.english
             self.englishSubLabel.desc = subtitle.korean
@@ -281,6 +267,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
             }
         }
         
+        let maxIndex = subtitles.count - 1
         progressView.progress = Float(index) / Float(maxIndex)
         
         checkSubtitleNavigationButtons(
@@ -289,6 +276,28 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
             prevButton: sessionControlView.prevButton,
             nextButton: sessionControlView.nextButton
         )
+    }
+    
+    private func currentIndex(_ time: CMTime) -> Int {
+        return SubtitleService.shared.currentIndex(time, items: self.subtitles, rangeBlock: { (sub) -> CMTimeRange? in
+            return sub.timeRange()
+        })
+    }
+    
+    private func changeSubtitle(_ time: CMTime) {
+        if let sw = btnReading?.customView as? UISwitch, !sw.isOn {
+            let index = currentIndex(time)
+            let maxIndex = subtitles.count - 1
+            let isEndIndex = index == maxIndex
+            
+            showCaption(at: index)
+            
+            if isEndIndex {
+                Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { (_) in
+                    self.endStudy()
+                })
+            }
+        }
     }
     
     private func endStudy() {

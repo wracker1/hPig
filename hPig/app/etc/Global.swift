@@ -16,7 +16,7 @@ let kViewWillTransition = Notification.Name("viewWillTransition")
 let kGuestId = "guest"
 
 let preTimeMargin = CMTimeMakeWithSeconds(0.2, 600)
-let postTimeMargin = CMTimeMakeWithSeconds(0.45, 600)
+let postTimeMargin = CMTimeMakeWithSeconds(0.3, 600)
 
 let SubtitlePointColor = RGBA(213, g: 135, b: 125, a: 1)
 
