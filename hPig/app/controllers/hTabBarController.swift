@@ -12,21 +12,29 @@ import CoreGraphics
 class hTabBarController: UITabBarController, iRateDelegate {
     
     @IBOutlet var rateView: UIView!
+    @IBOutlet weak var remindMeLaterButton: UIButton!
     
     private let rateItem = iRate.sharedInstance()
-    private var alertController: UIAlertController? = nil
+    private var presentItem: UIViewController? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         Bundle.main.loadNibNamed("rate_view", owner: self, options: nil)
         
+        //rateItem?.previewMode = true
         rateItem?.onlyPromptIfLatestVersion = false
-        rateItem?.previewMode = true
         rateItem?.delegate = self
+        
+        rateItem?.daysUntilPrompt = 3.0
+        rateItem?.usesUntilPrompt = 15
+        rateItem?.usesPerWeekForPrompt = 1.0
         
         rateView.clipsToBounds = true
         rateView.layer.cornerRadius = 8.0
+        
+        remindMeLaterButton.layer.borderWidth = 1.0
+        remindMeLaterButton.layer.borderColor = RGBA(252, g: 86, b: 97, a: 1.0).cgColor
     }
     
     func iRateShouldPromptForRating() -> Bool {
@@ -40,7 +48,7 @@ class hTabBarController: UITabBarController, iRateDelegate {
             let views: [String: Any] = ["view" : rateView]
             
             alert.view.addConstraints(NSLayoutConstraint.constraints(
-                withVisualFormat: "H:|-[view(<=280)]-|",
+                withVisualFormat: "H:|-[view(<=290)]-|",
                 options: .alignAllCenterY,
                 metrics: nil,
                 views: views))
@@ -52,8 +60,8 @@ class hTabBarController: UITabBarController, iRateDelegate {
                 views: views))
             
             controller.present(alert, animated: true, completion: nil)
+            self.presentItem = controller
             
-            self.alertController = alert
         }
         
         return false
@@ -69,16 +77,26 @@ class hTabBarController: UITabBarController, iRateDelegate {
     }
     
     @IBAction func rateNow(_ sender: Any) {
-        if let controller = presentController() {
+        if let controller = presentItem {
             rateItem?.ratedThisVersion = true
             rateItem?.openRatingsPageInAppStore()
+            
             controller.dismiss(animated: true, completion: nil)
         }
     }
     
     @IBAction func rateLater(_ sender: Any) {
-        if let controller = presentController() {
+        if let controller = presentItem {
             rateItem?.lastReminded = Date()
+            
+            controller.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func dontWantShowAgain(_ sender: Any) {
+        if let controller = presentItem {
+            rateItem?.declinedThisVersion = true
+            
             controller.dismiss(animated: true, completion: nil)
         }
     }

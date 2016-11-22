@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rzw-Jr-A0u">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rzw-Jr-A0u">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -101,20 +101,20 @@
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7RX-On-qV0">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="7RX-On-qV0">
                                                         <rect key="frame" x="20" y="140" width="319" height="85"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="DZp-ml-8Bt">
-                                                                <rect key="frame" x="0.0" y="0.0" width="157" height="85"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="154" height="85"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="desc_step_1" translatesAutoresizingMaskIntoConstraints="NO" id="dHZ-mI-VdW">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="157" height="35"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="154" height="35"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="35" id="quH-Pu-cEI"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heZ-za-8R8">
-                                                                        <rect key="frame" x="0.0" y="40" width="157" height="45"/>
+                                                                        <rect key="frame" x="0.0" y="40" width="154" height="45"/>
                                                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="45" id="wth-fI-pEu"/>
@@ -132,16 +132,16 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="mw8-Rz-iHS">
-                                                                <rect key="frame" x="162" y="0.0" width="157" height="85"/>
+                                                                <rect key="frame" x="165" y="0.0" width="154" height="85"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="desc_step_2" translatesAutoresizingMaskIntoConstraints="NO" id="rsq-9I-zaN">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="157" height="35"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="154" height="35"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="35" id="8hq-dt-Dwq"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kQ2-BF-zlf">
-                                                                        <rect key="frame" x="0.0" y="40" width="157" height="45"/>
+                                                                        <rect key="frame" x="0.0" y="40" width="154" height="45"/>
                                                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="Znd-CR-cxP"/>

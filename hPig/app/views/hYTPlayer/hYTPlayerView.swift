@@ -29,6 +29,7 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
         , "theme": "light"
         , "cc_load_policy": 0
         , "iv_load_policy": 3
+        , "enablejsapi" : 0
         , "origin" : "https://www.example.com"
     ]
     
@@ -61,6 +62,13 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
     func prepareToPlay(_ id: String, range: CMTimeRange, completion: ((YTPlayerError?) -> Void)?) {
         self.id = id
         self.completion = completion
+        
+//        let start = timeToFloat(time: range.start)
+//        let end = timeToFloat(time: range.end)
+//        
+//        load(withPlayerParams: playerVars)
+//        
+//        loadVideo(byId: id, startSeconds: start, endSeconds: end, suggestedQuality: .small)
         
         load(withVideoId: id, playerVars: playerVars)
     }
