@@ -14,4 +14,6 @@ class PaymentCell: UITableViewCell {
     var payment: SKPayment? = nil
     
     @IBOutlet weak var passTitle: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    
 }

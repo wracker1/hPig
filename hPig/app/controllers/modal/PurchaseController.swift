@@ -14,6 +14,8 @@ class PurchaseController: UIViewController, UITableViewDelegate, UITableViewData
     var controller: UIViewController? = nil
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var passDueLabel: UILabel!
     
     private let purchaseService = PurchaseService.shared
     private var passes = [hPass]()
@@ -43,6 +45,10 @@ class PurchaseController: UIViewController, UITableViewDelegate, UITableViewData
                 })
 
                 self.tableView.reloadData()
+                
+                Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { (_) in
+                    self.tableViewHeight.constant = self.tableView.contentSize.height
+                })
             })
         }
     }
@@ -56,7 +62,8 @@ class PurchaseController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "paymentCell", for: indexPath)
         
         if let paymentCell = cell as? PaymentCell {
-            paymentCell.passTitle.text = "\(item.name) (\(item.value))"
+            paymentCell.passTitle.text = item.name
+            paymentCell.priceLabel.text = item.value
         }
         
         return cell
@@ -79,9 +86,5 @@ class PurchaseController: UIViewController, UITableViewDelegate, UITableViewData
                 tableView.deselectRow(at: indexPath, animated: true)
             })
         }
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "스피킹튜브 이용권"
     }
 }
