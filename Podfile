@@ -10,5 +10,5 @@ target 'hPig' do
     pod 'Charts'
     pod 'Fabric'
     pod 'Crashlytics'
-    pod 'Cosmos', '~> 7.0'
+    pod 'YoutubePlayer-in-WKWebView', '~> 0.2.0'
 end
