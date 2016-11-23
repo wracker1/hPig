@@ -131,21 +131,24 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
                 req.predicate = NSPredicate(format: query)
                 
                 CoreDataService.shared.select(request: req) { (items, error) in
-                    let history = items.get(0) ?? {
-                        let (desc, ctx) = CoreDataService.shared.entityDescription("history")
-                        return HISTORY(entity: desc!, insertInto: ctx)
-                        }()
-                    
-                    let currentIndex = self.currentIndex(self.playerView.currentCMTime())
-                    
-                    history.mutating(userId: userId,
-                                     session: item,
-                                     date: NSDate(),
-                                     studyTime: self.playerView.currentTime(),
-                                     position: currentIndex,
-                                     maxPosition: self.subtitles.count - 1)
-                    
-                    CoreDataService.shared.save()
+                    self.playerView.currentCMTime(completion: { (currentTime) in
+                        let history = items.get(0) ?? {
+                            let (desc, ctx) = CoreDataService.shared.entityDescription("history")
+                            return HISTORY(entity: desc!, insertInto: ctx)
+                            }()
+                        
+                        let currentIndex = self.currentIndex(currentTime)
+                        let seconds = TimeFormatService.shared.secondsFromCMTime(time: currentTime)
+                        
+                        history.mutating(userId: userId,
+                                         session: item,
+                                         date: NSDate(),
+                                         studyTime: seconds,
+                                         position: currentIndex,
+                                         maxPosition: self.subtitles.count - 1)
+                        
+                        CoreDataService.shared.save()
+                    })
                 }
             })
         }
@@ -231,11 +234,14 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     func toggleSelfReading(sender: UISwitch) {
         if sender.isOn {
             self.sessionControlView.alpha = 1.0
-            self.currentIndex = currentIndex(playerView.currentCMTime())
-            
-            if let subtitle = subtitles.get(currentIndex), let timeRange = subtitle.timeRange() {
-                playerView.playRange = timeRange
-            }
+            playerView.currentCMTime(completion: { (currentTime) in
+                let index = self.currentIndex(currentTime)
+                self.currentIndex = index
+                
+                if let subtitle = self.subtitles.get(index), let timeRange = subtitle.timeRange() {
+                    self.playerView.playRange = timeRange
+                }
+            })
         } else {
             self.sessionControlView.alpha = 0.0
             playerView.playRange = nil

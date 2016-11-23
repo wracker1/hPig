@@ -93,12 +93,16 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
         self.seek(toSeconds: timeToFloat(time: toTime), allowSeekAhead: true)
     }
     
-    func currentCMTime() -> CMTime {
-        return floatToCMTime(seconds: self.currentTime())
+    func currentCMTime(completion: ((CMTime) -> Void)?) {
+        if let callback = completion {
+            callback(floatToCMTime(seconds: self.currentTime()))
+        }
     }
     
-    func timeDuration() -> CMTime {
-        return CMTimeMakeWithSeconds(Float64(duration()), 600)
+    func timeDuration(completion: ((CMTime) -> Void)?) {
+        if let callback = completion {
+            callback(CMTimeMakeWithSeconds(Float64(duration()), 600))
+        }
     }
     
     /**
