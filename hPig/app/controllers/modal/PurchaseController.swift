@@ -25,6 +25,12 @@ class PurchaseController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         
         self.title = "패스 구매"
+        
+        AuthenticateService.shared.user { (user) in
+            if let info = user, let enddt = info.enddt {
+                self.passDueLabel.text = "토탈패스 \(enddt) 까지"
+            }
+        }
     }
     
     @IBAction func dismiss(_ sender: Any) {
