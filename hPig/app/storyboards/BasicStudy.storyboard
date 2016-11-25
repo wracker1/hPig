@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16C32f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fN9-Jy-PpQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fN9-Jy-PpQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -41,7 +41,7 @@
                                                 <color key="tintColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                             </progressView>
                                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kWk-Kt-iLI">
-                                                <rect key="frame" x="0.0" y="213" width="375" height="454"/>
+                                                <rect key="frame" x="0.0" y="213" width="375" height="354"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SubtitleCell" id="Sqf-j6-w8K" customClass="SubtitleCell" customModule="hPig" customModuleProvider="target">
@@ -118,7 +118,7 @@
                                             <constraint firstItem="aa5-yl-XhS" firstAttribute="bottom" secondItem="kWk-Kt-iLI" secondAttribute="top" id="VmK-Pd-69f"/>
                                             <constraint firstItem="aa5-yl-XhS" firstAttribute="top" secondItem="ujS-Nk-Zlw" secondAttribute="bottom" id="Y9k-yD-lWb"/>
                                             <constraint firstAttribute="trailing" secondItem="ujS-Nk-Zlw" secondAttribute="trailing" id="Ytz-SU-KuK"/>
-                                            <constraint firstAttribute="baseline" secondItem="kWk-Kt-iLI" secondAttribute="bottom" id="aSI-nF-Y7o"/>
+                                            <constraint firstAttribute="baseline" secondItem="kWk-Kt-iLI" secondAttribute="bottom" constant="100" id="aSI-nF-Y7o"/>
                                             <constraint firstItem="ujS-Nk-Zlw" firstAttribute="top" secondItem="QNe-ED-TtN" secondAttribute="top" id="asR-0c-nKI"/>
                                             <constraint firstItem="qD5-Su-cIp" firstAttribute="leading" secondItem="QNe-ED-TtN" secondAttribute="leading" constant="10" id="dHO-ZF-EZR"/>
                                             <constraint firstAttribute="trailing" secondItem="qD5-Su-cIp" secondAttribute="trailing" constant="10" id="dU1-v4-ICl"/>
@@ -135,7 +135,7 @@
                                     <constraint firstItem="QNe-ED-TtN" firstAttribute="top" secondItem="LFO-NZ-Sek" secondAttribute="top" id="Coc-9k-RIo"/>
                                     <constraint firstItem="QNe-ED-TtN" firstAttribute="centerX" secondItem="LFO-NZ-Sek" secondAttribute="centerX" id="OtW-LL-3nG"/>
                                     <constraint firstItem="QNe-ED-TtN" firstAttribute="centerY" secondItem="LFO-NZ-Sek" secondAttribute="centerY" id="Pon-tl-kun"/>
-                                    <constraint firstAttribute="bottom" secondItem="QNe-ED-TtN" secondAttribute="bottom" id="gGY-wn-qrm"/>
+                                    <constraint firstItem="QNe-ED-TtN" firstAttribute="bottom" secondItem="LFO-NZ-Sek" secondAttribute="bottom" id="gGY-wn-qrm"/>
                                 </constraints>
                             </scrollView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lsv-ZS-2UW" customClass="hSessionControlView" customModule="hPig" customModuleProvider="target">

@@ -30,6 +30,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     private var btnSubtitles: UIBarButtonItem? = nil
     private var btnReading: UIBarButtonItem? = nil
     private var startStudyTime: Date? = nil
+    private var endTimer: Timer? = nil
     
     @IBOutlet weak var channelButton: UIButton!
     @IBOutlet weak var playerView: hYTPlayerView!
@@ -104,6 +105,10 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        if let timer = endTimer, timer.isValid {
+            timer.invalidate()
+        }
         
         if let time = startStudyTime {
             AuthenticateService.shared.userId(completion: { (userId) in
@@ -299,7 +304,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
             showCaption(at: index)
             
             if isEndIndex {
-                Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { (_) in
+                self.endTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false, block: { (_) in
                     self.endStudy()
                 })
             }
