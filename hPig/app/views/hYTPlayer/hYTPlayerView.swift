@@ -33,7 +33,7 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
         , "origin" : "https://www.example.com"
     ]
     
-    var ticker: ((CMTime) -> Void)? = nil
+    var ticker: ((CMTime, Bool) -> Void)? = nil
     var pauseHook: ((CMTime) -> Void)? = nil
     var playRange: CMTimeRange? = nil
     
@@ -131,6 +131,12 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
         case .ended:
             print("player state: ended")
             
+            currentCMTime(completion: { (time) in
+                if let action = self.ticker {
+                    action(time, false)
+                }
+            })
+            
         case .playing:
             print("player state: playing")
             
@@ -191,12 +197,12 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
                 }
             } else {
                 if let action = ticker {
-                    action(time)
+                    action(time, true)
                 }
             }
         } else {
             if let action = ticker {
-                action(time)
+                action(time, true)
             }
         }
         

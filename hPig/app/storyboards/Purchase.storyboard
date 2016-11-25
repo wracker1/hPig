@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16C41b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RGi-1b-EgI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RGi-1b-EgI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -91,7 +91,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7W3-Df-tnh">
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7W3-Df-tnh">
                                                         <rect key="frame" x="0.0" y="64.5" width="325" height="200"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -105,7 +105,7 @@
                                                                 <rect key="frame" x="0.0" y="28" width="325" height="50"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AiI-YW-9hD" id="8W7-Tf-1Ic">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="325" height="49"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="325" height="50"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12개월 이용권" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCz-M4-JEC">
@@ -129,6 +129,12 @@
                                                                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stroke_line" translatesAutoresizingMaskIntoConstraints="NO" id="zKz-jf-C7P">
+                                                                            <rect key="frame" x="0.0" y="48.5" width="325" height="1"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="1" id="7KQ-2u-mbQ"/>
+                                                                            </constraints>
+                                                                        </imageView>
                                                                     </subviews>
                                                                     <constraints>
                                                                         <constraint firstItem="1DA-gf-JYc" firstAttribute="centerY" secondItem="8W7-Tf-1Ic" secondAttribute="centerY" id="1h5-um-RPw"/>
@@ -137,6 +143,9 @@
                                                                         <constraint firstAttribute="trailingMargin" secondItem="WNY-k7-tvM" secondAttribute="trailing" id="bsD-9i-rXO"/>
                                                                         <constraint firstItem="OCz-M4-JEC" firstAttribute="leading" secondItem="8W7-Tf-1Ic" secondAttribute="leadingMargin" id="jWj-Ld-ja4"/>
                                                                         <constraint firstItem="1DA-gf-JYc" firstAttribute="leading" secondItem="OCz-M4-JEC" secondAttribute="trailing" constant="15" id="lZ5-Zy-oaf"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="zKz-jf-C7P" secondAttribute="trailing" id="oz0-sW-iw3"/>
+                                                                        <constraint firstItem="zKz-jf-C7P" firstAttribute="leading" secondItem="8W7-Tf-1Ic" secondAttribute="leading" id="pdX-Hr-Sl3"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="zKz-jf-C7P" secondAttribute="bottom" id="tlw-cn-NUD"/>
                                                                     </constraints>
                                                                 </tableViewCellContentView>
                                                                 <connections>
@@ -245,5 +254,6 @@
     <resources>
         <image name="btn_close" width="55" height="55"/>
         <image name="purchase_bg" width="1243" height="362"/>
+        <image name="stroke_line" width="498" height="1"/>
     </resources>
 </document>

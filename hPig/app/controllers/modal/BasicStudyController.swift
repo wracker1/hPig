@@ -97,6 +97,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidAppear(animated)
         
         self.startStudyTime = Date()
+        self.isPresentingAlert = false
         
         if let id = session?.id, let part = session?.part {
             NetService.shared.get(path: "/svc/api/video/update/playcnt?id=\(id)&part=\(part)")
@@ -295,7 +296,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         })
     }
     
-    private func changeSubtitle(_ time: CMTime) {
+    private func changeSubtitle(_ time: CMTime, playing: Bool = true) {
         if let sw = btnReading?.customView as? UISwitch, !sw.isOn {
             let index = currentIndex(time)
             let maxIndex = subtitles.count - 1
@@ -303,10 +304,14 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
             
             showCaption(at: index)
             
-            if isEndIndex {
-                self.endTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false, block: { (_) in
-                    self.endStudy()
-                })
+            if isEndIndex && !isPresentingAlert {
+                if playing {
+                    self.endTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (_) in
+                        self.endStudy()
+                    })
+                } else {
+                    endStudy()
+                }
             }
         }
     }
