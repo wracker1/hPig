@@ -13,6 +13,7 @@ class hTabBarController: UITabBarController, iRateDelegate {
     
     @IBOutlet var rateView: UIView!
     @IBOutlet weak var remindMeLaterButton: UIButton!
+    @IBOutlet var customTabBar: UIView!
     
     private let rateItem = iRate.sharedInstance()
     private var presentItem: UIViewController? = nil
@@ -20,7 +21,12 @@ class hTabBarController: UITabBarController, iRateDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.selectedIndex = 0
+        
+        Bundle.main.loadNibNamed("tab_bar", owner: self, options: nil)
         Bundle.main.loadNibNamed("rate_view", owner: self, options: nil)
+        
+        setupTabbar()
         
         //rateItem?.previewMode = true
         rateItem?.onlyPromptIfLatestVersion = false
@@ -35,6 +41,28 @@ class hTabBarController: UITabBarController, iRateDelegate {
         
         remindMeLaterButton.layer.borderWidth = 1.0
         remindMeLaterButton.layer.borderColor = RGBA(252, g: 86, b: 97, a: 1.0).cgColor
+    }
+    
+    private func setupTabbar() {
+        
+        customTabBar.frame = tabBar.frame
+        
+        self.view.addSubview(customTabBar)
+        
+        self.view.translatesAutoresizingMaskIntoConstraints = false
+        customTabBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        let views: [String: Any] = ["view": customTabBar]
+        
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|",
+                                                                options: .alignAllBottom,
+                                                                metrics: nil,
+                                                                views: views))
+        
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[view(==59)]|",
+                                                                options: .alignAllCenterX,
+                                                                metrics: nil,
+                                                                views: views))
     }
     
     func iRateShouldPromptForRating() -> Bool {
@@ -99,5 +127,22 @@ class hTabBarController: UITabBarController, iRateDelegate {
             
             controller.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func didSelectHome(_ sender: Any) {
+        self.selectedIndex = 0
+    }
+    
+    @IBAction func didSelectBookmark(_ sender: Any) {
+        self.selectedIndex = 1
+        
+    }
+    
+    @IBAction func didSelectMyInfo(_ sender: Any) {
+        self.selectedIndex = 2
+    }
+    
+    @IBAction func didSelectSetting(_ sender: Any) {
+        self.selectedIndex = 3
     }
 }

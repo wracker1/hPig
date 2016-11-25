@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0137AD7D147A3F77BE04BD7E /* Pods_hPig.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9F0C3F95AB86E4B5BCFF5CB /* Pods_hPig.framework */; };
 		88064FF21DD2FE0800084C6A /* sessionFilterHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88064FF11DD2FE0800084C6A /* sessionFilterHeader.xib */; };
+		880FC9C01DE7356600BDF70C /* tab_bar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880FC9BF1DE7356600BDF70C /* tab_bar.xib */; };
 		881076C31DBC76460038C21C /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881076C21DBC76460038C21C /* SettingsController.swift */; };
 		881076C51DBC76500038C21C /* SessionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881076C41DBC76500038C21C /* SessionsController.swift */; };
 		881076C71DBC76E40038C21C /* DataDeleteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881076C61DBC76E40038C21C /* DataDeleteController.swift */; };
@@ -151,6 +152,7 @@
 /* Begin PBXFileReference section */
 		3F7DD837132F1D454EE2BA5F /* Pods-hPig.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hPig.release.xcconfig"; path = "Pods/Target Support Files/Pods-hPig/Pods-hPig.release.xcconfig"; sourceTree = "<group>"; };
 		88064FF11DD2FE0800084C6A /* sessionFilterHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = sessionFilterHeader.xib; sourceTree = "<group>"; };
+		880FC9BF1DE7356600BDF70C /* tab_bar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = tab_bar.xib; path = tabBar/tab_bar.xib; sourceTree = "<group>"; };
 		881076C21DBC76460038C21C /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		881076C41DBC76500038C21C /* SessionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsController.swift; sourceTree = "<group>"; };
 		881076C61DBC76E40038C21C /* DataDeleteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDeleteController.swift; sourceTree = "<group>"; };
@@ -364,6 +366,14 @@
 				B9F0C3F95AB86E4B5BCFF5CB /* Pods_hPig.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		880FC9BE1DE7354100BDF70C /* tabBar */ = {
+			isa = PBXGroup;
+			children = (
+				880FC9BF1DE7356600BDF70C /* tab_bar.xib */,
+			);
+			name = tabBar;
 			sourceTree = "<group>";
 		};
 		881076C11DBC76460038C21C /* settings */ = {
@@ -583,6 +593,7 @@
 		88C6EA681DD039DF0087FE9C /* uiviews */ = {
 			isa = PBXGroup;
 			children = (
+				880FC9BE1DE7354100BDF70C /* tabBar */,
 				8844D0971DE2E35F009E84AE /* rateView */,
 				88C6EA9A1DD03A760087FE9C /* sentenceLayer */,
 				88C6EA6A1DD039DF0087FE9C /* interactedLabel */,
@@ -910,6 +921,7 @@
 				88C6EA991DD039DF0087FE9C /* session_nav_view.xib in Resources */,
 				88C6EA921DD039DF0087FE9C /* pattern_view.xib in Resources */,
 				8844D0991DE2E37A009E84AE /* rate_view.xib in Resources */,
+				880FC9C01DE7356600BDF70C /* tab_bar.xib in Resources */,
 				88DEDF091DB7794300781123 /* SessionMain.storyboard in Resources */,
 				88C6EA8D1DD039DF0087FE9C /* eng_dic_view.xib in Resources */,
 				886EF1741D9C2B58009DA8E8 /* NaverAuth.bundle in Resources */,
