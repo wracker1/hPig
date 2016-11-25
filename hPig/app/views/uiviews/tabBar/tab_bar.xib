@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16C48b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,7 +12,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="hTabBarController" customModule="hPig" customModuleProvider="target">
             <connections>
+                <outlet property="bookmarkButton" destination="Z2w-Op-QaB" id="a1C-je-bNy"/>
+                <outlet property="bookmarkLabel" destination="m6I-Jq-VeQ" id="LSW-uR-IHs"/>
                 <outlet property="customTabBar" destination="iN0-l3-epB" id="ix1-ba-JBc"/>
+                <outlet property="homeButton" destination="cRV-5I-5sC" id="eWH-e8-Uti"/>
+                <outlet property="homeLabel" destination="kpY-hM-oWB" id="q7q-D0-YQI"/>
+                <outlet property="myInfoButton" destination="mXJ-9v-9Ih" id="ef8-I4-R58"/>
+                <outlet property="myInfoLabel" destination="eIl-BU-pdi" id="JpI-BP-z7n"/>
+                <outlet property="settingButton" destination="Nko-0w-Kfk" id="ol9-2h-JEs"/>
+                <outlet property="settingLabel" destination="7lm-52-s3g" id="8Kp-bO-fi8"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -27,139 +35,129 @@
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2Mm-Cr-jX4">
-                    <rect key="frame" x="0.0" y="621" width="376" height="45"/>
+                    <rect key="frame" x="0.0" y="617" width="375" height="48"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FZg-Tb-meS">
-                            <rect key="frame" x="0.0" y="0.0" width="94" height="45"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="H7e-b1-ZwH">
+                            <rect key="frame" x="0.0" y="0.0" width="94" height="48"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nko-0w-Kfk">
-                                    <rect key="frame" x="31" y="0.0" width="33" height="28"/>
+                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRV-5I-5sC">
+                                    <rect key="frame" x="30.5" y="0.0" width="33" height="33"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="28" id="3wm-l3-9WW"/>
-                                        <constraint firstAttribute="width" secondItem="Nko-0w-Kfk" secondAttribute="height" multiplier="45:38" id="lM8-8i-SeD"/>
+                                        <constraint firstAttribute="width" secondItem="cRV-5I-5sC" secondAttribute="height" multiplier="1:1" id="NSG-ja-nwQ"/>
                                     </constraints>
-                                    <state key="normal" image="tab_home_sel"/>
-                                    <connections>
-                                        <action selector="didSelectHome:" destination="-1" eventType="touchUpInside" id="Iqg-Mw-Jmd"/>
-                                    </connections>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                    <state key="normal" image="tab_home_sel">
+                                        <color key="titleColor" red="0.96470588239999999" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학습" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtt-5Q-1Fx">
-                                    <rect key="frame" x="37" y="30.5" width="21" height="14.5"/>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpY-hM-oWB">
+                                    <rect key="frame" x="32" y="33" width="30" height="15"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="15" id="zsq-SK-Qge"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                    <state key="normal" title="학습">
+                                        <color key="titleColor" red="0.9882352941176471" green="0.10196078431372549" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                </button>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="dtt-5Q-1Fx" firstAttribute="centerX" secondItem="FZg-Tb-meS" secondAttribute="centerX" id="44K-Xf-dov"/>
-                                <constraint firstAttribute="bottom" secondItem="dtt-5Q-1Fx" secondAttribute="bottom" id="Oj6-4X-pjW"/>
-                                <constraint firstAttribute="height" constant="45" id="d8r-Y2-Yq1"/>
-                                <constraint firstItem="Nko-0w-Kfk" firstAttribute="centerX" secondItem="FZg-Tb-meS" secondAttribute="centerX" id="fJR-ks-Yxg"/>
-                                <constraint firstItem="Nko-0w-Kfk" firstAttribute="top" secondItem="FZg-Tb-meS" secondAttribute="top" id="zJo-3b-oDT"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DjI-RS-pe4">
-                            <rect key="frame" x="94" y="0.0" width="94" height="45"/>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="EyE-up-XZI">
+                            <rect key="frame" x="94" y="0.0" width="93.5" height="48"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y7i-or-ihw">
-                                    <rect key="frame" x="33" y="0.0" width="29" height="28"/>
+                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2w-Op-QaB">
+                                    <rect key="frame" x="30" y="0.0" width="33" height="33"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="28" id="6Cw-7z-c7Z"/>
-                                        <constraint firstAttribute="width" secondItem="y7i-or-ihw" secondAttribute="height" multiplier="79:76" id="BHU-3k-8gs"/>
+                                        <constraint firstAttribute="width" secondItem="Z2w-Op-QaB" secondAttribute="height" multiplier="1:1" id="B70-uh-awm"/>
                                     </constraints>
-                                    <state key="normal" image="tab_book_non"/>
-                                    <connections>
-                                        <action selector="didSelectBookmark:" destination="-1" eventType="touchUpInside" id="DkF-Lv-Yku"/>
-                                    </connections>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                    <state key="normal" image="tab_book_non">
+                                        <color key="titleColor" red="0.96470588239999999" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="패턴/단어" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueL-ta-mzG">
-                                    <rect key="frame" x="24" y="30.5" width="46" height="14.5"/>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6I-Jq-VeQ">
+                                    <rect key="frame" x="25.5" y="33" width="42" height="15"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="15" id="4dc-Im-exs"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                    <state key="normal" title="패턴/단어">
+                                        <color key="titleColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                </button>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="45" id="Uzo-N6-fNA"/>
-                                <constraint firstItem="y7i-or-ihw" firstAttribute="centerX" secondItem="DjI-RS-pe4" secondAttribute="centerX" id="aKj-OO-iph"/>
-                                <constraint firstItem="y7i-or-ihw" firstAttribute="top" secondItem="DjI-RS-pe4" secondAttribute="top" id="fQ2-sa-bjG"/>
-                                <constraint firstAttribute="bottom" secondItem="ueL-ta-mzG" secondAttribute="bottom" id="hkO-As-TA2"/>
-                                <constraint firstItem="ueL-ta-mzG" firstAttribute="centerX" secondItem="DjI-RS-pe4" secondAttribute="centerX" id="t7p-8V-eFE"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ia-sy-CrT">
-                            <rect key="frame" x="188" y="0.0" width="94" height="45"/>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5aZ-q2-gur">
+                            <rect key="frame" x="187.5" y="0.0" width="94" height="48"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOL-Oq-EOW">
-                                    <rect key="frame" x="34" y="0.0" width="26" height="28"/>
+                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXJ-9v-9Ih">
+                                    <rect key="frame" x="30.5" y="0.0" width="33" height="33"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="gOL-Oq-EOW" secondAttribute="height" multiplier="69:76" id="dOF-uj-JVr"/>
-                                        <constraint firstAttribute="height" constant="28" id="w5P-Sb-Ovl"/>
+                                        <constraint firstAttribute="width" secondItem="mXJ-9v-9Ih" secondAttribute="height" multiplier="1:1" id="W3a-dL-S1E"/>
                                     </constraints>
-                                    <state key="normal" image="tab_my_non"/>
-                                    <connections>
-                                        <action selector="didSelectMyInfo:" destination="-1" eventType="touchUpInside" id="hUk-1e-Ldy"/>
-                                    </connections>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                    <state key="normal" image="tab_my_non">
+                                        <color key="titleColor" red="0.96470588239999999" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 학습현황" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXb-kb-38Z">
-                                    <rect key="frame" x="19.5" y="30.5" width="55.5" height="14.5"/>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIl-BU-pdi">
+                                    <rect key="frame" x="27.5" y="33" width="39" height="15"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="15" id="aC9-mi-MSL"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                    <state key="normal" title="학습정보">
+                                        <color key="titleColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                </button>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="gOL-Oq-EOW" firstAttribute="centerX" secondItem="6Ia-sy-CrT" secondAttribute="centerX" id="PFr-WM-CLi"/>
-                                <constraint firstItem="DXb-kb-38Z" firstAttribute="centerX" secondItem="6Ia-sy-CrT" secondAttribute="centerX" id="WrS-9H-1tU"/>
-                                <constraint firstAttribute="height" constant="45" id="akl-T8-Er9"/>
-                                <constraint firstItem="gOL-Oq-EOW" firstAttribute="top" secondItem="6Ia-sy-CrT" secondAttribute="top" id="pId-eN-Lxn"/>
-                                <constraint firstAttribute="bottom" secondItem="DXb-kb-38Z" secondAttribute="bottom" id="ufN-wX-Zsx"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uIX-2j-294">
-                            <rect key="frame" x="282" y="0.0" width="94" height="45"/>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L0Q-SU-xQD">
+                            <rect key="frame" x="281.5" y="0.0" width="93.5" height="48"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5OO-Ag-Ncv">
-                                    <rect key="frame" x="30" y="11" width="33" height="10"/>
+                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nko-0w-Kfk">
+                                    <rect key="frame" x="30" y="0.0" width="33" height="33"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="5OO-Ag-Ncv" secondAttribute="height" multiplier="45:13" id="FOP-YA-6ok"/>
-                                        <constraint firstAttribute="width" constant="33" id="NDs-ao-wwQ"/>
+                                        <constraint firstAttribute="width" secondItem="Nko-0w-Kfk" secondAttribute="height" multiplier="1:1" id="muk-gh-QSV"/>
                                     </constraints>
-                                    <state key="normal" image="tab_set_non"/>
-                                    <connections>
-                                        <action selector="didSelectSetting:" destination="-1" eventType="touchUpInside" id="L1L-wC-B0a"/>
-                                    </connections>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                    <state key="normal" image="tab_set_non">
+                                        <color key="titleColor" red="0.96470588239999999" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0w4-Cr-CA0">
-                                    <rect key="frame" x="36" y="30.5" width="21" height="14.5"/>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lm-52-s3g">
+                                    <rect key="frame" x="31.5" y="33" width="30" height="15"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="15" id="aCz-vs-KLO"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                    <state key="normal" title="설정">
+                                        <color key="titleColor" red="0.5725490196078431" green="0.5725490196078431" blue="0.5725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                </button>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="centerY" secondItem="5OO-Ag-Ncv" secondAttribute="centerY" constant="7" id="5RD-gO-V2x"/>
-                                <constraint firstItem="5OO-Ag-Ncv" firstAttribute="centerX" secondItem="uIX-2j-294" secondAttribute="centerX" id="E26-EA-snb"/>
-                                <constraint firstAttribute="height" constant="45" id="GT8-dq-fY8"/>
-                                <constraint firstItem="0w4-Cr-CA0" firstAttribute="centerX" secondItem="uIX-2j-294" secondAttribute="centerX" id="UD1-77-vfB"/>
-                                <constraint firstAttribute="bottom" secondItem="0w4-Cr-CA0" secondAttribute="bottom" id="g8V-FU-650"/>
-                            </constraints>
-                        </view>
+                        </stackView>
                     </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="KZN-U8-4Zd"/>
+                        <constraint firstAttribute="bottom" secondItem="5aZ-q2-gur" secondAttribute="bottom" id="O1H-yw-vAn"/>
+                        <constraint firstItem="EyE-up-XZI" firstAttribute="top" secondItem="2Mm-Cr-jX4" secondAttribute="top" id="TJp-Gk-CIQ"/>
+                        <constraint firstAttribute="bottom" secondItem="H7e-b1-ZwH" secondAttribute="bottom" id="UIT-Ko-EiI"/>
+                        <constraint firstAttribute="bottom" secondItem="EyE-up-XZI" secondAttribute="bottom" id="iLi-pC-2nd"/>
+                        <constraint firstItem="H7e-b1-ZwH" firstAttribute="top" secondItem="2Mm-Cr-jX4" secondAttribute="top" id="ktB-bb-GIj"/>
+                        <constraint firstItem="L0Q-SU-xQD" firstAttribute="top" secondItem="2Mm-Cr-jX4" secondAttribute="top" id="oyC-8k-rct"/>
+                        <constraint firstAttribute="bottom" secondItem="L0Q-SU-xQD" secondAttribute="bottom" id="uLJ-QU-9dK"/>
+                        <constraint firstItem="5aZ-q2-gur" firstAttribute="top" secondItem="2Mm-Cr-jX4" secondAttribute="top" id="vbu-Sj-FrC"/>
+                    </constraints>
                 </stackView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="2Mm-Cr-jX4" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="2fe-Ju-KJ8"/>
+                <constraint firstAttribute="trailing" secondItem="2Mm-Cr-jX4" secondAttribute="trailing" id="8Y5-21-HWq"/>
                 <constraint firstAttribute="bottom" secondItem="Mcr-hh-mE3" secondAttribute="bottom" id="AD7-fb-soW"/>
-                <constraint firstItem="Mcr-hh-mE3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="YVS-qz-KJJ"/>
+                <constraint firstItem="2Mm-Cr-jX4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="EV2-Fb-SBT"/>
                 <constraint firstAttribute="trailing" secondItem="Mcr-hh-mE3" secondAttribute="trailing" id="mu6-uh-Z3H"/>
-                <constraint firstAttribute="bottom" secondItem="2Mm-Cr-jX4" secondAttribute="bottom" constant="1" id="qSe-yz-p7e"/>
-                <constraint firstItem="2Mm-Cr-jX4" firstAttribute="leading" secondItem="Mcr-hh-mE3" secondAttribute="leading" id="tgb-Tn-ZI2"/>
+                <constraint firstAttribute="bottom" secondItem="2Mm-Cr-jX4" secondAttribute="bottom" constant="2" id="qSe-yz-p7e"/>
                 <constraint firstItem="Mcr-hh-mE3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wjQ-KV-Hka"/>
             </constraints>
             <point key="canvasLocation" x="34.5" y="106.5"/>
@@ -167,9 +165,9 @@
     </objects>
     <resources>
         <image name="tab_bg" width="1252" height="195"/>
-        <image name="tab_book_non" width="79" height="76"/>
-        <image name="tab_home_sel" width="90" height="76"/>
-        <image name="tab_my_non" width="69" height="76"/>
-        <image name="tab_set_non" width="90" height="26"/>
+        <image name="tab_book_non" width="100" height="100"/>
+        <image name="tab_home_sel" width="100" height="100"/>
+        <image name="tab_my_non" width="100" height="100"/>
+        <image name="tab_set_non" width="100" height="100"/>
     </resources>
 </document>
