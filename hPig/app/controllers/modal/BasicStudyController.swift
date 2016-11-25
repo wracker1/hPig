@@ -297,21 +297,21 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     }
     
     private func changeSubtitle(_ time: CMTime, playing: Bool = true) {
+        let index = currentIndex(time)
+        let maxIndex = subtitles.count - 1
+        let isEndIndex = index == maxIndex
+        
         if let sw = btnReading?.customView as? UISwitch, !sw.isOn {
-            let index = currentIndex(time)
-            let maxIndex = subtitles.count - 1
-            let isEndIndex = index == maxIndex
-            
             showCaption(at: index)
-            
-            if isEndIndex && !isPresentingAlert {
-                if playing {
-                    self.endTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (_) in
-                        self.endStudy()
-                    })
-                } else {
-                    endStudy()
-                }
+        }
+        
+        if isEndIndex && !isPresentingAlert {
+            if playing {
+                self.endTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (_) in
+                    self.endStudy()
+                })
+            } else {
+                endStudy()
             }
         }
     }
@@ -329,12 +329,9 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     private func presentAlert() {
         let alert = UIAlertController(title: "기본학습 완료", message: "해당영상에 대한 기본학습은 완료하셨습니다. 패턴학습을 통해 중요한 문장을 복습해보세요.", preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "나중에 하기", style: .cancel, handler: { (_) in
-            self.isPresentingAlert = false
-        }))
+        alert.addAction(UIAlertAction(title: "나중에 하기", style: .cancel, handler: nil))
         
         alert.addAction(UIAlertAction(title: "패턴학습", style: .default, handler: { (_) in
-            self.isPresentingAlert = false
             let item = self.session
             
             if let presentingViewController = presentController(viewController: self) {
