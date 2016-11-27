@@ -39,35 +39,35 @@ class hInteractedLabel: UILabel {
     
     func handleTap(_ recognizer: UITapGestureRecognizer) {
         videoPlayer?.pauseVideo()
-        
-        let time = videoPlayer?.currentTime() ?? 0
-        let loc = recognizer.location(in: self)
-        let textView = UITextView(frame: self.bounds)
-        let sentence = self.text
-        let desc = self.desc
-        
-        textView.textContainerInset = UIEdgeInsetsMake(0.0, -5.0, 0.0, -5.0)
-        textView.font = self.font
-        textView.text = self.text
-        textView.textAlignment = self.textAlignment
-        
-        if let pos = textView.closestPosition(to: loc),
-            let range = textView.tokenizer.rangeEnclosingPosition(pos, with: .word, inDirection: 0),
-            let text = textView.text(in: range),
-            let controller = viewController {
+        videoPlayer?.currentCMTime(completion: { (time) in
+            let sec = TimeFormatService.shared.secondsFromCMTime(time: time)
+            let loc = recognizer.location(in: self)
+            let textView = UITextView(frame: self.bounds)
+            let sentence = self.text
+            let desc = self.desc
             
-            NetService.shared.getObject(path: "/svc/api/dictionary/\(text)", completionHandler: { (res: DataResponse<WordData>) in
-                if let data = res.result.value {
-                    
-                    self.present(viewController: controller,
-                                 data: data,
-                                 sentence: sentence,
-                                 desc: desc,
-                                 time: time)
-                }
-            })
+            textView.textContainerInset = UIEdgeInsetsMake(0.0, -5.0, 0.0, -5.0)
+            textView.font = self.font
+            textView.text = self.text
+            textView.textAlignment = self.textAlignment
             
-        }
+            if let pos = textView.closestPosition(to: loc),
+                let range = textView.tokenizer.rangeEnclosingPosition(pos, with: .word, inDirection: 0),
+                let text = textView.text(in: range),
+                let controller = self.viewController {
+                
+                NetService.shared.getObject(path: "/svc/api/dictionary/\(text)", completionHandler: { (res: DataResponse<WordData>) in
+                    if let data = res.result.value {
+                        
+                        self.present(viewController: controller,
+                                     data: data,
+                                     sentence: sentence,
+                                     desc: desc,
+                                     time: sec)
+                    }
+                })
+            }
+        })
     }
     
     private func present(viewController: UIViewController, data: WordData, sentence: String?, desc: String?, time: Float) {

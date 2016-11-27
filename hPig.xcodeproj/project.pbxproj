@@ -12,6 +12,8 @@
 		880FC9C01DE7356600BDF70C /* tab_bar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880FC9BF1DE7356600BDF70C /* tab_bar.xib */; };
 		880FC9C31DEA836B00BDF70C /* WORD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880FC9C11DEA836B00BDF70C /* WORD+CoreDataClass.swift */; };
 		880FC9C41DEA836B00BDF70C /* WORD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880FC9C21DEA836B00BDF70C /* WORD+CoreDataProperties.swift */; };
+		880FC9C81DEB062100BDF70C /* WKYTPlayerView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 880FC9C51DEB062100BDF70C /* WKYTPlayerView.bundle */; };
+		880FC9C91DEB062100BDF70C /* WKYTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 880FC9C71DEB062100BDF70C /* WKYTPlayerView.m */; };
 		881076C31DBC76460038C21C /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881076C21DBC76460038C21C /* SettingsController.swift */; };
 		881076C51DBC76500038C21C /* SessionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881076C41DBC76500038C21C /* SessionsController.swift */; };
 		881076C71DBC76E40038C21C /* DataDeleteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881076C61DBC76E40038C21C /* DataDeleteController.swift */; };
@@ -93,8 +95,6 @@
 		88C6EA871DD039DF0087FE9C /* PatternCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C6EA611DD039DF0087FE9C /* PatternCell.swift */; };
 		88C6EA881DD039DF0087FE9C /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C6EA621DD039DF0087FE9C /* WordCell.swift */; };
 		88C6EA891DD039DF0087FE9C /* hYTPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C6EA641DD039DF0087FE9C /* hYTPlayerView.swift */; };
-		88C6EA8A1DD039DF0087FE9C /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = 88C6EA651DD039DF0087FE9C /* YTPlayerView-iframe-player.html */; };
-		88C6EA8B1DD039DF0087FE9C /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C6EA671DD039DF0087FE9C /* YTPlayerView.m */; };
 		88C6EA8C1DD039DF0087FE9C /* ChannelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C6EA691DD039DF0087FE9C /* ChannelButton.swift */; };
 		88C6EA8D1DD039DF0087FE9C /* eng_dic_view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88C6EA6B1DD039DF0087FE9C /* eng_dic_view.xib */; };
 		88C6EA8E1DD039DF0087FE9C /* eng_dic_view_cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88C6EA6C1DD039DF0087FE9C /* eng_dic_view_cell.xib */; };
@@ -154,6 +154,9 @@
 		880FC9BF1DE7356600BDF70C /* tab_bar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = tab_bar.xib; path = tabBar/tab_bar.xib; sourceTree = "<group>"; };
 		880FC9C11DEA836B00BDF70C /* WORD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataClass.swift"; sourceTree = "<group>"; };
 		880FC9C21DEA836B00BDF70C /* WORD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		880FC9C51DEB062100BDF70C /* WKYTPlayerView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WKYTPlayerView.bundle; sourceTree = "<group>"; };
+		880FC9C61DEB062100BDF70C /* WKYTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKYTPlayerView.h; sourceTree = "<group>"; };
+		880FC9C71DEB062100BDF70C /* WKYTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKYTPlayerView.m; sourceTree = "<group>"; };
 		881076C21DBC76460038C21C /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		881076C41DBC76500038C21C /* SessionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsController.swift; sourceTree = "<group>"; };
 		881076C61DBC76E40038C21C /* DataDeleteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDeleteController.swift; sourceTree = "<group>"; };
@@ -251,9 +254,6 @@
 		88C6EA611DD039DF0087FE9C /* PatternCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatternCell.swift; sourceTree = "<group>"; };
 		88C6EA621DD039DF0087FE9C /* WordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 		88C6EA641DD039DF0087FE9C /* hYTPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hYTPlayerView.swift; sourceTree = "<group>"; };
-		88C6EA651DD039DF0087FE9C /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "YTPlayerView-iframe-player.html"; sourceTree = "<group>"; };
-		88C6EA661DD039DF0087FE9C /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
-		88C6EA671DD039DF0087FE9C /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlayerView.m; sourceTree = "<group>"; };
 		88C6EA691DD039DF0087FE9C /* ChannelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChannelButton.swift; path = views/uiviews/ChannelButton.swift; sourceTree = "<group>"; };
 		88C6EA6B1DD039DF0087FE9C /* eng_dic_view.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = eng_dic_view.xib; sourceTree = "<group>"; };
 		88C6EA6C1DD039DF0087FE9C /* eng_dic_view_cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = eng_dic_view_cell.xib; path = ../../uiviews/interactedLabel/eng_dic_view_cell.xib; sourceTree = "<group>"; };
@@ -581,10 +581,10 @@
 		88C6EA631DD039DF0087FE9C /* hYTPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				880FC9C51DEB062100BDF70C /* WKYTPlayerView.bundle */,
+				880FC9C61DEB062100BDF70C /* WKYTPlayerView.h */,
+				880FC9C71DEB062100BDF70C /* WKYTPlayerView.m */,
 				88C6EA641DD039DF0087FE9C /* hYTPlayerView.swift */,
-				88C6EA651DD039DF0087FE9C /* YTPlayerView-iframe-player.html */,
-				88C6EA661DD039DF0087FE9C /* YTPlayerView.h */,
-				88C6EA671DD039DF0087FE9C /* YTPlayerView.m */,
 			);
 			name = hYTPlayer;
 			path = views/hYTPlayer;
@@ -907,11 +907,11 @@
 			files = (
 				887741671DB0738C00198666 /* Main.storyboard in Resources */,
 				887741681DB0738C00198666 /* MyInfo.storyboard in Resources */,
-				88C6EA8A1DD039DF0087FE9C /* YTPlayerView-iframe-player.html in Resources */,
 				88468A1D1DC343C100ACC60D /* Purchase.storyboard in Resources */,
 				88C6EA951DD039DF0087FE9C /* picker_action_view.xib in Resources */,
 				8877416A1DB0738C00198666 /* PatternStudy.storyboard in Resources */,
 				8877416C1DB0738C00198666 /* Sessions.storyboard in Resources */,
+				880FC9C81DEB062100BDF70C /* WKYTPlayerView.bundle in Resources */,
 				88DEDEF41DB5ED7300781123 /* BasicStudy.storyboard in Resources */,
 				88DEDEFE1DB7637B00781123 /* ChannelMain.storyboard in Resources */,
 				88C6EA8E1DD039DF0087FE9C /* eng_dic_view_cell.xib in Resources */,
@@ -1019,7 +1019,6 @@
 				884B0E8D1D93A0BB009748FF /* ImageDownloadService.swift in Sources */,
 				88468A261DC344D800ACC60D /* ChannelController.swift in Sources */,
 				88468A271DC344D800ACC60D /* hActionPickerController.swift in Sources */,
-				88C6EA8B1DD039DF0087FE9C /* YTPlayerView.m in Sources */,
 				88C6EA901DD039DF0087FE9C /* hInteractedLabel.swift in Sources */,
 				88C6EA7D1DD039DF0087FE9C /* ChannelInfoCell.swift in Sources */,
 				88C6EA811DD039DF0087FE9C /* MyInfoHeaderCell.swift in Sources */,
@@ -1056,6 +1055,7 @@
 				8877415A1DAF8D1F00198666 /* User.swift in Sources */,
 				88377CB61DDE8E5800ABADC9 /* StringOps.swift in Sources */,
 				88B4BAC21DC1B91000AFFE3A /* UIScrollViewOps.swift in Sources */,
+				880FC9C91DEB062100BDF70C /* WKYTPlayerView.m in Sources */,
 				88C6EA8F1DD039DF0087FE9C /* hEnglishDictionaryView.swift in Sources */,
 				887933611DB861F3001CB925 /* TubeUserInfo.swift in Sources */,
 				887933741DB8A56A001CB925 /* PATTERN+CoreDataProperties.swift in Sources */,

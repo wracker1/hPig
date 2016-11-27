@@ -9,9 +9,9 @@
 import UIKit
 import AVFoundation
 
-class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
+class hYTPlayerView: WKYTPlayerView, WKYTPlayerViewDelegate {
     
-    private var completion: ((YTPlayerError?) -> Void)? = nil
+    private var completion: ((WKYTPlayerError?) -> Void)? = nil
     private var ignoreRange = false
     private var id: String? = nil
     
@@ -43,7 +43,7 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
         super.init(coder: aDecoder)
         
         self.backgroundColor = UIColor.black
-        self.webView?.allowsInlineMediaPlayback = true
+//        self.webView?.allowsInlineMediaPlayback = true
         self.delegate = self
     }
     
@@ -59,7 +59,7 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
         return Float(CMTimeGetSeconds(time))
     }
     
-    func prepareToPlay(_ id: String, range: CMTimeRange, completion: ((YTPlayerError?) -> Void)?) {
+    func prepareToPlay(_ id: String, range: CMTimeRange, completion: ((WKYTPlayerError?) -> Void)?) {
         self.id = id
         self.completion = completion
         
@@ -95,35 +95,41 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
     
     func currentCMTime(completion: ((CMTime) -> Void)?) {
         if let callback = completion {
-            callback(floatToCMTime(seconds: self.currentTime()))
+            self.getCurrentTime({ (seconds, error) in
+                callback(self.floatToCMTime(seconds: seconds))
+            })
         }
     }
     
     func timeDuration(completion: ((CMTime) -> Void)?) {
         if let callback = completion {
-            callback(CMTimeMakeWithSeconds(Float64(duration()), 600))
+            self.getDuration({ (dur, error) in
+                callback(CMTimeMakeWithSeconds(Float64(dur), 600))
+            })
         }
     }
+    
+    // wk yt player
     
     /**
      * Invoked when the player view is ready to receive API calls.
      *
-     * @param playerView The YTPlayerView instance that has become ready.
+     * @param playerView The WKYTPlayerView instance that has become ready.
      */
-    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
+    
+    func playerViewDidBecomeReady(_ playerView: WKYTPlayerView) {
         if let callback = completion {
             callback(nil)
         }
     }
     
-    
     /**
      * Callback invoked when player state has changed, e.g. stopped or started playback.
      *
-     * @param playerView The YTPlayerView instance where playback state has changed.
-     * @param state YTPlayerState designating the new playback state.
+     * @param playerView The WKYTPlayerView instance where playback state has changed.
+     * @param state WKYTPlayerState designating the new playback state.
      */
-    func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
+    func playerView(_ playerView: WKYTPlayerView, didChangeTo state: WKYTPlayerState) {
         switch state {
         case .unstarted:
             print("player state: unstarted")
@@ -154,38 +160,38 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
         }
     }
     
-    
     /**
      * Callback invoked when playback quality has changed.
      *
-     * @param playerView The YTPlayerView instance where playback quality has changed.
-     * @param quality YTPlaybackQuality designating the new playback quality.
+     * @param playerView The WKYTPlayerView instance where playback quality has changed.
+     * @param quality WKYTPlaybackQuality designating the new playback quality.
      */
-    func playerView(_ playerView: YTPlayerView, didChangeTo quality: YTPlaybackQuality) {
     
+    func playerView(_ playerView: WKYTPlayerView, didChangeTo quality: WKYTPlaybackQuality) {
+        
     }
-    
     
     /**
      * Callback invoked when an error has occured.
      *
-     * @param playerView The YTPlayerView instance where the error has occurred.
-     * @param error YTPlayerError containing the error state.
+     * @param playerView The WKYTPlayerView instance where the error has occurred.
+     * @param error WKYTPlayerError containing the error state.
      */
-    func playerView(_ playerView: YTPlayerView, receivedError error: YTPlayerError) {
+    
+    func playerView(_ playerView: WKYTPlayerView, receivedError error: WKYTPlayerError) {
         if let callback = completion {
             callback(error)
         }
     }
     
-    
     /**
      * Callback invoked frequently when playBack is plaing.
      *
-     * @param playerView The YTPlayerView instance where the error has occurred.
+     * @param playerView The WKYTPlayerView instance where the error has occurred.
      * @param playTime float containing curretn playback time.
      */
-    func playerView(_ playerView: YTPlayerView, didPlayTime playTime: Float) {
+    
+    func playerView(_ playerView: WKYTPlayerView, didPlayTime playTime: Float) {
         let time = floatToCMTime(seconds: playTime)
         
         if let timeRange = playRange {
@@ -205,8 +211,19 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
                 action(time, true)
             }
         }
-        
-        
+    }
+    
+    /**
+     * Callback invoked when setting up the webview to allow custom colours so it fits in
+     * with app color schemes. If a transparent view is required specify clearColor and
+     * the code will handle the opacity etc.
+     *
+     * @param playerView The WKYTPlayerView instance where the error has occurred.
+     * @return A color object that represents the background color of the webview.
+     */
+    
+    func playerViewPreferredWebViewBackgroundColor(_ playerView: WKYTPlayerView) -> UIColor {
+        return UIColor.black
     }
     
     /**
@@ -222,15 +239,13 @@ class hYTPlayerView: YTPlayerView, YTPlayerViewDelegate {
      * handled by YouTube iframe API. This callback is just intended to tell users the view is actually
      * doing something while iframe is being loaded, which will take some time if users are in poor networks.
      *
-     * @param playerView The YTPlayerView instance where the error has occurred.
+     * @param playerView The WKYTPlayerView instance where the error has occurred.
      * @return A view object that will be displayed while YouTube iframe API is being loaded.
      *         Pass nil to display no custom loading view. Default implementation returns nil.
      */
-    func playerViewPreferredInitialLoading(_ playerView: YTPlayerView) -> UIView? {
+    
+    func playerViewPreferredInitialLoading(_ playerView: WKYTPlayerView) -> UIView? {
         return nil
     }
-    
-    func playerViewPreferredWebViewBackgroundColor(_ playerView: YTPlayerView) -> UIColor {
-        return UIColor.black
-    }
+
 }

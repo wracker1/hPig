@@ -521,8 +521,8 @@ NSString static *const kWKYTPlayerSyndicationRegexPattern = @"^https://tpc.googl
 /**
  * Convert a quality value from NSString to the typed enum value.
  *
- * @param qualityString A string representing playback quality. Ex: "small", "medium", "hd1080".
- * @return An enum value representing the playback quality.
+ * qualityString A string representing playback quality. Ex: "small", "medium", "hd1080".
+ * An enum value representing the playback quality.
  */
 + (WKYTPlaybackQuality)playbackQualityForString:(NSString *)qualityString {
     WKYTPlaybackQuality quality = kWKYTPlaybackQualityUnknown;
@@ -549,8 +549,8 @@ NSString static *const kWKYTPlayerSyndicationRegexPattern = @"^https://tpc.googl
 /**
  * Convert a |WKYTPlaybackQuality| value from the typed value to NSString.
  *
- * @param quality A |WKYTPlaybackQuality| parameter.
- * @return An |NSString| value to be used in the JavaScript bridge.
+ * quality A |WKYTPlaybackQuality| parameter.
+ * An |NSString| value to be used in the JavaScript bridge.
  */
 + (NSString *)stringForPlaybackQuality:(WKYTPlaybackQuality)quality {
     switch (quality) {
@@ -576,8 +576,8 @@ NSString static *const kWKYTPlayerSyndicationRegexPattern = @"^https://tpc.googl
 /**
  * Convert a state value from NSString to the typed enum value.
  *
- * @param stateString A string representing player state. Ex: "-1", "0", "1".
- * @return An enum value representing the player state.
+ * stateString A string representing player state. Ex: "-1", "0", "1".
+ * An enum value representing the player state.
  */
 + (WKYTPlayerState)playerStateForString:(NSString *)stateString {
     WKYTPlayerState state = kWKYTPlayerStateUnknown;
@@ -600,8 +600,8 @@ NSString static *const kWKYTPlayerSyndicationRegexPattern = @"^https://tpc.googl
 /**
  * Convert a state value from the typed value to NSString.
  *
- * @param quality A |WKYTPlayerState| parameter.
- * @return A string value to be used in the JavaScript bridge.
+ * quality A |WKYTPlayerState| parameter.
+ * A string value to be used in the JavaScript bridge.
  */
 + (NSString *)stringForPlayerState:(WKYTPlayerState)state {
     switch (state) {
@@ -630,7 +630,7 @@ NSString static *const kWKYTPlayerSyndicationRegexPattern = @"^https://tpc.googl
  * This is how the UIWebView communicates with the containing Objective-C code.
  * Side effects of this method are that it calls methods on this class's delegate.
  *
- * @param url A URL of the format ytplayer://action?data=value.
+ * url A URL of the format ytplayer://action?data=value.
  */
 - (void)notifyDelegateOfYouTubeCallbackUrl: (NSURL *) url {
     NSString *action = url.host;
@@ -760,7 +760,7 @@ NSString static *const kWKYTPlayerSyndicationRegexPattern = @"^https://tpc.googl
     if (ytMatch || adMatch || oauthMatch || staticProxyMatch || syndicationMatch) {
         return YES;
     } else {
-        [[UIApplication sharedApplication] openURL:url];
+        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler: nil];
         return NO;
     }
 }
@@ -769,10 +769,10 @@ NSString static *const kWKYTPlayerSyndicationRegexPattern = @"^https://tpc.googl
 /**
  * Private helper method to load an iframe player with the given player parameters.
  *
- * @param additionalPlayerParams An NSDictionary of parameters in addition to required parameters
+ * additionalPlayerParams An NSDictionary of parameters in addition to required parameters
  *                               to instantiate the HTML5 player with. This differs depending on
  *                               whether a single video or playlist is being loaded.
- * @return YES if successful, NO if not.
+ * YES if successful, NO if not.
  */
 - (BOOL)loadWithPlayerParams:(NSDictionary *)additionalPlayerParams {
     NSDictionary *playerCallbacks = @{
@@ -902,12 +902,12 @@ NSString static *const kWKYTPlayerSyndicationRegexPattern = @"^https://tpc.googl
  * Private method for cueing both cases of playlist ID and array of video IDs. Cueing
  * a playlist does not start playback.
  *
- * @param cueingString A JavaScript string representing an array, playlist ID or list of
+ * cueingString A JavaScript string representing an array, playlist ID or list of
  *                     video IDs to play with the playlist player.
- * @param index 0-index position of video to start playback on.
- * @param startSeconds Seconds after start of video to begin playback.
- * @param suggestedQuality Suggested WKYTPlaybackQuality to play the videos.
- * @return The result of cueing the playlist.
+ * index 0-index position of video to start playback on.
+ * startSeconds Seconds after start of video to begin playback.
+ * suggestedQuality Suggested WKYTPlaybackQuality to play the videos.
+ * The result of cueing the playlist.
  */
 - (void)cuePlaylist:(NSString *)cueingString
               index:(int)index
@@ -925,12 +925,12 @@ NSString static *const kWKYTPlayerSyndicationRegexPattern = @"^https://tpc.googl
  * Private method for loading both cases of playlist ID and array of video IDs. Loading
  * a playlist automatically starts playback.
  *
- * @param cueingString A JavaScript string representing an array, playlist ID or list of
+ * cueingString A JavaScript string representing an array, playlist ID or list of
  *                     video IDs to play with the playlist player.
- * @param index 0-index position of video to start playback on.
- * @param startSeconds Seconds after start of video to begin playback.
- * @param suggestedQuality Suggested WKYTPlaybackQuality to play the videos.
- * @return The result of cueing the playlist.
+ * index 0-index position of video to start playback on.
+ * startSeconds Seconds after start of video to begin playback.
+ * suggestedQuality Suggested WKYTPlaybackQuality to play the videos.
+ * The result of cueing the playlist.
  */
 - (void)loadPlaylist:(NSString *)cueingString
                index:(int)index
@@ -947,8 +947,8 @@ NSString static *const kWKYTPlayerSyndicationRegexPattern = @"^https://tpc.googl
 /**
  * Private helper method for converting an NSArray of video IDs into its JavaScript equivalent.
  *
- * @param videoIds An array of video ID strings to convert into JavaScript format.
- * @return A JavaScript array in String format containing video IDs.
+ * videoIds An array of video ID strings to convert into JavaScript format.
+ * A JavaScript array in String format containing video IDs.
  */
 - (NSString *)stringFromVideoIdArray:(NSArray *)videoIds {
     NSMutableArray *formattedVideoIds = [[NSMutableArray alloc] init];
@@ -963,8 +963,8 @@ NSString static *const kWKYTPlayerSyndicationRegexPattern = @"^https://tpc.googl
 /**
  * Private method for evaluating JavaScript in the WebView.
  *
- * @param jsToExecute The JavaScript code in string format that we want to execute.
- * @return JavaScript response from evaluating code.
+ * jsToExecute The JavaScript code in string format that we want to execute.
+ * JavaScript response from evaluating code.
  */
 - (void)stringFromEvaluatingJavaScript:(NSString *)jsToExecute completionHandler:(void (^ __nullable)(NSString * __nullable response, NSError * __nullable error))completionHandler{
     [self.webView evaluateJavaScript:jsToExecute completionHandler:^(NSString * _Nullable response, NSError * _Nullable error) {
@@ -977,8 +977,8 @@ NSString static *const kWKYTPlayerSyndicationRegexPattern = @"^https://tpc.googl
 /**
  * Private method to convert a Objective-C BOOL value to JS boolean value.
  *
- * @param boolValue Objective-C BOOL value.
- * @return JavaScript Boolean value, i.e. "true" or "false".
+ * boolValue Objective-C BOOL value.
+ * JavaScript Boolean value, i.e. "true" or "false".
  */
 - (NSString *)stringForJSBoolean:(BOOL)boolValue {
     return boolValue ? @"true" : @"false";
@@ -993,14 +993,14 @@ NSString static *const kWKYTPlayerSyndicationRegexPattern = @"^https://tpc.googl
 - (WKWebView *)createNewWebView {
     WKWebViewConfiguration *configuration = [WKWebViewConfiguration new];
     configuration.allowsInlineMediaPlayback = YES;
-    configuration.mediaPlaybackRequiresUserAction = NO;
+    configuration.mediaTypesRequiringUserActionForPlayback = NO;
     
     WKWebView *webView = [[WKWebView alloc] initWithFrame:self.bounds configuration:configuration];
     webView.scrollView.scrollEnabled = NO;
     webView.scrollView.bounces = NO;
     
     if ([self.delegate respondsToSelector:@selector(playerViewPreferredWebViewBackgroundColor:)]) {
-        webView.backgroundColor = [self.delegate playerViewPreferredWebViewBackgroundColor:self];
+        webView.backgroundColor = [self.delegate playerViewPreferredWebViewBackgroundColor: self];
         if (webView.backgroundColor == [UIColor clearColor]) {
             webView.opaque = NO;
         }
