@@ -28,10 +28,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YfO-ee-ALZ">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YfO-ee-ALZ">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="565"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LqG-kb-SMf">
+                        <view contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LqG-kb-SMf">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="215"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FYY-Ym-ZfT">
@@ -119,10 +119,10 @@
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="1Gf-tl-DT8"/>
                         <constraint firstItem="LqG-kb-SMf" firstAttribute="centerX" secondItem="YfO-ee-ALZ" secondAttribute="centerX" id="8IO-jX-ZW2"/>
+                        <constraint firstAttribute="bottom" secondItem="LqG-kb-SMf" secondAttribute="bottom" id="8w3-l2-sfl"/>
                         <constraint firstAttribute="trailing" secondItem="LqG-kb-SMf" secondAttribute="trailing" id="Ezk-ZG-iOK"/>
                         <constraint firstItem="LqG-kb-SMf" firstAttribute="leading" secondItem="YfO-ee-ALZ" secondAttribute="leading" id="Pse-Y7-jP5"/>
                         <constraint firstItem="LqG-kb-SMf" firstAttribute="top" secondItem="YfO-ee-ALZ" secondAttribute="top" id="wT3-jf-d9q"/>
-                        <constraint firstAttribute="bottom" secondItem="LqG-kb-SMf" secondAttribute="bottom" id="zT6-MZ-wy3"/>
                     </constraints>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qF-wc-yKm">
@@ -148,7 +148,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="YfO-ee-ALZ" secondAttribute="trailing" id="4ko-Q5-4xb"/>
-                <constraint firstAttribute="bottom" secondItem="9Zc-Ms-Vvu" secondAttribute="bottom" constant="10" id="Clo-j8-CmP"/>
+                <constraint firstAttribute="bottom" secondItem="9Zc-Ms-Vvu" secondAttribute="bottom" priority="750" constant="10" id="Clo-j8-CmP"/>
                 <constraint firstItem="9Zc-Ms-Vvu" firstAttribute="top" secondItem="0qF-wc-yKm" secondAttribute="bottom" constant="10" id="D4Z-qb-fRU"/>
                 <constraint firstAttribute="trailing" secondItem="0qF-wc-yKm" secondAttribute="trailing" constant="10" id="Y51-3v-4be"/>
                 <constraint firstItem="0qF-wc-yKm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="aFn-a8-7qP"/>

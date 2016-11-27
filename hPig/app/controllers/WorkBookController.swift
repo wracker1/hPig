@@ -124,11 +124,11 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var alert: UIAlertController? = nil
+        let candidate = self.view.bounds.size.height - 200
         
         switch tableView {
         case patternTableView:
-            if let pattern = patternData.get(indexPath.row) {
-                let candidate = self.view.bounds.size.height - 200
+            if let pattern = patternData.get(indexPath.row) {        
                 ptScrollViewHeight.constant = candidate
                 updatePatternView(pattern)
                 

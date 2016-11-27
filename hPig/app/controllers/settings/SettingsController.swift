@@ -97,8 +97,9 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
                 
                 alert.addAction(UIAlertAction(title: "등록", style: .default, handler: { (_) in
                     if let couponNumber = alert.textFields?.first?.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) {
+                        
                         if couponNumber.characters.count == 10 {
-                            let params = ["id": user.id, "coupon": String("couponNumber")!]
+                            let params = ["id": user.id, "coupon": couponNumber.uppercased()]
                             
                             NetService.shared.get(path: "/svc/api/user/update/coupon", parameters: params).responseString(completionHandler: { (res) in
                                 if let result = res.result.value {
