@@ -158,8 +158,8 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     private func embed(view item: UIView) -> UIAlertController {
-        let actionSheetWidth = self.view.bounds.size.width - 10
-        let actionSheetHeight = self.view.bounds.size.height - 150
+        let actionSheetWidth = self.view.bounds.size.width - 20
+        let actionSheetHeight = self.view.bounds.size.height - 170
         
         let alert = UIAlertController(title: "", message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "", style: .cancel, handler: nil))
@@ -171,7 +171,7 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
         let views: [String: Any] = ["view" : item]
         
         alert.view.addConstraints(
-            NSLayoutConstraint.constraints(withVisualFormat: "H:|-[view(==\(actionSheetWidth))]-|",
+            NSLayoutConstraint.constraints(withVisualFormat: "H:|[view(==\(actionSheetWidth))]|",
                 options: .alignAllCenterY,
                 metrics: nil,
                 views: views))
