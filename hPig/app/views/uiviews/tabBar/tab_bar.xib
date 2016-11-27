@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16C48b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,14 +13,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="hTabBarController" customModule="hPig" customModuleProvider="target">
             <connections>
                 <outlet property="bookmarkButton" destination="Z2w-Op-QaB" id="a1C-je-bNy"/>
-                <outlet property="bookmarkLabel" destination="m6I-Jq-VeQ" id="LSW-uR-IHs"/>
                 <outlet property="customTabBar" destination="iN0-l3-epB" id="ix1-ba-JBc"/>
                 <outlet property="homeButton" destination="cRV-5I-5sC" id="eWH-e8-Uti"/>
-                <outlet property="homeLabel" destination="kpY-hM-oWB" id="q7q-D0-YQI"/>
                 <outlet property="myInfoButton" destination="mXJ-9v-9Ih" id="ef8-I4-R58"/>
-                <outlet property="myInfoLabel" destination="eIl-BU-pdi" id="JpI-BP-z7n"/>
                 <outlet property="settingButton" destination="Nko-0w-Kfk" id="ol9-2h-JEs"/>
-                <outlet property="settingLabel" destination="7lm-52-s3g" id="8Kp-bO-fi8"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -41,23 +37,13 @@
                             <rect key="frame" x="0.0" y="0.0" width="94" height="48"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRV-5I-5sC">
-                                    <rect key="frame" x="30.5" y="0.0" width="33" height="33"/>
+                                    <rect key="frame" x="23" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="cRV-5I-5sC" secondAttribute="height" multiplier="1:1" id="NSG-ja-nwQ"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
-                                    <state key="normal" image="tab_home_sel">
+                                    <state key="normal" title="학습" image="tab_home_sel">
                                         <color key="titleColor" red="0.96470588239999999" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
-                                    </state>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpY-hM-oWB">
-                                    <rect key="frame" x="32" y="33" width="30" height="15"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="15" id="zsq-SK-Qge"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
-                                    <state key="normal" title="학습">
-                                        <color key="titleColor" red="0.9882352941176471" green="0.10196078431372549" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                 </button>
                             </subviews>
@@ -66,23 +52,13 @@
                             <rect key="frame" x="94" y="0.0" width="93.5" height="48"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2w-Op-QaB">
-                                    <rect key="frame" x="30" y="0.0" width="33" height="33"/>
+                                    <rect key="frame" x="22.5" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="Z2w-Op-QaB" secondAttribute="height" multiplier="1:1" id="B70-uh-awm"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
-                                    <state key="normal" image="tab_book_non">
-                                        <color key="titleColor" red="0.96470588239999999" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
-                                    </state>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6I-Jq-VeQ">
-                                    <rect key="frame" x="25.5" y="33" width="42" height="15"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="15" id="4dc-Im-exs"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
-                                    <state key="normal" title="패턴/단어">
-                                        <color key="titleColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="패턴/단어" image="tab_book_non">
+                                        <color key="titleColor" red="0.5725490196078431" green="0.5725490196078431" blue="0.5725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                 </button>
                             </subviews>
@@ -91,22 +67,12 @@
                             <rect key="frame" x="187.5" y="0.0" width="94" height="48"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXJ-9v-9Ih">
-                                    <rect key="frame" x="30.5" y="0.0" width="33" height="33"/>
+                                    <rect key="frame" x="23" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="mXJ-9v-9Ih" secondAttribute="height" multiplier="1:1" id="W3a-dL-S1E"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
-                                    <state key="normal" image="tab_my_non">
-                                        <color key="titleColor" red="0.96470588239999999" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
-                                    </state>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIl-BU-pdi">
-                                    <rect key="frame" x="27.5" y="33" width="39" height="15"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="15" id="aC9-mi-MSL"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
-                                    <state key="normal" title="학습정보">
+                                    <state key="normal" title="학습정보" image="tab_my_non">
                                         <color key="titleColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                 </button>
@@ -116,23 +82,13 @@
                             <rect key="frame" x="281.5" y="0.0" width="93.5" height="48"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nko-0w-Kfk">
-                                    <rect key="frame" x="30" y="0.0" width="33" height="33"/>
+                                    <rect key="frame" x="22.5" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="Nko-0w-Kfk" secondAttribute="height" multiplier="1:1" id="muk-gh-QSV"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
-                                    <state key="normal" image="tab_set_non">
-                                        <color key="titleColor" red="0.96470588239999999" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
-                                    </state>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lm-52-s3g">
-                                    <rect key="frame" x="31.5" y="33" width="30" height="15"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="15" id="aCz-vs-KLO"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
-                                    <state key="normal" title="설정">
-                                        <color key="titleColor" red="0.5725490196078431" green="0.5725490196078431" blue="0.5725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="설정" image="tab_set_non">
+                                        <color key="titleColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                 </button>
                             </subviews>

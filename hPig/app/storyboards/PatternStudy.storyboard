@@ -44,14 +44,14 @@
                                                 <rect key="frame" x="0.0" y="1002" width="375" height="1000"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ho8-NZ-eBj" customClass="hInteractedLabel" customModule="hPig" customModuleProvider="target">
-                                                        <rect key="frame" x="15" y="15" width="345" height="928.5"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                        <rect key="frame" x="15" y="15" width="345" height="941"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="한글" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pr-bD-f01">
-                                                        <rect key="frame" x="15" y="958.5" width="345" height="26.5"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                        <rect key="frame" x="15" y="961" width="345" height="24"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -59,7 +59,7 @@
                                                 <color key="backgroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="ho8-NZ-eBj" firstAttribute="leading" secondItem="stk-IG-zsP" secondAttribute="leading" constant="15" id="5VF-az-sJv"/>
-                                                    <constraint firstItem="9pr-bD-f01" firstAttribute="top" secondItem="ho8-NZ-eBj" secondAttribute="bottom" constant="15" id="QPI-UJ-Gkm"/>
+                                                    <constraint firstItem="9pr-bD-f01" firstAttribute="top" secondItem="ho8-NZ-eBj" secondAttribute="bottom" constant="5" id="QPI-UJ-Gkm"/>
                                                     <constraint firstAttribute="trailing" secondItem="9pr-bD-f01" secondAttribute="trailing" constant="15" id="Vln-Dr-lcM"/>
                                                     <constraint firstAttribute="trailing" secondItem="ho8-NZ-eBj" secondAttribute="trailing" constant="15" id="cGl-9j-ElB"/>
                                                     <constraint firstItem="9pr-bD-f01" firstAttribute="leading" secondItem="stk-IG-zsP" secondAttribute="leading" constant="15" id="jte-aH-MvI"/>
@@ -226,6 +226,6 @@
     </scenes>
     <resources>
         <image name="btn_close" width="55" height="55"/>
-        <image name="stroke_dot" width="55" height="55"/>
+        <image name="stroke_dot" width="62" height="20"/>
     </resources>
 </document>

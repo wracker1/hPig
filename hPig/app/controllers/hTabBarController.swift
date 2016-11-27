@@ -28,10 +28,6 @@ class hTabBarController: UITabBarController, iRateDelegate {
         return [homeButton, bookmarkButton, myInfoButton, settingButton]
     }
     
-    func labels() -> [UIButton] {
-        return [homeLabel, bookmarkLabel, myInfoLabel, settingLabel]
-    }
-    
     private let activeButtonImages: [UIImage] = {
         let home = #imageLiteral(resourceName: "tab_home_sel")
         let bookmark = #imageLiteral(resourceName: "tab_book_sel")
@@ -59,7 +55,7 @@ class hTabBarController: UITabBarController, iRateDelegate {
         
         setupTabbar()
         
-        rateItem?.previewMode = true
+//        rateItem?.previewMode = trueㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅂㅁ
         rateItem?.onlyPromptIfLatestVersion = false
         rateItem?.delegate = self
         
@@ -89,16 +85,35 @@ class hTabBarController: UITabBarController, iRateDelegate {
         self.view.addSubview(customTabBar)
         
         homeButton.addTarget(self, action: #selector(self.didSelectHome(_:)), for: .touchUpInside)
-        homeLabel.addTarget(self, action: #selector(self.didSelectHome(_:)), for: .touchUpInside)
-        
         bookmarkButton.addTarget(self, action: #selector(self.didSelectBookmark(_:)), for: .touchUpInside)
-        bookmarkLabel.addTarget(self, action: #selector(self.didSelectBookmark(_:)), for: .touchUpInside)
-        
         myInfoButton.addTarget(self, action: #selector(self.didSelectMyInfo(_:)), for: .touchUpInside)
-        myInfoLabel.addTarget(self, action: #selector(self.didSelectMyInfo(_:)), for: .touchUpInside)
-        
         settingButton.addTarget(self, action: #selector(self.didSelectSetting(_:)), for: .touchUpInside)
-        settingLabel.addTarget(self, action: #selector(self.didSelectSetting(_:)), for: .touchUpInside)
+        
+        buttons().forEach { (button) in
+            if let image = button.imageView, let title = button.titleLabel {
+                image.translatesAutoresizingMaskIntoConstraints = false
+                title.translatesAutoresizingMaskIntoConstraints = false
+                image.contentMode = .scaleAspectFit
+                title.textAlignment = .center
+                
+                let views: [String : Any] = ["image": image, "title": title]
+                
+                button.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[image]|",
+                                                                     options: .alignAllCenterY,
+                                                                     metrics: nil,
+                                                                     views: views))
+                
+                button.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[title]|",
+                                                                     options: .alignAllCenterY,
+                                                                     metrics: nil,
+                                                                     views: views))
+                
+                button.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(2)-[image(<=32)][title(<=5)]-(6)-|",
+                                                                     options: .alignAllCenterX,
+                                                                     metrics: nil,
+                                                                     views: views))
+            }
+        }
     }
     
     func iRateShouldPromptForRating() -> Bool {
@@ -199,16 +214,10 @@ class hTabBarController: UITabBarController, iRateDelegate {
         buttons().enumerated().forEach { (i, button) in
             if i == index {
                 button.setImage(activeButtonImages[i], for: .normal)
+                button.setTitleColor(RGBA(252, g: 26, b: 38, a: 1.0), for: .normal)
             } else {
                 button.setImage(deactiveButtonImages[i], for: .normal)
-            }
-        }
-        
-        labels().enumerated().forEach { (i, button) in
-            if i == index {
-                button.titleLabel?.textColor = RGBA(252, g: 26, b: 38, a: 1)
-            } else {
-                button.titleLabel?.textColor = RGBA(146, g: 146, b: 146, a: 1)
+                button.setTitleColor(RGBA(146, g: 146, b: 146, a: 1.0), for: .normal)
             }
         }
     }

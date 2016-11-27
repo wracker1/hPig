@@ -177,7 +177,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
                             self.playerView.ticker = self.changeSubtitle
                             
                             if self.startTime > 0.0 {
-                                let time = TimeFormatService.shared.timeFromFloat(seconds: self.startTime)
+                                let time = TimeFormatService.shared.timeFromFloat(seconds: self.startTime - 2)
                                 self.playerView.seek(toTime: time)
                             } else if let sub = data.get(self.currentIndex), let range = sub.timeRange() {
                                 self.playerView.seek(toTime: range.start)

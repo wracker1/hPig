@@ -17,6 +17,8 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var wordTableView: UITableView!
     
     @IBOutlet var patternView: UIView!
+    @IBOutlet weak var ptScrollContentView: UIView!
+    @IBOutlet weak var ptScrollViewHeight: NSLayoutConstraint!
     @IBOutlet weak var ptEnglishLabel: UILabel!
     @IBOutlet weak var ptKoreanLabel: UILabel!
     @IBOutlet weak var ptMeaningLabel: UILabel!
@@ -126,7 +128,10 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
         switch tableView {
         case patternTableView:
             if let pattern = patternData.get(indexPath.row) {
+                let candidate = self.view.bounds.size.height - 200
+                ptScrollViewHeight.constant = candidate
                 updatePatternView(pattern)
+                
                 alert = embed(view: patternView)
             }
             
@@ -157,9 +162,8 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
         return UITableViewAutomaticDimension
     }
     
-    private func embed(view item: UIView) -> UIAlertController {
+    private func embed(view item: UIView, height: CGFloat? = nil) -> UIAlertController {
         let actionSheetWidth = self.view.bounds.size.width - 20
-        let actionSheetHeight = self.view.bounds.size.height - 170
         
         let alert = UIAlertController(title: "", message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "", style: .cancel, handler: nil))
@@ -176,8 +180,10 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
                 metrics: nil,
                 views: views))
         
+        let verticalConst = height == nil ? "V:|-[view]-|" : "V:|-[view(>=\(height ?? 0))]-|"
+        
         alert.view.addConstraints(
-            NSLayoutConstraint.constraints(withVisualFormat: "V:|-[view(>=\(actionSheetHeight))]-|",
+            NSLayoutConstraint.constraints(withVisualFormat: verticalConst,
                 options: .alignAllCenterX,
                 metrics: nil,
                 views: views))

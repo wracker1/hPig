@@ -19,6 +19,8 @@
                 <outlet property="ptKoreanLabel" destination="qQm-5o-lnf" id="gHl-Hm-ofa"/>
                 <outlet property="ptMeaningLabel" destination="4U0-iE-g0Y" id="SMI-YC-VLv"/>
                 <outlet property="ptPlayButton" destination="0qF-wc-yKm" id="jRh-bM-gMT"/>
+                <outlet property="ptScrollContentView" destination="LqG-kb-SMf" id="5yI-nG-YCs"/>
+                <outlet property="ptScrollViewHeight" destination="1Gf-tl-DT8" id="RzS-jG-bH2"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -115,6 +117,7 @@
                         </view>
                     </subviews>
                     <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="1Gf-tl-DT8"/>
                         <constraint firstItem="LqG-kb-SMf" firstAttribute="centerX" secondItem="YfO-ee-ALZ" secondAttribute="centerX" id="8IO-jX-ZW2"/>
                         <constraint firstAttribute="trailing" secondItem="LqG-kb-SMf" secondAttribute="trailing" id="Ezk-ZG-iOK"/>
                         <constraint firstItem="LqG-kb-SMf" firstAttribute="leading" secondItem="YfO-ee-ALZ" secondAttribute="leading" id="Pse-Y7-jP5"/>
@@ -159,6 +162,6 @@
         </view>
     </objects>
     <resources>
-        <image name="stroke_dot" width="80" height="80"/>
+        <image name="stroke_dot" width="62" height="20"/>
     </resources>
 </document>
