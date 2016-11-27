@@ -371,7 +371,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     private func handleNotLoginUser(_ id: String, viewController: UIViewController, sender: Any?, session: Session?) -> Bool {
         confirmLogin(viewController, completion: { (data) in
             if data != nil {
-                self.shouldPerform(id, viewController: viewController, sender: sender, session: session)
+                viewController.performSegue(withIdentifier: id, sender: sender)
             }
         })
         

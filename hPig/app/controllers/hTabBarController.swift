@@ -59,7 +59,7 @@ class hTabBarController: UITabBarController, iRateDelegate {
         
         setupTabbar()
         
-        //rateItem?.previewMode = true
+        rateItem?.previewMode = true
         rateItem?.onlyPromptIfLatestVersion = false
         rateItem?.delegate = self
         
@@ -67,13 +67,14 @@ class hTabBarController: UITabBarController, iRateDelegate {
         rateItem?.usesUntilPrompt = 15
         rateItem?.usesPerWeekForPrompt = 1.0
         
-        rateView.clipsToBounds = true
-        rateView.layer.cornerRadius = 8.0
-        
         remindMeLaterButton.layer.borderWidth = 1.0
-        remindMeLaterButton.layer.borderColor = RGBA(252, g: 86, b: 97, a: 1.0).cgColor
+        remindMeLaterButton.layer.borderColor = secondPointColor.cgColor
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        select(at: 0)
+        select(at: self.selectedIndex)
     }
     
     override func viewWillLayoutSubviews() {
@@ -165,34 +166,35 @@ class hTabBarController: UITabBarController, iRateDelegate {
     }
     
     func didSelectHome(_ sender: Any) {
-        select(at: 0)
+        select(at: 0, sender: sender)
     }
     
     func didSelectBookmark(_ sender: Any) {
-        select(at: 1)
+        select(at: 1, sender: sender)
         
     }
     
     func didSelectMyInfo(_ sender: Any) {
-        select(at: 2)
+        select(at: 2, sender: sender)
     }
     
     func didSelectSetting(_ sender: Any) {
-        select(at: 3)
+        select(at: 3, sender: sender)
     }
     
-    private func select(at index: Int) {
+    private func select(at index: Int, sender: Any? = nil) {
         
-        if index == selectedIndex, let navigator = selectedViewController as? UINavigationController {
-            if navigator.viewControllers.count > 1 {
-                navigator.popViewController(animated: true)
-            } else {
-                navigator.setNavigationBarHidden(false, animated: false)
+        if sender != nil {
+            if index == selectedIndex, let navigator = selectedViewController as? UINavigationController {
+                if navigator.viewControllers.count > 1 {
+                    navigator.popViewController(animated: true)
+                } else {
+                    navigator.setNavigationBarHidden(false, animated: false)
+                }
             }
             
+            self.selectedIndex = index
         }
-        
-        self.selectedIndex = index
         
         buttons().enumerated().forEach { (i, button) in
             if i == index {

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CoreGraphics
 
 class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -20,16 +21,40 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var ptKoreanLabel: UILabel!
     @IBOutlet weak var ptMeaningLabel: UILabel!
     @IBOutlet weak var ptInfoLabel: UILabel!
+    @IBOutlet weak var ptPlayButton: UIButton!
+    @IBOutlet weak var ptCloseButton: UIButton!
+    
+    @IBOutlet var sentenceView: UIView!
+    @IBOutlet weak var stSentenceLabel: UILabel!
+    @IBOutlet weak var stWordLabel: UILabel!
+    @IBOutlet weak var stPlayButton: UIButton!
+    @IBOutlet weak var stCloseButton: UIButton!
     
     private var patternData = [PATTERN]()
     private var wordData = [WORD]()
     
     private weak var selectedTableView: UITableView? = nil
+    private var selectedPattern: PATTERN? = nil
+    private var selectedWord: WORD? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         Bundle.main.loadNibNamed("pattern_view", owner: self, options: nil)
+        Bundle.main.loadNibNamed("sentence_layer", owner: self, options: nil)
+        
+        ptCloseButton.layer.borderColor = secondPointColor.cgColor
+        ptCloseButton.layer.borderWidth = 1.0
+        
+        stCloseButton.layer.borderColor = secondPointColor.cgColor
+        stCloseButton.layer.borderWidth = 1.0
+        
+        ptCloseButton.addTarget(self, action: #selector(self.closeModal), for: .touchUpInside)
+        stCloseButton.addTarget(self, action: #selector(self.closeModal), for: .touchUpInside)
+    }
+    
+    func closeModal() {
+        self.dismiss(animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -101,15 +126,14 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
         switch tableView {
         case patternTableView:
             if let pattern = patternData.get(indexPath.row) {
-                alert = AlertService.shared.actionSheet(patternView, width: self.view.bounds.size.width)
                 updatePatternView(pattern)
+                alert = embed(view: patternView)
             }
             
         case wordTableView:
             if let word = wordData.get(indexPath.row) {
-                let item = SentenceLayer(frame: CGRectZero)
-                alert = AlertService.shared.actionSheet(item, width: self.view.bounds.size.width)
-                item.update(word)
+                updateSentenceView(word)
+                alert = embed(view: sentenceView)
             }
             
         default:
@@ -133,13 +157,68 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
         return UITableViewAutomaticDimension
     }
     
+    private func embed(view item: UIView) -> UIAlertController {
+        let actionSheetWidth = self.view.bounds.size.width - 10
+        let actionSheetHeight = self.view.bounds.size.height - 150
+        
+        let alert = UIAlertController(title: "", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "", style: .cancel, handler: nil))
+        alert.view.addSubview(item)
+        
+        alert.view.translatesAutoresizingMaskIntoConstraints = false
+        item.translatesAutoresizingMaskIntoConstraints = false
+        
+        let views: [String: Any] = ["view" : item]
+        
+        alert.view.addConstraints(
+            NSLayoutConstraint.constraints(withVisualFormat: "H:|-[view(==\(actionSheetWidth))]-|",
+                options: .alignAllCenterY,
+                metrics: nil,
+                views: views))
+        
+        alert.view.addConstraints(
+            NSLayoutConstraint.constraints(withVisualFormat: "V:|-[view(>=\(actionSheetHeight))]-|",
+                options: .alignAllCenterX,
+                metrics: nil,
+                views: views))
+        
+        return alert
+    }
+    
     func updatePatternView(_ pattern: PATTERN) {
         if let english = pattern.english, let korean = pattern.korean, let meaning = pattern.mean, let info = pattern.info {
             ptEnglishLabel.attributedText = SubtitleService.shared.buildAttributedString(english)
             ptKoreanLabel.text = korean
             ptMeaningLabel.text = meaning
             ptInfoLabel.text = info
+            
+            self.selectedPattern = pattern
         }
+    }
+    
+    func updateSentenceView(_ word: WORD) {
+        if let sentence = word.sentence, let item = word.word {
+            let range = (sentence as NSString).range(of: item, options: .caseInsensitive)
+            let attributedString = NSMutableAttributedString(string: sentence)
+            attributedString.addAttributes([NSForegroundColorAttributeName: SubtitlePointColor], range: range)
+
+            stSentenceLabel.attributedText = attributedString
+            stWordLabel.text = word.korean
+            
+            self.selectedWord = word
+        }
+    }
+    
+    @IBAction func playPatternStudy(_ sender: Any) {
+        self.dismiss(animated: true, completion: {
+            self.performSegue(withIdentifier: "patternStudyFromWorkBook", sender: nil)
+        })
+    }
+    
+    @IBAction func playBasicStudy(_ sender: Any) {
+        self.dismiss(animated: true, completion: {
+            self.performSegue(withIdentifier: "basicStudyFromWorkBook", sender: nil)
+        })
     }
     
     func dismissAlert() {
@@ -230,17 +309,27 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let viewController = (segue.destination as! UINavigationController).topViewController
         
-        if let patternStudyController = viewController as? PatternStudyController,
-            let button = sender as? UIButton,
-            let cell = button.superview?.superview as? UITableViewCell,
-            let indexPath = patternTableView.indexPath(for: cell),
-            let data = patternData.get(indexPath.row),
-            let position = data.position,
-            let patternIndex = Int(position) {
+        if let patternStudyController = viewController as? PatternStudyController {
             
-            patternStudyController.session = Session(data)
-            patternStudyController.currentIndex = patternIndex
+            if let button = sender as? UIButton,
+                let cell = button.superview?.superview as? UITableViewCell,
+                let indexPath = patternTableView.indexPath(for: cell),
+                let data = patternData.get(indexPath.row) {
+                
+                preparePattern(controller: patternStudyController, pattern: data)
+            } else if let data = selectedPattern {
+                preparePattern(controller: patternStudyController, pattern: data)
+            }
+        } else if let basicStudyController = viewController as? BasicStudyController {
+            
+            if let data = selectedWord {
+                basicStudyController.session = Session(data)
+                basicStudyController.startTime = data.time
+                
+            }
         }
+        
+        
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -248,6 +337,13 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
             return AuthenticateService.shared.shouldPerform(identifier, viewController: self, sender: sender, session: Session(pattern))
         } else {
             return AuthenticateService.shared.shouldPerform(identifier, viewController: self, sender: sender, session: nil)
+        }
+    }
+    
+    private func preparePattern(controller: PatternStudyController, pattern: PATTERN) {
+        if let position = pattern.position, let patternIndex = Int(position) {
+            controller.session = Session(pattern)
+            controller.currentIndex = patternIndex
         }
     }
 }

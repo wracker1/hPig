@@ -15,6 +15,7 @@ import CoreGraphics
 class BasicStudyController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var session: Session? = nil
     var currentIndex = 0
+    var startTime: Float = 0.0
     
     private var subtitles = [BasicStudy]()
     private let timeRangePadding = Float64(0.1)
@@ -175,7 +176,10 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
                         } else {
                             self.playerView.ticker = self.changeSubtitle
                             
-                            if let sub = data.get(self.currentIndex), let range = sub.timeRange() {
+                            if self.startTime > 0.0 {
+                                let time = TimeFormatService.shared.timeFromFloat(seconds: self.startTime)
+                                self.playerView.seek(toTime: time)
+                            } else if let sub = data.get(self.currentIndex), let range = sub.timeRange() {
                                 self.playerView.seek(toTime: range.start)
                             }
                         }
@@ -290,7 +294,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         )
     }
     
-    private func currentIndex(_ time: CMTime) -> Int {
+    func currentIndex(_ time: CMTime) -> Int {
         return SubtitleService.shared.currentIndex(time, items: self.subtitles, rangeBlock: { (sub) -> CMTimeRange? in
             return sub.timeRange()
         })
@@ -450,5 +454,10 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         
         NotificationCenter.default.post(name: kToggleEnglishLabelVisible, object: nil, userInfo: ["value": isActiveEnglish])
     }
+    
+    @IBAction func dismiss(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
   

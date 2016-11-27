@@ -101,6 +101,35 @@ struct Session: ResponseObjectSerializable, ResponseCollectionSerializable, Cust
         self.viewcnt = "0"
     }
     
+    init?(_ word: WORD) {
+        guard let id = word.vid, let part = word.part else {
+            return nil
+        }
+        
+        self.id = id
+        self.part = part
+        self.svctype = word.svctype ?? "F"
+        self.image = word.image
+        self.channelId = word.channelId ?? ""
+        self.channelImage = word.channelImage
+        self.channelName = word.channelName
+        self.title = word.title
+        self.duration = word.duration
+        
+        self.status = ""
+        self.caption = ""
+        self.category = ""
+        self.categoryName = ""
+        self.sessionDescription = ""
+        self.languages = nil
+        self.level = ""
+        self.pattern = ""
+        self.pubdate = ""
+        self.regdt = ""
+        self.type = ""
+        self.viewcnt = "0"
+    }
+    
     init?(response: HTTPURLResponse, representation: Any) {
         guard
             let representation = representation as? [String: Any],

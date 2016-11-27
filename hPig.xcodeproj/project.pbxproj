@@ -10,6 +10,8 @@
 		0137AD7D147A3F77BE04BD7E /* Pods_hPig.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9F0C3F95AB86E4B5BCFF5CB /* Pods_hPig.framework */; };
 		88064FF21DD2FE0800084C6A /* sessionFilterHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88064FF11DD2FE0800084C6A /* sessionFilterHeader.xib */; };
 		880FC9C01DE7356600BDF70C /* tab_bar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880FC9BF1DE7356600BDF70C /* tab_bar.xib */; };
+		880FC9C31DEA836B00BDF70C /* WORD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880FC9C11DEA836B00BDF70C /* WORD+CoreDataClass.swift */; };
+		880FC9C41DEA836B00BDF70C /* WORD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880FC9C21DEA836B00BDF70C /* WORD+CoreDataProperties.swift */; };
 		881076C31DBC76460038C21C /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881076C21DBC76460038C21C /* SettingsController.swift */; };
 		881076C51DBC76500038C21C /* SessionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881076C41DBC76500038C21C /* SessionsController.swift */; };
 		881076C71DBC76E40038C21C /* DataDeleteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881076C61DBC76E40038C21C /* DataDeleteController.swift */; };
@@ -108,9 +110,6 @@
 		88C6EA981DD039DF0087FE9C /* hSessionControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C6EA7A1DD039DF0087FE9C /* hSessionControlView.swift */; };
 		88C6EA991DD039DF0087FE9C /* session_nav_view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88C6EA7B1DD039DF0087FE9C /* session_nav_view.xib */; };
 		88C6EA9C1DD03ABB0087FE9C /* sentence_layer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88C6EA9B1DD03ABB0087FE9C /* sentence_layer.xib */; };
-		88C6EA9E1DD03AD70087FE9C /* SentenceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C6EA9D1DD03AD70087FE9C /* SentenceLayer.swift */; };
-		88CD3BA41DC79CB700BC3B78 /* WORD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CD3BA21DC79CB700BC3B78 /* WORD+CoreDataClass.swift */; };
-		88CD3BA51DC79CB700BC3B78 /* WORD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CD3BA31DC79CB700BC3B78 /* WORD+CoreDataProperties.swift */; };
 		88CD3BA81DC8C78C00BC3B78 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CD3BA61DC8C78C00BC3B78 /* Alamofire.framework */; };
 		88CD3BA91DC8C78C00BC3B78 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CD3BA71DC8C78C00BC3B78 /* AlamofireImage.framework */; };
 		88CD3BAD1DC8C79500BC3B78 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CD3BAA1DC8C79500BC3B78 /* Charts.framework */; };
@@ -153,6 +152,8 @@
 		3F7DD837132F1D454EE2BA5F /* Pods-hPig.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hPig.release.xcconfig"; path = "Pods/Target Support Files/Pods-hPig/Pods-hPig.release.xcconfig"; sourceTree = "<group>"; };
 		88064FF11DD2FE0800084C6A /* sessionFilterHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = sessionFilterHeader.xib; sourceTree = "<group>"; };
 		880FC9BF1DE7356600BDF70C /* tab_bar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = tab_bar.xib; path = tabBar/tab_bar.xib; sourceTree = "<group>"; };
+		880FC9C11DEA836B00BDF70C /* WORD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		880FC9C21DEA836B00BDF70C /* WORD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		881076C21DBC76460038C21C /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		881076C41DBC76500038C21C /* SessionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsController.swift; sourceTree = "<group>"; };
 		881076C61DBC76E40038C21C /* DataDeleteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDeleteController.swift; sourceTree = "<group>"; };
@@ -268,9 +269,6 @@
 		88C6EA7A1DD039DF0087FE9C /* hSessionControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hSessionControlView.swift; sourceTree = "<group>"; };
 		88C6EA7B1DD039DF0087FE9C /* session_nav_view.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = session_nav_view.xib; sourceTree = "<group>"; };
 		88C6EA9B1DD03ABB0087FE9C /* sentence_layer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = sentence_layer.xib; path = sentenceLayer/sentence_layer.xib; sourceTree = "<group>"; };
-		88C6EA9D1DD03AD70087FE9C /* SentenceLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SentenceLayer.swift; path = sentenceLayer/SentenceLayer.swift; sourceTree = "<group>"; };
-		88CD3BA21DC79CB700BC3B78 /* WORD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataClass.swift"; sourceTree = "<group>"; };
-		88CD3BA31DC79CB700BC3B78 /* WORD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		88CD3BA61DC8C78C00BC3B78 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "DerivedData/hPig/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		88CD3BA71DC8C78C00BC3B78 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "DerivedData/hPig/Build/Products/Debug-iphonesimulator/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
 		88CD3BAA1DC8C79500BC3B78 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = "DerivedData/hPig/Build/Products/Debug-iphonesimulator/Charts/Charts.framework"; sourceTree = "<group>"; };
@@ -477,8 +475,8 @@
 		887FA9A21DA112BF00821495 /* db */ = {
 			isa = PBXGroup;
 			children = (
-				88CD3BA21DC79CB700BC3B78 /* WORD+CoreDataClass.swift */,
-				88CD3BA31DC79CB700BC3B78 /* WORD+CoreDataProperties.swift */,
+				880FC9C11DEA836B00BDF70C /* WORD+CoreDataClass.swift */,
+				880FC9C21DEA836B00BDF70C /* WORD+CoreDataProperties.swift */,
 				884523071DBF44CF00802510 /* HISTORY+CoreDataClass.swift */,
 				884523081DBF44CF00802510 /* HISTORY+CoreDataProperties.swift */,
 				887933711DB8A56A001CB925 /* PATTERN+CoreDataClass.swift */,
@@ -658,7 +656,6 @@
 			isa = PBXGroup;
 			children = (
 				88C6EA9B1DD03ABB0087FE9C /* sentence_layer.xib */,
-				88C6EA9D1DD03AD70087FE9C /* SentenceLayer.swift */,
 			);
 			name = sentenceLayer;
 			sourceTree = "<group>";
@@ -1035,6 +1032,7 @@
 				881ED0061D93AC0100D612EF /* CategoryService.swift in Sources */,
 				88468A2A1DC344D800ACC60D /* SessionController.swift in Sources */,
 				884523091DBF44CF00802510 /* HISTORY+CoreDataClass.swift in Sources */,
+				880FC9C41DEA836B00BDF70C /* WORD+CoreDataProperties.swift in Sources */,
 				88C6EA891DD039DF0087FE9C /* hYTPlayerView.swift in Sources */,
 				881ED0081D93AEA200D612EF /* LayoutService.swift in Sources */,
 				88C6EA831DD039DF0087FE9C /* RelatedSessionCell.swift in Sources */,
@@ -1058,15 +1056,12 @@
 				8877415A1DAF8D1F00198666 /* User.swift in Sources */,
 				88377CB61DDE8E5800ABADC9 /* StringOps.swift in Sources */,
 				88B4BAC21DC1B91000AFFE3A /* UIScrollViewOps.swift in Sources */,
-				88CD3BA51DC79CB700BC3B78 /* WORD+CoreDataProperties.swift in Sources */,
 				88C6EA8F1DD039DF0087FE9C /* hEnglishDictionaryView.swift in Sources */,
 				887933611DB861F3001CB925 /* TubeUserInfo.swift in Sources */,
 				887933741DB8A56A001CB925 /* PATTERN+CoreDataProperties.swift in Sources */,
 				88CDBA191D92CB350058ECFE /* WorkBookController.swift in Sources */,
-				88CD3BA41DC79CB700BC3B78 /* WORD+CoreDataClass.swift in Sources */,
 				88DEDEEB1DB4BC1200781123 /* TIME_LOG+CoreDataProperties.swift in Sources */,
 				88468A281DC344D800ACC60D /* hWebViewController.swift in Sources */,
-				88C6EA9E1DD03AD70087FE9C /* SentenceLayer.swift in Sources */,
 				881076C71DBC76E40038C21C /* DataDeleteController.swift in Sources */,
 				881076C31DBC76460038C21C /* SettingsController.swift in Sources */,
 				88C6EA801DD039DF0087FE9C /* StudyHistoryCell.swift in Sources */,
@@ -1091,6 +1086,7 @@
 				88377CC61DE2D81000ABADC9 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m in Sources */,
 				88DEDEEA1DB4BC1200781123 /* TIME_LOG+CoreDataClass.swift in Sources */,
 				88468A251DC344D800ACC60D /* BasicStudyController.swift in Sources */,
+				880FC9C31DEA836B00BDF70C /* WORD+CoreDataClass.swift in Sources */,
 				8865F0731DA115410025D0B9 /* CoreDataService.swift in Sources */,
 				881ED01E1D93B92100D612EF /* ArrayOps.swift in Sources */,
 			);

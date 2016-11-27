@@ -22,8 +22,9 @@ class SessionsController: UITableViewController {
     private var tableViewVelocity: CGPoint? = nil
     
     private let filterHeaderViewHeight: CGFloat = 25
+    
     @IBOutlet var filterHeaderView: UIView!
-    @IBOutlet weak var filterLabel: UILabel!
+    @IBOutlet weak var filterHeaderButton: UIButton!
     
     @IBOutlet weak var listFilterButton: UIBarButtonItem!
     
@@ -41,6 +42,9 @@ class SessionsController: UITableViewController {
         
         self.listFilterButton.target = self
         self.listFilterButton.action = #selector(self.showListFilterPicker)
+        
+        self.filterHeaderButton.addTarget(self, action: #selector(self.showListFilterPicker), for: .touchUpInside)
+        
         
         loadPage(sort: sort, category: category, level: level, page: 1, completion: nil)
     }
@@ -127,7 +131,7 @@ class SessionsController: UITableViewController {
         let levelName = cateService.levelById(level) ?? "전체"
         let sortName = cateService.sortById(sort) ?? "최신"
         
-        self.filterLabel.text = "\(categoryName) ㆍ \(levelName) ㆍ \(sortName)"
+        self.filterHeaderButton.setTitle("\(categoryName) ㆍ \(levelName) ㆍ \(sortName)", for: .normal)
     }
     
     private func insertRows(from: Int, size: Int) {

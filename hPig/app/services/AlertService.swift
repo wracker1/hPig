@@ -10,8 +10,10 @@ import Foundation
 import CoreGraphics
 
 class AlertService {
-    private let bottomMargin: CGFloat = 65
-    private let horizontalMargin: CGFloat = 20
+//    private let bottomMargin: CGFloat = 65
+    private let bottomMargin: CGFloat = 0
+//    private let horizontalMargin: CGFloat = 20
+    private let horizontalMargin: CGFloat = 0
     
     static let shared: AlertService = {
         let instance = AlertService()
@@ -64,7 +66,7 @@ class AlertService {
             
             target.addConstraints(
                 NSLayoutConstraint.constraints(
-                    withVisualFormat: "H:|-[view(<=\(width - horizontalMargin))]-|",
+                    withVisualFormat: "H:|-[view(==\(width - horizontalMargin))]-|",
                     options: .alignAllCenterY,
                     metrics: nil,
                     views: views))

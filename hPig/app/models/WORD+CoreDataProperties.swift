@@ -34,6 +34,7 @@ extension WORD {
     @NSManaged public var channelImage: String?
     @NSManaged public var channelName: String?
     @NSManaged public var title: String?
+    @NSManaged public var duration: String?
     @NSManaged public var time: Float
 
 }

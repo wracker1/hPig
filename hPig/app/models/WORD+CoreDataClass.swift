@@ -37,6 +37,7 @@ public class WORD: NSManagedObject {
             self.channelId = item.channelId
             self.channelName = item.channelName
             self.channelImage = item.channelImage
+            self.duration = item.duration
         }
     }
 }

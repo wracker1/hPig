@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CoreGraphics
 import AVFoundation
 
 class hEnglishDictionaryView: UIView {
@@ -24,6 +25,7 @@ class hEnglishDictionaryView: UIView {
     @IBOutlet weak var meaningLabel: UILabel!
     @IBOutlet weak var pronunciationLabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -35,6 +37,13 @@ class hEnglishDictionaryView: UIView {
         super.init(frame: frame)
         
         LayoutService.shared.layoutXibViews(superview: self, nibName: "eng_dic_view", viewLayoutBlock: nil)
+        
+        setup()
+    }
+    
+    private func setup() {
+        closeButton.layer.borderWidth = 1.0
+        closeButton.layer.borderColor = secondPointColor.cgColor
     }
     
     func update(data: WordData, completion: (() -> Void)?) {

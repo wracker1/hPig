@@ -27,6 +27,8 @@ class hInteractedLabel: UILabel {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         
         self.addGestureRecognizer(gestureRecognizer)
+        
+        englishDictionaryView.closeButton.addTarget(self, action: #selector(self.dismiss), for: .touchUpInside)
     }
     
     override func awakeFromNib() {
