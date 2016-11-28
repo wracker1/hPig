@@ -25,24 +25,67 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
         tableView.reloadData()
     }
     
-    private func cellIds() -> [String] {
+    private func cellIds() -> [String : [String]] {
         if AuthenticateService.shared.isOn() {
-            return ["versionCell", "pushCell", "faqCell", "mailCell", "purchaseCell", "couponRegisterCell", "delDataCell", "loginCell"]
+            return [
+                "pass": ["purchaseCell", "couponRegisterCell"],
+                "info": ["faqCell", "mailCell"],
+                "my": ["versionCell", "pushCell", "delDataCell", "loginCell"]
+            ]
+            
         } else {
-            return ["versionCell", "faqCell", "mailCell", "purchaseCell", "delDataCell", "loginCell"]
+            return [
+                "pass": ["purchaseCell", "couponRegisterCell"],
+                "info": ["faqCell", "mailCell"],
+                "my": ["versionCell", "delDataCell", "loginCell"]
+            ]
         }
     }
     
+    private func sectionTitle(_ section: Int) -> String? {
+        switch section {
+        case 0:
+            return "이용권"
+            
+        case 1:
+            return "이용 안내"
+            
+        case 2:
+            return "내 정보"
+            
+        default:
+            return nil
+        }
+    }
+    
+    private func data(in section: Int) -> [String] {
+        switch section {
+        case 0:
+            return cellIds()["pass"] ?? [String]()
+        case 1:
+            return cellIds()["info"] ?? [String]()
+        case 2:
+            return cellIds()["my"] ?? [String]()
+        default:
+            return [String]()
+        }
+    }
+    
+    private func cellId(_ indexPath: IndexPath) -> String {
+        let sectionItems = data(in: indexPath.section)
+        return sectionItems[indexPath.row]
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellIds().count
+        return data(in: section).count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let id = cellIds()[indexPath.row]
+        let id = cellId(indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath)
         
         switch id {
@@ -60,7 +103,7 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let id = cellIds()[indexPath.row]
+        let id = cellId(indexPath)
         
         switch id {
         case "loginCell":
@@ -199,7 +242,7 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "이용안내"
+        return sectionTitle(section)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
