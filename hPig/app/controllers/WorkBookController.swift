@@ -32,6 +32,9 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var stPlayButton: UIButton!
     @IBOutlet weak var stCloseButton: UIButton!
     
+    @IBOutlet weak var emptyPatternView: UIImageView!
+    @IBOutlet weak var emptyWordView: UIImageView!
+    
     private var patternData = [PATTERN]()
     private var wordData = [WORD]()
     
@@ -44,6 +47,9 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
         
         Bundle.main.loadNibNamed("pattern_view", owner: self, options: nil)
         Bundle.main.loadNibNamed("sentence_layer", owner: self, options: nil)
+        
+        patternTableView.backgroundView = emptyPatternView
+        wordTableView.backgroundView = emptyWordView
         
         ptCloseButton.layer.borderColor = secondPointColor.cgColor
         ptCloseButton.layer.borderWidth = 1.0
@@ -85,9 +91,23 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == patternTableView {
-            return patternData.count
+            let count = patternData.count
+            let isEmpty = count == 0
+            
+            emptyWordView.isHidden = true
+            emptyPatternView.isHidden = !isEmpty
+            tableView.separatorStyle = isEmpty ? .none : .singleLine
+            
+            return count
         } else if tableView == wordTableView {
-            return wordData.count
+            let count = wordData.count
+            let isEmpty = count == 0
+            
+            emptyPatternView.isHidden = true
+            emptyWordView.isHidden = !isEmpty
+            tableView.separatorStyle = isEmpty ? .none : .singleLine
+            
+            return count
         } else {
             return 0
         }

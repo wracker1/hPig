@@ -63,7 +63,9 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         let id = session?.id ?? ""
         let part = Int(session?.part ?? "0")!
         
-        play(id: id, part: part, retry: 0)
+        playerView.ticker = changeSubtitle
+
+        play(id: id, part: part)
         
         if let channelImage = session?.channelImage {
             ImageDownloadService.shared.decorateChannelButton(self.channelButton, imageUrl: channelImage)
@@ -161,32 +163,28 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
-    private func play(id: String, part: Int, retry: Int) {
-        if retry < 2 {
-            SubtitleService.shared.subtitleData(id, part: part, duration: session?.duration, completion: { (data) in
-                self.subtitles = data
-                self.subtitleTableView.reloadData()
+    private func play(id: String, part: Int) {
+        let timeFormatService = TimeFormatService.shared
+        
+        playerView.prepareToPlay(id, completion: { (sec, error) in
+            if let cause = error {
+                self.view.presentToast("playing video error: \(cause)")
+            } else {
+                let time = timeFormatService.timeFromFloat(seconds: sec)
+                let duration = timeFormatService.timeStringFromCMTime(time: time)
                 
-                if let start = data.first?.timeRange()?.start, let end = data.last?.timeRange()?.end {
-                    self.playerView.prepareToPlay(id, range: CMTimeRange(start: start, end: end), completion: { (error) in
-                        if let cause = error {
-                            print("RETRY playing video: \(cause)")
-                            
-                            self.play(id: id, part: part, retry: retry + 1)
-                        } else {
-                            self.playerView.ticker = self.changeSubtitle
-                            
-                            if self.startTime > 0.0 {
-                                let time = TimeFormatService.shared.timeFromFloat(seconds: self.startTime - 2)
-                                self.playerView.seek(toTime: time)
-                            } else if let sub = data.get(self.currentIndex), let range = sub.timeRange() {
-                                self.playerView.seek(toTime: range.start)
-                            }
-                        }
-                    })
-                }
-            })
-        }
+                SubtitleService.shared.subtitleData(id, part: part, duration: duration, completion: { (data) in
+                    self.subtitles = data
+                    self.subtitleTableView.reloadData()
+                    
+                    if self.startTime > 0.0 {
+                        self.playerView.seek(toTime: timeFormatService.timeFromFloat(seconds: self.startTime))
+                    } else if let sub = data.get(self.currentIndex), let range = sub.timeRange() {
+                        self.playerView.seek(toTime: range.start)
+                    }
+                })
+            }
+        })
     }
     
     func seekBySlider(_ time: CMTime, result: Bool) {

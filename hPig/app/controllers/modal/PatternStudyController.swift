@@ -54,7 +54,7 @@ class PatternStudyController: UIViewController {
         
         setupToolbar()
         
-        play(id: id, part: part, retry: 0)
+        play(id: id, part: part)
         
         playerView.pauseHook = { (time) in
             if self.currentIndex < self.patternStudyData.count {
@@ -100,24 +100,17 @@ class PatternStudyController: UIViewController {
         playerView.stopVideo()
     }
     
-    private func play(id: String, part: Int, retry: Int) {
-        if retry < 2 {
-            SubtitleService.shared.patternStudyData(id, part: part, completion: { (data) in
-                self.patternStudyData = data
-                
-                if let start = data.first?.timeRange()?.start, let end = data.last?.timeRange()?.end {
-                    self.playerView.prepareToPlay(id, range: CMTimeRange(start: start, end: end), completion: { (error) in
-                        if let cause = error {
-                            print(cause)
-                            
-                            self.play(id: id, part: part, retry: retry + 1)
-                        } else {
-                            self.changeLabels(self.currentIndex)
-                        }
-                    })
+    private func play(id: String, part: Int) {
+        SubtitleService.shared.patternStudyData(id, part: part, completion: { (data) in
+            self.patternStudyData = data
+            self.playerView.prepareToPlay(id, completion: { (_, error) in
+                if let cause = error {
+                    self.view.presentToast("playing video error: \(cause)")
+                } else {
+                    self.changeLabels(self.currentIndex)
                 }
             })
-        }
+        })
     }
     
     private func setupToolbar() {

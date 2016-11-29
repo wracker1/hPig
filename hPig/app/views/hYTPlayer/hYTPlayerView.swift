@@ -11,7 +11,7 @@ import AVFoundation
 
 class hYTPlayerView: WKYTPlayerView, WKYTPlayerViewDelegate {
     
-    private var completion: ((WKYTPlayerError?) -> Void)? = nil
+    private var completion: ((Float, WKYTPlayerError?) -> Void)? = nil
     private var ignoreRange = false
     private var id: String? = nil
     
@@ -59,16 +59,9 @@ class hYTPlayerView: WKYTPlayerView, WKYTPlayerViewDelegate {
         return Float(CMTimeGetSeconds(time))
     }
     
-    func prepareToPlay(_ id: String, range: CMTimeRange, completion: ((WKYTPlayerError?) -> Void)?) {
+    func prepareToPlay(_ id: String, completion: ((Float, WKYTPlayerError?) -> Void)?) {
         self.id = id
         self.completion = completion
-        
-//        let start = timeToFloat(time: range.start)
-//        let end = timeToFloat(time: range.end)
-//        
-//        load(withPlayerParams: playerVars)
-//        
-//        loadVideo(byId: id, startSeconds: start, endSeconds: end, suggestedQuality: .small)
         
         load(withVideoId: id, playerVars: playerVars)
     }
@@ -119,7 +112,9 @@ class hYTPlayerView: WKYTPlayerView, WKYTPlayerViewDelegate {
     
     func playerViewDidBecomeReady(_ playerView: WKYTPlayerView) {
         if let callback = completion {
-            callback(nil)
+            getDuration({ (sec, _) in
+                callback(Float(sec), nil)
+            })
         }
     }
     
@@ -180,7 +175,7 @@ class hYTPlayerView: WKYTPlayerView, WKYTPlayerViewDelegate {
     
     func playerView(_ playerView: WKYTPlayerView, receivedError error: WKYTPlayerError) {
         if let callback = completion {
-            callback(error)
+            callback(0, error)
         }
     }
     
