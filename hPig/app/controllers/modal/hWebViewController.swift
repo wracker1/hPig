@@ -7,18 +7,20 @@
 //
 
 import UIKit
+import WebKit
 
 class hWebViewController: UIViewController {
     
     var url: String = ""
 
-    @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var webView: WKWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let req = URLRequest(url: URL(string: url)!, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 10000)
-        webView.loadRequest(req)
+        
+        webView.load(req)
         
         if let temp = (webView.subviews.find { (view) -> Bool in
             return (view as? UIScrollView) != nil

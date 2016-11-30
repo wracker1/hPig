@@ -183,6 +183,9 @@
                                                         <state key="normal" title="패스구매에 대한 FAQ">
                                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <segue destination="B0d-Lb-UdY" kind="show" identifier="showPurchaseFaq" id="qbw-eZ-FhW"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -249,6 +252,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FfR-Ba-OCB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="873" y="127"/>
+        </scene>
+        <!--WebView-->
+        <scene sceneID="bfD-Jl-m8J">
+            <objects>
+                <viewControllerPlaceholder storyboardName="WebView" id="B0d-Lb-UdY" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g49-F2-9sh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1498" y="127"/>
         </scene>
     </scenes>
     <resources>
