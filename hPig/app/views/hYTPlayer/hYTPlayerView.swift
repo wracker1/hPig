@@ -14,6 +14,11 @@ class hYTPlayerView: WKYTPlayerView, WKYTPlayerViewDelegate {
     private var completion: ((Float, WKYTPlayerError?) -> Void)? = nil
     private var ignoreRange = false
     private var id: String? = nil
+    private lazy var initialLoadingView: UIView = {
+        let view = UIView(frame: self.bounds)
+        view.backgroundColor = UIColor.black
+        return view
+    }()
     
     //        https://developers.google.com/youtube/player_parameters?playerVersion=HTML5
     
@@ -42,6 +47,7 @@ class hYTPlayerView: WKYTPlayerView, WKYTPlayerViewDelegate {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
+        self.webView?.backgroundColor = UIColor.black
         self.backgroundColor = UIColor.black
 //        self.webView?.allowsInlineMediaPlayback = true
         self.delegate = self
@@ -240,7 +246,7 @@ class hYTPlayerView: WKYTPlayerView, WKYTPlayerViewDelegate {
      */
     
     func playerViewPreferredInitialLoading(_ playerView: WKYTPlayerView) -> UIView? {
-        return nil
+        return initialLoadingView
     }
 
 }

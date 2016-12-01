@@ -25,6 +25,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     private var isActiveKorean = true
     private var isActiveSubtitles = false
     private var isPresentingAlert = false
+    private var needToStopOnPlaying = false
     
     private var btnKorean: UIBarButtonItem? = nil
     private var btnEnglish: UIBarButtonItem? = nil
@@ -32,6 +33,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     private var btnReading: UIBarButtonItem? = nil
     private var startStudyTime: Date? = nil
     private var endTimer: Timer? = nil
+    private var duration: CMTime? = nil
     
     @IBOutlet weak var channelButton: UIButton!
     @IBOutlet weak var playerView: hYTPlayerView!
@@ -164,23 +166,29 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     }
     
     private func play(id: String, part: Int) {
-        let timeFormatService = TimeFormatService.shared
+        let service = TimeFormatService.shared
         
         playerView.prepareToPlay(id, completion: { (sec, error) in
             if let cause = error {
                 self.view.presentToast("playing video error: \(cause)")
             } else {
-                let time = timeFormatService.timeFromFloat(seconds: sec)
-                let duration = timeFormatService.timeStringFromCMTime(time: time)
-                
-                SubtitleService.shared.subtitleData(id, part: part, duration: duration, completion: { (data) in
+                let endTime = service.timeFromFloat(seconds: sec)
+                let time = service.timeStringFromCMTime(time: endTime)
+                self.duration = endTime
+
+                SubtitleService.shared.subtitleData(id, part: part, duration: time, completion: { (data) in
                     self.subtitles = data
                     self.subtitleTableView.reloadData()
                     
                     if self.startTime > 0.0 {
-                        self.playerView.seek(toTime: timeFormatService.timeFromFloat(seconds: self.startTime))
+                        self.playerView.seek(toTime: service.timeFromFloat(seconds: self.startTime))
                     } else if let sub = data.get(self.currentIndex), let range = sub.timeRange() {
                         self.playerView.seek(toTime: range.start)
+                    }
+                    
+                    if let endStartTime = self.subtitles.last?.startTime, let lastStartTime = service.stringToCMTime(endStartTime) {
+                        let diff = endTime - lastStartTime
+                        self.needToStopOnPlaying = service.secondsFromCMTime(time: diff) > 3.0
                     }
                 })
             }
@@ -307,14 +315,14 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
             showCaption(at: index)
         }
         
-        if isEndIndex && !isPresentingAlert {
-            if playing {
-                self.endTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (_) in
+        if playing {
+            if isEndIndex && !isPresentingAlert && needToStopOnPlaying{
+                self.endTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { (_) in
                     self.endStudy()
                 })
-            } else {
-                endStudy()
             }
+        } else {
+            endStudy()
         }
     }
     

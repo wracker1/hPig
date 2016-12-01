@@ -79,7 +79,6 @@
 		8880D7C41DC8638E00398D9A /* hProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8880D7C31DC8638E00398D9A /* hProduct.swift */; };
 		889BCF401DD45E830023031C /* UIAlertControllerOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889BCF3F1DD45E830023031C /* UIAlertControllerOps.swift */; };
 		88B4BAC21DC1B91000AFFE3A /* UIScrollViewOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B4BAC11DC1B91000AFFE3A /* UIScrollViewOps.swift */; };
-		88B4BAC41DC1F62F00AFFE3A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B4BAC31DC1F62F00AFFE3A /* StoreKit.framework */; };
 		88BE97D91D9D0C37002903E3 /* AuthenticateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE97D81D9D0C37002903E3 /* AuthenticateService.swift */; };
 		88C6EA7C1DD039DF0087FE9C /* SubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C6EA501DD039DF0087FE9C /* SubtitleCell.swift */; };
 		88C6EA7D1DD039DF0087FE9C /* ChannelInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C6EA521DD039DF0087FE9C /* ChannelInfoCell.swift */; };
@@ -136,6 +135,7 @@
 		88DEDEFE1DB7637B00781123 /* ChannelMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DEDEFD1DB7637B00781123 /* ChannelMain.storyboard */; };
 		88DEDF001DB7644600781123 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DEDEFF1DB7644600781123 /* Channel.swift */; };
 		88DEDF091DB7794300781123 /* SessionMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DEDF081DB7794300781123 /* SessionMain.storyboard */; };
+		88F0D7B21DEFC6320029589A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88F0D7B11DEFC6320029589A /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -238,7 +238,6 @@
 		8880D7C31DC8638E00398D9A /* hProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hProduct.swift; sourceTree = "<group>"; };
 		889BCF3F1DD45E830023031C /* UIAlertControllerOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerOps.swift; sourceTree = "<group>"; };
 		88B4BAC11DC1B91000AFFE3A /* UIScrollViewOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewOps.swift; sourceTree = "<group>"; };
-		88B4BAC31DC1F62F00AFFE3A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		88BE97D81D9D0C37002903E3 /* AuthenticateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticateService.swift; sourceTree = "<group>"; };
 		88C6EA501DD039DF0087FE9C /* SubtitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtitleCell.swift; sourceTree = "<group>"; };
 		88C6EA521DD039DF0087FE9C /* ChannelInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelInfoCell.swift; sourceTree = "<group>"; };
@@ -295,6 +294,7 @@
 		88DEDEFD1DB7637B00781123 /* ChannelMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChannelMain.storyboard; sourceTree = "<group>"; };
 		88DEDEFF1DB7644600781123 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		88DEDF081DB7794300781123 /* SessionMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SessionMain.storyboard; sourceTree = "<group>"; };
+		88F0D7B11DEFC6320029589A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B9F0C3F95AB86E4B5BCFF5CB /* Pods_hPig.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hPig.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2A86E940BFA0A45487A0A06 /* Pods-hPig.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hPig.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hPig/Pods-hPig.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -313,12 +313,12 @@
 				8879337D1DB8B315001CB925 /* NotificationCenter.framework in Frameworks */,
 				8879337E1DB8B315001CB925 /* UserNotifications.framework in Frameworks */,
 				8879337F1DB8B315001CB925 /* UserNotificationsUI.framework in Frameworks */,
-				88B4BAC41DC1F62F00AFFE3A /* StoreKit.framework in Frameworks */,
 				88DEDEED1DB4CE2F00781123 /* CoreData.framework in Frameworks */,
 				887741531DAE29E700198666 /* MessageUI.framework in Frameworks */,
 				884B0E8B1D939B34009748FF /* QuartzCore.framework in Frameworks */,
 				884B0E891D939B1D009748FF /* CoreGraphics.framework in Frameworks */,
 				884B0E861D939B13009748FF /* AVFoundation.framework in Frameworks */,
+				88F0D7B21DEFC6320029589A /* StoreKit.framework in Frameworks */,
 				884B0E871D939B13009748FF /* AVKit.framework in Frameworks */,
 				0137AD7D147A3F77BE04BD7E /* Pods_hPig.framework in Frameworks */,
 			);
@@ -337,13 +337,13 @@
 		21B261A3D92EB5396488C94B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88F0D7B11DEFC6320029589A /* StoreKit.framework */,
 				8844D09F1DE8043C009E84AE /* iAd.framework */,
 				88CD3BAA1DC8C79500BC3B78 /* Charts.framework */,
 				88CD3BAB1DC8C79500BC3B78 /* SWXMLHash.framework */,
 				88CD3BAC1DC8C79500BC3B78 /* Toast_Swift.framework */,
 				88CD3BA61DC8C78C00BC3B78 /* Alamofire.framework */,
 				88CD3BA71DC8C78C00BC3B78 /* AlamofireImage.framework */,
-				88B4BAC31DC1F62F00AFFE3A /* StoreKit.framework */,
 				8879337A1DB8B315001CB925 /* NotificationCenter.framework */,
 				8879337B1DB8B315001CB925 /* UserNotifications.framework */,
 				8879337C1DB8B315001CB925 /* UserNotificationsUI.framework */,
