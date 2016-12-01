@@ -382,10 +382,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="gPK-xm-RWJ">
                         <barButtonItem key="rightBarButtonItem" id="XmZ-Np-coq">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9mf-3R-Osb">
-                                <rect key="frame" x="304" y="7" width="55" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9mf-3R-Osb">
+                                <rect key="frame" x="326" y="5" width="33" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="패스구매"/>
+                                <state key="normal" image="ico_pass"/>
                                 <connections>
                                     <segue destination="qxI-Y5-xy2" kind="presentation" identifier="showPurchase" id="xlD-kz-AHP"/>
                                 </connections>
@@ -420,4 +420,7 @@
             <point key="canvasLocation" x="2026" y="1452"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ico_pass" width="33" height="33"/>
+    </resources>
 </document>
