@@ -18,7 +18,7 @@ class hWebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let req = URLRequest(url: URL(string: url)!, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 10000)
+        let req = URLRequest(url: URL(string: url)!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10000)
         
         webView.load(req)
         
