@@ -97,6 +97,7 @@ class PurchaseController: UIViewController, UITableViewDelegate, UITableViewData
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showPurchaseFaq", let webController = segue.destination as? hWebViewController {
             webController.url = "http://speakingtube.cafe24.com/faq_ios.html"
+            webController.title = "패스구매에 대한 FAQ"
         }
     }
 }
