@@ -430,7 +430,12 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
                 let loginResult = NaverLoginResult(rawValue: Int(resultCode)!),
                 let controller = self.viewController {
                 
+                switch loginResult {
+                case .cancelByUser:
+                    break
+                default:
                     controller.view.presentToast("\(loginResult)")
+                }
             }
             
             return true
