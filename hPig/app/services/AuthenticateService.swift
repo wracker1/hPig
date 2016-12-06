@@ -57,7 +57,7 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         self.naverConnection.consumerSecret = kConsumerSecret
         self.naverConnection.appName = kServiceAppName
         
-        self.naverConnection.isNaverAppOauthEnable = false
+        self.naverConnection.isNaverAppOauthEnable = true
         self.naverConnection.isInAppOauthEnable = true
         self.naverConnection.delegate = self
         
@@ -421,20 +421,22 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     
     func processAccessToken(url: URL) -> Bool {
         if url.scheme ?? "" == "speakingtube" {
-            if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true),
-                let queryItems = urlComponents.queryItems,
-                let code = queryItems.find({ (item) -> Bool in
-                    return item.name == "code"
-                }),
-                let resultCode = code.value,
-                let loginResult = NaverLoginResult(rawValue: Int(resultCode)!),
-                let controller = self.viewController {
+            let result = Int(naverConnection.receiveAccessToken(url).rawValue)
+            
+            if let controller = self.viewController, let loginResult = NaverLoginResult(rawValue: result) {
+
+                print(loginResult)
                 
                 switch loginResult {
+                case .success:
+                    user(completionHandler)
+                    
                 case .cancelByUser:
                     break
+                    
                 default:
                     controller.view.presentToast("\(loginResult)")
+                    
                 }
             }
             
