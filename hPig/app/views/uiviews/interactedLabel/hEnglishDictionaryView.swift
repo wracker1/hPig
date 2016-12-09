@@ -91,13 +91,9 @@ class hEnglishDictionaryView: UIView {
     }
 
     @IBAction func playSound(_ sender: AnyObject) {
-        if let item = self.data, let url = URL(string: item.soundUrl) {
-            let req = URLRequest(url: url)
-            
-            NetService.shared.get(req: req).responseData(completionHandler: { (res) in
-                print(res.description)
-                
-                if let data = res.result.value {
+        if let item = self.data {
+            ApiService.shared.wordSoundData(word: item, completion: { (res) in
+                if let data = res {
                     DispatchQueue.main.async {
                         do {
                             self.audioPlayer = try AVAudioPlayer(data: data, fileTypeHint: AVFileTypeMPEGLayer3)

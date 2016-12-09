@@ -16,31 +16,6 @@ class SubtitleService {
         return instance
     }()
     
-    func subtitleData(_ id: String, part: Int, duration: String?, completion: @escaping ([BasicStudy]) -> Void) {
-        NetService.shared.getCollection(path: "/svc/api/v2/caption/\(id)/\(part)") { (res: DataResponse<[BasicStudy]>) in
-            if let data = res.result.value {
-                let basicData = data.enumerated().map({ (i, item) -> BasicStudy in
-                    var sub = item
-                    let next = data.get(i + 1)
-                    sub.endTime = next == nil ? duration : next?.startTime
-                    return sub
-                })
-                
-                completion(basicData)
-            }
-        }
-    }
-    
-    func patternStudyData(_ id: String, part: Int, completion: @escaping ([PatternStudy]) -> Void) {
-        NetService.shared.getCollection(path: "/svc/api/v2/pattern/\(id)/\(part)") { (res: DataResponse<[PatternStudy]>) in
-            if let data = res.result.value {
-                completion(data)
-            } else {
-                completion([])
-            }
-        }
-    }
-    
     func currentIndex<T>(_ time: CMTime, items: [T], rangeBlock: (T) -> CMTimeRange?) -> Int {
         let opt = items.index { (item) -> Bool in
             if let range = rangeBlock(item) {

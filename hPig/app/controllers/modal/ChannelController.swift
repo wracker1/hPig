@@ -31,8 +31,8 @@ class ChannelController: UIViewController, UICollectionViewDelegate, UICollectio
         flowLayout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
         
         if let channelId = id {
-            NetService.shared.getObject(path: "/svc/api/channel/\(channelId)", completionHandler: { (res: DataResponse<Channel>) in
-                self.data = res.result.value
+            ApiService.shared.channelData(channelId: channelId, completion: { (res) in
+                self.data = res
                 self.sessionsView.reloadData()
             })
         }

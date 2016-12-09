@@ -87,15 +87,8 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
         DispatchQueue.global().async {
             self.user { (info) in
                 if let data = info {
-                    let param = [
-                        "id": data.id,
-                        "token": self.deviceToken() ?? ""
-                    ]
-                    
-                    NetService.shared.get(path: "/svc/api/user/update/visitcnt", parameters: param).responseString(completionHandler: { (res) in
-                        if let messaage = res.result.value {
-                            print("update visitcnt message: \(messaage)")
-                        }
+                    ApiService.shared.updateVisitCount(data.id, deviceToken: self.deviceToken(), completion: { (message) in
+                        print("update visitcnt message: \(message)")
                         
                         callback(info)
                     })
@@ -205,17 +198,15 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
             } else if let user = latestUser() {
                 tubeUserInfo(from: user, completion: completion)
             } else {
-                NetService.shared.get("https://apis.naver.com/nidlogin/nid/getUserProfile.xml",
-                                      parameters: nil,
-                                      headers: ["Authorization": "Bearer \(token)"]).response(completionHandler: { (res) in
-                                        if let data = res.data, let user = User(data: data), user.id != kGuestId {
-                                            self.naverUser(token, user: user)
-                                            self.tubeUserInfo(from: user, completion: completion)
-                                        } else {
-                                            self.refreshToken()
-                                            self.userInfo(retry: retry - 1, completion: completion)
-                                        }
-                                      })
+                ApiService.shared.naverUserInfo(accessToken: token, completion: { (res) in
+                    if let data = res, let user = User(data: data), user.id != kGuestId {
+                        self.naverUser(token, user: user)
+                        self.tubeUserInfo(from: user, completion: completion)
+                    } else {
+                        self.refreshToken()
+                        self.userInfo(retry: retry - 1, completion: completion)
+                    }
+                })
             }
         } else {
             logout(completion: nil)
@@ -247,60 +238,18 @@ class AuthenticateService: NSObject, NaverThirdPartyLoginConnectionDelegate {
                 callback(false)
             }
         } else {
-            let path = "/svc/api/user/join"
-            var parameters: [String: Any] = ["id": user.id, "os": "I"]
-            
-            if let age = user.age {
-                do {
-                    let regex = try NSRegularExpression(pattern: "[^-d]*", options: .caseInsensitive)
-                    let range = NSRange(location: 0, length: age.characters.count)
-                    
-                    if let match = regex.firstMatch(in: age, options: [], range: range) {
-                        parameters["age"] = (age as NSString).substring(with: match.range)
-                    }
-                } catch let e {
-                    print("\(e)")
-                }
-            }
-            
-            if let gender = user.gender {
-                parameters["gender"] = gender
-            }
-            
-            
-            if let nickname = user.nickname {
-                parameters["nickname"] = nickname
-            }
-            
-            if let image = user.profileImage {
-                parameters["image"] = image
-            }
-            
-            if let token = deviceToken() {
-                parameters["token"] = token
-            }
-            
-            NetService.shared.post(path: path, parameters: parameters).responseString(completionHandler: { (res) in
-                if let callback = completion {
-                    callback(res.result.value != nil)
-                }
-            })
+            ApiService.shared.joinUser(user: user, deviceToken: deviceToken(), completion: completion)
         }
     }
     
     func updateTubeUserInfo(_ id: String, completion: ((TubeUserInfo?) -> Void)?) {
-        let callback = completion ?? {(_) in }
-        
-        NetService.shared.getObject(path: "/svc/api/user/info?id=\(id)", completionHandler: { (res: DataResponse<TubeUserInfo>) in
-
-            if let userInfo = res.result.value {
-                if let token = self.naverConnection.accessToken {
-                    self.tubeUser(token, user: userInfo)
-                }
-                
-                callback(userInfo)
-            } else {
-                callback(nil)
+        ApiService.shared.speakingTubeUserInfo(id, completion: { (res) in
+            if let user = res, let token = self.naverConnection.accessToken {
+                self.tubeUser(token, user: user)
+            }
+            
+            if let callback = completion {
+                callback(res)
             }
         })
     }

@@ -105,7 +105,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         self.isPresentingAlert = false
         
         if let id = session?.id, let part = session?.part {
-            NetService.shared.get(path: "/svc/api/video/update/playcnt?id=\(id)&part=\(part)")
+            ApiService.shared.updatePlayCount(vid: id, part: part)
         }
     }
     
@@ -126,7 +126,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
                 CoreDataService.shared.save()
             
                 let studySec = Int(time.timeIntervalSinceNow * -1)
-                NetService.shared.get(path: "/svc/api/user/update/studytime?id=\(userId)&time=\(studySec)")
+                ApiService.shared.updateStudyTime(userId, sec: studySec)
             })
         }
         
@@ -175,8 +175,8 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
                 let endTime = service.timeFromFloat(seconds: sec)
                 let time = service.timeStringFromCMTime(time: endTime)
                 self.duration = endTime
-
-                SubtitleService.shared.subtitleData(id, part: part, duration: time, completion: { (data) in
+                
+                ApiService.shared.basicStudySubtitleData(id: id, part: part, duration: time, completion: { (data) in
                     self.subtitles = data
                     self.subtitleTableView.reloadData()
                     

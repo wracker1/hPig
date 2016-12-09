@@ -142,25 +142,8 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
                     if let couponNumber = alert.textFields?.first?.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) {
                         
                         if couponNumber.characters.count == 10 {
-                            let params = ["id": user.id, "coupon": couponNumber.uppercased()]
-                            
-                            NetService.shared.get(path: "/svc/api/user/update/coupon", parameters: params).responseString(completionHandler: { (res) in
-                                if let result = res.result.value {
-                                    switch result.lowercased() {
-                                        case "success":
-                                        AuthenticateService.shared.updateTubeUserInfo(user.id, completion: nil)
-                                        self.view.presentToast("등록 하였습니다.")
-
-                                        case "duplicated":
-                                        self.view.presentToast("이미 등록된 쿠폰 번호입니다.")
-                                        
-                                        case "not_available":
-                                        self.view.presentToast("유효하지 않은 쿠폰 번호입니다.")
-                                        
-                                        default:
-                                        self.view.presentToast("등록에 실패하였습니다. 다시 시도해주세요.")
-                                    }
-                                }
+                            ApiService.shared.registerCoupon(user.id, coupon: couponNumber, completion: { (message) in
+                                self.view.presentToast(message)
                             })
                         } else {
                             self.view.presentToast("정확한 쿠폰번호를 입력해주세요.")
@@ -177,16 +160,7 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
         if let sw = sender as? UISwitch {
             AuthenticateService.shared.user({ (user) in
                 if let tubeUser = user {
-                    let param = [
-                        "id": tubeUser.id,
-                        "pushyn": sw.isOn ? "Y" : "N"
-                    ]
-                    
-                    NetService.shared.get(path: "/svc/api/user/update/pushyn", parameters: param).responseString(completionHandler: { (res) in
-                        if let message = res.result.value {
-                            print(message)
-                        }
-                    })
+                    ApiService.shared.updateRemotePushSetting(tubeUser.id, isOn: sw.isOn)
                 }
             })
         }

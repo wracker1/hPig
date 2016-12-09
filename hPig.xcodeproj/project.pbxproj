@@ -18,6 +18,7 @@
 		881076C51DBC76500038C21C /* SessionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881076C41DBC76500038C21C /* SessionsController.swift */; };
 		881076C71DBC76E40038C21C /* DataDeleteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881076C61DBC76E40038C21C /* DataDeleteController.swift */; };
 		881235BE1DC7466C002EC49A /* hTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881235BD1DC7466C002EC49A /* hTabBarController.swift */; };
+		881263811DFA75B4002E8200 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881263801DFA75B4002E8200 /* ApiService.swift */; };
 		881ED0041D93AB6400D612EF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0031D93AB6400D612EF /* Category.swift */; };
 		881ED0061D93AC0100D612EF /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0051D93AC0100D612EF /* CategoryService.swift */; };
 		881ED0081D93AEA200D612EF /* LayoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0071D93AEA200D612EF /* LayoutService.swift */; };
@@ -161,6 +162,7 @@
 		881076C41DBC76500038C21C /* SessionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsController.swift; sourceTree = "<group>"; };
 		881076C61DBC76E40038C21C /* DataDeleteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDeleteController.swift; sourceTree = "<group>"; };
 		881235BD1DC7466C002EC49A /* hTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hTabBarController.swift; sourceTree = "<group>"; };
+		881263801DFA75B4002E8200 /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		881A76E91DB4633A00CF6409 /* youtube_ios_player_helper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = youtube_ios_player_helper.framework; path = "Pods/../build/Debug-iphoneos/youtube-ios-player-helper/youtube_ios_player_helper.framework"; sourceTree = "<group>"; };
 		881A76EB1DB464FC00CF6409 /* YouTubePlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YouTubePlayer.framework; path = "Pods/../build/Debug-iphoneos/YouTubePlayer/YouTubePlayer.framework"; sourceTree = "<group>"; };
 		881A76EF1DB465C100CF6409 /* youtube_ios_player_helper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = youtube_ios_player_helper.framework; path = "../../../Library/Developer/Xcode/DerivedData/hPig-byqselxxffzlqhcolurdyikdjjha/Build/Products/Debug-iphonesimulator/youtube-ios-player-helper/youtube_ios_player_helper.framework"; sourceTree = "<group>"; };
@@ -782,6 +784,7 @@
 				8865F0721DA115410025D0B9 /* CoreDataService.swift */,
 				8829124D1DAFD32700E5B6E4 /* AlertService.swift */,
 				882CD2E91DC8607600BB611A /* PurchaseService.swift */,
+				881263801DFA75B4002E8200 /* ApiService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -1084,6 +1087,7 @@
 				88377CC41DE2D81000ABADC9 /* iRate.m in Sources */,
 				88CDB9ED1D92BDA30058ECFE /* AppDelegate.swift in Sources */,
 				88CDBA2B1D92D6EE0058ECFE /* NetService.swift in Sources */,
+				881263811DFA75B4002E8200 /* ApiService.swift in Sources */,
 				88C6EA941DD039DF0087FE9C /* hPickerView.swift in Sources */,
 				88468A291DC344D800ACC60D /* PatternStudyController.swift in Sources */,
 				88377CC61DE2D81000ABADC9 /* NLoginThirdPartyOAuth20InAppBrowserViewController.m in Sources */,

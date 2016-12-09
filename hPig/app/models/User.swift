@@ -64,18 +64,20 @@ class User: NSObject, NSCoding {
     
     var id: String {
         get {
-            if let emailItem = email {
-                let items = emailItem.components(separatedBy: "@")
-                
-                switch items.count {
-                case 1, 2:
-                    return items[0]
-                default:
-                    return kGuestId
-                }
-            } else {
-                return kGuestId
-            }
+//            if let emailItem = email {
+//                let items = emailItem.components(separatedBy: "@")
+//                
+//                switch items.count {
+//                case 1, 2:
+//                    return items[0]
+//                default:
+//                    return kGuestId
+//                }
+//            } else {
+//                return kGuestId
+//            }
+            
+            return email ?? kGuestId
         }
     }
 }

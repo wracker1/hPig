@@ -71,7 +71,7 @@ class PatternStudyController: UIViewController {
         self.startStudyTime = Date()
         
         if let id = session?.id, let part = session?.part {
-            NetService.shared.get(path: "/svc/api/video/update/playcnt?id=\(id)&part=\(part)")
+            ApiService.shared.updatePlayCount(vid: id, part: part)
         }
     }
     
@@ -89,7 +89,7 @@ class PatternStudyController: UIViewController {
                 dataService.save()
                 
                 let studySec = Int(time.timeIntervalSinceNow * -1)
-                NetService.shared.get(path: "/svc/api/user/update/studytime?id=\(userId)&time=\(studySec)")
+                ApiService.shared.updateStudyTime(userId, sec: studySec)
             })
         }
         
@@ -101,8 +101,9 @@ class PatternStudyController: UIViewController {
     }
     
     private func play(id: String, part: Int) {
-        SubtitleService.shared.patternStudyData(id, part: part, completion: { (data) in
+        ApiService.shared.patternStudySubtitleData(id: id, part: part, completion: { (data) in
             self.patternStudyData = data
+            
             self.playerView.prepareToPlay(id, completion: { (_, error) in
                 if let cause = error {
                     self.view.presentToast("playing video error: \(cause)")
