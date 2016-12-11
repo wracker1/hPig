@@ -65,7 +65,7 @@ class ApiService {
             if let result = res.result.value {
                 switch result.lowercased() {
                 case "success":
-                    AuthenticateService.shared.updateTubeUserInfo(idOrEmail, completion: nil)
+                    LoginService.shared.tubeUserInfoFromServer(idOrEmail, completion: nil)
                     message = "등록 하였습니다"
                     
                 case "duplicated":

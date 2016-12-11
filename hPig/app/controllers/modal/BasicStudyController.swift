@@ -117,7 +117,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         }
         
         if let time = startStudyTime {
-            AuthenticateService.shared.userId(completion: { (userId) in
+            LoginService.shared.userId(completion: { (userId) in
                 let (entity, ctx) = CoreDataService.shared.entityDescription("time_log")
                 let log = TIME_LOG(entity: entity!, insertInto: ctx)
                 let id = self.session?.id ?? ""
@@ -136,7 +136,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     
     private func saveStudyLog() {
         if let item = session {
-            AuthenticateService.shared.userId(completion: { (userId) in
+            LoginService.shared.userId(completion: { (userId) in
                 let req: NSFetchRequest<HISTORY> = HISTORY.fetchRequest()
                 let query = "uid = '\(userId)' AND vid = '\(item.id)' AND part = '\(item.part)'"
                 req.predicate = NSPredicate(format: query)

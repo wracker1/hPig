@@ -26,7 +26,7 @@ class DataDeleteController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        AuthenticateService.shared.userId { (id) in
+        LoginService.shared.userId { (id) in
             self.userId = id
         }
     }
@@ -68,7 +68,7 @@ class DataDeleteController: UITableViewController {
                                                 message: nil,
                                                 cancel: nil,
                                                 confirm: {
-                                                    AuthenticateService.shared.user { (user) in
+                                                    LoginService.shared.user { (user) in
                                                         CoreDataService.shared.deleteUserData(user, itemIds: targetIds)
                                                         self.view.presentToast("삭제 하였습니다.")
                                                     }

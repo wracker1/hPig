@@ -29,6 +29,16 @@
 		881ED0251D93D07400D612EF /* OptionOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0241D93D07400D612EF /* OptionOps.swift */; };
 		8829124E1DAFD32700E5B6E4 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8829124D1DAFD32700E5B6E4 /* AlertService.swift */; };
 		882CD2EA1DC8607600BB611A /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882CD2E91DC8607600BB611A /* PurchaseService.swift */; };
+		882F92061DFD2FCD00151F23 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882F92051DFD2FCD00151F23 /* Social.framework */; };
+		882F920C1DFD35D400151F23 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882F92081DFD35D400151F23 /* Bolts.framework */; };
+		882F920D1DFD35D400151F23 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882F92091DFD35D400151F23 /* FBSDKCoreKit.framework */; };
+		882F920E1DFD35D400151F23 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882F920A1DFD35D400151F23 /* FBSDKLoginKit.framework */; };
+		882F920F1DFD35D400151F23 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882F920B1DFD35D400151F23 /* FBSDKShareKit.framework */; };
+		882F92121DFD7BBC00151F23 /* LoginProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F92111DFD7BBC00151F23 /* LoginProtocol.swift */; };
+		882F92141DFD7E1400151F23 /* NaverLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F92131DFD7E1400151F23 /* NaverLogin.swift */; };
+		88330E1D1DFBB2CB00DBF427 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88330E1C1DFBB2CB00DBF427 /* LoginController.swift */; };
+		88330E1F1DFBB2FB00DBF427 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88330E1E1DFBB2FB00DBF427 /* Login.storyboard */; };
+		88330E211DFBB71F00DBF427 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88330E201DFBB71F00DBF427 /* LoginService.swift */; };
 		88377CB61DDE8E5800ABADC9 /* StringOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88377CB51DDE8E5800ABADC9 /* StringOps.swift */; };
 		88377CC21DE2D81000ABADC9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88377CB81DE2D81000ABADC9 /* Info.plist */; };
 		88377CC31DE2D81000ABADC9 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 88377CB91DE2D81000ABADC9 /* iRate.bundle */; };
@@ -177,6 +187,16 @@
 		8829124D1DAFD32700E5B6E4 /* AlertService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		882912501DAFD85C00E5B6E4 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "../../../../Library/Developer/Xcode/DerivedData/hPig-cgamwanqckhvsufhcxkvajblacum/Build/Products/Debug-iphonesimulator/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
 		882CD2E91DC8607600BB611A /* PurchaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseService.swift; sourceTree = "<group>"; };
+		882F92051DFD2FCD00151F23 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		882F92081DFD35D400151F23 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		882F92091DFD35D400151F23 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		882F920A1DFD35D400151F23 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		882F920B1DFD35D400151F23 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		882F92111DFD7BBC00151F23 /* LoginProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginProtocol.swift; path = login/LoginProtocol.swift; sourceTree = "<group>"; };
+		882F92131DFD7E1400151F23 /* NaverLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NaverLogin.swift; path = login/NaverLogin.swift; sourceTree = "<group>"; };
+		88330E1C1DFBB2CB00DBF427 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		88330E1E1DFBB2FB00DBF427 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		88330E201DFBB71F00DBF427 /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		88377CB51DDE8E5800ABADC9 /* StringOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringOps.swift; sourceTree = "<group>"; };
 		88377CB81DE2D81000ABADC9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88377CB91DE2D81000ABADC9 /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
@@ -306,14 +326,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				882F92061DFD2FCD00151F23 /* Social.framework in Frameworks */,
+				882F920C1DFD35D400151F23 /* Bolts.framework in Frameworks */,
 				88CD3BAD1DC8C79500BC3B78 /* Charts.framework in Frameworks */,
 				88CD3BAE1DC8C79500BC3B78 /* SWXMLHash.framework in Frameworks */,
 				88CD3BAF1DC8C79500BC3B78 /* Toast_Swift.framework in Frameworks */,
+				882F920D1DFD35D400151F23 /* FBSDKCoreKit.framework in Frameworks */,
+				882F920F1DFD35D400151F23 /* FBSDKShareKit.framework in Frameworks */,
 				88377CC51DE2D81000ABADC9 /* libNaverLogin.a in Frameworks */,
 				88CD3BA81DC8C78C00BC3B78 /* Alamofire.framework in Frameworks */,
 				88CD3BA91DC8C78C00BC3B78 /* AlamofireImage.framework in Frameworks */,
 				8879337D1DB8B315001CB925 /* NotificationCenter.framework in Frameworks */,
 				8879337E1DB8B315001CB925 /* UserNotifications.framework in Frameworks */,
+				882F920E1DFD35D400151F23 /* FBSDKLoginKit.framework in Frameworks */,
 				8879337F1DB8B315001CB925 /* UserNotificationsUI.framework in Frameworks */,
 				88DEDEED1DB4CE2F00781123 /* CoreData.framework in Frameworks */,
 				887741531DAE29E700198666 /* MessageUI.framework in Frameworks */,
@@ -339,6 +364,7 @@
 		21B261A3D92EB5396488C94B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				882F92051DFD2FCD00151F23 /* Social.framework */,
 				88F0D7B11DEFC6320029589A /* StoreKit.framework */,
 				8844D09F1DE8043C009E84AE /* iAd.framework */,
 				88CD3BAA1DC8C79500BC3B78 /* Charts.framework */,
@@ -387,6 +413,26 @@
 			path = settings;
 			sourceTree = "<group>";
 		};
+		882F92071DFD35D400151F23 /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				882F92081DFD35D400151F23 /* Bolts.framework */,
+				882F92091DFD35D400151F23 /* FBSDKCoreKit.framework */,
+				882F920A1DFD35D400151F23 /* FBSDKLoginKit.framework */,
+				882F920B1DFD35D400151F23 /* FBSDKShareKit.framework */,
+			);
+			path = Facebook;
+			sourceTree = "<group>";
+		};
+		882F92101DFD7B0000151F23 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				882F92111DFD7BBC00151F23 /* LoginProtocol.swift */,
+				882F92131DFD7E1400151F23 /* NaverLogin.swift */,
+			);
+			name = login;
+			sourceTree = "<group>";
+		};
 		88377CB71DE2D81000ABADC9 /* iRate */ = {
 			isa = PBXGroup;
 			children = (
@@ -425,6 +471,7 @@
 				88468A1F1DC344D800ACC60D /* BasicStudyController.swift */,
 				88468A211DC344D800ACC60D /* hActionPickerController.swift */,
 				88468A231DC344D800ACC60D /* PatternStudyController.swift */,
+				88330E1C1DFBB2CB00DBF427 /* LoginController.swift */,
 			);
 			path = modal;
 			sourceTree = "<group>";
@@ -448,6 +495,7 @@
 		886EF16E1D9C2B58009DA8E8 /* ThirdPartyModule */ = {
 			isa = PBXGroup;
 			children = (
+				882F92071DFD35D400151F23 /* Facebook */,
 				88377CB71DE2D81000ABADC9 /* iRate */,
 				88377CBC1DE2D81000ABADC9 /* NaverLogin */,
 			);
@@ -470,6 +518,7 @@
 				88468A1C1DC343C100ACC60D /* Purchase.storyboard */,
 				887741651DB0738C00198666 /* WorkBook.storyboard */,
 				88DEDEFD1DB7637B00781123 /* ChannelMain.storyboard */,
+				88330E1E1DFBB2FB00DBF427 /* Login.storyboard */,
 			);
 			path = storyboards;
 			sourceTree = "<group>";
@@ -773,6 +822,7 @@
 		88CDBA141D92CABA0058ECFE /* services */ = {
 			isa = PBXGroup;
 			children = (
+				882F92101DFD7B0000151F23 /* login */,
 				88CDBA2A1D92D6EE0058ECFE /* NetService.swift */,
 				881ED0071D93AEA200D612EF /* LayoutService.swift */,
 				884B0E8C1D93A0BB009748FF /* ImageDownloadService.swift */,
@@ -785,6 +835,7 @@
 				8829124D1DAFD32700E5B6E4 /* AlertService.swift */,
 				882CD2E91DC8607600BB611A /* PurchaseService.swift */,
 				881263801DFA75B4002E8200 /* ApiService.swift */,
+				88330E201DFBB71F00DBF427 /* LoginService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -876,6 +927,9 @@
 							com.apple.SafariKeychain = {
 								enabled = 0;
 							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
 						};
 					};
 					88CDB9FF1D92BDA40058ECFE = {
@@ -935,6 +989,7 @@
 				88377CC31DE2D81000ABADC9 /* iRate.bundle in Resources */,
 				88C6EA9C1DD03ABB0087FE9C /* sentence_layer.xib in Resources */,
 				8877416D1DB0738C00198666 /* Settings.storyboard in Resources */,
+				88330E1F1DFBB2FB00DBF427 /* Login.storyboard in Resources */,
 				88CDB9F71D92BDA30058ECFE /* Assets.xcassets in Resources */,
 				8877416F1DB0738C00198666 /* WorkBook.storyboard in Resources */,
 				88377CC21DE2D81000ABADC9 /* Info.plist in Resources */,
@@ -1046,7 +1101,9 @@
 				881ED0181D93B2B300D612EF /* YoutubeService.swift in Sources */,
 				88C6EA851DD039DF0087FE9C /* SessionCell.swift in Sources */,
 				88C6EA981DD039DF0087FE9C /* hSessionControlView.swift in Sources */,
+				88330E1D1DFBB2CB00DBF427 /* LoginController.swift in Sources */,
 				887933731DB8A56A001CB925 /* PATTERN+CoreDataClass.swift in Sources */,
+				88330E211DFBB71F00DBF427 /* LoginService.swift in Sources */,
 				88468A2C1DC3451F00ACC60D /* PurchaseController.swift in Sources */,
 				8829124E1DAFD32700E5B6E4 /* AlertService.swift in Sources */,
 				88CDBA1C1D92CB4A0058ECFE /* MyInfoController.swift in Sources */,
@@ -1078,6 +1135,7 @@
 				886085321D97DAD8009A9B3C /* PatternStudy.swift in Sources */,
 				881ED01A1D93B31700D612EF /* YoutubeVideo.swift in Sources */,
 				887933771DB8A670001CB925 /* hPig.xcdatamodeld in Sources */,
+				882F92121DFD7BBC00151F23 /* LoginProtocol.swift in Sources */,
 				881ED0041D93AB6400D612EF /* Category.swift in Sources */,
 				88C6EA861DD039DF0087FE9C /* SessionFeedCell.swift in Sources */,
 				8860852E1D97D435009A9B3C /* Global.swift in Sources */,
@@ -1096,6 +1154,7 @@
 				880FC9C31DEA836B00BDF70C /* WORD+CoreDataClass.swift in Sources */,
 				8865F0731DA115410025D0B9 /* CoreDataService.swift in Sources */,
 				881ED01E1D93B92100D612EF /* ArrayOps.swift in Sources */,
+				882F92141DFD7E1400151F23 /* NaverLogin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1235,6 +1294,7 @@
 					"$(PROJECT_DIR)/DerivedData/hPig/Build/Products/Debug-iphonesimulator/Charts",
 					"$(PROJECT_DIR)/DerivedData/hPig/Build/Products/Debug-iphonesimulator/SWXMLHash",
 					"$(PROJECT_DIR)/DerivedData/hPig/Build/Products/Debug-iphonesimulator/Toast-Swift",
+					"$(PROJECT_DIR)/ThirdPartyModule/Facebook",
 				);
 				INFOPLIST_FILE = hPig/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1293,6 +1353,7 @@
 					"$(PROJECT_DIR)/DerivedData/hPig/Build/Products/Debug-iphonesimulator/Charts",
 					"$(PROJECT_DIR)/DerivedData/hPig/Build/Products/Debug-iphonesimulator/SWXMLHash",
 					"$(PROJECT_DIR)/DerivedData/hPig/Build/Products/Debug-iphonesimulator/Toast-Swift",
+					"$(PROJECT_DIR)/ThirdPartyModule/Facebook",
 				);
 				INFOPLIST_FILE = hPig/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

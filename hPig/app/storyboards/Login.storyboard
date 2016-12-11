@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9GS-Rc-30V">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Q5m-lf-R2B">
+            <objects>
+                <navigationController id="9GS-Rc-30V" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="y4s-KD-tSC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="x8F-ao-qZJ" kind="relationship" relationship="rootViewController" id="gqr-fx-uQK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Vy-s2-hhe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-868" y="261"/>
+        </scene>
+        <!--로그인-->
+        <scene sceneID="Ura-FL-GCn">
+            <objects>
+                <viewController title="로그인" id="x8F-ao-qZJ" customClass="LoginController" customModule="hPig" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pgG-HH-dYX"/>
+                        <viewControllerLayoutGuide type="bottom" id="gp3-px-HcI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HLO-7X-ljd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="lqH-iF-oxQ">
+                                <rect key="frame" x="152.5" y="251" width="69" height="165"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YhT-Qq-tSQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="69" height="30"/>
+                                        <state key="normal" title="Naver"/>
+                                        <connections>
+                                            <action selector="tryNaverLogin:" destination="x8F-ao-qZJ" eventType="touchUpInside" id="Wfw-17-LuN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3i-Mb-tGg">
+                                        <rect key="frame" x="0.0" y="45" width="69" height="30"/>
+                                        <state key="normal" title="KakaoTalk"/>
+                                        <connections>
+                                            <action selector="tryKakaoLogin:" destination="x8F-ao-qZJ" eventType="touchUpInside" id="Apu-Q2-wNX"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFj-5a-d15">
+                                        <rect key="frame" x="0.0" y="90" width="69" height="30"/>
+                                        <state key="normal" title="Facebook"/>
+                                        <connections>
+                                            <action selector="tryFacebookLogin:" destination="x8F-ao-qZJ" eventType="touchUpInside" id="pyg-tN-CRV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="whL-Wh-YWl">
+                                        <rect key="frame" x="0.0" y="135" width="69" height="30"/>
+                                        <state key="normal" title="iCloud"/>
+                                        <connections>
+                                            <action selector="tryICloudLogin:" destination="x8F-ao-qZJ" eventType="touchUpInside" id="jVR-PW-4m2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="스피킹튜뷰는 회원가입 절차가 없습니다. 유저를 확인하기 위해 로그인만 해주세요." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zbt-FZ-4Be">
+                                <rect key="frame" x="16" y="84" width="343" height="42.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lqH-iF-oxQ" firstAttribute="centerY" secondItem="HLO-7X-ljd" secondAttribute="centerY" id="1BZ-ex-d8y"/>
+                            <constraint firstItem="lqH-iF-oxQ" firstAttribute="centerX" secondItem="HLO-7X-ljd" secondAttribute="centerX" id="5Re-Dt-5Vj"/>
+                            <constraint firstItem="Zbt-FZ-4Be" firstAttribute="centerX" secondItem="HLO-7X-ljd" secondAttribute="centerX" id="PXm-Jx-Kog"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Zbt-FZ-4Be" secondAttribute="trailing" id="daC-8S-xqs"/>
+                            <constraint firstItem="Zbt-FZ-4Be" firstAttribute="leading" secondItem="HLO-7X-ljd" secondAttribute="leadingMargin" id="lKt-HT-aFK"/>
+                            <constraint firstItem="Zbt-FZ-4Be" firstAttribute="top" secondItem="pgG-HH-dYX" secondAttribute="bottom" constant="20" id="t6B-bd-Awf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Cwy-Yd-PBC">
+                        <barButtonItem key="leftBarButtonItem" id="I0i-6w-nM6">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="azI-eR-lWz">
+                                <rect key="frame" x="16" y="-6" width="55" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="btn_close"/>
+                                <connections>
+                                    <action selector="dismiss:" destination="x8F-ao-qZJ" eventType="touchUpInside" id="lI4-b0-exg"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kHd-gK-BcJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-100" y="260"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="btn_close" width="55" height="55"/>
+    </resources>
+</document>

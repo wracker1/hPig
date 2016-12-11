@@ -7,3 +7,5 @@
 #import "NLoginThirdPartyOAuth20InAppBrowserViewController.h"
 #import "WKYTPlayerView.h"
 #import "iRate.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>

@@ -49,7 +49,7 @@ class hEnglishDictionaryView: UIView {
     func update(data: WordData, completion: (() -> Void)?) {
         self.data = data
         
-        AuthenticateService.shared.userId { (uid) in
+        LoginService.shared.userId { (uid) in
             if let item = self.data {
                 let req: NSFetchRequest<WORD> = WORD.fetchRequest()
                 let wordId = WORD.wordId(item: item.word)
@@ -113,7 +113,7 @@ class hEnglishDictionaryView: UIView {
     }
     
     @IBAction func save(_ sender: AnyObject) {
-        AuthenticateService.shared.userId { (uid) in
+        LoginService.shared.userId { (uid) in
             if let item = self.data, let superview = self.superview {
                 let req: NSFetchRequest<WORD> = WORD.fetchRequest()
                 let wordId = WORD.wordId(item: item.word)

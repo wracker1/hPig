@@ -26,7 +26,7 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
     }
     
     private func cellIds() -> [String : [String]] {
-        if AuthenticateService.shared.isOn() {
+        if LoginService.shared.isOn() {
             return [
                 "pass": ["purchaseCell", "couponRegisterCell"],
                 "info": ["faqCell", "mailCell"],
@@ -94,7 +94,7 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
             return cell
             
         case "loginCell":
-            cell.textLabel?.text = AuthenticateService.shared.isOn() ? "로그아웃" : "로그인"
+            cell.textLabel?.text = LoginService.shared.isOn() ? "로그아웃" : "로그인"
             return cell
             
         default:
@@ -126,7 +126,7 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
     }
     
     private func presentRegisterCouponAlert() {
-        AuthenticateService.shared.user({ (userInfo) in
+        LoginService.shared.user({ (userInfo) in
             if let user = userInfo {
                 let alert = UIAlertController(title: "쿠폰 등록", message: "ㆍ쿠폰 번호를 입력해주세요.\nㆍ쿠폰 번호는 10자리입니다.\nㆍ쿠폰 패스 내역이 통합되어 반영됩니다.", preferredStyle: .alert)
                 
@@ -158,7 +158,7 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
     
     @IBAction func updatePushNotiSetting(_ sender: AnyObject) {
         if let sw = sender as? UISwitch {
-            AuthenticateService.shared.user({ (user) in
+            LoginService.shared.user({ (user) in
                 if let tubeUser = user {
                     ApiService.shared.updateRemotePushSetting(tubeUser.id, isOn: sw.isOn)
                 }
@@ -171,7 +171,7 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
     }
     
     private func toggleLogin() {
-        let authenticate = AuthenticateService.shared
+        let authenticate = LoginService.shared
         if authenticate.isOn() {
             authenticate.logout {
                 self.tableView.reloadData()

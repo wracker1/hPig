@@ -105,15 +105,15 @@ class MyInfoController: UIViewController, UICollectionViewDataSource, UICollecti
     
     private func loadUserData() {
         if let header = infoHeader {
-            AuthenticateService.shared.user { (user) in
+            LoginService.shared.user({ (user) in
                 header.loadUserInfo(user)
                 self.historySegChanged(header.historySegControl)
-            }
+            })
         }
     }
     
     func historySegChanged(_ sender: UISegmentedControl) {
-        AuthenticateService.shared.user { (user) in
+        LoginService.shared.user { (user) in
             let id = user?.id ?? kGuestId
             let historyReq: NSFetchRequest<HISTORY> = HISTORY.fetchRequest()
             historyReq.sortDescriptors = [NSSortDescriptor(key: "lastdate", ascending: false)]

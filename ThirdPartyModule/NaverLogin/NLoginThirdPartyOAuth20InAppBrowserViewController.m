@@ -44,15 +44,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"로그인";
+    self.title = @"Naver";
     
-    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0, 0, 45, 45);
-    
-    [button setImage:[UIImage imageNamed:@"btn_close"] forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(closeBtAction:) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView: button];
+//    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    button.frame = CGRectMake(0, 0, 45, 45);
+//    
+//    [button setImage:[UIImage imageNamed:@"btn_close"] forState:UIControlStateNormal];
+//    [button addTarget:self action:@selector(closeBtAction:) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView: button];
 }
 
 - (BOOL)isUpperIOS8

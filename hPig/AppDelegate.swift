@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().tintColor = UIColor.black
         
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         Fabric.with([Crashlytics.self])
         
         ToastManager.shared.style.verticalPadding = 10
@@ -34,16 +36,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func logUser(_ item: TubeUserInfo?) {
-        if let token = AuthenticateService.shared.accessToken(),
-            let naverInfo = AuthenticateService.shared.naverUser(token),
-            let email = naverInfo.email,
-            let accountId = naverInfo.accountId,
-            let name = naverInfo.name {
-            
-            Crashlytics.sharedInstance().setUserEmail(email)
-            Crashlytics.sharedInstance().setUserIdentifier(accountId)
-            Crashlytics.sharedInstance().setUserName(name)
-        }
+//        if let token = LoginService.shared.accessToken(),
+//            let naverInfo = AuthenticateService.shared.naverUser(token),
+//            let email = naverInfo.email,
+//            let accountId = naverInfo.accountId,
+//            let name = naverInfo.name {
+//            
+//            Crashlytics.sharedInstance().setUserEmail(email)
+//            Crashlytics.sharedInstance().setUserIdentifier(accountId)
+//            Crashlytics.sharedInstance().setUserName(name)
+//        }
     }
 
     
@@ -73,9 +75,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
+        FBSDKAppEvents.activateApp()
+        
         PurchaseService.shared.processPastPurchase().update()
         
-        AuthenticateService.shared.prepare().updateVisitCount({ (user) in
+        AuthenticateService.shared.updateVisitCount({ (user) in
             self.logUser(user)
         })
     }
@@ -87,7 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        return AuthenticateService.shared.processAccessToken(url: url)
+        return LoginService.shared.proccess(app, open: url, options: options)
     }
 
     // MARK: - Core Data stack

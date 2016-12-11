@@ -162,9 +162,9 @@ class MyInfoHeaderCell: UICollectionViewCell {
     
     func login() {
         if let controller = viewController {
-            AuthenticateService.shared.tryLogin(controller) { (user) in
+            LoginService.shared.tryLogin(controller, completion: { (user) in
                 self.loadUserInfo(user)
-            }
+            })
         }
     }
 

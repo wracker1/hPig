@@ -77,7 +77,7 @@ class PurchaseService: NSObject, SKPaymentTransactionObserver, SKProductsRequest
     }
     
     func purchase(_ viewController: UIViewController, payment: SKPayment, completion: ((String?, Error?) -> Void)?) {
-        AuthenticateService.shared.user({ (data) in
+        LoginService.shared.user({ (data) in
             if data == nil {
                 AuthenticateService.shared.confirmLogin(viewController, completion: nil)
             } else {
@@ -102,7 +102,7 @@ class PurchaseService: NSObject, SKPaymentTransactionObserver, SKProductsRequest
     }
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        AuthenticateService.shared.user({ (data) in
+        LoginService.shared.user({ (data) in
             for transaction in transactions {
                 switch transaction.transactionState {
                 case .purchased:

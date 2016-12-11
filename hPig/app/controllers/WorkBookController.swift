@@ -293,7 +293,7 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     private func loadPatternData(completion: (() -> Void)?) {
-        AuthenticateService.shared.userId { (userId) in
+        LoginService.shared.userId { (userId) in
             let dataService = CoreDataService.shared
             let req: NSFetchRequest<PATTERN> = PATTERN.fetchRequest()
             req.sortDescriptors = [NSSortDescriptor(key: "regdt", ascending: false)]
@@ -314,7 +314,7 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     private func loadWordData(completion: (() -> Void)?) {
-        AuthenticateService.shared.userId { (userId) in
+        LoginService.shared.userId { (userId) in
             let dataService = CoreDataService.shared
             let req: NSFetchRequest<WORD> = WORD.fetchRequest()
             let query = "uid = '\(userId)'"

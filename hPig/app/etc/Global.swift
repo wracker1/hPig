@@ -14,6 +14,7 @@ let kToggleEnglishLabelVisible = Notification.Name("kToggleEnglishLabelVisible")
 let kSelectCellWithIndexPath = Notification.Name("kSelectRowWithIndexPath")
 let kViewWillTransition = Notification.Name("viewWillTransition")
 let kGuestId = "guest"
+let kTokenKey = "deviceToken"
 
 let preTimeMargin = CMTimeMakeWithSeconds(0.2, 600)
 let postTimeMargin = CMTimeMakeWithSeconds(0.3, 600)

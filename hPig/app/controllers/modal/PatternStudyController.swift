@@ -79,7 +79,7 @@ class PatternStudyController: UIViewController {
         super.viewWillDisappear(animated)
         
         if let time = startStudyTime {
-            AuthenticateService.shared.userId(completion: { (userId) in
+            LoginService.shared.userId(completion: { (userId) in
                 let dataService = CoreDataService.shared
                 let (entity, ctx) = dataService.entityDescription("time_log")
                 let log = TIME_LOG(entity: entity!, insertInto: ctx)
@@ -186,7 +186,7 @@ class PatternStudyController: UIViewController {
     
     func savePattern() {
         if let item = session, let currentPattern = patternStudyData.get(self.currentIndex) {
-            AuthenticateService.shared.userId(completion: { (userId) in
+            LoginService.shared.userId(completion: { (userId) in
                 let dataService = CoreDataService.shared
                 let req: NSFetchRequest<PATTERN> = PATTERN.fetchRequest()
                 let query = "uid = '\(userId)' AND vid = '\(item.id)' AND part = '\(item.part)' AND position = '\(self.currentIndex)'"
