@@ -20,6 +20,8 @@
 		881235BE1DC7466C002EC49A /* hTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881235BD1DC7466C002EC49A /* hTabBarController.swift */; };
 		881263811DFA75B4002E8200 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881263801DFA75B4002E8200 /* ApiService.swift */; };
 		881263831DFE4FA1002E8200 /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881263821DFE4FA1002E8200 /* FacebookLogin.swift */; };
+		881263861DFE986C002E8200 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 881263851DFE986C002E8200 /* KakaoOpenSDK.framework */; };
+		881263881DFE9F9D002E8200 /* KakaoLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881263871DFE9F9D002E8200 /* KakaoLogin.swift */; };
 		881ED0041D93AB6400D612EF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0031D93AB6400D612EF /* Category.swift */; };
 		881ED0061D93AC0100D612EF /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0051D93AC0100D612EF /* CategoryService.swift */; };
 		881ED0081D93AEA200D612EF /* LayoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0071D93AEA200D612EF /* LayoutService.swift */; };
@@ -175,6 +177,8 @@
 		881235BD1DC7466C002EC49A /* hTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hTabBarController.swift; sourceTree = "<group>"; };
 		881263801DFA75B4002E8200 /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		881263821DFE4FA1002E8200 /* FacebookLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookLogin.swift; path = login/FacebookLogin.swift; sourceTree = "<group>"; };
+		881263851DFE986C002E8200 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
+		881263871DFE9F9D002E8200 /* KakaoLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KakaoLogin.swift; path = login/KakaoLogin.swift; sourceTree = "<group>"; };
 		881A76E91DB4633A00CF6409 /* youtube_ios_player_helper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = youtube_ios_player_helper.framework; path = "Pods/../build/Debug-iphoneos/youtube-ios-player-helper/youtube_ios_player_helper.framework"; sourceTree = "<group>"; };
 		881A76EB1DB464FC00CF6409 /* YouTubePlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YouTubePlayer.framework; path = "Pods/../build/Debug-iphoneos/YouTubePlayer/YouTubePlayer.framework"; sourceTree = "<group>"; };
 		881A76EF1DB465C100CF6409 /* youtube_ios_player_helper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = youtube_ios_player_helper.framework; path = "../../../Library/Developer/Xcode/DerivedData/hPig-byqselxxffzlqhcolurdyikdjjha/Build/Products/Debug-iphonesimulator/youtube-ios-player-helper/youtube_ios_player_helper.framework"; sourceTree = "<group>"; };
@@ -345,6 +349,7 @@
 				88DEDEED1DB4CE2F00781123 /* CoreData.framework in Frameworks */,
 				887741531DAE29E700198666 /* MessageUI.framework in Frameworks */,
 				884B0E8B1D939B34009748FF /* QuartzCore.framework in Frameworks */,
+				881263861DFE986C002E8200 /* KakaoOpenSDK.framework in Frameworks */,
 				884B0E891D939B1D009748FF /* CoreGraphics.framework in Frameworks */,
 				884B0E861D939B13009748FF /* AVFoundation.framework in Frameworks */,
 				88F0D7B21DEFC6320029589A /* StoreKit.framework in Frameworks */,
@@ -415,6 +420,14 @@
 			path = settings;
 			sourceTree = "<group>";
 		};
+		881263841DFE986C002E8200 /* Kakao */ = {
+			isa = PBXGroup;
+			children = (
+				881263851DFE986C002E8200 /* KakaoOpenSDK.framework */,
+			);
+			path = Kakao;
+			sourceTree = "<group>";
+		};
 		882F92071DFD35D400151F23 /* Facebook */ = {
 			isa = PBXGroup;
 			children = (
@@ -432,6 +445,7 @@
 				882F92111DFD7BBC00151F23 /* LoginProtocol.swift */,
 				882F92131DFD7E1400151F23 /* NaverLogin.swift */,
 				881263821DFE4FA1002E8200 /* FacebookLogin.swift */,
+				881263871DFE9F9D002E8200 /* KakaoLogin.swift */,
 			);
 			name = login;
 			sourceTree = "<group>";
@@ -498,6 +512,7 @@
 		886EF16E1D9C2B58009DA8E8 /* ThirdPartyModule */ = {
 			isa = PBXGroup;
 			children = (
+				881263841DFE986C002E8200 /* Kakao */,
 				882F92071DFD35D400151F23 /* Facebook */,
 				88377CB71DE2D81000ABADC9 /* iRate */,
 				88377CBC1DE2D81000ABADC9 /* NaverLogin */,
@@ -1145,6 +1160,7 @@
 				8860852E1D97D435009A9B3C /* Global.swift in Sources */,
 				88C6EA8C1DD039DF0087FE9C /* ChannelButton.swift in Sources */,
 				889BCF401DD45E830023031C /* UIAlertControllerOps.swift in Sources */,
+				881263881DFE9F9D002E8200 /* KakaoLogin.swift in Sources */,
 				8845230A1DBF44CF00802510 /* HISTORY+CoreDataProperties.swift in Sources */,
 				88377CC41DE2D81000ABADC9 /* iRate.m in Sources */,
 				88CDB9ED1D92BDA30058ECFE /* AppDelegate.swift in Sources */,
@@ -1299,6 +1315,7 @@
 					"$(PROJECT_DIR)/DerivedData/hPig/Build/Products/Debug-iphonesimulator/SWXMLHash",
 					"$(PROJECT_DIR)/DerivedData/hPig/Build/Products/Debug-iphonesimulator/Toast-Swift",
 					"$(PROJECT_DIR)/ThirdPartyModule/Facebook",
+					"$(PROJECT_DIR)/ThirdPartyModule/Kakao",
 				);
 				INFOPLIST_FILE = hPig/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1358,6 +1375,7 @@
 					"$(PROJECT_DIR)/DerivedData/hPig/Build/Products/Debug-iphonesimulator/SWXMLHash",
 					"$(PROJECT_DIR)/DerivedData/hPig/Build/Products/Debug-iphonesimulator/Toast-Swift",
 					"$(PROJECT_DIR)/ThirdPartyModule/Facebook",
+					"$(PROJECT_DIR)/ThirdPartyModule/Kakao",
 				);
 				INFOPLIST_FILE = hPig/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

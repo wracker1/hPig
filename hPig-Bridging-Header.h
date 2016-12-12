@@ -9,3 +9,4 @@
 #import "iRate.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <KakaoOpenSDK/KakaoOpenSDK.h>

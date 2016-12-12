@@ -77,6 +77,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKAppEvents.activateApp()
         
+        KOSession.handleDidBecomeActive()
+        
         PurchaseService.shared.processPastPurchase().update()
         
         AuthenticateService.shared.updateVisitCount({ (user) in

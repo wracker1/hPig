@@ -61,7 +61,7 @@ class LoginService {
                 self.loginManager = facebookLoginManager()
                 
             case .kakaoTalk:
-                break
+                self.loginManager = kakaoLoginManager()
             }
         }
         
@@ -93,7 +93,7 @@ class LoginService {
             self.loginManager = facebookLoginManager()
             
         case .kakaoTalk:
-            break
+            self.loginManager = kakaoLoginManager()
         
         }
     }
@@ -125,6 +125,13 @@ class LoginService {
     
     private func facebookLoginManager() -> LoginProtocol {
         let manager = FacebookLogin()
+        manager.loginController = loginController
+        manager.tryLogin(loginHandler())
+        return manager
+    }
+    
+    private func kakaoLoginManager() -> LoginProtocol {
+        let manager = KakaoLogin()
         manager.loginController = loginController
         manager.tryLogin(loginHandler())
         return manager

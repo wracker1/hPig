@@ -72,8 +72,10 @@ class FacebookLogin: LoginProtocol {
                             
                             self.userMap[id] = user
                             callback(user)
-                        } else {
+                        } else if let nserror = reqError as? NSError, nserror.code != 8 {
                             self.loginController?.view.presentToast(reqError.debugDescription)
+                        } else {
+                            callback(nil)
                         }
                     })
                 } else {

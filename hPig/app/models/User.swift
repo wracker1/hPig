@@ -126,4 +126,23 @@ class User: NSObject, NSCoding {
         self.accountId = nil
         self.loginType = loginType
     }
+    
+    init?(_ koUser: KOUser) {
+        guard let uid = koUser.id, let properties = koUser.properties as? [String : Any] else {
+            return nil
+        }
+
+        self.id = "\(uid.intValue)"
+        self.email = nil
+        self.nickname = properties["nickname"] as? String
+        self.encId = nil
+        self.profileImage = properties["profile_image"] as? String
+        self.age = nil
+        self.gender = nil
+        self.name = nil
+        self.birthDay = nil
+        self.accountId = koUser.uuid
+        self.loginType = .kakaoTalk
+        
+    }
 }
