@@ -420,11 +420,11 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
             if isActiveSubtitles {
                 self.currentSubtitleView.isHidden = true
                 self.subtitleTableView.isHidden = false
-                btn.setImage(UIImage(named: "btn_subtitles_on"), for: .normal)
+                btn.setImage(#imageLiteral(resourceName: "btn_subtitles_on"), for: .normal)
             } else {
                 self.currentSubtitleView.isHidden = false
                 self.subtitleTableView.isHidden = true
-                btn.setImage(UIImage(named: "btn_subtitles_off"), for: .normal)
+                btn.setImage(#imageLiteral(resourceName: "btn_subtitles_off"), for: .normal)
             }
         }
     }
@@ -436,9 +436,9 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         
         if let btn = btnKorean?.customView as? UIButton {
             if isActiveKorean {
-                btn.setImage(UIImage(named: "btn_korean_on"), for: .normal)
+                btn.setImage(#imageLiteral(resourceName: "btn_korean_on"), for: .normal)
             } else {
-                btn.setImage(UIImage(named: "btn_korean_off"), for: .normal)
+                btn.setImage(#imageLiteral(resourceName: "btn_korean_off"), for: .normal)
             }
         }
         
@@ -452,9 +452,9 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         
         if let btn = btnEnglish?.customView as? UIButton {
             if isActiveEnglish {
-                btn.setImage(UIImage(named: "btn_english_on"), for: .normal)
+                btn.setImage(#imageLiteral(resourceName: "btn_english_on"), for: .normal)
             } else {
-                btn.setImage(UIImage(named: "btn_english_off"), for: .normal)
+                btn.setImage(#imageLiteral(resourceName: "btn_english_off"), for: .normal)
             }
         }
         

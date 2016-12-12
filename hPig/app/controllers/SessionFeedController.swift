@@ -26,7 +26,7 @@ class SessionFeedController: UICollectionViewController, UICollectionViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.titleView = UIImageView(image: UIImage(named: "speaking_tube"))
+        self.navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "speaking_tube"))
 //        self.collectionView!.register(SessionFeedCell.self, forCellWithReuseIdentifier: "sessionFeedCell")
         
         flowLayout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize

@@ -31,7 +31,7 @@ class SessionsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.titleView = UIImageView(image: UIImage(named: "speaking_tube"))
+        self.navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "speaking_tube"))
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 400
         self.tableView.estimatedSectionHeaderHeight = 40

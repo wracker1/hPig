@@ -190,7 +190,7 @@ class hPlayerView: UIView {
             player?.pause()
             stop()
             isPlaying = false
-            playButton.setImage(UIImage(named: "btn_play"), for: .normal)
+            playButton.setImage(#imageLiteral(resourceName: "btn_play"), for: .normal)
         }
     }
     
@@ -199,7 +199,7 @@ class hPlayerView: UIView {
             start()
             player?.play()
             isPlaying = true
-            playButton.setImage(UIImage(named: "btn_pause"), for: .normal)
+            playButton.setImage(#imageLiteral(resourceName: "btn_pause"), for: .normal)
             
             if controlView.alpha == 1.0 {
                 Timer.scheduledTimer(

@@ -58,7 +58,7 @@ class hEnglishDictionaryView: UIView {
                 
                 CoreDataService.shared.select(request: req) { (items, error) in
                     let hasWord = items.count != 0
-                    self.saveButton.setImage(UIImage(named: hasWord ? "btn_bookmark_enable" : "btn_bookmark_disable"), for: .normal)
+                    self.saveButton.setImage(hasWord ? #imageLiteral(resourceName: "btn_bookmark_enable") : #imageLiteral(resourceName: "btn_bookmark_disable"), for: .normal)
 
                     let pron = data.pronunciation as NSString
                     let regex = try! NSRegularExpression(pattern: "<[^>]*?>", options: .caseInsensitive)
@@ -136,7 +136,7 @@ class hEnglishDictionaryView: UIView {
                     CoreDataService.shared.save()
                     
                     self.saveButton.setImage(
-                        UIImage(named: hasWord ? "btn_bookmark_disable" : "btn_bookmark_enable"),
+                        hasWord ? #imageLiteral(resourceName: "btn_bookmark_disable") : #imageLiteral(resourceName: "btn_bookmark_enable"),
                         for: .normal
                     )
                 }
