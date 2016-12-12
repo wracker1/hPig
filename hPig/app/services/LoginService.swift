@@ -49,7 +49,7 @@ class LoginService {
         }
     }
     
-    private func tubeuserFromUserDefault(_ user: User) -> TubeUserInfo? {
+    private func tubeuserFromMemCache(_ user: User) -> TubeUserInfo? {
         let id = user.id
         
         if loginManager == nil {
@@ -147,21 +147,25 @@ class LoginService {
         UserDefaults.standard.set(data, forKey: latestUserKey)
         UserDefaults.standard.synchronize()
         
-        ApiService.shared.updateUser(user)
-        
-        tubeUserInfoFromServer(user.id, loginType: user.loginType, completion: { (tubeUser) in
-            if let userInfo = tubeUser {
-                callback(userInfo)
-            } else {
-                AuthenticateService.shared.joinUser(user: user, completion: { (success) in
-                    if success {
-                        self.tubeUserInfoFromServer(user.id, loginType: user.loginType, completion: completion)
-                    } else {
-                        callback(nil)
-                    }
-                })
-            }
-        })
+        if let tubeUser = tubeuserFromMemCache(user) {
+            callback(tubeUser)
+        } else {
+            ApiService.shared.updateUser(user)
+            
+            tubeUserInfoFromServer(user.id, loginType: user.loginType, completion: { (tubeUser) in
+                if let userInfo = tubeUser {
+                    callback(userInfo)
+                } else {
+                    AuthenticateService.shared.joinUser(user: user, completion: { (success) in
+                        if success {
+                            self.tubeUserInfoFromServer(user.id, loginType: user.loginType, completion: completion)
+                        } else {
+                            callback(nil)
+                        }
+                    })
+                }
+            })
+        }
     }
     
     func tubeUserInfoFromServer(_ id: String, loginType: LoginType, completion: ((TubeUserInfo?) -> Void)?) {
@@ -198,7 +202,7 @@ class LoginService {
     
     func isActiveUser() throws -> Bool {
         if let cached = userFromUserDefault() ?? userFromLoginManager(),
-            let user = tubeuserFromUserDefault(cached) {
+            let user = tubeuserFromMemCache(cached) {
             
             if user.isActiveUser {
                 return true
@@ -212,7 +216,7 @@ class LoginService {
     
     func isOn() -> Bool {
         if let cached = userFromUserDefault() ?? userFromLoginManager() {
-            return tubeuserFromUserDefault(cached) != nil
+            return tubeuserFromMemCache(cached) != nil
         } else {
             return false
         }

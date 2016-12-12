@@ -39,6 +39,31 @@ class FacebookLogin: LoginProtocol {
         }
     }
     
+    private func requestMyInfo(_ completion: ((User?) -> Void)?) {
+        let callback = completion ?? {(_) in}
+        
+        if let req = FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id,name,picture,gender,birthday,email,age_range"]) {
+            req.start(completionHandler: { (conn, data, reqError) in
+                if reqError == nil,
+                    let json = data as? [String: Any],
+                    let user = User(data: json, loginType: .facebook),
+                    let id = self.userId() {
+                    
+                    self.userMap[id] = user
+                    callback(user)
+                } else if let nserror = reqError as? NSError {
+                    if nserror.code != 8 {
+                        self.loginController?.view.presentToast(reqError.debugDescription)
+                    } else {
+                        callback(nil)
+                    }
+                } else {
+                    callback(nil)
+                }
+            })
+        }
+    }
+    
     var loginController: UIViewController? {
         get { return _loginController }
         set { _loginController = newValue }
@@ -72,8 +97,12 @@ class FacebookLogin: LoginProtocol {
                             
                             self.userMap[id] = user
                             callback(user)
-                        } else if let nserror = reqError as? NSError, nserror.code != 8 {
-                            self.loginController?.view.presentToast(reqError.debugDescription)
+                        } else if let nserror = reqError as? NSError {
+                            if nserror.code != 8 {
+                                self.loginController?.view.presentToast(reqError.debugDescription)
+                            } else {
+                                callback(nil)
+                            }
                         } else {
                             callback(nil)
                         }

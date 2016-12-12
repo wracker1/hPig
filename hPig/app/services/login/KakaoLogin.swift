@@ -27,6 +27,7 @@ class KakaoLogin: LoginProtocol {
     
     private func session() -> KOSession? {
         if let session = KOSession.shared() {
+            session.isAutomaticPeriodicRefresh = true
             return session
         } else {
             return nil

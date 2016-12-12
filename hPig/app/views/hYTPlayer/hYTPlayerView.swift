@@ -48,9 +48,17 @@ class hYTPlayerView: WKYTPlayerView, WKYTPlayerViewDelegate {
         super.init(coder: aDecoder)
         
         self.webView?.backgroundColor = UIColor.black
+        self.webView?.allowsBackForwardNavigationGestures
         self.backgroundColor = UIColor.black
 //        self.webView?.allowsInlineMediaPlayback = true
         self.delegate = self
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategorySoloAmbient)
+//            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            
+        }
     }
     
     deinit {

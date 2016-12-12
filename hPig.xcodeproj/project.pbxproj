@@ -40,7 +40,6 @@
 		882F92121DFD7BBC00151F23 /* LoginProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F92111DFD7BBC00151F23 /* LoginProtocol.swift */; };
 		882F92141DFD7E1400151F23 /* NaverLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F92131DFD7E1400151F23 /* NaverLogin.swift */; };
 		88330E1D1DFBB2CB00DBF427 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88330E1C1DFBB2CB00DBF427 /* LoginController.swift */; };
-		88330E1F1DFBB2FB00DBF427 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88330E1E1DFBB2FB00DBF427 /* Login.storyboard */; };
 		88330E211DFBB71F00DBF427 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88330E201DFBB71F00DBF427 /* LoginService.swift */; };
 		88377CB61DDE8E5800ABADC9 /* StringOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88377CB51DDE8E5800ABADC9 /* StringOps.swift */; };
 		88377CC21DE2D81000ABADC9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88377CB81DE2D81000ABADC9 /* Info.plist */; };
@@ -67,6 +66,8 @@
 		884B0E8B1D939B34009748FF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884B0E8A1D939B34009748FF /* QuartzCore.framework */; };
 		884B0E8D1D93A0BB009748FF /* ImageDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884B0E8C1D93A0BB009748FF /* ImageDownloadService.swift */; };
 		8853766C1DB65C5D0076D1BF /* WordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8853766B1DB65C5D0076D1BF /* WordData.swift */; };
+		8859B2031DFEFE22008B2FCA /* localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8859B2051DFEFE22008B2FCA /* localization.strings */; };
+		8859B2071DFEFFBA008B2FCA /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8859B2091DFEFFBA008B2FCA /* Login.storyboard */; };
 		886085291D97D393009A9B3C /* BasicStudy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886085281D97D393009A9B3C /* BasicStudy.swift */; };
 		8860852E1D97D435009A9B3C /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8860852D1D97D435009A9B3C /* Global.swift */; };
 		886085301D97D74B009A9B3C /* SubtitleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8860852F1D97D74B009A9B3C /* SubtitleService.swift */; };
@@ -201,7 +202,6 @@
 		882F92111DFD7BBC00151F23 /* LoginProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginProtocol.swift; path = login/LoginProtocol.swift; sourceTree = "<group>"; };
 		882F92131DFD7E1400151F23 /* NaverLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NaverLogin.swift; path = login/NaverLogin.swift; sourceTree = "<group>"; };
 		88330E1C1DFBB2CB00DBF427 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
-		88330E1E1DFBB2FB00DBF427 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		88330E201DFBB71F00DBF427 /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		88377CB51DDE8E5800ABADC9 /* StringOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringOps.swift; sourceTree = "<group>"; };
 		88377CB81DE2D81000ABADC9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -239,6 +239,10 @@
 		885376671DB12FBC0076D1BF /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "Pods/../build/Debug-iphoneos/RealmSwift/RealmSwift.framework"; sourceTree = "<group>"; };
 		8853766B1DB65C5D0076D1BF /* WordData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordData.swift; sourceTree = "<group>"; };
 		885376731DB67C770076D1BF /* hPig.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = hPig.entitlements; sourceTree = "<group>"; };
+		8859B2041DFEFE22008B2FCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/localization.strings; sourceTree = "<group>"; };
+		8859B2061DFEFE25008B2FCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/localization.strings; sourceTree = "<group>"; };
+		8859B2081DFEFFBA008B2FCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		8859B20F1DFF0369008B2FCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Login.strings; sourceTree = "<group>"; };
 		886085281D97D393009A9B3C /* BasicStudy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicStudy.swift; sourceTree = "<group>"; };
 		8860852D1D97D435009A9B3C /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Global.swift; path = etc/Global.swift; sourceTree = "<group>"; };
 		8860852F1D97D74B009A9B3C /* SubtitleService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtitleService.swift; sourceTree = "<group>"; };
@@ -536,7 +540,7 @@
 				88468A1C1DC343C100ACC60D /* Purchase.storyboard */,
 				887741651DB0738C00198666 /* WorkBook.storyboard */,
 				88DEDEFD1DB7637B00781123 /* ChannelMain.storyboard */,
-				88330E1E1DFBB2FB00DBF427 /* Login.storyboard */,
+				8859B2091DFEFFBA008B2FCA /* Login.storyboard */,
 			);
 			path = storyboards;
 			sourceTree = "<group>";
@@ -759,6 +763,7 @@
 				88CDBA0F1D92CABA0058ECFE /* app */,
 				88CDB9EC1D92BDA30058ECFE /* AppDelegate.swift */,
 				887933751DB8A670001CB925 /* hPig.xcdatamodeld */,
+				8859B2051DFEFE22008B2FCA /* localization.strings */,
 				88CDB9F61D92BDA30058ECFE /* Assets.xcassets */,
 				88CDB9FB1D92BDA30058ECFE /* Info.plist */,
 			);
@@ -990,6 +995,7 @@
 				8877416A1DB0738C00198666 /* PatternStudy.storyboard in Resources */,
 				8877416C1DB0738C00198666 /* Sessions.storyboard in Resources */,
 				880FC9C81DEB062100BDF70C /* WKYTPlayerView.bundle in Resources */,
+				8859B2031DFEFE22008B2FCA /* localization.strings in Resources */,
 				88DEDEF41DB5ED7300781123 /* BasicStudy.storyboard in Resources */,
 				88DEDEFE1DB7637B00781123 /* ChannelMain.storyboard in Resources */,
 				88C6EA8E1DD039DF0087FE9C /* eng_dic_view_cell.xib in Resources */,
@@ -1007,7 +1013,7 @@
 				88377CC31DE2D81000ABADC9 /* iRate.bundle in Resources */,
 				88C6EA9C1DD03ABB0087FE9C /* sentence_layer.xib in Resources */,
 				8877416D1DB0738C00198666 /* Settings.storyboard in Resources */,
-				88330E1F1DFBB2FB00DBF427 /* Login.storyboard in Resources */,
+				8859B2071DFEFFBA008B2FCA /* Login.storyboard in Resources */,
 				88CDB9F71D92BDA30058ECFE /* Assets.xcassets in Resources */,
 				8877416F1DB0738C00198666 /* WorkBook.storyboard in Resources */,
 				88377CC21DE2D81000ABADC9 /* Info.plist in Resources */,
@@ -1200,6 +1206,27 @@
 			targetProxy = 88CDBA011D92BDA40058ECFE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8859B2051DFEFE22008B2FCA /* localization.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8859B2041DFEFE22008B2FCA /* Base */,
+				8859B2061DFEFE25008B2FCA /* en */,
+			);
+			name = localization.strings;
+			sourceTree = "<group>";
+		};
+		8859B2091DFEFFBA008B2FCA /* Login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8859B2081DFEFFBA008B2FCA /* Base */,
+				8859B20F1DFF0369008B2FCA /* en */,
+			);
+			name = Login.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		88CDBA071D92BDA40058ECFE /* Debug */ = {

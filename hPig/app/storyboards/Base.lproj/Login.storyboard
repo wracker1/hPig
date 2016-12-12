@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9GS-Rc-30V">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16C60b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9GS-Rc-30V">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,7 +30,7 @@
         <!--로그인-->
         <scene sceneID="Ura-FL-GCn">
             <objects>
-                <viewController title="로그인" id="x8F-ao-qZJ" customClass="LoginController" customModule="hPig" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="x8F-ao-qZJ" customClass="LoginController" customModule="hPig" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pgG-HH-dYX"/>
                         <viewControllerLayoutGuide type="bottom" id="gp3-px-HcI"/>
@@ -38,28 +39,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="lqH-iF-oxQ">
-                                <rect key="frame" x="153" y="273.5" width="69" height="120"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="lqH-iF-oxQ">
+                                <rect key="frame" x="38" y="223.5" width="299" height="220"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YhT-Qq-tSQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="69" height="30"/>
-                                        <state key="normal" title="Naver"/>
-                                        <connections>
-                                            <action selector="tryNaverLogin:" destination="x8F-ao-qZJ" eventType="touchUpInside" id="Wfw-17-LuN"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3i-Mb-tGg">
-                                        <rect key="frame" x="0.0" y="45" width="69" height="30"/>
-                                        <state key="normal" title="KakaoTalk"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="299" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="f3i-Mb-tGg" secondAttribute="height" multiplier="4.977" id="IuG-mY-1gl"/>
+                                            <constraint firstAttribute="height" constant="60" id="zMn-mt-m2n"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                        <inset key="titleEdgeInsets" minX="43" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="카카오 계정으로 로그인" backgroundImage="kakao_login">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="tryKakaoLogin:" destination="x8F-ao-qZJ" eventType="touchUpInside" id="Apu-Q2-wNX"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFj-5a-d15">
-                                        <rect key="frame" x="0.0" y="90" width="69" height="30"/>
-                                        <state key="normal" title="Facebook"/>
+                                        <rect key="frame" x="0.0" y="80" width="299" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="KFj-5a-d15" secondAttribute="height" multiplier="4.977" id="m52-QT-zjV"/>
+                                            <constraint firstAttribute="height" constant="60" id="mzH-Xn-aqX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                        <inset key="titleEdgeInsets" minX="43" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="페이스북 계정으로 로그인" backgroundImage="facebook_login">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="tryFacebookLogin:" destination="x8F-ao-qZJ" eventType="touchUpInside" id="pyg-tN-CRV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YhT-Qq-tSQ">
+                                        <rect key="frame" x="0.0" y="160" width="299" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="YhT-Qq-tSQ" secondAttribute="height" multiplier="4.977" id="Gzm-A9-f9H"/>
+                                            <constraint firstAttribute="height" constant="60" id="KP8-x4-kN2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                        <inset key="titleEdgeInsets" minX="43" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="네이버 계정으로 로그인" backgroundImage="naver_login">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tryNaverLogin:" destination="x8F-ao-qZJ" eventType="touchUpInside" id="Wfw-17-LuN"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -81,7 +106,7 @@
                             <constraint firstItem="Zbt-FZ-4Be" firstAttribute="top" secondItem="pgG-HH-dYX" secondAttribute="bottom" constant="20" id="t6B-bd-Awf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Cwy-Yd-PBC">
+                    <navigationItem key="navigationItem" title="로그인" id="Cwy-Yd-PBC">
                         <barButtonItem key="leftBarButtonItem" id="I0i-6w-nM6">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="azI-eR-lWz">
                                 <rect key="frame" x="16" y="-6" width="55" height="55"/>
@@ -101,5 +126,8 @@
     </scenes>
     <resources>
         <image name="btn_close" width="55" height="55"/>
+        <image name="facebook_login" width="55" height="55"/>
+        <image name="kakao_login" width="55" height="55"/>
+        <image name="naver_login" width="55" height="55"/>
     </resources>
 </document>

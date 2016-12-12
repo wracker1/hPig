@@ -82,6 +82,7 @@
 		<string>kakaotalk-4.5.0</string>
 		<string>kakaostory-2.9.0</string>
 		<string>storylink</string>
+        <string>naversearchapp</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

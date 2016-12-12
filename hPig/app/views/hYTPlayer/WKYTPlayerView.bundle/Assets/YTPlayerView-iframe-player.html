@@ -65,9 +65,13 @@
     function onStateChange(event) {
         if (!error) {            
             window.location.href = 'ytplayer://onStateChange?data=' + event.data;
-        }
-        else {
+        } else {
             error = false;
+        }
+        
+        if (player !== undefined) {
+            player.unloadModule("captions");
+            player.unloadModule("cc");
         }
     }
 
