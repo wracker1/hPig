@@ -13,7 +13,6 @@ import Accounts
 
 enum LoginType: String {
     case naver = "naver"
-    case iCloud = "icloud"
     case kakaoTalk = "kakaoTalk"
     case facebook = "facebook"
 }
@@ -32,17 +31,7 @@ class LoginService {
     
     private let latestUserKey = "latestUser"
     
-//    private var loginType: LoginType? = nil
-
-//    private lazy var fbLoginManager = FBSDKLoginManager()
-
-//    private var tubeUserMap = [String: TubeUserInfo]()
-    
-    init() {
-        
-    }
-    
-    private func userFromCache() -> User? {
+    private func userFromUserDefault() -> User? {
         if let archived = UserDefaults.standard.object(forKey: latestUserKey) as? Data,
             let current = NSKeyedUnarchiver.unarchiveObject(with: archived) as? User {
             
@@ -60,8 +49,27 @@ class LoginService {
         }
     }
     
+    private func tubeuserFromUserDefault(_ user: User) -> TubeUserInfo? {
+        let id = user.id
+        
+        if loginManager == nil {
+            switch user.loginType {
+            case .naver:
+                self.loginManager = naverLoginManager()
+                
+            case .facebook:
+                self.loginManager = facebookLoginManager()
+                
+            case .kakaoTalk:
+                break
+            }
+        }
+        
+        return tubeUserMap[id]
+    }
+    
     func tryLogin(_ viewController: UIViewController, completion: ((TubeUserInfo?) -> Void)?) {
-        if let current = userFromCache() {
+        if let current = userFromUserDefault() {
             tubeUserInfo(from: current, completion: completion)
         } else {
             if let navigator = UIStoryboard(name: "Login", bundle: Bundle.main).instantiateInitialViewController() {
@@ -76,6 +84,21 @@ class LoginService {
     func login(_ type: LoginType, loginController: LoginController) {
         self.loginController = loginController
         
+        switch type {
+        
+        case .naver:
+            self.loginManager = naverLoginManager()
+            
+        case .facebook:
+            self.loginManager = facebookLoginManager()
+            
+        case .kakaoTalk:
+            break
+        
+        }
+    }
+    
+    private func loginHandler() -> ((User?) -> Void) {
         let callback = { (res: TubeUserInfo?) in
             if let listener = self.completion {
                 listener(res)
@@ -86,57 +109,27 @@ class LoginService {
             }
         }
         
-        switch type {
-        
-        case .naver:
-            let manager = NaverLogin()
-            manager.loginController = loginController
-            manager.tryLogin({ (res) in
-                if let user = res {
-                    self.tubeUserInfo(from: user, completion: callback)
-                }
-            })
-            
-            self.loginManager = manager
-            
-        case .iCloud:
-            break
-            
-        case .kakaoTalk:
-            break
-            
-        case .facebook:
-            break
+        return { (res: User?) in
+            if let user = res {
+                self.tubeUserInfo(from: user, completion: callback)
+            }
         }
     }
     
-    private func tryNaverLogin() {
-        
+    private func naverLoginManager() -> LoginProtocol {
+        let manager = NaverLogin()
+        manager.loginController = loginController
+        manager.tryLogin(loginHandler())
+        return manager
     }
     
-    private func tryiCloudLogin() {
-
+    private func facebookLoginManager() -> LoginProtocol {
+        let manager = FacebookLogin()
+        manager.loginController = loginController
+        manager.tryLogin(loginHandler())
+        return manager
     }
     
-    private func tryKakaotalkLogin() {
-        
-    }
-    
-    private func tryFacebookLogin() {
-//        if let vc = loginController {
-//            fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: vc, handler: { (res, e) in
-//                FBSDKProfile.enableUpdates(onAccessTokenChange: true)
-//                
-//                if let result = res, !result.isCancelled, let req = FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id,name,picture,gender,first_name,last_name,birthday,email"]) {
-//                    req.start(completionHandler: { (conn, data, e) in
-//                        print(data)
-//                    })
-//                } else if let error = e {
-//                    vc.view.presentToast(error.localizedDescription)
-//                }
-//            })
-//        }
-    }
     
     // tube
     
@@ -147,13 +140,15 @@ class LoginService {
         UserDefaults.standard.set(data, forKey: latestUserKey)
         UserDefaults.standard.synchronize()
         
-        tubeUserInfoFromServer(user.id, completion: { (tubeUser) in
+        ApiService.shared.updateUser(user)
+        
+        tubeUserInfoFromServer(user.id, loginType: user.loginType, completion: { (tubeUser) in
             if let userInfo = tubeUser {
                 callback(userInfo)
             } else {
                 AuthenticateService.shared.joinUser(user: user, completion: { (success) in
                     if success {
-                        self.tubeUserInfoFromServer(user.id, completion: completion)
+                        self.tubeUserInfoFromServer(user.id, loginType: user.loginType, completion: completion)
                     } else {
                         callback(nil)
                     }
@@ -162,10 +157,10 @@ class LoginService {
         })
     }
     
-    func tubeUserInfoFromServer(_ id: String, completion: ((TubeUserInfo?) -> Void)?) {
-        ApiService.shared.speakingTubeUserInfo(id, completion: { (res) in
+    func tubeUserInfoFromServer(_ id: String, loginType: LoginType, completion: ((TubeUserInfo?) -> Void)?) {
+        ApiService.shared.speakingTubeUserInfo(id, loginType: loginType, completion: { (res) in
             if let user = res {
-                self.tubeUserMap[id] = user
+                self.tubeUserMap[user.id] = user
             }
             
             if let callback = completion {
@@ -174,28 +169,30 @@ class LoginService {
         })
     }
     
-    func user(_ completion: ((TubeUserInfo?) -> Void)?) {
+    func user(_ completion: ((TubeUserInfo?, User?) -> Void)?) {
         let callback = completion ?? {(_) in }
         
-        if let cached = userFromCache() ?? userFromLoginManager() {
+        if let cached = userFromUserDefault() ?? userFromLoginManager() {
             tubeUserInfo(from: cached, completion: { (res) in
-                callback(res)
+                callback(res, cached)
             })
         } else {
-            callback(nil)
+            callback(nil, nil)
         }
     }
     
     func userId(completion: ((String) -> Void)?) {
         let callback = completion ?? {(_) in }
         
-        user { (res) in
+        user { (res, _) in
             callback(res?.id ?? kGuestId)
         }
     }
     
     func isActiveUser() throws -> Bool {
-        if let cached = userFromCache() ?? userFromLoginManager(), let user = tubeUserMap[cached.id] {
+        if let cached = userFromUserDefault() ?? userFromLoginManager(),
+            let user = tubeuserFromUserDefault(cached) {
+            
             if user.isActiveUser {
                 return true
             } else {
@@ -207,15 +204,15 @@ class LoginService {
     }
     
     func isOn() -> Bool {
-        if let cached = userFromCache() ?? userFromLoginManager() {
-            return tubeUserMap[cached.id] != nil
+        if let cached = userFromUserDefault() ?? userFromLoginManager() {
+            return tubeuserFromUserDefault(cached) != nil
         } else {
             return false
         }
     }
     
-    func proccess(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
-        return loginManager?.proccess(app, open: url, options: options) ?? false
+    func process(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+        return loginManager?.process(app, open: url, options: options) ?? false
     }
     
     func logout(completion: (() -> Void)?) {

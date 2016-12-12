@@ -65,7 +65,7 @@ class NetService {
         })
     }
     
-    func post(path: String, parameters: Parameters?) -> DataRequest {
+    func post(path: String, parameters: Parameters) -> DataRequest {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         let url = "\(host)\(path)"
@@ -81,6 +81,10 @@ class NetService {
     
     @discardableResult func getObject<T: ResponseObjectSerializable>(path: String, completionHandler: @escaping (DataResponse<T>) -> Void) -> DataRequest {
         return get(path: path).responseObject(completionHandler: completionHandler)
+    }
+    
+    @discardableResult func getObject<T: ResponseObjectSerializable>(path: String, parameters: Parameters?, completionHandler: @escaping (DataResponse<T>) -> Void) -> DataRequest {
+        return get(path: path, parameters: parameters).responseObject(completionHandler: completionHandler)
     }
     
     @discardableResult func getCollection<T: ResponseCollectionSerializable>(path: String, completionHandler: @escaping (DataResponse<[T]>) -> Void) -> Void {

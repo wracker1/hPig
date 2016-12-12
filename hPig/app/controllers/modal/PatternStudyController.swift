@@ -79,18 +79,20 @@ class PatternStudyController: UIViewController {
         super.viewWillDisappear(animated)
         
         if let time = startStudyTime {
-            LoginService.shared.userId(completion: { (userId) in
-                let dataService = CoreDataService.shared
-                let (entity, ctx) = dataService.entityDescription("time_log")
-                let log = TIME_LOG(entity: entity!, insertInto: ctx)
-                let vid = self.session?.id ?? ""
-                
-                log.mutating(userId: userId, vid: vid, startTime: time, type: "pattern")
-                dataService.save()
-                
-                let studySec = Int(time.timeIntervalSinceNow * -1)
-                ApiService.shared.updateStudyTime(userId, sec: studySec)
-            })
+            LoginService.shared.user { (_, u) in
+                if let user = u {
+                    let dataService = CoreDataService.shared
+                    let (entity, ctx) = dataService.entityDescription("time_log")
+                    let log = TIME_LOG(entity: entity!, insertInto: ctx)
+                    let vid = self.session?.id ?? ""
+                    
+                    log.mutating(userId: user.id, vid: vid, startTime: time, type: "pattern")
+                    dataService.save()
+                    
+                    let studySec = Int(time.timeIntervalSinceNow * -1)
+                    ApiService.shared.updateStudyTime(user.id, loginType: user.loginType, sec: studySec)
+                }
+            }
         }
         
         playerView.stopVideo()

@@ -39,5 +39,5 @@ protocol LoginProtocol {
     
     func logout(_ completion: (() -> Void)?)
     
-    func proccess(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool
+    func process(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool
 }

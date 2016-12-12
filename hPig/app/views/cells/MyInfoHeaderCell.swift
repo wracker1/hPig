@@ -70,7 +70,7 @@ class MyInfoHeaderCell: UICollectionViewCell {
         let id = user?.id ?? kGuestId
         let url = user?.image ?? "https://ssl.pstatic.net/static/pwe/address/nodata_45x45.gif"
 
-        nameLabel.text = "\(name) 님"
+        nameLabel.text = "\(name)"
         idLabel.text = "| \(id)"
 
         ImageDownloadService.shared.get(

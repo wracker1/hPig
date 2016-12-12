@@ -19,6 +19,7 @@
 		881076C71DBC76E40038C21C /* DataDeleteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881076C61DBC76E40038C21C /* DataDeleteController.swift */; };
 		881235BE1DC7466C002EC49A /* hTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881235BD1DC7466C002EC49A /* hTabBarController.swift */; };
 		881263811DFA75B4002E8200 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881263801DFA75B4002E8200 /* ApiService.swift */; };
+		881263831DFE4FA1002E8200 /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881263821DFE4FA1002E8200 /* FacebookLogin.swift */; };
 		881ED0041D93AB6400D612EF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0031D93AB6400D612EF /* Category.swift */; };
 		881ED0061D93AC0100D612EF /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0051D93AC0100D612EF /* CategoryService.swift */; };
 		881ED0081D93AEA200D612EF /* LayoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0071D93AEA200D612EF /* LayoutService.swift */; };
@@ -173,6 +174,7 @@
 		881076C61DBC76E40038C21C /* DataDeleteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDeleteController.swift; sourceTree = "<group>"; };
 		881235BD1DC7466C002EC49A /* hTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hTabBarController.swift; sourceTree = "<group>"; };
 		881263801DFA75B4002E8200 /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		881263821DFE4FA1002E8200 /* FacebookLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookLogin.swift; path = login/FacebookLogin.swift; sourceTree = "<group>"; };
 		881A76E91DB4633A00CF6409 /* youtube_ios_player_helper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = youtube_ios_player_helper.framework; path = "Pods/../build/Debug-iphoneos/youtube-ios-player-helper/youtube_ios_player_helper.framework"; sourceTree = "<group>"; };
 		881A76EB1DB464FC00CF6409 /* YouTubePlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YouTubePlayer.framework; path = "Pods/../build/Debug-iphoneos/YouTubePlayer/YouTubePlayer.framework"; sourceTree = "<group>"; };
 		881A76EF1DB465C100CF6409 /* youtube_ios_player_helper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = youtube_ios_player_helper.framework; path = "../../../Library/Developer/Xcode/DerivedData/hPig-byqselxxffzlqhcolurdyikdjjha/Build/Products/Debug-iphonesimulator/youtube-ios-player-helper/youtube_ios_player_helper.framework"; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 			children = (
 				882F92111DFD7BBC00151F23 /* LoginProtocol.swift */,
 				882F92131DFD7E1400151F23 /* NaverLogin.swift */,
+				881263821DFE4FA1002E8200 /* FacebookLogin.swift */,
 			);
 			name = login;
 			sourceTree = "<group>";
@@ -1073,6 +1076,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88CDBA231D92D1FF0058ECFE /* Model.swift in Sources */,
+				881263831DFE4FA1002E8200 /* FacebookLogin.swift in Sources */,
 				88C6EA911DD039DF0087FE9C /* PatternImageButton.swift in Sources */,
 				88DEDF001DB7644600781123 /* Channel.swift in Sources */,
 				884523101DBF561B00802510 /* SessionFeedController.swift in Sources */,

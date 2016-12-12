@@ -64,7 +64,7 @@ class NaverLogin: NSObject, LoginProtocol, NaverThirdPartyLoginConnectionDelegat
         }
     }
     
-    func proccess(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+    func process(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
         let result = Int(naverConnection.receiveAccessToken(url).rawValue)
         
         if let loginResult = hLoginResult(rawValue: result) {
@@ -95,7 +95,7 @@ class NaverLogin: NSObject, LoginProtocol, NaverThirdPartyLoginConnectionDelegat
                 callback(cached)
             } else {
                 ApiService.shared.naverUserInfo(accessToken: token, completion: { (res) in
-                    if let data = res, let user = User(data: data), user.id != kGuestId {
+                    if let data = res, let user = User(data: data, loginType: .naver), user.id != kGuestId {
                         self.userMap[token] = user
                         callback(user)
                     } else {

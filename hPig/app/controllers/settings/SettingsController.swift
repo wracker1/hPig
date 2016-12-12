@@ -126,8 +126,8 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
     }
     
     private func presentRegisterCouponAlert() {
-        LoginService.shared.user({ (userInfo) in
-            if let user = userInfo {
+        LoginService.shared.user({ (tuser, user) in
+            if let uData = user {
                 let alert = UIAlertController(title: "쿠폰 등록", message: "ㆍ쿠폰 번호를 입력해주세요.\nㆍ쿠폰 번호는 10자리입니다.\nㆍ쿠폰 패스 내역이 통합되어 반영됩니다.", preferredStyle: .alert)
                 
                 alert.messageLabel()?.textAlignment = .left
@@ -142,7 +142,7 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
                     if let couponNumber = alert.textFields?.first?.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) {
                         
                         if couponNumber.characters.count == 10 {
-                            ApiService.shared.registerCoupon(user.id, coupon: couponNumber, completion: { (message) in
+                            ApiService.shared.registerCoupon(uData.id, loginType: uData.loginType, coupon: couponNumber, completion: { (message) in
                                 self.view.presentToast(message)
                             })
                         } else {
@@ -158,9 +158,9 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
     
     @IBAction func updatePushNotiSetting(_ sender: AnyObject) {
         if let sw = sender as? UISwitch {
-            LoginService.shared.user({ (user) in
-                if let tubeUser = user {
-                    ApiService.shared.updateRemotePushSetting(tubeUser.id, isOn: sw.isOn)
+            LoginService.shared.user({ (_, u) in
+                if let user = u {
+                    ApiService.shared.updateRemotePushSetting(user.id, loginType: user.loginType, isOn: sw.isOn)
                 }
             })
         }

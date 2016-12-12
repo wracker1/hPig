@@ -26,8 +26,8 @@ class PurchaseController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.title = "패스 구매"
         
-        LoginService.shared.user { (user) in
-            if let info = user, let enddt = info.enddt {
+        LoginService.shared.user { (t, u) in
+            if let info = t, let enddt = info.enddt {
                 self.passDueLabel.text = "토탈패스 \(enddt) 까지"
             }
         }
@@ -78,11 +78,11 @@ class PurchaseController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let pass = passes[indexPath.row]
         if let payment = payments[pass.id] {
-            purchaseService.purchase(self, payment: payment, completion: { (userId, error) in
+            purchaseService.purchase(self, payment: payment, completion: { (u, error) in
                 if let reason = error {
                     self.view.presentToast(reason.localizedDescription)
-                } else if let id = userId {
-                    LoginService.shared.tubeUserInfoFromServer(id, completion: { (_) in
+                } else if let user = u {
+                    LoginService.shared.tubeUserInfoFromServer(user.id, loginType: user.loginType, completion: { (_) in
                         self.view.presentToast("패스 구매가 완료되었습니다.", completion: {
                             self.dismiss(animated: true, completion: nil)
                         })

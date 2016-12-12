@@ -43,46 +43,57 @@ class ApiService {
         }
     }
     
-    func updateRemotePushSetting(_ idOrEmail: String, isOn: Bool) {
-        let param = [
-            "id": idOrEmail,
-            "pushyn": isOn ? "Y" : "N"
-        ]
-        
-        NetService.shared.get(path: "/svc/api/user/update/pushyn", parameters: param).responseString(completionHandler: { (res) in
-            if let message = res.result.value {
-                print(message)
-            }
-        })
+    func updateRemotePushSetting(_ id: String, loginType: LoginType, isOn: Bool) {
+        if id != kGuestId {
+            let param = [
+                "id": id,
+                "loginType": loginType.rawValue,
+                "pushyn": isOn ? "Y" : "N"
+            ]
+            
+            NetService.shared.get(path: "/svc/api/user/update/pushyn", parameters: param).responseString(completionHandler: { (res) in
+                if let message = res.result.value {
+                    print(message)
+                }
+            })
+        }
     }
     
-    func registerCoupon(_ idOrEmail: String, coupon: String, completion: ((String) -> Void)?) {
-        let params = ["id": idOrEmail, "coupon": coupon.uppercased()]
-        
-        NetService.shared.get(path: "/svc/api/user/update/coupon", parameters: params).responseString(completionHandler: { (res) in
-            var message = "등록에 실패하였습니다. 다시 시도해주세요"
+    func registerCoupon(_ id: String, loginType: LoginType, coupon: String, completion: ((String) -> Void)?) {
+        if id != kGuestId {
+            let params = ["id": id,
+                          "coupon": coupon.uppercased(),
+                          "loginType": loginType.rawValue]
             
-            if let result = res.result.value {
-                switch result.lowercased() {
-                case "success":
-                    LoginService.shared.tubeUserInfoFromServer(idOrEmail, completion: nil)
-                    message = "등록 하였습니다"
-                    
-                case "duplicated":
-                    message = "이미 등록된 쿠폰 번호입니다"
-                    
-                case "not_available":
-                    message = "유효하지 않은 쿠폰 번호입니다"
-                    
-                default:
-                    message = "등록에 실패하였습니다. 다시 시도해주세요"
+            NetService.shared.get(path: "/svc/api/user/update/coupon", parameters: params).responseString(completionHandler: { (res) in
+                var message = "등록에 실패하였습니다. 다시 시도해주세요"
+                
+                if let result = res.result.value {
+                    switch result.lowercased() {
+                    case "success":
+                        LoginService.shared.tubeUserInfoFromServer(id, loginType: loginType, completion: nil)
+                        message = "등록 하였습니다"
+                        
+                    case "duplicated":
+                        message = "이미 등록된 쿠폰 번호입니다"
+                        
+                    case "not_available":
+                        message = "유효하지 않은 쿠폰 번호입니다"
+                        
+                    default:
+                        message = "등록에 실패하였습니다. 다시 시도해주세요"
+                    }
                 }
-            }
-            
+                
+                if let callback = completion {
+                    callback(message)
+                }
+            })
+        } else {
             if let callback = completion {
-                callback(message)
+                callback(AuthError.needToLogin.localizedDescription)
             }
-        })
+        }
     }
     
     func timeLineSessions(sort: String, category: String, level: String, page: Int, completion: (([Session]) -> Void)?) {
@@ -177,35 +188,55 @@ class ApiService {
         }
     }
     
-    func registerPass(_ idOrEmail: String, passType: String, completion: ((Error?) -> Void)?) {
-        let params: [String : String] = ["id": idOrEmail, "passtype": passType]
-        
-        NetService.shared.post(path: "/svc/api/user/update/pass", parameters: params).responseString(completionHandler: { (res) in
+    func registerPass(_ id: String, loginType: LoginType, passType: String, completion: ((Error?) -> Void)?) {
+        if id != kGuestId {
+            let params: [String : String] = ["id": id,
+                                             "passtype": passType,
+                                             "loginType": loginType.rawValue]
+            
+            NetService.shared.post(path: "/svc/api/user/update/pass", parameters: params).responseString(completionHandler: { (res) in
+                if let callback = completion {
+                    callback(res.result.error)
+                }
+            })
+        } else {
             if let callback = completion {
-                callback(res.result.error)
+                callback(AuthError.needToLogin)
             }
-        })
+        }
     }
     
     func updatePlayCount(vid: String, part: String) {
         NetService.shared.get(path: "/svc/api/video/update/playcnt?id=\(vid)&part=\(part)")
     }
     
-    func updateStudyTime(_ idOrEmail: String, sec: Int) {
-        NetService.shared.get(path: "/svc/api/user/update/studytime?id=\(idOrEmail)&time=\(sec)")
+    func updateStudyTime(_ id: String, loginType: LoginType, sec: Int) {
+        let params: [String: String] = ["id": id, "loginType": loginType.rawValue, "time": String(sec)]
+        
+        NetService.shared.post(path: "/svc/api/user/update/studytime", parameters: params).responseString { (res) in
+            print("update study time: \(res)")
+        }
     }
     
-    func updateVisitCount(_ idOrEmail: String, deviceToken: String?, completion: ((String) -> Void)?) {
-        let param = [
-            "id": idOrEmail,
-            "token": deviceToken ?? ""
-        ]
-        
-        NetService.shared.get(path: "/svc/api/user/update/visitcnt", parameters: param).responseString(completionHandler: { (res) in
+    func updateVisitCount(_ id: String, loginType: LoginType, deviceToken: String?, completion: ((String) -> Void)?) {
+        if id != kGuestId {
+            let param = [
+                "id": id,
+                "loginType": loginType.rawValue,
+                "token": deviceToken ?? ""
+            ]
+            
+            NetService.shared.get(path: "/svc/api/user/update/visitcnt", parameters: param).responseString(completionHandler: { (res) in
+                if let callback = completion {
+                    callback(res.result.value ?? "")
+                }
+            })
+        } else {
             if let callback = completion {
-                callback(res.result.value ?? "")
+                callback("")
             }
-        })
+        }
+        
     }
     
     func naverUserInfo(accessToken: String, completion: ((Data?) -> Void)?) {
@@ -218,51 +249,88 @@ class ApiService {
         }
     }
     
-    func speakingTubeUserInfo(_ idOrEmail: String, completion: ((TubeUserInfo?) -> Void)?) {
-        NetService.shared.getObject(path: "/svc/api/user/info?id=\(idOrEmail)", completionHandler: { (res: DataResponse<TubeUserInfo>) in
+    func speakingTubeUserInfo(_ id: String, loginType: LoginType, completion: ((TubeUserInfo?) -> Void)?) {
+        if id != kGuestId {
+            let param = [
+                "id": id,
+                "loginType": loginType.rawValue
+            ]
+            
+            NetService.shared.getObject(path: "/svc/api/user/info", parameters: param, completionHandler: { (res: DataResponse<TubeUserInfo>) in
+                if let callback = completion {
+                    callback(res.result.value)
+                }
+            })
+        } else {
             if let callback = completion {
-                callback(res.result.value)
+                callback(nil)
             }
-        })
+        }
     }
     
-    func joinUser(user: User, deviceToken: String?, completion: ((Bool) -> Void)?) {
-        var parameters: [String: Any] = ["id": user.id, "os": "I"]
-        
-        if let age = user.age {
-            do {
-                let regex = try NSRegularExpression(pattern: "[^-d]*", options: .caseInsensitive)
-                let range = NSRange(location: 0, length: age.characters.count)
-                
-                if let match = regex.firstMatch(in: age, options: [], range: range) {
-                    parameters["age"] = (age as NSString).substring(with: match.range)
+    func updateUser(_ user: User) {
+        if user.id != kGuestId {
+            let param = [
+                "id": user.id,
+                "loginType": user.loginType.rawValue,
+                "age": user.age ?? "0",
+                "gender": user.gender ?? "M",
+                "image": user.profileImage ?? "",
+                "nickname": user.nickname ?? "",
+                "os": "I"
+            ]
+            
+            NetService.shared.post(path: "/svc/api/user/update", parameters: param).responseString { (res) in
+                print("update user: \(res)")
+            }
+        }
+    }
+    
+    func joinUser(_ user: User, deviceToken: String?, completion: ((Bool) -> Void)?) {
+        if user.id != kGuestId {
+            var parameters: [String: Any] = ["id": user.id,
+                                             "os": "I",
+                                             "loginType": user.loginType.rawValue]
+            
+            if let age = user.age {
+                do {
+                    let regex = try NSRegularExpression(pattern: "[^-d]*", options: .caseInsensitive)
+                    let range = NSRange(location: 0, length: age.characters.count)
+                    
+                    if let match = regex.firstMatch(in: age, options: [], range: range) {
+                        parameters["age"] = (age as NSString).substring(with: match.range)
+                    }
+                } catch let e {
+                    print("\(e)")
                 }
-            } catch let e {
-                print("\(e)")
             }
-        }
-        
-        if let gender = user.gender {
-            parameters["gender"] = gender
-        }
-        
-        
-        if let nickname = user.nickname {
-            parameters["nickname"] = nickname
-        }
-        
-        if let image = user.profileImage {
-            parameters["image"] = image
-        }
-        
-        if let token = deviceToken {
-            parameters["token"] = token
-        }
-        
-        NetService.shared.post(path: "/svc/api/user/join", parameters: parameters).responseString(completionHandler: { (res) in
+            
+            if let gender = user.gender {
+                parameters["gender"] = gender
+            }
+            
+            
+            if let nickname = user.nickname {
+                parameters["nickname"] = nickname
+            }
+            
+            if let image = user.profileImage {
+                parameters["image"] = image
+            }
+            
+            if let token = deviceToken {
+                parameters["token"] = token
+            }
+            
+            NetService.shared.post(path: "/svc/api/user/join", parameters: parameters).responseString(completionHandler: { (res) in
+                if let callback = completion {
+                    callback(res.result.value != nil)
+                }
+            })
+        } else {
             if let callback = completion {
-                callback(res.result.value != nil)
+                callback(false)
             }
-        })
+        }
     }
 }

@@ -117,17 +117,19 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         }
         
         if let time = startStudyTime {
-            LoginService.shared.userId(completion: { (userId) in
-                let (entity, ctx) = CoreDataService.shared.entityDescription("time_log")
-                let log = TIME_LOG(entity: entity!, insertInto: ctx)
-                let id = self.session?.id ?? ""
-                
-                log.mutating(userId: userId, vid: id, startTime: time, type: "basic")
-                CoreDataService.shared.save()
-            
-                let studySec = Int(time.timeIntervalSinceNow * -1)
-                ApiService.shared.updateStudyTime(userId, sec: studySec)
-            })
+            LoginService.shared.user { (_, u) in
+                if let user = u {
+                    let (entity, ctx) = CoreDataService.shared.entityDescription("time_log")
+                    let log = TIME_LOG(entity: entity!, insertInto: ctx)
+                    let id = self.session?.id ?? ""
+                    
+                    log.mutating(userId: user.id, vid: id, startTime: time, type: "basic")
+                    CoreDataService.shared.save()
+                    
+                    let studySec = Int(time.timeIntervalSinceNow * -1)
+                    ApiService.shared.updateStudyTime(user.id, loginType: user.loginType, sec: studySec)
+                }
+            }
         }
         
         playerView.stopVideo()

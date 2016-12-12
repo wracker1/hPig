@@ -91,7 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        return LoginService.shared.proccess(app, open: url, options: options)
+        return LoginService.shared.process(app, open: url, options: options)
     }
 
     // MARK: - Core Data stack

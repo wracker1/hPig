@@ -24,7 +24,7 @@ class AuthenticateService {
                 callback(false)
             }
         } else {
-            ApiService.shared.joinUser(user: user, deviceToken: deviceToken(), completion: completion)
+            ApiService.shared.joinUser(user, deviceToken: deviceToken(), completion: completion)
         }
     }
     
@@ -43,15 +43,15 @@ class AuthenticateService {
         let callback = completion ?? {(_) in }
         
         DispatchQueue.global().async {
-            LoginService.shared.user({ (info) in
-                if let data = info {
-                    ApiService.shared.updateVisitCount(data.id, deviceToken: self.deviceToken(), completion: { (message) in
+            LoginService.shared.user({ (t, u) in
+                if let user = u {
+                    ApiService.shared.updateVisitCount(user.id, loginType: user.loginType, deviceToken: self.deviceToken(), completion: { (message) in
                         print("update visitcnt message: \(message)")
                         
-                        callback(info)
+                        callback(t)
                     })
                 } else {
-                    callback(info)
+                    callback(t)
                 }
             })
         }

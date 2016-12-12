@@ -28,10 +28,6 @@ class LoginController: UIViewController {
         LoginService.shared.login(.facebook, loginController: self)
     }
     
-    @IBAction func tryICloudLogin(_ sender: Any) {
-        LoginService.shared.login(.iCloud, loginController: self)
-    }
-    
     @IBAction func dismiss(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
