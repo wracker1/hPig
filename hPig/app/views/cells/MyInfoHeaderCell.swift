@@ -71,7 +71,13 @@ class MyInfoHeaderCell: UICollectionViewCell {
         let url = user?.image ?? "https://ssl.pstatic.net/static/pwe/address/nodata_45x45.gif"
 
         nameLabel.text = "\(name)"
-        idLabel.text = "| \(id)"
+        
+        if let loginType = LoginService.shared.loginType {
+            idLabel.text = "| \(id)"
+            idLabel.isHidden = loginType != .naver
+        } else {
+            idLabel.isHidden = true
+        }
 
         ImageDownloadService.shared.get(
             url: url,

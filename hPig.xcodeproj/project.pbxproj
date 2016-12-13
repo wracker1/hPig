@@ -68,7 +68,6 @@
 		884B0E8D1D93A0BB009748FF /* ImageDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884B0E8C1D93A0BB009748FF /* ImageDownloadService.swift */; };
 		8853766C1DB65C5D0076D1BF /* WordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8853766B1DB65C5D0076D1BF /* WordData.swift */; };
 		8859B2031DFEFE22008B2FCA /* localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8859B2051DFEFE22008B2FCA /* localization.strings */; };
-		8859B2071DFEFFBA008B2FCA /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8859B2091DFEFFBA008B2FCA /* Login.storyboard */; };
 		886085291D97D393009A9B3C /* BasicStudy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886085281D97D393009A9B3C /* BasicStudy.swift */; };
 		8860852E1D97D435009A9B3C /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8860852D1D97D435009A9B3C /* Global.swift */; };
 		886085301D97D74B009A9B3C /* SubtitleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8860852F1D97D74B009A9B3C /* SubtitleService.swift */; };
@@ -241,10 +240,8 @@
 		885376671DB12FBC0076D1BF /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "Pods/../build/Debug-iphoneos/RealmSwift/RealmSwift.framework"; sourceTree = "<group>"; };
 		8853766B1DB65C5D0076D1BF /* WordData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordData.swift; sourceTree = "<group>"; };
 		885376731DB67C770076D1BF /* hPig.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = hPig.entitlements; sourceTree = "<group>"; };
-		8859B2041DFEFE22008B2FCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/localization.strings; sourceTree = "<group>"; };
+		8858D26F1E00623300483DFF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/localization.strings; sourceTree = "<group>"; };
 		8859B2061DFEFE25008B2FCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/localization.strings; sourceTree = "<group>"; };
-		8859B2081DFEFFBA008B2FCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
-		8859B20F1DFF0369008B2FCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Login.strings; sourceTree = "<group>"; };
 		886085281D97D393009A9B3C /* BasicStudy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicStudy.swift; sourceTree = "<group>"; };
 		8860852D1D97D435009A9B3C /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Global.swift; path = etc/Global.swift; sourceTree = "<group>"; };
 		8860852F1D97D74B009A9B3C /* SubtitleService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtitleService.swift; sourceTree = "<group>"; };
@@ -550,7 +547,6 @@
 				88468A1C1DC343C100ACC60D /* Purchase.storyboard */,
 				887741651DB0738C00198666 /* WorkBook.storyboard */,
 				88DEDEFD1DB7637B00781123 /* ChannelMain.storyboard */,
-				8859B2091DFEFFBA008B2FCA /* Login.storyboard */,
 			);
 			path = storyboards;
 			sourceTree = "<group>";
@@ -981,7 +977,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				ko,
 			);
 			mainGroup = 88CDB9E01D92BDA30058ECFE;
 			productRefGroup = 88CDB9EA1D92BDA30058ECFE /* Products */;
@@ -1024,7 +1020,6 @@
 				88377CC31DE2D81000ABADC9 /* iRate.bundle in Resources */,
 				88C6EA9C1DD03ABB0087FE9C /* sentence_layer.xib in Resources */,
 				8877416D1DB0738C00198666 /* Settings.storyboard in Resources */,
-				8859B2071DFEFFBA008B2FCA /* Login.storyboard in Resources */,
 				88CDB9F71D92BDA30058ECFE /* Assets.xcassets in Resources */,
 				8877416F1DB0738C00198666 /* WorkBook.storyboard in Resources */,
 				8812638B1DFFDFDB002E8200 /* login_view.xib in Resources */,
@@ -1223,19 +1218,10 @@
 		8859B2051DFEFE22008B2FCA /* localization.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8859B2041DFEFE22008B2FCA /* Base */,
 				8859B2061DFEFE25008B2FCA /* en */,
+				8858D26F1E00623300483DFF /* ko */,
 			);
 			name = localization.strings;
-			sourceTree = "<group>";
-		};
-		8859B2091DFEFFBA008B2FCA /* Login.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8859B2081DFEFFBA008B2FCA /* Base */,
-				8859B20F1DFF0369008B2FCA /* en */,
-			);
-			name = Login.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1245,6 +1231,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1296,6 +1283,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

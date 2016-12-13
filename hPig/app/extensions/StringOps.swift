@@ -20,4 +20,8 @@ extension String {
     func substring(range: NSRange) -> String {
         return (self as NSString).substring(with: range)
     }
+    
+    func localized(_ comment: String? = nil) -> String {
+        return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: comment ?? "")
+    }
 }

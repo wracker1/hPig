@@ -33,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         ToastManager.shared.style.verticalPadding = 10
         
+        executeBatchTask()
+        
         return true
     }
     
@@ -48,7 +50,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            Crashlytics.sharedInstance().setUserName(name)
 //        }
     }
-
+    
+    func executeBatchTask() {
+        PurchaseService.shared.processPastPurchase().update()
+        
+        AuthenticateService.shared.updateVisitCount({ (user) in
+            self.logUser(user)
+        })
+    }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         AuthenticateService.shared.registerAPNSToken(deviceToken.reduce("", {$0 + String(format: "%02X", $1)}))
@@ -74,6 +83,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        
+        executeBatchTask()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -82,12 +93,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKAppEvents.activateApp()
         
         KOSession.handleDidBecomeActive()
-        
-        PurchaseService.shared.processPastPurchase().update()
-        
-        AuthenticateService.shared.updateVisitCount({ (user) in
-            self.logUser(user)
-        })
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

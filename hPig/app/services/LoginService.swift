@@ -23,11 +23,11 @@ class LoginService {
     }()
     
     private weak var viewController: UIViewController? = nil
+    private var completion: ((TubeUserInfo?) -> Void)? = nil
+    var loginType: LoginType? = nil
     
     private var loginManager: LoginProtocol? = nil
-    private var completion: ((TubeUserInfo?) -> Void)? = nil
     private var tubeUserMap = [String : TubeUserInfo]()
-    
     private let latestUserKey = "latestUser"
     
     private func userFromUserDefault() -> User? {
@@ -75,11 +75,12 @@ class LoginService {
             self.completion = completion
             
             let loginView = LoginView(frame: CGRectZero)
-            let alert = AlertService.shared.actionSheet(loginView, width: viewController.view.bounds.size.width)
+            let width = min(viewController.view.bounds.size.width, kMaxPopoverViewWidth)
+            let alert = AlertService.shared.actionSheet(loginView, width: width)
             
             if let target = sourceView {
                 alert.popoverPresentationController?.sourceView = target
-                alert.popoverPresentationController?.sourceRect = target.frame
+                alert.popoverPresentationController?.sourceRect = target.bounds
             }
             
             viewController.present(alert, animated: true, completion: nil)
@@ -108,7 +109,9 @@ class LoginService {
     }
     
     func login(_ type: LoginType) {
-        viewController?.dismiss(animated: false, completion: { 
+        viewController?.dismiss(animated: false, completion: {
+            self.loginType = type
+            
             switch type {
             case .naver:
                 self.loginManager = self.naverLoginManager()
@@ -250,6 +253,11 @@ class LoginService {
         
         tubeUserMap.removeAll()
         loginManager?.logout(nil)
+        
+        self.viewController = nil
+        self.loginType = nil
+        self.completion = nil
+        self.loginManager = nil
         
         if let callback = completion {
             callback()

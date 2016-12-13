@@ -110,7 +110,15 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
             toggleLogin(tableView.cellForRow(at: indexPath))
             
         case "couponRegisterCell":
-            presentRegisterCouponAlert()
+            if LoginService.shared.isOn() {
+                presentRegisterCouponAlert()
+            } else {
+                LoginService.shared.tryLogin(self,
+                                             sourceView: tableView.cellForRow(at: indexPath),
+                                             completion: { (_) in
+                    self.presentRegisterCouponAlert()
+                })
+            }
             
         case "mailCell":
             if MFMailComposeViewController.canSendMail() {

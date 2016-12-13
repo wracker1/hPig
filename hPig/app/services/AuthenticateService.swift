@@ -118,17 +118,21 @@ class AuthenticateService {
     }
     
     func confirmLogin(_ viewController: UIViewController, sourceView: UIView?, completion: ((TubeUserInfo?) -> Void)?) {
-        let alert = AlertService.shared.confirm(viewController,
-                                    title: "로그인이 필요합니다. 로그인 하시겠습니까?",
-                                    message: nil,
-                                    cancel: nil,
-                                    confirm: {
-                                        LoginService.shared.tryLogin(viewController,
-                                                                     sourceView: sourceView,
-                                                                     completion: completion)
-        })
+//        let alert = AlertService.shared.confirm(viewController,
+//                                    title: "로그인이 필요합니다. 로그인 하시겠습니까?",
+//                                    message: nil,
+//                                    cancel: nil,
+//                                    confirm: {
+//                                        LoginService.shared.tryLogin(viewController,
+//                                                                     sourceView: sourceView,
+//                                                                     completion: completion)
+//        })
+//        
+//        viewController.present(alert, animated: true, completion: nil)
         
-        viewController.present(alert, animated: true, completion: nil)
+        LoginService.shared.tryLogin(viewController,
+                                     sourceView: sourceView,
+                                     completion: completion)
     }
     
     private func handleNotLoginUser(_ id: String, viewController: UIViewController, sourceView: UIView?, sender: Any?, session: Session?) -> Bool {

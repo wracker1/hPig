@@ -97,12 +97,13 @@ class hInteractedLabel: UILabel {
         englishDictionaryView.time = time
         englishDictionaryView.update(data: data, completion: nil)
         
-        let alert = AlertService.shared.actionSheet(englishDictionaryView, width: self.bounds.size.width, handleCancel: { (_) in
+        let width = min(self.bounds.size.width, kMaxPopoverViewWidth)
+        let alert = AlertService.shared.actionSheet(englishDictionaryView, width: width, handleCancel: { (_) in
             self.videoPlayer?.playVideo()
         })
         
         alert.popoverPresentationController?.sourceView = self
-        alert.popoverPresentationController?.sourceRect = self.frame
+        alert.popoverPresentationController?.sourceRect = self.bounds
 
         viewController.present(alert, animated: true, completion: {
             self.englishDictionaryView.setNeedsLayout()

@@ -15,6 +15,7 @@ let kSelectCellWithIndexPath = Notification.Name("kSelectRowWithIndexPath")
 let kViewWillTransition = Notification.Name("viewWillTransition")
 let kGuestId = "guest"
 let kTokenKey = "deviceToken"
+let kMaxPopoverViewWidth: CGFloat = 420
 
 let preTimeMargin = CMTimeMakeWithSeconds(0.2, 600)
 let postTimeMargin = CMTimeMakeWithSeconds(0.3, 600)
