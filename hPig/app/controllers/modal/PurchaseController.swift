@@ -78,7 +78,9 @@ class PurchaseController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let pass = passes[indexPath.row]
         if let payment = payments[pass.id] {
-            purchaseService.purchase(self, payment: payment, completion: { (u, error) in
+            let cell = tableView.cellForRow(at: indexPath)
+            
+            purchaseService.purchase(self, sourceView: cell, payment: payment, completion: { (u, error) in
                 if let reason = error {
                     self.view.presentToast(reason.localizedDescription)
                 } else if let user = u {

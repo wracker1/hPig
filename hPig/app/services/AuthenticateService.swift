@@ -85,7 +85,12 @@ class AuthenticateService {
                     do {
                         return try LoginService.shared.isActiveUser()
                     } catch AuthError.needToLogin {
-                        return self.handleNotLoginUser(id, viewController: viewController, sender: sender, session: session)
+                        return self.handleNotLoginUser(id,
+                                                       viewController: viewController,
+                                                       sourceView: sender as? UIView,
+                                                       sender: sender,
+                                                       session: session)
+                        
                     } catch AuthError.unauthorized {
                         return self.handleUnauthrizedUser(viewController)
                     } catch let e {
@@ -100,7 +105,11 @@ class AuthenticateService {
             if LoginService.shared.isOn() {
                 return true
             } else {
-                return self.handleNotLoginUser(id, viewController: viewController, sender: sender, session: session)
+                return self.handleNotLoginUser(id,
+                                               viewController: viewController,
+                                               sourceView: sender as? UIView,
+                                               sender: sender,
+                                               session: session)
             }
             
         default:
@@ -108,20 +117,22 @@ class AuthenticateService {
         }
     }
     
-    func confirmLogin(_ viewController: UIViewController, completion: ((TubeUserInfo?) -> Void)?) {
+    func confirmLogin(_ viewController: UIViewController, sourceView: UIView?, completion: ((TubeUserInfo?) -> Void)?) {
         let alert = AlertService.shared.confirm(viewController,
                                     title: "로그인이 필요합니다. 로그인 하시겠습니까?",
                                     message: nil,
                                     cancel: nil,
                                     confirm: {
-                                        LoginService.shared.tryLogin(viewController, completion: completion)
+                                        LoginService.shared.tryLogin(viewController,
+                                                                     sourceView: sourceView,
+                                                                     completion: completion)
         })
         
         viewController.present(alert, animated: true, completion: nil)
     }
     
-    private func handleNotLoginUser(_ id: String, viewController: UIViewController, sender: Any?, session: Session?) -> Bool {
-        confirmLogin(viewController, completion: { (data) in
+    private func handleNotLoginUser(_ id: String, viewController: UIViewController, sourceView: UIView?, sender: Any?, session: Session?) -> Bool {
+        confirmLogin(viewController, sourceView: sourceView, completion: { (data) in
             if data != nil {
                 viewController.performSegue(withIdentifier: id, sender: sender)
             }

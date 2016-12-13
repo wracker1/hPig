@@ -107,7 +107,7 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
         
         switch id {
         case "loginCell":
-            toggleLogin()
+            toggleLogin(tableView.cellForRow(at: indexPath))
             
         case "couponRegisterCell":
             presentRegisterCouponAlert()
@@ -170,14 +170,14 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
         controller.dismiss(animated: true, completion: nil)
     }
     
-    private func toggleLogin() {
+    private func toggleLogin(_ cell: UITableViewCell?) {
         let authenticate = LoginService.shared
         if authenticate.isOn() {
             authenticate.logout {
                 self.tableView.reloadData()
             }
         } else {
-            authenticate.tryLogin(self) { (user) in
+            authenticate.tryLogin(self, sourceView: cell) { (user) in
                 if user != nil {
                     self.tableView.reloadData()
                 }

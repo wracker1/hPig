@@ -162,7 +162,7 @@ class MyInfoHeaderCell: UICollectionViewCell {
     
     func login() {
         if let controller = viewController {
-            LoginService.shared.tryLogin(controller, completion: { (user) in
+            LoginService.shared.tryLogin(controller, sourceView: loginButton, completion: { (user) in
                 self.loadUserInfo(user)
             })
         }

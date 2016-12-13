@@ -67,7 +67,7 @@ class LoginService {
         return tubeUserMap[id]
     }
     
-    func tryLogin(_ viewController: UIViewController, completion: ((TubeUserInfo?) -> Void)?) {
+    func tryLogin(_ viewController: UIViewController, sourceView: UIView?, completion: ((TubeUserInfo?) -> Void)?) {
         if let current = userFromUserDefault() {
             tubeUserInfo(from: current, completion: completion)
         } else {
@@ -76,6 +76,12 @@ class LoginService {
             
             let loginView = LoginView(frame: CGRectZero)
             let alert = AlertService.shared.actionSheet(loginView, width: viewController.view.bounds.size.width)
+            
+            if let target = sourceView {
+                alert.popoverPresentationController?.sourceView = target
+                alert.popoverPresentationController?.sourceRect = target.frame
+            }
+            
             viewController.present(alert, animated: true, completion: nil)
             
             loginView.facebookButton.addTarget(self, action: #selector(self.loginByFacebook), for: .touchUpInside)

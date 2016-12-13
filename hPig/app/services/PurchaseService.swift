@@ -76,10 +76,10 @@ class PurchaseService: NSObject, SKPaymentTransactionObserver, SKProductsRequest
         })
     }
     
-    func purchase(_ viewController: UIViewController, payment: SKPayment, completion: ((User?, Error?) -> Void)?) {
+    func purchase(_ viewController: UIViewController, sourceView: UIView?, payment: SKPayment, completion: ((User?, Error?) -> Void)?) {
         LoginService.shared.user({ (tuser, user) in
             if tuser == nil {
-                AuthenticateService.shared.confirmLogin(viewController, completion: nil)
+                AuthenticateService.shared.confirmLogin(viewController, sourceView: sourceView, completion: nil)
             } else {
                 DispatchQueue.global().async {
                     self.purchaseCompletion = completion
