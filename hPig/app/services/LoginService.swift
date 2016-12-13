@@ -72,12 +72,12 @@ class LoginService {
         if let current = userFromUserDefault() {
             tubeUserInfo(from: current, completion: completion)
         } else {
-            if let navigator = UIStoryboard(name: "Login", bundle: Bundle.main).instantiateInitialViewController() {
-                self.viewController = viewController
-                self.completion = completion
-                
-                viewController.present(navigator, animated: true, completion: nil)
-            }
+            self.viewController = viewController
+            self.completion = completion
+            
+            let loginView = LoginView(frame: CGRectZero)
+            let alert = AlertService.shared.actionSheet(loginView, width: viewController.view.bounds.size.width)
+            viewController.present(alert, animated: true, completion: nil)
         }
     }
     

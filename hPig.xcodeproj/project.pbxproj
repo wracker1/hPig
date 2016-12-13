@@ -22,6 +22,8 @@
 		881263831DFE4FA1002E8200 /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881263821DFE4FA1002E8200 /* FacebookLogin.swift */; };
 		881263861DFE986C002E8200 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 881263851DFE986C002E8200 /* KakaoOpenSDK.framework */; };
 		881263881DFE9F9D002E8200 /* KakaoLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881263871DFE9F9D002E8200 /* KakaoLogin.swift */; };
+		8812638B1DFFDFDB002E8200 /* login_view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8812638A1DFFDFDB002E8200 /* login_view.xib */; };
+		8812638D1DFFE8E5002E8200 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8812638C1DFFE8E5002E8200 /* LoginView.swift */; };
 		881ED0041D93AB6400D612EF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0031D93AB6400D612EF /* Category.swift */; };
 		881ED0061D93AC0100D612EF /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0051D93AC0100D612EF /* CategoryService.swift */; };
 		881ED0081D93AEA200D612EF /* LayoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0071D93AEA200D612EF /* LayoutService.swift */; };
@@ -180,6 +182,8 @@
 		881263821DFE4FA1002E8200 /* FacebookLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookLogin.swift; path = login/FacebookLogin.swift; sourceTree = "<group>"; };
 		881263851DFE986C002E8200 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		881263871DFE9F9D002E8200 /* KakaoLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KakaoLogin.swift; path = login/KakaoLogin.swift; sourceTree = "<group>"; };
+		8812638A1DFFDFDB002E8200 /* login_view.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = login_view.xib; path = loginView/login_view.xib; sourceTree = "<group>"; };
+		8812638C1DFFE8E5002E8200 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = loginView/LoginView.swift; sourceTree = "<group>"; };
 		881A76E91DB4633A00CF6409 /* youtube_ios_player_helper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = youtube_ios_player_helper.framework; path = "Pods/../build/Debug-iphoneos/youtube-ios-player-helper/youtube_ios_player_helper.framework"; sourceTree = "<group>"; };
 		881A76EB1DB464FC00CF6409 /* YouTubePlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YouTubePlayer.framework; path = "Pods/../build/Debug-iphoneos/YouTubePlayer/YouTubePlayer.framework"; sourceTree = "<group>"; };
 		881A76EF1DB465C100CF6409 /* youtube_ios_player_helper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = youtube_ios_player_helper.framework; path = "../../../Library/Developer/Xcode/DerivedData/hPig-byqselxxffzlqhcolurdyikdjjha/Build/Products/Debug-iphonesimulator/youtube-ios-player-helper/youtube_ios_player_helper.framework"; sourceTree = "<group>"; };
@@ -432,6 +436,15 @@
 			path = Kakao;
 			sourceTree = "<group>";
 		};
+		881263891DFFDFBE002E8200 /* loginView */ = {
+			isa = PBXGroup;
+			children = (
+				8812638A1DFFDFDB002E8200 /* login_view.xib */,
+				8812638C1DFFE8E5002E8200 /* LoginView.swift */,
+			);
+			name = loginView;
+			sourceTree = "<group>";
+		};
 		882F92071DFD35D400151F23 /* Facebook */ = {
 			isa = PBXGroup;
 			children = (
@@ -666,6 +679,7 @@
 		88C6EA681DD039DF0087FE9C /* uiviews */ = {
 			isa = PBXGroup;
 			children = (
+				881263891DFFDFBE002E8200 /* loginView */,
 				880FC9BE1DE7354100BDF70C /* tabBar */,
 				8844D0971DE2E35F009E84AE /* rateView */,
 				88C6EA9A1DD03A760087FE9C /* sentenceLayer */,
@@ -1016,6 +1030,7 @@
 				8859B2071DFEFFBA008B2FCA /* Login.storyboard in Resources */,
 				88CDB9F71D92BDA30058ECFE /* Assets.xcassets in Resources */,
 				8877416F1DB0738C00198666 /* WorkBook.storyboard in Resources */,
+				8812638B1DFFDFDB002E8200 /* login_view.xib in Resources */,
 				88377CC21DE2D81000ABADC9 /* Info.plist in Resources */,
 				88C6EA971DD039DF0087FE9C /* st_player_view.xib in Resources */,
 			);
@@ -1104,6 +1119,7 @@
 				881ED01C1D93B5B700D612EF /* TimeFormatServide.swift in Sources */,
 				884B0E8D1D93A0BB009748FF /* ImageDownloadService.swift in Sources */,
 				88468A261DC344D800ACC60D /* ChannelController.swift in Sources */,
+				8812638D1DFFE8E5002E8200 /* LoginView.swift in Sources */,
 				88468A271DC344D800ACC60D /* hActionPickerController.swift in Sources */,
 				88C6EA901DD039DF0087FE9C /* hInteractedLabel.swift in Sources */,
 				88C6EA7D1DD039DF0087FE9C /* ChannelInfoCell.swift in Sources */,
