@@ -9,13 +9,8 @@
 import Foundation
 
 class KakaoLogin: LoginProtocol {
-    weak var _loginController: UIViewController? = nil
     private var userMap = [String: User]()
-    
-    var loginController: UIViewController? {
-        get { return _loginController }
-        set { _loginController = newValue }
-    }
+    private weak var viewController: UIViewController? = nil
     
     private func errorCode(_ e: Error?) -> KOErrorCode? {
         if let error = e as? NSError {
@@ -63,7 +58,7 @@ class KakaoLogin: LoginProtocol {
                     }
                 })
             } else if let code = self.errorCode(e), code != KOErrorCancelled {
-                self.loginController?.view.presentToast(e.debugDescription)
+                self.viewController?.view.presentToast(e.debugDescription)
             } else {
                 callback(e)
             }
@@ -90,7 +85,9 @@ class KakaoLogin: LoginProtocol {
         }
     }
     
-    func tryLogin(_ completion: ((User?) -> Void)?) {
+    func tryLogin(from viewController: UIViewController?, completion: ((User?) -> Void)?) {
+        self.viewController = viewController
+        
         let callback = completion ?? {(_) in}
         
         if let user = currentUser() {
@@ -118,7 +115,7 @@ class KakaoLogin: LoginProtocol {
         userMap.removeAll()
         
         session()?.logoutAndClose { (success, e) in
-            if let error = e, let vc = self.loginController {
+            if let error = e, let vc = self.viewController {
                 vc.view.presentToast(error.localizedDescription)
             }
             

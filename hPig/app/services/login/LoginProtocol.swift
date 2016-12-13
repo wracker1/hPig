@@ -29,13 +29,11 @@ enum hLoginResult: Int {
 }
 
 protocol LoginProtocol {
-    var loginController: UIViewController? { get set }
-    
     func isOn() -> Bool
     
     func currentUser() -> User?
     
-    func tryLogin(_ completion: ((User?) -> Void)?)
+    func tryLogin(from viewController: UIViewController?, completion: ((User?) -> Void)?)
     
     func logout(_ completion: (() -> Void)?)
     

@@ -14,8 +14,7 @@ class NaverLogin: NSObject, LoginProtocol, NaverThirdPartyLoginConnectionDelegat
     
     private var userMap = [String: User]()
     private var completion: ((User?) -> Void)? = nil
-    
-    weak var _loginController: UIViewController? = nil
+    private weak var viewController: UIViewController? = nil
     
     override init() {
         super.init()
@@ -32,16 +31,12 @@ class NaverLogin: NSObject, LoginProtocol, NaverThirdPartyLoginConnectionDelegat
     
     // login protocol
     
-    var loginController: UIViewController? {
-        get { return _loginController }
-        set { _loginController = newValue }
-    }
-    
     func isOn() -> Bool {
         return currentUser() != nil
     }
     
-    func tryLogin(_ completion: ((User?) -> Void)?) {
+    func tryLogin(from viewController: UIViewController?, completion: ((User?) -> Void)?) {
+        self.viewController = viewController
         self.completion = completion
         naverConnection.requestThirdPartyLogin()
     }
@@ -113,8 +108,10 @@ class NaverLogin: NSObject, LoginProtocol, NaverThirdPartyLoginConnectionDelegat
     // naver delegate
     
     func oauth20ConnectionDidOpenInAppBrowser(forOAuth request: URLRequest!) {
-        if let vc = loginController, let navigator = vc.navigationController, let naverLoginController = NLoginThirdPartyOAuth20InAppBrowserViewController(request: request) {
-            navigator.pushViewController(naverLoginController, animated: true)
+        if let vc = viewController, let naverLoginController = NLoginThirdPartyOAuth20InAppBrowserViewController(request: request) {
+            
+            let navigator = UINavigationController(rootViewController: naverLoginController)
+            vc.present(navigator, animated: true, completion: nil)
         }
     }
     

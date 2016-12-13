@@ -41,7 +41,6 @@
 		882F920F1DFD35D400151F23 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882F920B1DFD35D400151F23 /* FBSDKShareKit.framework */; };
 		882F92121DFD7BBC00151F23 /* LoginProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F92111DFD7BBC00151F23 /* LoginProtocol.swift */; };
 		882F92141DFD7E1400151F23 /* NaverLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F92131DFD7E1400151F23 /* NaverLogin.swift */; };
-		88330E1D1DFBB2CB00DBF427 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88330E1C1DFBB2CB00DBF427 /* LoginController.swift */; };
 		88330E211DFBB71F00DBF427 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88330E201DFBB71F00DBF427 /* LoginService.swift */; };
 		88377CB61DDE8E5800ABADC9 /* StringOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88377CB51DDE8E5800ABADC9 /* StringOps.swift */; };
 		88377CC21DE2D81000ABADC9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88377CB81DE2D81000ABADC9 /* Info.plist */; };
@@ -205,7 +204,6 @@
 		882F920B1DFD35D400151F23 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		882F92111DFD7BBC00151F23 /* LoginProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginProtocol.swift; path = login/LoginProtocol.swift; sourceTree = "<group>"; };
 		882F92131DFD7E1400151F23 /* NaverLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NaverLogin.swift; path = login/NaverLogin.swift; sourceTree = "<group>"; };
-		88330E1C1DFBB2CB00DBF427 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		88330E201DFBB71F00DBF427 /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		88377CB51DDE8E5800ABADC9 /* StringOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringOps.swift; sourceTree = "<group>"; };
 		88377CB81DE2D81000ABADC9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -505,7 +503,6 @@
 				88468A1F1DC344D800ACC60D /* BasicStudyController.swift */,
 				88468A211DC344D800ACC60D /* hActionPickerController.swift */,
 				88468A231DC344D800ACC60D /* PatternStudyController.swift */,
-				88330E1C1DFBB2CB00DBF427 /* LoginController.swift */,
 			);
 			path = modal;
 			sourceTree = "<group>";
@@ -1142,7 +1139,6 @@
 				881ED0181D93B2B300D612EF /* YoutubeService.swift in Sources */,
 				88C6EA851DD039DF0087FE9C /* SessionCell.swift in Sources */,
 				88C6EA981DD039DF0087FE9C /* hSessionControlView.swift in Sources */,
-				88330E1D1DFBB2CB00DBF427 /* LoginController.swift in Sources */,
 				887933731DB8A56A001CB925 /* PATTERN+CoreDataClass.swift in Sources */,
 				88330E211DFBB71F00DBF427 /* LoginService.swift in Sources */,
 				88468A2C1DC3451F00ACC60D /* PurchaseController.swift in Sources */,

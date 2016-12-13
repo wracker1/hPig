@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import CoreGraphics
 
 class LoginView: UIView {
 
+    @IBOutlet weak var kakaoButton: UIButton!
+    @IBOutlet weak var facebookButton: UIButton!
+    @IBOutlet weak var naverButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
+    
     required override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -24,5 +30,8 @@ class LoginView: UIView {
     
     private func loadNib() {
         LayoutService.shared.layoutXibView(superview: self, nibName: "login_view")
-    }
+        
+        closeButton.layer.borderColor = secondPointColor.cgColor
+        closeButton.layer.borderWidth = 1.0
+    }    
 }

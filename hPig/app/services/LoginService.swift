@@ -23,7 +23,6 @@ class LoginService {
     }()
     
     private weak var viewController: UIViewController? = nil
-    private weak var loginController: LoginController? = nil
     
     private var loginManager: LoginProtocol? = nil
     private var completion: ((TubeUserInfo?) -> Void)? = nil
@@ -78,14 +77,34 @@ class LoginService {
             let loginView = LoginView(frame: CGRectZero)
             let alert = AlertService.shared.actionSheet(loginView, width: viewController.view.bounds.size.width)
             viewController.present(alert, animated: true, completion: nil)
+            
+            loginView.facebookButton.addTarget(self, action: #selector(self.loginByFacebook), for: .touchUpInside)
+            loginView.kakaoButton.addTarget(self, action: #selector(self.loginByKakao), for: .touchUpInside)
+            loginView.naverButton.addTarget(self, action: #selector(self.loginByNaver), for: .touchUpInside)
+            loginView.closeButton.addTarget(self, action: #selector(self.dismissLoginView), for: .touchUpInside)
         }
     }
     
-    func login(_ type: LoginType, loginController: LoginController) {
-        self.loginController = loginController
+    @objc func dismissLoginView() {
+        viewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func loginByNaver() {
+        login(.naver)
+    }
+    
+    @objc func loginByFacebook() {
+        login(.facebook)
+    }
+    
+    @objc func loginByKakao() {
+        login(.kakaoTalk)
+    }
+    
+    func login(_ type: LoginType) {
+        viewController?.dismiss(animated: false, completion: nil)
         
         switch type {
-        
         case .naver:
             self.loginManager = naverLoginManager()
             
@@ -103,10 +122,6 @@ class LoginService {
             if let listener = self.completion {
                 listener(res)
             }
-            
-            if res != nil, let vc = self.viewController {
-                vc.dismiss(animated: true, completion: nil)
-            }
         }
         
         return { (res: User?) in
@@ -118,22 +133,19 @@ class LoginService {
     
     private func naverLoginManager() -> LoginProtocol {
         let manager = NaverLogin()
-        manager.loginController = loginController
-        manager.tryLogin(loginHandler())
+        manager.tryLogin(from: viewController, completion: loginHandler())
         return manager
     }
     
     private func facebookLoginManager() -> LoginProtocol {
         let manager = FacebookLogin()
-        manager.loginController = loginController
-        manager.tryLogin(loginHandler())
+        manager.tryLogin(from: viewController, completion: loginHandler())
         return manager
     }
     
     private func kakaoLoginManager() -> LoginProtocol {
         let manager = KakaoLogin()
-        manager.loginController = loginController
-        manager.tryLogin(loginHandler())
+        manager.tryLogin(from: viewController, completion: loginHandler())
         return manager
     }
     

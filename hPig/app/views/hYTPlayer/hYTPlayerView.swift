@@ -52,12 +52,6 @@ class hYTPlayerView: WKYTPlayerView, WKYTPlayerViewDelegate {
 //        self.webView?.allowsInlineMediaPlayback = true
         self.delegate = self
         
-        do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategorySoloAmbient)
-//            try AVAudioSession.sharedInstance().setActive(true)
-        } catch {
-            
-        }
     }
     
     deinit {

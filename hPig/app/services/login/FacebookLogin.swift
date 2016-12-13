@@ -9,14 +9,14 @@
 import Foundation
 
 class FacebookLogin: LoginProtocol {
+    
     private lazy var fbLoginManager = FBSDKLoginManager()
+    private weak var viewController: UIViewController? = nil
     
     private var userMap = [String: User]()
     
-    weak var _loginController: UIViewController? = nil
-    
     private func requestReadPermission(completion: ((FBSDKLoginManagerLoginResult?, Error?) -> Void)?) {
-        if let vc = loginController {
+        if let vc = viewController {
             fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: vc, handler: { (res, e) in
                 FBSDKProfile.enableUpdates(onAccessTokenChange: true)
                 
@@ -53,7 +53,7 @@ class FacebookLogin: LoginProtocol {
                     callback(user)
                 } else if let nserror = reqError as? NSError {
                     if nserror.code != 8 {
-                        self.loginController?.view.presentToast(reqError.debugDescription)
+                        self.viewController?.view.presentToast(reqError.debugDescription)
                     } else {
                         callback(nil)
                     }
@@ -62,11 +62,6 @@ class FacebookLogin: LoginProtocol {
                 }
             })
         }
-    }
-    
-    var loginController: UIViewController? {
-        get { return _loginController }
-        set { _loginController = newValue }
     }
     
     func isOn() -> Bool {
@@ -81,7 +76,9 @@ class FacebookLogin: LoginProtocol {
         }
     }
     
-    func tryLogin(_ completion: ((User?) -> Void)?) {
+    func tryLogin(from viewController: UIViewController?, completion: ((User?) -> Void)?) {
+        self.viewController = viewController
+        
         let callback = completion ?? {(_) in}
         
         if isOn() {
@@ -99,7 +96,7 @@ class FacebookLogin: LoginProtocol {
                             callback(user)
                         } else if let nserror = reqError as? NSError {
                             if nserror.code != 8 {
-                                self.loginController?.view.presentToast(reqError.debugDescription)
+                                self.viewController?.view.presentToast(reqError.debugDescription)
                             } else {
                                 callback(nil)
                             }
@@ -108,7 +105,7 @@ class FacebookLogin: LoginProtocol {
                         }
                     })
                 } else {
-                    self.loginController?.view.presentToast(permError.debugDescription)
+                    self.viewController?.view.presentToast(permError.debugDescription)
                     callback(nil)
                 }
             })
