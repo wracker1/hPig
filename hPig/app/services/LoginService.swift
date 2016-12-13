@@ -102,19 +102,19 @@ class LoginService {
     }
     
     func login(_ type: LoginType) {
-        viewController?.dismiss(animated: false, completion: nil)
-        
-        switch type {
-        case .naver:
-            self.loginManager = naverLoginManager()
-            
-        case .facebook:
-            self.loginManager = facebookLoginManager()
-            
-        case .kakaoTalk:
-            self.loginManager = kakaoLoginManager()
-        
-        }
+        viewController?.dismiss(animated: false, completion: { 
+            switch type {
+            case .naver:
+                self.loginManager = self.naverLoginManager()
+                
+            case .facebook:
+                self.loginManager = self.facebookLoginManager()
+                
+            case .kakaoTalk:
+                self.loginManager = self.kakaoLoginManager()
+                
+            }
+        })
     }
     
     private func loginHandler() -> ((User?) -> Void) {

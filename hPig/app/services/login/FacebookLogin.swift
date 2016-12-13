@@ -16,18 +16,18 @@ class FacebookLogin: LoginProtocol {
     private var userMap = [String: User]()
     
     private func requestReadPermission(completion: ((FBSDKLoginManagerLoginResult?, Error?) -> Void)?) {
-        if let vc = viewController {
+        let callback = completion ?? {(r, e) in}
+        
+        if let token = FBSDKAccessToken.current(), token.hasGranted("public_profile") {
+            callback(nil, nil)
+        } else if let vc = viewController {
             fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: vc, handler: { (res, e) in
                 FBSDKProfile.enableUpdates(onAccessTokenChange: true)
                 
-                if let callback = completion {
-                    callback(res, e)
-                }
+                callback(res, e)
             })
         } else {
-            if let callback = completion {
-                callback(nil, nil)
-            }
+            callback(nil, nil)
         }
     }
     
@@ -36,31 +36,6 @@ class FacebookLogin: LoginProtocol {
             return id
         } else {
             return nil
-        }
-    }
-    
-    private func requestMyInfo(_ completion: ((User?) -> Void)?) {
-        let callback = completion ?? {(_) in}
-        
-        if let req = FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id,name,picture,gender,birthday,email,age_range"]) {
-            req.start(completionHandler: { (conn, data, reqError) in
-                if reqError == nil,
-                    let json = data as? [String: Any],
-                    let user = User(data: json, loginType: .facebook),
-                    let id = self.userId() {
-                    
-                    self.userMap[id] = user
-                    callback(user)
-                } else if let nserror = reqError as? NSError {
-                    if nserror.code != 8 {
-                        self.viewController?.view.presentToast(reqError.debugDescription)
-                    } else {
-                        callback(nil)
-                    }
-                } else {
-                    callback(nil)
-                }
-            })
         }
     }
     
@@ -85,27 +60,35 @@ class FacebookLogin: LoginProtocol {
             callback(currentUser())
         } else {
             requestReadPermission(completion: { (res, permError) in
-                if permError == nil, let req = FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id,name,picture,gender,birthday,email,age_range"]) {
-                    req.start(completionHandler: { (conn, data, reqError) in
-                        if reqError == nil,
-                            let json = data as? [String: Any],
-                            let user = User(data: json, loginType: .facebook),
-                            let id = self.userId() {
-                            
-                            self.userMap[id] = user
-                            callback(user)
-                        } else if let nserror = reqError as? NSError {
-                            if nserror.code != 8 {
-                                self.viewController?.view.presentToast(reqError.debugDescription)
-                            } else {
-                                callback(nil)
-                            }
-                        } else {
-                            callback(nil)
-                        }
-                    })
+                if permError == nil {
+                    self.requestMyInfo(completion: completion)
                 } else {
                     self.viewController?.view.presentToast(permError.debugDescription)
+                    callback(nil)
+                }
+            })
+        }
+    }
+    
+    private func requestMyInfo(completion: ((User?) -> Void)?) {
+        let callback = completion ?? {(_) in}
+        
+        if let req = FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id,name,picture,gender,birthday,email,age_range"]) {
+            req.start(completionHandler: { (conn, data, reqError) in
+                if reqError == nil,
+                    let json = data as? [String: Any],
+                    let user = User(data: json, loginType: .facebook),
+                    let id = self.userId() {
+                    
+                    self.userMap[id] = user
+                    callback(user)
+                } else if let nserror = reqError as? NSError {
+                    if nserror.code != 8 {
+                        self.viewController?.view.presentToast(reqError.debugDescription)
+                    } else {
+                        callback(nil)
+                    }
+                } else {
                     callback(nil)
                 }
             })
