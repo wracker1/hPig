@@ -79,7 +79,7 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
         patternExButton.layer.cornerRadius = 2
         patternExButton.layer.masksToBounds = true
         
-        completionLabel.layer.borderColor = UIColor.red.cgColor
+        completionLabel.layer.borderColor = secondPointColor.cgColor
         completionLabel.layer.borderWidth = 1.0
         completionLabel.layer.cornerRadius = 5.0
         

@@ -184,7 +184,7 @@ class MyInfoHeaderCell: UICollectionViewCell {
         }
 
         let chartDataSet = BarChartDataSet(values: dataEntries, label: "학습시간(분)")
-        chartDataSet.colors = [pointColor]
+        chartDataSet.colors = [secondPointColor]
 
         let chartData = BarChartData(dataSet: chartDataSet)
         chartView.data = chartData
