@@ -287,7 +287,10 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
             if useAutoScroll {
                 let indexPath = IndexPath(row: index, section: 0)
                 self.subtitleTableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
-                NotificationCenter.default.post(name: kSelectCellWithIndexPath, object: nil, userInfo: ["indexPath": indexPath])
+                
+                Timer.scheduledTimer(withTimeInterval: 0.15, repeats: false, block: { (_) in
+                    NotificationCenter.default.post(name: kSelectCellWithIndexPath, object: nil, userInfo: nil)
+                })
             }
         }
         
@@ -395,8 +398,6 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
                 playerView.seek(toTime: time.start)
             }
         }
-     
-        NotificationCenter.default.post(name: kSelectCellWithIndexPath, object: nil, userInfo: ["indexPath": indexPath])
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
