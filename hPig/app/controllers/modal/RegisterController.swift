@@ -16,6 +16,7 @@ class RegisterController: UIViewController {
     @IBOutlet weak var serviceAgree: UISwitch!
     @IBOutlet weak var personalInfoAgree: UISwitch!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var registerBarButton: UIButton!
     
     var user: User? = nil
     
@@ -29,6 +30,7 @@ class RegisterController: UIViewController {
         
         registerButton.layer.borderColor = secondPointColor.cgColor
         registerButton.layer.borderWidth = 1.0
+        registerBarButton.addTarget(self, action: #selector(self.registerUser(_:)), for: .touchUpInside)
         
         
         if let userData = user {

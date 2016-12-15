@@ -160,11 +160,22 @@
                                 </connections>
                             </button>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" id="TzT-Ql-2j1">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="A1h-fj-G9F">
+                                <rect key="frame" x="294" y="7" width="65" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <state key="normal" title="회원가입">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="nameField" destination="jjh-ql-Hyh" id="Uax-lu-BnF"/>
                         <outlet property="personalInfoAgree" destination="2sb-ie-WZF" id="aqo-et-NhC"/>
                         <outlet property="profileImageView" destination="0cc-QA-5KZ" id="kvC-m8-Hek"/>
+                        <outlet property="registerBarButton" destination="A1h-fj-G9F" id="wYp-6L-HnA"/>
                         <outlet property="registerButton" destination="RI1-dN-gn1" id="GNN-Z6-Mgc"/>
                         <outlet property="serviceAgree" destination="BG4-ta-Ql8" id="UIr-pw-bX7"/>
                     </connections>
