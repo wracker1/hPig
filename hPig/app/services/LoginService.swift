@@ -30,6 +30,27 @@ class LoginService {
     private var tubeUserMap = [String : TubeUserInfo]()
     private let latestUserKey = "latestUser"
     
+    init() {
+        NotificationCenter.default.addObserver(forName: kRegisterCompletion, object: nil, queue: nil, using: { (notif) in
+            if let from = self.viewController, let user = notif.object as? User {
+                from.view.presentToast("회원가입이 완료되었습니다.")
+                
+                self.createUserInfoUserDefault(user: user)
+                self.tubeUserInfoFromServer(user.id, loginType: user.loginType, completion: self.completion)
+            }
+        })
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func createUserInfoUserDefault(user: User) {
+        let data = NSKeyedArchiver.archivedData(withRootObject: user)
+        UserDefaults.standard.set(data, forKey: latestUserKey)
+        UserDefaults.standard.synchronize()
+    }
+    
     private func userFromUserDefault() -> User? {
         if let archived = UserDefaults.standard.object(forKey: latestUserKey) as? Data,
             let current = NSKeyedUnarchiver.unarchiveObject(with: archived) as? User {
@@ -38,6 +59,13 @@ class LoginService {
         } else {
             return nil
         }
+    }
+    
+    private func removeUserInfoFromCache(id: String) {
+        UserDefaults.standard.removeObject(forKey: id)
+        UserDefaults.standard.synchronize()
+        
+        tubeUserMap.removeAll()
     }
     
     private func userFromLoginManager() -> User? {
@@ -50,20 +78,7 @@ class LoginService {
     
     private func tubeuserFromMemCache(_ user: User) -> TubeUserInfo? {
         let id = user.id
-        
-        if loginManager == nil {
-            switch user.loginType {
-            case .naver:
-                self.loginManager = naverLoginManager()
-                
-            case .facebook:
-                self.loginManager = facebookLoginManager()
-                
-            case .kakaoTalk:
-                self.loginManager = kakaoLoginManager()
-            }
-        }
-        
+        self.loginManager = self.loginProtocol(user.loginType)
         return tubeUserMap[id]
     }
     
@@ -109,24 +124,29 @@ class LoginService {
     }
     
     func login(_ type: LoginType) {
-        viewController?.dismiss(animated: false, completion: {
-            self.loginType = type
-            
-            switch type {
-            case .naver:
-                self.loginManager = self.naverLoginManager()
-                
-            case .facebook:
-                self.loginManager = self.facebookLoginManager()
-                
-            case .kakaoTalk:
-                self.loginManager = self.kakaoLoginManager()
-                
-            }
-        })
+        if let controller = viewController {
+            controller.dismiss(animated: false, completion: {
+                self.loginType = type
+                self.loginManager = self.loginProtocol(type)
+                self.loginManager?.tryLogin(from: controller, completion: self.loginHandler(controller))
+            })
+        }
     }
     
-    private func loginHandler() -> ((User?) -> Void) {
+    private func loginProtocol(_ type: LoginType) -> LoginProtocol {
+        switch type {
+        case .naver:
+            return NaverLogin()
+            
+        case .facebook:
+            return FacebookLogin()
+            
+        case .kakaoTalk:
+            return KakaoLogin()
+        }
+    }
+    
+    private func loginHandler(_ fromViewController: UIViewController?) -> ((User?) -> Void) {
         let callback = { (res: TubeUserInfo?) in
             if let listener = self.completion {
                 listener(res)
@@ -135,27 +155,22 @@ class LoginService {
         
         return { (res: User?) in
             if let user = res {
-                self.tubeUserInfo(from: user, completion: callback)
+                self.tubeUserInfo(from: user, completion: { (info) in
+                    if let tuser = info {
+                        callback(tuser)
+                    } else {
+                        if let navigator = UIStoryboard(name: "Register", bundle: Bundle.main).instantiateInitialViewController() as? UINavigationController,
+                            let registerController = navigator.topViewController as? RegisterController {
+                            registerController.user = user
+                            
+                            fromViewController?.present(navigator, animated: true, completion: nil)
+                        }
+                    }
+                })
+            } else {
+                callback(nil)
             }
         }
-    }
-    
-    private func naverLoginManager() -> LoginProtocol {
-        let manager = NaverLogin()
-        manager.tryLogin(from: viewController, completion: loginHandler())
-        return manager
-    }
-    
-    private func facebookLoginManager() -> LoginProtocol {
-        let manager = FacebookLogin()
-        manager.tryLogin(from: viewController, completion: loginHandler())
-        return manager
-    }
-    
-    private func kakaoLoginManager() -> LoginProtocol {
-        let manager = KakaoLogin()
-        manager.tryLogin(from: viewController, completion: loginHandler())
-        return manager
     }
     
     
@@ -163,27 +178,19 @@ class LoginService {
     
     private func tubeUserInfo(from user: User, completion: ((TubeUserInfo?) -> Void)?) {
         let callback = completion ?? {(_) in }
-        
-        let data = NSKeyedArchiver.archivedData(withRootObject: user)
-        UserDefaults.standard.set(data, forKey: latestUserKey)
-        UserDefaults.standard.synchronize()
+
+        createUserInfoUserDefault(user: user)
         
         if let tubeUser = tubeuserFromMemCache(user) {
             callback(tubeUser)
         } else {
-            ApiService.shared.updateUser(user)
-            
             tubeUserInfoFromServer(user.id, loginType: user.loginType, completion: { (tubeUser) in
                 if let userInfo = tubeUser {
+                    ApiService.shared.updateUser(user)
+                    
                     callback(userInfo)
                 } else {
-                    AuthenticateService.shared.joinUser(user: user, completion: { (success) in
-                        if success {
-                            self.tubeUserInfoFromServer(user.id, loginType: user.loginType, completion: completion)
-                        } else {
-                            callback(nil)
-                        }
-                    })
+                    callback(nil)
                 }
             })
         }
@@ -193,6 +200,8 @@ class LoginService {
         ApiService.shared.speakingTubeUserInfo(id, loginType: loginType, completion: { (res) in
             if let user = res {
                 self.tubeUserMap[user.id] = user
+            } else {
+                self.logout(completion: nil)
             }
             
             if let callback = completion {
@@ -248,16 +257,8 @@ class LoginService {
     }
     
     func logout(completion: (() -> Void)?) {
-        UserDefaults.standard.removeObject(forKey: latestUserKey)
-        UserDefaults.standard.synchronize()
-        
-        tubeUserMap.removeAll()
+        removeUserInfoFromCache(id: latestUserKey)
         loginManager?.logout(nil)
-        
-        self.viewController = nil
-        self.loginType = nil
-        self.completion = nil
-        self.loginManager = nil
         
         if let callback = completion {
             callback()

@@ -286,11 +286,27 @@ class ApiService {
         }
     }
     
-    func joinUser(_ user: User, deviceToken: String?, completion: ((Bool) -> Void)?) {
+    func withdrawalUser(_ id: String, loginType: LoginType, completion: ((Bool) -> Void)?) {
+        let callback = completion ?? {(_) in}
+        
+        if id != kGuestId {
+            let param: [String: Any] = ["id": id, "loginType": loginType.rawValue]
+            
+            NetService.shared.post(path: "/svc/api/user/secession", parameters: param).responseString { (res) in
+                callback((res.result.value ?? "").lowercased() == "success")
+            }
+        } else {
+            callback(false)
+        }
+    }
+    
+    func joinUser(_ user: User, name: String?, deviceToken: String?, completion: ((Bool) -> Void)?) {
         if user.id != kGuestId {
             var parameters: [String: Any] = ["id": user.id,
                                              "os": "I",
                                              "loginType": user.loginType.rawValue]
+            
+            parameters["nickname"] = name ?? user.name ?? user.nickname ?? ""
             
             if let age = user.age {
                 do {
@@ -307,11 +323,6 @@ class ApiService {
             
             if let gender = user.gender {
                 parameters["gender"] = gender
-            }
-            
-            
-            if let nickname = user.nickname {
-                parameters["nickname"] = nickname
             }
             
             if let image = user.profileImage {

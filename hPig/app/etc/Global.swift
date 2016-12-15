@@ -13,6 +13,8 @@ let kToggleKoreanLabelVisible = Notification.Name("kToggleKoreanLabelVisible")
 let kToggleEnglishLabelVisible = Notification.Name("kToggleEnglishLabelVisible")
 let kSelectCellWithIndexPath = Notification.Name("kSelectRowWithIndexPath")
 let kViewWillTransition = Notification.Name("viewWillTransition")
+let kRegisterCompletion = Notification.Name("kRegisterCompletion")
+
 let kGuestId = "guest"
 let kTokenKey = "deviceToken"
 let kMaxPopoverViewWidth: CGFloat = 420

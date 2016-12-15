@@ -18,13 +18,13 @@ class AuthenticateService {
     
     private var pushToken: String? = nil
     
-    func joinUser(user: User, completion: ((Bool) -> Void)?) {
+    func joinUser(user: User, name: String?, completion: ((Bool) -> Void)?) {
         if user.id.isEmpty {
             if let callback = completion {
                 callback(false)
             }
         } else {
-            ApiService.shared.joinUser(user, deviceToken: deviceToken(), completion: completion)
+            ApiService.shared.joinUser(user, name: name, deviceToken: deviceToken(), completion: completion)
         }
     }
     

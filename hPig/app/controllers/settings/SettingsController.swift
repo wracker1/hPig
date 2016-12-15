@@ -30,7 +30,7 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
             return [
                 "pass": ["purchaseCell", "couponRegisterCell"],
                 "info": ["faqCell", "mailCell"],
-                "my": ["versionCell", "pushCell", "delDataCell", "loginCell"]
+                "my": ["versionCell", "pushCell", "delDataCell", "loginCell", "withdrawalCell"]
             ]
             
         } else {
@@ -109,6 +109,9 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
         case "loginCell":
             toggleLogin(tableView.cellForRow(at: indexPath))
             
+        case "withdrawalCell":
+            withdrawalUser()
+            
         case "couponRegisterCell":
             if LoginService.shared.isOn() {
                 presentRegisterCouponAlert()
@@ -131,6 +134,26 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    private func withdrawalUser() {
+        let alert = AlertService.shared.confirm(self, title: "회원탈퇴", message: "정말 탈퇴하시려고요? ㅠㅠ", cancel: nil, confirm: {
+            LoginService.shared.user({ (_, u) in
+                if let user = u {
+                    ApiService.shared.withdrawalUser(user.id, loginType: user.loginType, completion: { (success) in
+                        if success {
+                            self.view.presentToast("탈퇴 하였습니다.")
+                        }
+                        
+                        LoginService.shared.logout(completion: {
+                            self.tableView.reloadData()
+                        })
+                    })
+                }
+            })
+        })
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     private func presentRegisterCouponAlert() {
