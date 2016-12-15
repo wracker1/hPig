@@ -32,15 +32,23 @@ class KakaoLogin: LoginProtocol {
     private func sessionOpen(completion: ((Error?) -> Void)?) {
         let callback = completion ?? {(_) in}
         
-        session()?.open(completionHandler: { (e) in
-            if let code = self.errorCode(e), code == KOErrorAlreadyLoginedUser {
-                callback(nil)
-            } else if e == nil {
-                callback(nil)
-            } else {
-                callback(e)
-            }
-        })
+        if let session = session() {
+            session.close()
+            
+            session.open(completionHandler: { (e) in
+                if let code = self.errorCode(e), code == KOErrorAlreadyLoginedUser {
+                    callback(nil)
+                } else if e == nil {
+                    callback(nil)
+                } else {
+                    callback(e)
+                }
+            })
+        } else {
+            callback(NSError(domain: "can't get kakao session",
+                             code: Int(KOErrorDeactivatedSession.rawValue),
+                             userInfo: nil))
+        }
     }
     
     private func requestPermission(completion: ((Error?) -> Void)?) {
@@ -112,17 +120,23 @@ class KakaoLogin: LoginProtocol {
     }
     
     func logout(_ completion: (() -> Void)?) {
+        let callback = completion ?? {}
+        
         userMap.removeAll()
         
-        session()?.logoutAndClose { (success, e) in
-            if let error = e, let vc = self.viewController {
-                vc.view.presentToast(error.localizedDescription)
-            }
-            
-            if let callback = completion {
+        if let session = session() {
+            session.logoutAndClose { (success, e) in
+                if let error = e, let vc = self.viewController {
+                    vc.view.presentToast(error.localizedDescription)
+                }
+                
+                
                 callback()
             }
+        } else {
+            callback()
         }
+        
     }
     
     func process(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
