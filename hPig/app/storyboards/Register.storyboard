@@ -38,87 +38,115 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0cc-QA-5KZ">
-                                <rect key="frame" x="137" y="84" width="100" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="eMG-YH-TiH"/>
-                                    <constraint firstAttribute="height" constant="100" id="wPO-9B-Tgd"/>
-                                </constraints>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jjh-ql-Hyh">
-                                <rect key="frame" x="98" y="204" width="180" height="35"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="0.14316799496644295" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="180" id="Bvb-87-RX1"/>
-                                    <constraint firstAttribute="height" constant="35" id="EpI-0Z-6IA"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stroke_line" translatesAutoresizingMaskIntoConstraints="NO" id="7vV-yl-Eee">
-                                <rect key="frame" x="26" y="259" width="323" height="1"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="gI9-fJ-tui"/>
-                                </constraints>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="SXu-Vh-LOg">
-                                <rect key="frame" x="36" y="300" width="303" height="84"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heb-oZ-KLm">
+                                <rect key="frame" x="0.0" y="138.5" width="375" height="390"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CvT-Xf-Jss">
-                                        <rect key="frame" x="0.0" y="0.0" width="303" height="32"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0cc-QA-5KZ">
+                                        <rect key="frame" x="137.5" y="10" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="eMG-YH-TiH"/>
+                                            <constraint firstAttribute="height" constant="100" id="wPO-9B-Tgd"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jjh-ql-Hyh">
+                                        <rect key="frame" x="97.5" y="130" width="180" height="35"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.14316799496644295" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="Bvb-87-RX1"/>
+                                            <constraint firstAttribute="height" constant="35" id="EpI-0Z-6IA"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stroke_line" translatesAutoresizingMaskIntoConstraints="NO" id="7vV-yl-Eee">
+                                        <rect key="frame" x="20" y="185" width="335" height="1"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="gI9-fJ-tui"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="SXu-Vh-LOg">
+                                        <rect key="frame" x="30" y="206" width="315" height="84"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jf-5P-HKJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="254" height="32"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                                <state key="normal" title="서비스 이용약관 동의 ▶">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="Duh-5J-CcG" kind="show" identifier="showServiceAgree" id="86p-eA-kwE"/>
-                                                </connections>
-                                            </button>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BG4-ta-Ql8">
-                                                <rect key="frame" x="254" y="1" width="51" height="31"/>
-                                                <color key="onTintColor" red="0.98431372549999996" green="0.2274509804" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
-                                            </switch>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CvT-Xf-Jss">
+                                                <rect key="frame" x="0.0" y="0.0" width="315" height="32"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jf-5P-HKJ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="266" height="32"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                        <state key="normal" title="서비스 이용약관 동의 ▶">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <segue destination="Duh-5J-CcG" kind="show" identifier="showServiceAgree" id="86p-eA-kwE"/>
+                                                        </connections>
+                                                    </button>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BG4-ta-Ql8">
+                                                        <rect key="frame" x="266" y="0.5" width="51" height="31"/>
+                                                        <color key="onTintColor" red="0.98431372549999996" green="0.2274509804" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </switch>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FE0-kw-woi">
+                                                <rect key="frame" x="0.0" y="52" width="315" height="32"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0Q-bI-fVD">
+                                                        <rect key="frame" x="0.0" y="0.0" width="266" height="32"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                        <state key="normal" title="개인정보 제공 동의 ▶">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <segue destination="Duh-5J-CcG" kind="show" identifier="showPersonalAgree" id="BZf-s3-SVO"/>
+                                                        </connections>
+                                                    </button>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2sb-ie-WZF">
+                                                        <rect key="frame" x="266" y="0.5" width="51" height="31"/>
+                                                        <color key="onTintColor" red="0.98431372549999996" green="0.2274509804" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </switch>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FE0-kw-woi">
-                                        <rect key="frame" x="0.0" y="52" width="303" height="32"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0Q-bI-fVD">
-                                                <rect key="frame" x="0.0" y="0.0" width="254" height="32"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                                <state key="normal" title="개인정보 제공 동의 ▶">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="Duh-5J-CcG" kind="show" identifier="showPersonalAgree" id="BZf-s3-SVO"/>
-                                                </connections>
-                                            </button>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2sb-ie-WZF">
-                                                <rect key="frame" x="254" y="1" width="51" height="31"/>
-                                                <color key="onTintColor" red="0.98431372549999996" green="0.2274509804" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
-                                            </switch>
-                                        </subviews>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RI1-dN-gn1">
+                                        <rect key="frame" x="102.5" y="320" width="170" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="3AB-uH-Bo4"/>
+                                            <constraint firstAttribute="width" constant="170" id="yWu-q7-811"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <state key="normal" title="회원가입">
+                                            <color key="titleColor" red="0.98431372549999996" green="0.2274509804" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="registerUser:" destination="8op-jV-Ijq" eventType="touchUpInside" id="KIy-R7-981"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                            </stackView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="RI1-dN-gn1" firstAttribute="centerX" secondItem="heb-oZ-KLm" secondAttribute="centerX" id="2fj-Cj-RB9"/>
+                                    <constraint firstItem="jjh-ql-Hyh" firstAttribute="top" secondItem="0cc-QA-5KZ" secondAttribute="bottom" constant="20" id="2pE-VZ-1p3"/>
+                                    <constraint firstItem="7vV-yl-Eee" firstAttribute="top" secondItem="jjh-ql-Hyh" secondAttribute="bottom" constant="20" id="5pC-nB-fzN"/>
+                                    <constraint firstAttribute="height" constant="390" id="610-AB-hkI"/>
+                                    <constraint firstItem="7vV-yl-Eee" firstAttribute="leading" secondItem="heb-oZ-KLm" secondAttribute="leadingMargin" constant="12" id="6VA-eq-PHo"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="SXu-Vh-LOg" secondAttribute="trailing" constant="22" id="PNf-Hl-lMF"/>
+                                    <constraint firstItem="SXu-Vh-LOg" firstAttribute="top" secondItem="7vV-yl-Eee" secondAttribute="bottom" constant="20" id="Q2Y-BJ-9Yb"/>
+                                    <constraint firstItem="0cc-QA-5KZ" firstAttribute="top" secondItem="heb-oZ-KLm" secondAttribute="top" constant="10" id="YOc-bR-dWa"/>
+                                    <constraint firstItem="SXu-Vh-LOg" firstAttribute="centerX" secondItem="heb-oZ-KLm" secondAttribute="centerX" id="Z8e-7f-gUP"/>
+                                    <constraint firstItem="0cc-QA-5KZ" firstAttribute="centerX" secondItem="heb-oZ-KLm" secondAttribute="centerX" id="cRM-tu-UCg"/>
+                                    <constraint firstItem="jjh-ql-Hyh" firstAttribute="centerX" secondItem="heb-oZ-KLm" secondAttribute="centerX" id="iQm-dS-1yY"/>
+                                    <constraint firstItem="RI1-dN-gn1" firstAttribute="top" secondItem="SXu-Vh-LOg" secondAttribute="bottom" constant="30" id="iji-e7-qlX"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="7vV-yl-Eee" secondAttribute="trailing" constant="12" id="uWV-hz-Hpo"/>
+                                    <constraint firstItem="SXu-Vh-LOg" firstAttribute="leading" secondItem="heb-oZ-KLm" secondAttribute="leadingMargin" constant="22" id="vwF-AE-cNE"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="7vV-yl-Eee" secondAttribute="trailing" constant="10" id="5de-nc-EQh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="SXu-Vh-LOg" secondAttribute="trailing" constant="20" id="BMn-kp-y0D"/>
-                            <constraint firstItem="SXu-Vh-LOg" firstAttribute="leading" secondItem="szD-Fe-7co" secondAttribute="leadingMargin" constant="20" id="Ea5-ep-rIc"/>
-                            <constraint firstItem="SXu-Vh-LOg" firstAttribute="top" secondItem="7vV-yl-Eee" secondAttribute="bottom" constant="40" id="N88-gn-H0G"/>
-                            <constraint firstItem="7vV-yl-Eee" firstAttribute="top" secondItem="jjh-ql-Hyh" secondAttribute="bottom" constant="20" id="WJ3-Nl-cJP"/>
-                            <constraint firstItem="0cc-QA-5KZ" firstAttribute="centerX" secondItem="szD-Fe-7co" secondAttribute="centerX" id="d8s-RM-ULL"/>
-                            <constraint firstItem="7vV-yl-Eee" firstAttribute="leading" secondItem="szD-Fe-7co" secondAttribute="leadingMargin" constant="10" id="dKU-o3-r7P"/>
-                            <constraint firstItem="0cc-QA-5KZ" firstAttribute="top" secondItem="xbs-tY-NaO" secondAttribute="bottom" constant="20" id="dnR-Kg-sHg"/>
-                            <constraint firstItem="SXu-Vh-LOg" firstAttribute="centerX" secondItem="szD-Fe-7co" secondAttribute="centerX" id="eS6-Fo-eoq"/>
-                            <constraint firstItem="jjh-ql-Hyh" firstAttribute="top" secondItem="0cc-QA-5KZ" secondAttribute="bottom" constant="20" id="ksf-7Z-VpN"/>
-                            <constraint firstItem="jjh-ql-Hyh" firstAttribute="centerX" secondItem="szD-Fe-7co" secondAttribute="centerX" id="qjT-Be-SxM"/>
+                            <constraint firstAttribute="trailing" secondItem="heb-oZ-KLm" secondAttribute="trailing" id="2J2-MM-dm9"/>
+                            <constraint firstItem="heb-oZ-KLm" firstAttribute="leading" secondItem="szD-Fe-7co" secondAttribute="leading" id="Wud-Gs-g93"/>
+                            <constraint firstItem="heb-oZ-KLm" firstAttribute="centerY" secondItem="szD-Fe-7co" secondAttribute="centerY" id="xBA-DW-AGM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="회원가입" id="FMC-1h-ne0">
@@ -132,24 +160,12 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" id="chm-tc-WjL">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="g66-wc-g8e">
-                                <rect key="frame" x="319" y="7" width="40" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <state key="normal" title="가입">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="register:" destination="8op-jV-Ijq" eventType="touchUpInside" id="QyJ-mK-7FQ"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="nameField" destination="jjh-ql-Hyh" id="Uax-lu-BnF"/>
                         <outlet property="personalInfoAgree" destination="2sb-ie-WZF" id="aqo-et-NhC"/>
                         <outlet property="profileImageView" destination="0cc-QA-5KZ" id="kvC-m8-Hek"/>
+                        <outlet property="registerButton" destination="RI1-dN-gn1" id="GNN-Z6-Mgc"/>
                         <outlet property="serviceAgree" destination="BG4-ta-Ql8" id="UIr-pw-bX7"/>
                     </connections>
                 </viewController>

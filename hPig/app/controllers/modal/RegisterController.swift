@@ -15,6 +15,7 @@ class RegisterController: UIViewController {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var serviceAgree: UISwitch!
     @IBOutlet weak var personalInfoAgree: UISwitch!
+    @IBOutlet weak var registerButton: UIButton!
     
     var user: User? = nil
     
@@ -25,6 +26,10 @@ class RegisterController: UIViewController {
         profileImageView.layer.cornerRadius = 50
         profileImageView.layer.borderColor = secondPointColor.cgColor
         profileImageView.layer.borderWidth = 2.0
+        
+        registerButton.layer.borderColor = secondPointColor.cgColor
+        registerButton.layer.borderWidth = 1.0
+        
         
         if let userData = user {
             
@@ -42,7 +47,7 @@ class RegisterController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func register(_ sender: Any) {
+    @IBAction func registerUser(_ sender: Any) {
         if serviceAgree.isOn && personalInfoAgree.isOn {
             if let userData = user {
                 var name: String? = nil

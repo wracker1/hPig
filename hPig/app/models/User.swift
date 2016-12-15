@@ -139,7 +139,7 @@ class User: NSObject, NSCoding {
         self.profileImage = properties["profile_image"] as? String
         self.age = nil
         self.gender = nil
-        self.name = nil
+        self.name = properties["nickname"] as? String
         self.birthDay = nil
         self.accountId = koUser.uuid
         self.loginType = .kakaoTalk
