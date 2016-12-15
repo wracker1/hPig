@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kxW-Uv-iMs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kxW-Uv-iMs">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -48,9 +48,9 @@
                                             <constraint firstAttribute="height" constant="100" id="wPO-9B-Tgd"/>
                                         </constraints>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jjh-ql-Hyh">
-                                        <rect key="frame" x="97.5" y="130" width="180" height="35"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.14316799496644295" colorSpace="calibratedWhite"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jjh-ql-Hyh">
+                                        <rect key="frame" x="97.5" y="125" width="180" height="35"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="180" id="Bvb-87-RX1"/>
                                             <constraint firstAttribute="height" constant="35" id="EpI-0Z-6IA"/>
@@ -60,13 +60,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stroke_line" translatesAutoresizingMaskIntoConstraints="NO" id="7vV-yl-Eee">
-                                        <rect key="frame" x="20" y="185" width="335" height="1"/>
+                                        <rect key="frame" x="30" y="188" width="316" height="1"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="gI9-fJ-tui"/>
                                         </constraints>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="SXu-Vh-LOg">
-                                        <rect key="frame" x="30" y="206" width="315" height="84"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="SXu-Vh-LOg">
+                                        <rect key="frame" x="30" y="209" width="315" height="76"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CvT-Xf-Jss">
                                                 <rect key="frame" x="0.0" y="0.0" width="315" height="32"/>
@@ -88,7 +88,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FE0-kw-woi">
-                                                <rect key="frame" x="0.0" y="52" width="315" height="32"/>
+                                                <rect key="frame" x="0.0" y="44" width="315" height="32"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0Q-bI-fVD">
                                                         <rect key="frame" x="0.0" y="0.0" width="266" height="32"/>
@@ -107,16 +107,20 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="315" id="qEs-vy-ZhY"/>
+                                        </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RI1-dN-gn1">
-                                        <rect key="frame" x="102.5" y="320" width="170" height="40"/>
+                                        <rect key="frame" x="112.5" y="315" width="150" height="40"/>
+                                        <color key="backgroundColor" red="0.97647058819999999" green="0.34509803919999998" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="3AB-uH-Bo4"/>
-                                            <constraint firstAttribute="width" constant="170" id="yWu-q7-811"/>
+                                            <constraint firstAttribute="width" constant="150" id="yWu-q7-811"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <state key="normal" title="회원가입">
-                                            <color key="titleColor" red="0.98431372549999996" green="0.2274509804" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="registerUser:" destination="8op-jV-Ijq" eventType="touchUpInside" id="KIy-R7-981"/>
@@ -126,19 +130,17 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="RI1-dN-gn1" firstAttribute="centerX" secondItem="heb-oZ-KLm" secondAttribute="centerX" id="2fj-Cj-RB9"/>
-                                    <constraint firstItem="jjh-ql-Hyh" firstAttribute="top" secondItem="0cc-QA-5KZ" secondAttribute="bottom" constant="20" id="2pE-VZ-1p3"/>
-                                    <constraint firstItem="7vV-yl-Eee" firstAttribute="top" secondItem="jjh-ql-Hyh" secondAttribute="bottom" constant="20" id="5pC-nB-fzN"/>
+                                    <constraint firstItem="jjh-ql-Hyh" firstAttribute="top" secondItem="0cc-QA-5KZ" secondAttribute="bottom" constant="15" id="2pE-VZ-1p3"/>
+                                    <constraint firstItem="7vV-yl-Eee" firstAttribute="top" secondItem="jjh-ql-Hyh" secondAttribute="bottom" constant="28" id="5pC-nB-fzN"/>
                                     <constraint firstAttribute="height" constant="390" id="610-AB-hkI"/>
-                                    <constraint firstItem="7vV-yl-Eee" firstAttribute="leading" secondItem="heb-oZ-KLm" secondAttribute="leadingMargin" constant="12" id="6VA-eq-PHo"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="SXu-Vh-LOg" secondAttribute="trailing" constant="22" id="PNf-Hl-lMF"/>
+                                    <constraint firstItem="7vV-yl-Eee" firstAttribute="leading" secondItem="heb-oZ-KLm" secondAttribute="leadingMargin" constant="22" id="6VA-eq-PHo"/>
                                     <constraint firstItem="SXu-Vh-LOg" firstAttribute="top" secondItem="7vV-yl-Eee" secondAttribute="bottom" constant="20" id="Q2Y-BJ-9Yb"/>
                                     <constraint firstItem="0cc-QA-5KZ" firstAttribute="top" secondItem="heb-oZ-KLm" secondAttribute="top" constant="10" id="YOc-bR-dWa"/>
                                     <constraint firstItem="SXu-Vh-LOg" firstAttribute="centerX" secondItem="heb-oZ-KLm" secondAttribute="centerX" id="Z8e-7f-gUP"/>
                                     <constraint firstItem="0cc-QA-5KZ" firstAttribute="centerX" secondItem="heb-oZ-KLm" secondAttribute="centerX" id="cRM-tu-UCg"/>
                                     <constraint firstItem="jjh-ql-Hyh" firstAttribute="centerX" secondItem="heb-oZ-KLm" secondAttribute="centerX" id="iQm-dS-1yY"/>
                                     <constraint firstItem="RI1-dN-gn1" firstAttribute="top" secondItem="SXu-Vh-LOg" secondAttribute="bottom" constant="30" id="iji-e7-qlX"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="7vV-yl-Eee" secondAttribute="trailing" constant="12" id="uWV-hz-Hpo"/>
-                                    <constraint firstItem="SXu-Vh-LOg" firstAttribute="leading" secondItem="heb-oZ-KLm" secondAttribute="leadingMargin" constant="22" id="vwF-AE-cNE"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="7vV-yl-Eee" secondAttribute="trailing" constant="21" id="uWV-hz-Hpo"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -160,22 +162,11 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" id="TzT-Ql-2j1">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="A1h-fj-G9F">
-                                <rect key="frame" x="294" y="7" width="65" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <state key="normal" title="회원가입">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                            </button>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="nameField" destination="jjh-ql-Hyh" id="Uax-lu-BnF"/>
                         <outlet property="personalInfoAgree" destination="2sb-ie-WZF" id="aqo-et-NhC"/>
                         <outlet property="profileImageView" destination="0cc-QA-5KZ" id="kvC-m8-Hek"/>
-                        <outlet property="registerBarButton" destination="A1h-fj-G9F" id="wYp-6L-HnA"/>
                         <outlet property="registerButton" destination="RI1-dN-gn1" id="GNN-Z6-Mgc"/>
                         <outlet property="serviceAgree" destination="BG4-ta-Ql8" id="UIr-pw-bX7"/>
                     </connections>

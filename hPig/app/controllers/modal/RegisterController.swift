@@ -16,21 +16,24 @@ class RegisterController: UIViewController {
     @IBOutlet weak var serviceAgree: UISwitch!
     @IBOutlet weak var personalInfoAgree: UISwitch!
     @IBOutlet weak var registerButton: UIButton!
-    @IBOutlet weak var registerBarButton: UIButton!
+    @IBOutlet var basicAccessory: UIView!
     
     var user: User? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Bundle.main.loadNibNamed("basic_accessory_view", owner: self, options: nil)
+        
         profileImageView.clipsToBounds = true
         profileImageView.layer.cornerRadius = 50
         profileImageView.layer.borderColor = secondPointColor.cgColor
-        profileImageView.layer.borderWidth = 2.0
+        profileImageView.layer.borderWidth = 3.0
         
-        registerButton.layer.borderColor = secondPointColor.cgColor
-        registerButton.layer.borderWidth = 1.0
-        registerBarButton.addTarget(self, action: #selector(self.registerUser(_:)), for: .touchUpInside)
+        var rect = basicAccessory.frame
+        rect.size.height = 50
+        basicAccessory.frame = rect
+        nameField.inputAccessoryView = basicAccessory
         
         
         if let userData = user {
@@ -49,6 +52,10 @@ class RegisterController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func resignNameField(_ sender: Any) {
+        nameField.resignFirstResponder()
+    }
+    
     @IBAction func registerUser(_ sender: Any) {
         if serviceAgree.isOn && personalInfoAgree.isOn {
             if let userData = user {

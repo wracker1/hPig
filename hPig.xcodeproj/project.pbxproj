@@ -11,6 +11,7 @@
 		88048D341E026ABF00C5F4AA /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88048D331E026ABF00C5F4AA /* Register.storyboard */; };
 		88048D361E026B3300C5F4AA /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88048D351E026B3300C5F4AA /* RegisterController.swift */; };
 		88064FF21DD2FE0800084C6A /* sessionFilterHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88064FF11DD2FE0800084C6A /* sessionFilterHeader.xib */; };
+		8809DE991E02C9CA000CD20D /* basic_accessory_view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8809DE981E02C9CA000CD20D /* basic_accessory_view.xib */; };
 		880FC9C01DE7356600BDF70C /* tab_bar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880FC9BF1DE7356600BDF70C /* tab_bar.xib */; };
 		880FC9C31DEA836B00BDF70C /* WORD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880FC9C11DEA836B00BDF70C /* WORD+CoreDataClass.swift */; };
 		880FC9C41DEA836B00BDF70C /* WORD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880FC9C21DEA836B00BDF70C /* WORD+CoreDataProperties.swift */; };
@@ -170,6 +171,7 @@
 		88048D331E026ABF00C5F4AA /* Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		88048D351E026B3300C5F4AA /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		88064FF11DD2FE0800084C6A /* sessionFilterHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = sessionFilterHeader.xib; sourceTree = "<group>"; };
+		8809DE981E02C9CA000CD20D /* basic_accessory_view.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = basic_accessory_view.xib; sourceTree = "<group>"; };
 		880FC9BF1DE7356600BDF70C /* tab_bar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = tab_bar.xib; path = tabBar/tab_bar.xib; sourceTree = "<group>"; };
 		880FC9C11DEA836B00BDF70C /* WORD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataClass.swift"; sourceTree = "<group>"; };
 		880FC9C21DEA836B00BDF70C /* WORD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -687,6 +689,7 @@
 				88C6EA731DD039DF0087FE9C /* pickerActionView */,
 				88C6EA761DD039DF0087FE9C /* playerView */,
 				88C6EA791DD039DF0087FE9C /* sessionControlView */,
+				8809DE981E02C9CA000CD20D /* basic_accessory_view.xib */,
 			);
 			name = uiviews;
 			path = views/uiviews;
@@ -1017,6 +1020,7 @@
 				88064FF21DD2FE0800084C6A /* sessionFilterHeader.xib in Resources */,
 				88C6EA991DD039DF0087FE9C /* session_nav_view.xib in Resources */,
 				88C6EA921DD039DF0087FE9C /* pattern_view.xib in Resources */,
+				8809DE991E02C9CA000CD20D /* basic_accessory_view.xib in Resources */,
 				8844D0991DE2E37A009E84AE /* rate_view.xib in Resources */,
 				880FC9C01DE7356600BDF70C /* tab_bar.xib in Resources */,
 				88DEDF091DB7794300781123 /* SessionMain.storyboard in Resources */,

@@ -190,7 +190,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
                     
                     if let endStartTime = self.subtitles.last?.startTime, let lastStartTime = service.stringToCMTime(endStartTime) {
                         let diff = endTime - lastStartTime
-                        self.needToStopOnPlaying = service.secondsFromCMTime(time: diff) > 3.0
+                        self.needToStopOnPlaying = service.secondsFromCMTime(time: diff) > 10.0
                     }
                 })
             }
