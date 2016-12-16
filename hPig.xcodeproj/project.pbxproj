@@ -69,7 +69,11 @@
 		884B0E891D939B1D009748FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884B0E881D939B1D009748FF /* CoreGraphics.framework */; };
 		884B0E8B1D939B34009748FF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884B0E8A1D939B34009748FF /* QuartzCore.framework */; };
 		884B0E8D1D93A0BB009748FF /* ImageDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884B0E8C1D93A0BB009748FF /* ImageDownloadService.swift */; };
+		8852AB331E038AE6001C3951 /* SpeakingTubeLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852AB321E038AE6001C3951 /* SpeakingTubeLogin.swift */; };
+		8852AB351E038BAF001C3951 /* SpeakingTubeRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8852AB341E038BAF001C3951 /* SpeakingTubeRegister.storyboard */; };
+		8852AB371E038FB9001C3951 /* SpeakingTubeRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852AB361E038FB9001C3951 /* SpeakingTubeRegisterController.swift */; };
 		8853766C1DB65C5D0076D1BF /* WordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8853766B1DB65C5D0076D1BF /* WordData.swift */; };
+		885731511E03E230006888CC /* AuthCodeLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885731501E03E230006888CC /* AuthCodeLoginController.swift */; };
 		8859B2031DFEFE22008B2FCA /* localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8859B2051DFEFE22008B2FCA /* localization.strings */; };
 		886085291D97D393009A9B3C /* BasicStudy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886085281D97D393009A9B3C /* BasicStudy.swift */; };
 		8860852E1D97D435009A9B3C /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8860852D1D97D435009A9B3C /* Global.swift */; };
@@ -239,6 +243,9 @@
 		884B0E881D939B1D009748FF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		884B0E8A1D939B34009748FF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		884B0E8C1D93A0BB009748FF /* ImageDownloadService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloadService.swift; sourceTree = "<group>"; };
+		8852AB321E038AE6001C3951 /* SpeakingTubeLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpeakingTubeLogin.swift; path = login/SpeakingTubeLogin.swift; sourceTree = "<group>"; };
+		8852AB341E038BAF001C3951 /* SpeakingTubeRegister.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SpeakingTubeRegister.storyboard; sourceTree = "<group>"; };
+		8852AB361E038FB9001C3951 /* SpeakingTubeRegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakingTubeRegisterController.swift; sourceTree = "<group>"; };
 		8853765E1DB12F060076D1BF /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = "../../../../Library/Developer/Xcode/DerivedData/hPig-cgamwanqckhvsufhcxkvajblacum/Build/Products/Debug-iphonesimulator/SWXMLHash/SWXMLHash.framework"; sourceTree = "<group>"; };
 		8853765F1DB12F060076D1BF /* Toast_Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Toast_Swift.framework; path = "../../../../Library/Developer/Xcode/DerivedData/hPig-cgamwanqckhvsufhcxkvajblacum/Build/Products/Debug-iphonesimulator/Toast-Swift/Toast_Swift.framework"; sourceTree = "<group>"; };
 		885376651DB12FBC0076D1BF /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = "Pods/../build/Debug-iphoneos/Charts/Charts.framework"; sourceTree = "<group>"; };
@@ -246,6 +253,7 @@
 		885376671DB12FBC0076D1BF /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "Pods/../build/Debug-iphoneos/RealmSwift/RealmSwift.framework"; sourceTree = "<group>"; };
 		8853766B1DB65C5D0076D1BF /* WordData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordData.swift; sourceTree = "<group>"; };
 		885376731DB67C770076D1BF /* hPig.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = hPig.entitlements; sourceTree = "<group>"; };
+		885731501E03E230006888CC /* AuthCodeLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthCodeLoginController.swift; sourceTree = "<group>"; };
 		8858D26F1E00623300483DFF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/localization.strings; sourceTree = "<group>"; };
 		8859B2061DFEFE25008B2FCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/localization.strings; sourceTree = "<group>"; };
 		886085281D97D393009A9B3C /* BasicStudy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicStudy.swift; sourceTree = "<group>"; };
@@ -461,6 +469,7 @@
 			isa = PBXGroup;
 			children = (
 				882F92111DFD7BBC00151F23 /* LoginProtocol.swift */,
+				8852AB321E038AE6001C3951 /* SpeakingTubeLogin.swift */,
 				882F92131DFD7E1400151F23 /* NaverLogin.swift */,
 				881263821DFE4FA1002E8200 /* FacebookLogin.swift */,
 				881263871DFE9F9D002E8200 /* KakaoLogin.swift */,
@@ -507,6 +516,8 @@
 				88468A211DC344D800ACC60D /* hActionPickerController.swift */,
 				88468A231DC344D800ACC60D /* PatternStudyController.swift */,
 				88048D351E026B3300C5F4AA /* RegisterController.swift */,
+				8852AB361E038FB9001C3951 /* SpeakingTubeRegisterController.swift */,
+				885731501E03E230006888CC /* AuthCodeLoginController.swift */,
 			);
 			path = modal;
 			sourceTree = "<group>";
@@ -555,6 +566,7 @@
 				887741651DB0738C00198666 /* WorkBook.storyboard */,
 				88DEDEFD1DB7637B00781123 /* ChannelMain.storyboard */,
 				88048D331E026ABF00C5F4AA /* Register.storyboard */,
+				8852AB341E038BAF001C3951 /* SpeakingTubeRegister.storyboard */,
 			);
 			path = storyboards;
 			sourceTree = "<group>";
@@ -1015,6 +1027,7 @@
 				88DEDEF41DB5ED7300781123 /* BasicStudy.storyboard in Resources */,
 				88DEDEFE1DB7637B00781123 /* ChannelMain.storyboard in Resources */,
 				88C6EA8E1DD039DF0087FE9C /* eng_dic_view_cell.xib in Resources */,
+				8852AB351E038BAF001C3951 /* SpeakingTubeRegister.storyboard in Resources */,
 				8845230E1DBF55BD00802510 /* SessionFeed.storyboard in Resources */,
 				88048D341E026ABF00C5F4AA /* Register.storyboard in Resources */,
 				88064FF21DD2FE0800084C6A /* sessionFilterHeader.xib in Resources */,
@@ -1115,6 +1128,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				88CDBA231D92D1FF0058ECFE /* Model.swift in Sources */,
+				8852AB371E038FB9001C3951 /* SpeakingTubeRegisterController.swift in Sources */,
+				885731511E03E230006888CC /* AuthCodeLoginController.swift in Sources */,
 				881263831DFE4FA1002E8200 /* FacebookLogin.swift in Sources */,
 				88C6EA911DD039DF0087FE9C /* PatternImageButton.swift in Sources */,
 				88DEDF001DB7644600781123 /* Channel.swift in Sources */,
@@ -1133,6 +1148,7 @@
 				88DEDEF61DB605CC00781123 /* UIViewOps.swift in Sources */,
 				88C6EA881DD039DF0087FE9C /* WordCell.swift in Sources */,
 				88BE97D91D9D0C37002903E3 /* AuthenticateService.swift in Sources */,
+				8852AB331E038AE6001C3951 /* SpeakingTubeLogin.swift in Sources */,
 				881ED0061D93AC0100D612EF /* CategoryService.swift in Sources */,
 				88468A2A1DC344D800ACC60D /* SessionController.swift in Sources */,
 				884523091DBF44CF00802510 /* HISTORY+CoreDataClass.swift in Sources */,

@@ -14,6 +14,7 @@ class LoginView: UIView {
     @IBOutlet weak var kakaoButton: UIButton!
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var naverButton: UIButton!
+    @IBOutlet weak var tubeButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
     
     required override init(frame: CGRect) {
@@ -33,5 +34,6 @@ class LoginView: UIView {
         
         closeButton.layer.borderColor = secondPointColor.cgColor
         closeButton.layer.borderWidth = 1.0
+        closeButton.cornerRadiusly()
     }    
 }

@@ -40,20 +40,21 @@ class ImageDownloadService {
         )
     }()
     
-    func get(url: String, filter: ImageFilter?, completionHandler: @escaping (DataResponse<Image>) -> Void) {
-        let req = URLRequest(url: URL(string: url)!)
-        
-        print("GET IMAGE: \(url)")
-        
-        imageDownloader.download(
-            req,
-            receiptID: url,
-            filter: filter,
-            progress: nil,
-            progressQueue: DispatchQueue.global(),
-            completion: completionHandler
-        )
-        
+    func get(url: String, filter: ImageFilter?, completionHandler: ((DataResponse<Image>) -> Void)?) {
+        if let item = URL(string: url) {
+            let req = URLRequest(url: item)
+            
+            print("GET IMAGE: \(url)")
+            
+            imageDownloader.download(
+                req,
+                receiptID: url,
+                filter: filter,
+                progress: nil,
+                progressQueue: DispatchQueue.global(),
+                completion: completionHandler
+            )
+        }
     }
     
     func decorateChannelButton(_ button: UIButton, imageUrl: String) {

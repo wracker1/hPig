@@ -73,15 +73,15 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
         descriptionLabel.text = session?.sessionDescription
         durationLabel.text = session?.duration
         
-        basicExButton.layer.cornerRadius = 2
-        basicExButton.layer.masksToBounds = true
+        basicExButton.cornerRadiusly()
+//        basicExButton.layer.masksToBounds = true
         
-        patternExButton.layer.cornerRadius = 2
-        patternExButton.layer.masksToBounds = true
+        patternExButton.cornerRadiusly()
+//        patternExButton.layer.masksToBounds = true
         
         completionLabel.layer.borderColor = secondPointColor.cgColor
         completionLabel.layer.borderWidth = 1.0
-        completionLabel.layer.cornerRadius = 5.0
+        completionLabel.cornerRadiusly()
         
     }
     

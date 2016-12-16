@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreGraphics
 import AVFoundation
 
 let kToggleKoreanLabelVisible = Notification.Name("kToggleKoreanLabelVisible")
@@ -14,6 +15,7 @@ let kToggleEnglishLabelVisible = Notification.Name("kToggleEnglishLabelVisible")
 let kSelectCellWithIndexPath = Notification.Name("kSelectRowWithIndexPath")
 let kViewWillTransition = Notification.Name("viewWillTransition")
 let kRegisterCompletion = Notification.Name("kRegisterCompletion")
+let kSuccessLoginCompletion = Notification.Name("kSuccessLoginCompletion")
 
 let kGuestId = "guest"
 let kTokenKey = "deviceToken"
@@ -26,7 +28,6 @@ let SubtitlePointColor = RGBA(213, g: 135, b: 125, a: 1)
 
 let pointColor = RGBA(246, g: 0, b: 29, a: 1)
 let secondPointColor = RGBA(252, g: 86, b: 97, a: 1.0)
-
 let CGRectZero = CGRectFromString("{{0, 0}, {0, 0}}")
 
 func presentController(viewController: UIViewController) -> UIViewController? {

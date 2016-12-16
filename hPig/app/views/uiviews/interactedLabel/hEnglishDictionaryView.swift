@@ -42,8 +42,8 @@ class hEnglishDictionaryView: UIView {
     }
     
     private func setup() {
-        closeButton.layer.borderWidth = 1.0
-        closeButton.layer.borderColor = secondPointColor.cgColor
+        closeButton.border()
+        closeButton.cornerRadiusly()
     }
     
     func update(data: WordData, completion: (() -> Void)?) {

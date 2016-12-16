@@ -108,7 +108,12 @@ class User: NSObject, NSCoding {
             
             self.profileImage = url
         } else {
-            self.profileImage = nil
+            if let picture = data["profile_image"] as? String {
+                self.profileImage = picture
+            } else {
+                self.profileImage = nil
+            }
+            
         }
         
         if let ageRange = data["age_range"] as? [String: Any], let ageData = ageRange["min"] as? Int {

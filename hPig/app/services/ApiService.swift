@@ -9,10 +9,17 @@
 import Foundation
 import Alamofire
 
+enum ApiResult: String {
+    case success = "SUCCESS"
+    case fail = "FAIL"
+}
+
 class ApiService {
     static let shared: ApiService = {
         return ApiService()
     }()
+    
+    
     
     func basicStudySubtitleData(id: String, part: Int, duration: String?, completion: (([BasicStudy]) -> Void)?) {
         NetService.shared.getCollection(path: "/svc/api/v2/caption/\(id)/\(part)") { (res: DataResponse<[BasicStudy]>) in
@@ -300,6 +307,43 @@ class ApiService {
         }
     }
     
+    func isDuplicatedUserId(_ id: String, loginType: LoginType, completion: ((Bool) -> Void)?) {
+        let param = ["id": id, "loginType": loginType.rawValue]
+        
+        NetService.shared.post(path: "/svc/api/user/id/check", parameters: param).responseString { (res) in
+            let duplicated = "DUPLICATED"
+            let value = (res.result.value ?? duplicated).uppercased()
+            
+            if let callback = completion {
+                callback(value == duplicated)
+            }
+        }
+    }
+    
+    func requestAuthenticatedCode(_ id: String, loginType: LoginType, completion: ((String) -> Void)?) {
+        let param = ["id": id, "loginType": loginType.rawValue]
+        
+        NetService.shared.post(path: "/svc/api/user/auth/req", parameters: param).responseString { (res) in
+            let value = (res.result.value ?? ApiResult.fail.rawValue)
+            
+            if let callback = completion {
+                callback(value)
+            }
+        }
+    }
+    
+    func checkAuthenticatedCode(_ id: String, loginType: LoginType, authCode: String, completion: ((ApiResult) -> Void)?) {
+        let param = ["id": id, "loginType": loginType.rawValue, "password": authCode]
+        
+        NetService.shared.post(path: "/svc/api/user/auth/check", parameters: param).responseString { (res) in
+            let value = (res.result.value ?? ApiResult.fail.rawValue)
+            
+            if let callback = completion {
+                callback(ApiResult(rawValue: value)!)
+            }
+        }
+    }
+
     func joinUser(_ user: User, name: String?, deviceToken: String?, completion: ((Bool) -> Void)?) {
         if user.id != kGuestId {
             var parameters: [String: Any] = ["id": user.id,

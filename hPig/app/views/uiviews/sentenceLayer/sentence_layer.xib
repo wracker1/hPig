@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16C48b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WorkBookController" customModule="hPig" customModuleProvider="target">
             <connections>
+                <outlet property="englishSentenceWrap" destination="52t-r3-FgC" id="pjU-aI-VM9"/>
                 <outlet property="sentenceView" destination="iN0-l3-epB" id="tnI-We-Ngm"/>
                 <outlet property="stCloseButton" destination="tpI-l8-qfD" id="hrD-rA-KFA"/>
                 <outlet property="stPlayButton" destination="WeW-Uk-BSg" id="8dT-Aq-jqB"/>

@@ -8,6 +8,7 @@
 
 import UIKit
 import Toast_Swift
+import CoreGraphics
 
 extension UIView {
     func presentToast(_ message: String) {
@@ -35,5 +36,14 @@ extension UIView {
                 })
             }
         } catch {}
+    }
+    
+    func border(color: UIColor = secondPointColor, width: CGFloat = 1.0) {
+        self.layer.borderColor = color.cgColor
+        self.layer.borderWidth = width
+    }
+    
+    func cornerRadiusly(_ radius: CGFloat = 4.0) {
+        self.layer.cornerRadius = radius
     }
 }

@@ -16,6 +16,7 @@ class PurchaseController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var passDueLabel: UILabel!
+    @IBOutlet weak var faqButton: UIButton!
     
     private let purchaseService = PurchaseService.shared
     private var passes = [hPass]()
@@ -31,6 +32,8 @@ class PurchaseController: UIViewController, UITableViewDelegate, UITableViewData
                 self.passDueLabel.text = "토탈패스 \(enddt) 까지"
             }
         }
+        
+        faqButton.cornerRadiusly()
     }
     
     @IBAction func dismiss(_ sender: Any) {

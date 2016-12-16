@@ -15,6 +15,7 @@ enum LoginType: String {
     case naver = "naver"
     case kakaoTalk = "kakaoTalk"
     case facebook = "facebook"
+    case email = "email"
 }
 
 class LoginService {
@@ -103,6 +104,7 @@ class LoginService {
             loginView.facebookButton.addTarget(self, action: #selector(self.loginByFacebook), for: .touchUpInside)
             loginView.kakaoButton.addTarget(self, action: #selector(self.loginByKakao), for: .touchUpInside)
             loginView.naverButton.addTarget(self, action: #selector(self.loginByNaver), for: .touchUpInside)
+            loginView.tubeButton.addTarget(self, action: #selector(self.loginByTube), for: .touchUpInside)
             loginView.closeButton.addTarget(self, action: #selector(self.dismissLoginView), for: .touchUpInside)
         }
     }
@@ -121,6 +123,10 @@ class LoginService {
     
     @objc func loginByKakao() {
         login(.kakaoTalk)
+    }
+    
+    @objc func loginByTube() {
+        login(.email)
     }
     
     func login(_ type: LoginType) {
@@ -143,6 +149,9 @@ class LoginService {
             
         case .kakaoTalk:
             return KakaoLogin()
+            
+        case .email:
+            return SpeakingTubeLogin()
         }
     }
     
@@ -159,9 +168,10 @@ class LoginService {
                     if let tuser = info {
                         callback(tuser)
                     } else {
-                        if let navigator = UIStoryboard(name: "Register", bundle: Bundle.main).instantiateInitialViewController() as? UINavigationController,
+                        if let type = self.loginType, let navigator = UIStoryboard(name: "Register", bundle: Bundle.main).instantiateInitialViewController() as? UINavigationController,
                             let registerController = navigator.topViewController as? RegisterController {
                             registerController.user = user
+                            registerController.isSocialLogin = type != .email
                             
                             fromViewController?.present(navigator, animated: true, completion: nil)
                         }
