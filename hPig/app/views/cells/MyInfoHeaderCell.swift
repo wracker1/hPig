@@ -68,17 +68,24 @@ class MyInfoHeaderCell: UICollectionViewCell {
     private func loadPersonalInfoView(_ user: TubeUserInfo?) {
         let name = user?.nickname ?? "게스트"
         let id = user?.id ?? kGuestId
-        let url = user?.image ?? "https://ssl.pstatic.net/static/pwe/address/nodata_45x45.gif"
 
         nameLabel.text = "\(name)"
         
-        if let loginType = LoginService.shared.loginType {
+        if let loginType = LoginService.shared.loginType() {
             idLabel.text = "| \(id)"
             idLabel.isHidden = loginType != .naver
         } else {
             idLabel.isHidden = true
         }
-
+        
+        if let url = user?.image, !url.isEmpty {
+            loadProfileImage(url)
+        } else {
+            loadProfileImage(kDefaultProfileImage)
+        }
+    }
+    
+    private func loadProfileImage(_ url: String) {
         ImageDownloadService.shared.get(
             url: url,
             filter: nil,

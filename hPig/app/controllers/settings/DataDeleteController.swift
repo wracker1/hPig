@@ -76,7 +76,7 @@ class DataDeleteController: UITableViewController {
                                                 cancel: nil,
                                                 confirm: {
                                                     LoginService.shared.user { (tuser, _) in
-                                                        CoreDataService.shared.deleteUserData(tuser, itemIds: targetIds)
+                                                        CoreDataService.shared.deleteUserData(tuser?.id, itemIds: targetIds)
                                                         self.view.presentToast("삭제 하였습니다.")
                                                     }
         })

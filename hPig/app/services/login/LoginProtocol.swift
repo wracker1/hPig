@@ -29,6 +29,8 @@ enum hLoginResult: Int {
 }
 
 protocol LoginProtocol {
+    var loginType: LoginType { get }
+    
     func isOn() -> Bool
     
     func currentUser() -> User?

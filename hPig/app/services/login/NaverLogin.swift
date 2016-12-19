@@ -31,6 +31,8 @@ class NaverLogin: NSObject, LoginProtocol, NaverThirdPartyLoginConnectionDelegat
     
     // login protocol
     
+    var loginType: LoginType = .naver
+    
     func isOn() -> Bool {
         return currentUser() != nil
     }

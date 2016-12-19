@@ -26,18 +26,21 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
     }
     
     private func cellIds() -> [String : [String]] {
+        // "withdrawalCell" -> 탈퇴기능셀, 탈퇴를 하고 새로가입하면 무료로 다시 이용가능하기 때문에 임시로 뺀다.
+        
         if LoginService.shared.isOn() {
             return [
-                "pass": ["purchaseCell", "couponRegisterCell"],
-                "info": ["faqCell", "mailCell"],
-                "my": ["versionCell", "pushCell", "delDataCell", "loginCell", "withdrawalCell"]
+                "pass": ["purchaseCell"],
+                "my": ["versionCell", "pushCell", "delDataCell", "loginCell", "withdrawalCell"],
+                "info": ["faqCell", "mailCell"]
+                
             ]
-            
         } else {
             return [
-                "pass": ["purchaseCell", "couponRegisterCell"],
-                "info": ["faqCell", "mailCell"],
-                "my": ["versionCell", "delDataCell", "loginCell"]
+                "pass": ["purchaseCell"],
+                "my": ["versionCell", "delDataCell", "loginCell", "withdrawalCell"],
+                "info": ["faqCell", "mailCell"]
+                
             ]
         }
     }
@@ -48,10 +51,10 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
             return "이용권"
             
         case 1:
-            return "이용 안내"
+            return "내 정보"
             
         case 2:
-            return "내 정보"
+            return "이용 안내"
             
         default:
             return nil
@@ -63,9 +66,9 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
         case 0:
             return cellIds()["pass"] ?? [String]()
         case 1:
-            return cellIds()["info"] ?? [String]()
-        case 2:
             return cellIds()["my"] ?? [String]()
+        case 2:
+            return cellIds()["info"] ?? [String]()
         default:
             return [String]()
         }
@@ -142,6 +145,8 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
                 if let user = u {
                     ApiService.shared.withdrawalUser(user.id, loginType: user.loginType, completion: { (success) in
                         if success {
+                            CoreDataService.shared.deleteUserData(user.id)
+                            
                             self.view.presentToast("탈퇴 하였습니다.")
                         }
                         

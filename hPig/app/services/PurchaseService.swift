@@ -14,9 +14,15 @@ class PurchaseService: NSObject, SKPaymentTransactionObserver, SKProductsRequest
         return PurchaseService()
     }()
     
+    private let passConvertMap = ["1month": "oneMonth",
+                                  "3month": "threeMonth",
+                                  "6month": "sixMonth",
+                                  "12month": "yearPass"]
+    
     private let paymentQueue = SKPaymentQueue.default()
     private var passes = [hPass]()
     private var payments = [SKPayment]()
+    private weak var viewController: UIViewController? = nil
     
     private let keyUnprocessedTransaction = "unprocessedTransaction"
     private var paymentCompletion: (([SKPayment]) -> Void)? = nil
@@ -39,10 +45,18 @@ class PurchaseService: NSObject, SKPaymentTransactionObserver, SKProductsRequest
             }
         } else {
             ApiService.shared.appStorePurchaseItems(completion: { (passes) in
-                self.passes = passes
+                let items = passes.map({ (pass) -> hPass in
+                    if let id = self.passConvertMap[pass.id] {
+                        return hPass(id: id, name: pass.name, value: pass.value, passType: pass.passType)
+                    } else {
+                        return pass
+                    }
+                })
+                
+                self.passes = items
                 
                 if let callback = completion {
-                    callback(passes)
+                    callback(items)
                 }
             })
         }
@@ -62,6 +76,9 @@ class PurchaseService: NSObject, SKPaymentTransactionObserver, SKProductsRequest
                     req.delegate = self
                     req.start()
                 } else if let callback = completion {
+                    
+                    self.viewController?.view.presentToast("구매를 할 수 없는 상태입니다")
+                    
                     DispatchQueue.main.async {
                         callback(self.payments)
                     }
@@ -77,6 +94,8 @@ class PurchaseService: NSObject, SKPaymentTransactionObserver, SKProductsRequest
     }
     
     func purchase(_ viewController: UIViewController, sourceView: UIView?, payment: SKPayment, completion: ((User?, Error?) -> Void)?) {
+        self.viewController = viewController
+        
         LoginService.shared.user({ (tuser, user) in
             if tuser == nil {
                 AuthenticateService.shared.confirmLogin(viewController, sourceView: sourceView, completion: nil)
@@ -110,6 +129,11 @@ class PurchaseService: NSObject, SKPaymentTransactionObserver, SKProductsRequest
                         self.updatePassInfo(uData, transaction: transaction)
                     }
                     
+                case .restored:
+                    if let uData = user {
+                        self.saveTransaction(uData, transaction: transaction)
+                    }
+                    
                 case .failed:
                     queue.finishTransaction(transaction)
 
@@ -125,9 +149,9 @@ class PurchaseService: NSObject, SKPaymentTransactionObserver, SKProductsRequest
         })
     }
     
-    private func updatePassInfo(_ user: User, transaction: SKPaymentTransaction) {
+    @discardableResult private func saveTransaction(_ user: User, transaction: SKPaymentTransaction) -> hPass? {
         var passMap: [String : hPass] = [:]
-
+        
         passes.forEach { (pass) in
             passMap[pass.id] = pass
         }
@@ -140,6 +164,14 @@ class PurchaseService: NSObject, SKPaymentTransactionObserver, SKProductsRequest
             UserDefaults.standard.set(params, forKey: self.keyUnprocessedTransaction)
             UserDefaults.standard.synchronize()
             
+            return pass
+        } else {
+            return nil
+        }
+    }
+    
+    private func updatePassInfo(_ user: User, transaction: SKPaymentTransaction) {
+        if let pass = saveTransaction(user, transaction: transaction) {
             self.requestUpdatePassType(user.id, loginType: user.loginType, passType: pass.tubePassType(), completion: { (error) in
                 if error == nil {
                     self.paymentQueue.finishTransaction(transaction)
@@ -153,6 +185,8 @@ class PurchaseService: NSObject, SKPaymentTransactionObserver, SKProductsRequest
                     }
                 }
             })
+        } else {
+            viewController?.view.presentToast("구매정보를 찾을 수 없습니다.")
         }
     }
     
@@ -177,7 +211,7 @@ class PurchaseService: NSObject, SKPaymentTransactionObserver, SKProductsRequest
         return self
     }
     
-    @discardableResult func processPastPurchase() -> PurchaseService {    
+    @discardableResult func processPastPurchase() -> PurchaseService {
         if let params = UserDefaults.standard.value(forKey: keyUnprocessedTransaction) as? [String : String],
             let id = params["id"],
             let passType = params["passtype"],

@@ -25,8 +25,6 @@ class LoginService {
     
     private weak var viewController: UIViewController? = nil
     private var completion: ((TubeUserInfo?) -> Void)? = nil
-    var loginType: LoginType? = nil
-    
     private var loginManager: LoginProtocol? = nil
     private var tubeUserMap = [String : TubeUserInfo]()
     private let latestUserKey = "latestUser"
@@ -44,6 +42,10 @@ class LoginService {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    func loginType() -> LoginType? {
+        return loginManager?.loginType
     }
     
     private func createUserInfoUserDefault(user: User) {
@@ -132,7 +134,6 @@ class LoginService {
     func login(_ type: LoginType) {
         if let controller = viewController {
             controller.dismiss(animated: false, completion: {
-                self.loginType = type
                 self.loginManager = self.loginProtocol(type)
                 self.loginManager?.tryLogin(from: controller, completion: self.loginHandler(controller))
             })
@@ -155,26 +156,27 @@ class LoginService {
         }
     }
     
-    private func loginHandler(_ fromViewController: UIViewController?) -> ((User?) -> Void) {
-        let callback = { (res: TubeUserInfo?) in
-            if let listener = self.completion {
-                listener(res)
-            }
+    private func tubeUserInfoRegisterHandler(_ fromViewController: UIViewController?, user: User) {
+        if let type = self.loginType(),
+            let navigator = UIStoryboard(name: "Register", bundle: Bundle.main).instantiateInitialViewController() as? UINavigationController,
+            let registerController = navigator.topViewController as? RegisterController {
+            registerController.user = user
+            registerController.isSocialLogin = type != .email
+            
+            fromViewController?.present(navigator, animated: true, completion: nil)
         }
+    }
+    
+    private func loginHandler(_ fromViewController: UIViewController?) -> ((User?) -> Void) {
+        let callback = completion ?? {(_)in}
         
         return { (res: User?) in
             if let user = res {
                 self.tubeUserInfo(from: user, completion: { (info) in
-                    if let tuser = info {
-                        callback(tuser)
+                    if info == nil {
+                        self.tubeUserInfoRegisterHandler(fromViewController, user: user)
                     } else {
-                        if let type = self.loginType, let navigator = UIStoryboard(name: "Register", bundle: Bundle.main).instantiateInitialViewController() as? UINavigationController,
-                            let registerController = navigator.topViewController as? RegisterController {
-                            registerController.user = user
-                            registerController.isSocialLogin = type != .email
-                            
-                            fromViewController?.present(navigator, animated: true, completion: nil)
-                        }
+                        callback(info)
                     }
                 })
             } else {
@@ -182,7 +184,7 @@ class LoginService {
             }
         }
     }
-    
+
     
     // tube
     

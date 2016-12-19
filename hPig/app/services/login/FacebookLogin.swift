@@ -39,6 +39,8 @@ class FacebookLogin: LoginProtocol {
         }
     }
     
+    var loginType: LoginType = .facebook
+    
     func isOn() -> Bool {
         return FBSDKAccessToken.current() != nil
     }

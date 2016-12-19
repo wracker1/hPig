@@ -33,6 +33,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     private var btnReading: UIBarButtonItem? = nil
     private var startStudyTime: Date? = nil
     private var endTimer: Timer? = nil
+    private var cellCheckTimer: Timer? = nil
     private var duration: CMTime? = nil
     
     @IBOutlet weak var channelButton: UIButton!
@@ -278,20 +279,16 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     
     private func showCaption(at index: Int) {
         self.currentIndex = index
+        let indexPath = IndexPath(row: index, section: 0)
+        
+        if useAutoScroll {
+            subtitleTableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+        }
         
         if let subtitle = subtitles.get(index) {
             self.englishSubLabel.text = subtitle.english
             self.englishSubLabel.desc = subtitle.korean
             self.koreanSubLabel.text = subtitle.korean
-            
-            if useAutoScroll {
-                let indexPath = IndexPath(row: index, section: 0)
-                self.subtitleTableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
-                
-                Timer.scheduledTimer(withTimeInterval: 0.15, repeats: false, block: { (_) in
-                    NotificationCenter.default.post(name: kSelectCellWithIndexPath, object: nil, userInfo: nil)
-                })
-            }
         }
         
         let maxIndex = subtitles.count - 1
@@ -301,8 +298,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
             index,
             length: subtitles.count,
             prevButton: sessionControlView.prevButton,
-            nextButton: sessionControlView.nextButton
-        )
+            nextButton: sessionControlView.nextButton)
     }
     
     func currentIndex(_ time: CMTime) -> Int {
@@ -424,10 +420,17 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
                 self.currentSubtitleView.isHidden = true
                 self.subtitleTableView.isHidden = false
                 btn.setImage(#imageLiteral(resourceName: "btn_subtitles_on"), for: .normal)
+                
+                self.cellCheckTimer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true, block: { (_) in
+                    NotificationCenter.default.post(name: kSelectCellWithIndexPath, object: nil, userInfo: nil)
+                })
             } else {
                 self.currentSubtitleView.isHidden = false
                 self.subtitleTableView.isHidden = true
                 btn.setImage(#imageLiteral(resourceName: "btn_subtitles_off"), for: .normal)
+                
+                cellCheckTimer?.invalidate()
+                cellCheckTimer?.fire()
             }
         }
     }

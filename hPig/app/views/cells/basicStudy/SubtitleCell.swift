@@ -14,6 +14,8 @@ class SubtitleCell: UITableViewCell {
     @IBOutlet weak var englishLabel: UILabel!
     @IBOutlet weak var koreanLabel: UILabel!
     
+    var indexPath: IndexPath? = nil
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -42,8 +44,11 @@ class SubtitleCell: UITableViewCell {
     }
     
     func update(_ subtitle: BasicStudy, indexPath: IndexPath) {
+        self.indexPath = indexPath
         self.englishLabel.text = subtitle.english
         self.koreanLabel.text = subtitle.korean
+        
+        toggleLabelColor(self.isSelected)
     }
     
     func didReceiveToggleKoreanLabelEvent(notif: NSNotification) {
@@ -63,18 +68,17 @@ class SubtitleCell: UITableViewCell {
     }
     
     func cellSelected(notif: NSNotification) {
-        toggleLabelColor()
+        toggleLabelColor(self.isSelected)
     }
     
-    func toggleLabelColor() {
-        if self.isSelected {
+    func toggleLabelColor(_ selected: Bool) {
+        if selected {
             englishLabel.textColor = SubtitlePointColor
             koreanLabel.textColor = UIColor.white
         } else {
             englishLabel.textColor = UIColor.black
             koreanLabel.textColor = UIColor.black
         }
-        
     }
 }
 

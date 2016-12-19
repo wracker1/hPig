@@ -11,7 +11,6 @@
 		88048D341E026ABF00C5F4AA /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88048D331E026ABF00C5F4AA /* Register.storyboard */; };
 		88048D361E026B3300C5F4AA /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88048D351E026B3300C5F4AA /* RegisterController.swift */; };
 		88064FF21DD2FE0800084C6A /* sessionFilterHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88064FF11DD2FE0800084C6A /* sessionFilterHeader.xib */; };
-		8809DE991E02C9CA000CD20D /* basic_accessory_view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8809DE981E02C9CA000CD20D /* basic_accessory_view.xib */; };
 		880FC9C01DE7356600BDF70C /* tab_bar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880FC9BF1DE7356600BDF70C /* tab_bar.xib */; };
 		880FC9C31DEA836B00BDF70C /* WORD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880FC9C11DEA836B00BDF70C /* WORD+CoreDataClass.swift */; };
 		880FC9C41DEA836B00BDF70C /* WORD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880FC9C21DEA836B00BDF70C /* WORD+CoreDataProperties.swift */; };
@@ -98,6 +97,8 @@
 		8879337D1DB8B315001CB925 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8879337A1DB8B315001CB925 /* NotificationCenter.framework */; };
 		8879337E1DB8B315001CB925 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8879337B1DB8B315001CB925 /* UserNotifications.framework */; };
 		8879337F1DB8B315001CB925 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8879337C1DB8B315001CB925 /* UserNotificationsUI.framework */; };
+		8880D5441E042F9000747761 /* basic_accessory_view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8880D5431E042F9000747761 /* basic_accessory_view.xib */; };
+		8880D5461E042FB000747761 /* BasicInputAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8880D5451E042FB000747761 /* BasicInputAccessory.swift */; };
 		8880D7C41DC8638E00398D9A /* hProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8880D7C31DC8638E00398D9A /* hProduct.swift */; };
 		889BCF401DD45E830023031C /* UIAlertControllerOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889BCF3F1DD45E830023031C /* UIAlertControllerOps.swift */; };
 		88B4BAC21DC1B91000AFFE3A /* UIScrollViewOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B4BAC11DC1B91000AFFE3A /* UIScrollViewOps.swift */; };
@@ -175,7 +176,6 @@
 		88048D331E026ABF00C5F4AA /* Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		88048D351E026B3300C5F4AA /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		88064FF11DD2FE0800084C6A /* sessionFilterHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = sessionFilterHeader.xib; sourceTree = "<group>"; };
-		8809DE981E02C9CA000CD20D /* basic_accessory_view.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = basic_accessory_view.xib; sourceTree = "<group>"; };
 		880FC9BF1DE7356600BDF70C /* tab_bar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = tab_bar.xib; path = tabBar/tab_bar.xib; sourceTree = "<group>"; };
 		880FC9C11DEA836B00BDF70C /* WORD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataClass.swift"; sourceTree = "<group>"; };
 		880FC9C21DEA836B00BDF70C /* WORD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WORD+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -280,6 +280,8 @@
 		8879337A1DB8B315001CB925 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		8879337B1DB8B315001CB925 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		8879337C1DB8B315001CB925 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		8880D5431E042F9000747761 /* basic_accessory_view.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = basic_accessory_view.xib; sourceTree = "<group>"; };
+		8880D5451E042FB000747761 /* BasicInputAccessory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicInputAccessory.swift; sourceTree = "<group>"; };
 		8880D7C31DC8638E00398D9A /* hProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hProduct.swift; sourceTree = "<group>"; };
 		889BCF3F1DD45E830023031C /* UIAlertControllerOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerOps.swift; sourceTree = "<group>"; };
 		88B4BAC11DC1B91000AFFE3A /* UIScrollViewOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewOps.swift; sourceTree = "<group>"; };
@@ -586,6 +588,15 @@
 			name = db;
 			sourceTree = "<group>";
 		};
+		8880D5421E042F9000747761 /* inputAccessory */ = {
+			isa = PBXGroup;
+			children = (
+				8880D5431E042F9000747761 /* basic_accessory_view.xib */,
+				8880D5451E042FB000747761 /* BasicInputAccessory.swift */,
+			);
+			path = inputAccessory;
+			sourceTree = "<group>";
+		};
 		88C6EA4D1DD039CE0087FE9C /* views */ = {
 			isa = PBXGroup;
 			children = (
@@ -692,6 +703,7 @@
 		88C6EA681DD039DF0087FE9C /* uiviews */ = {
 			isa = PBXGroup;
 			children = (
+				8880D5421E042F9000747761 /* inputAccessory */,
 				881263891DFFDFBE002E8200 /* loginView */,
 				880FC9BE1DE7354100BDF70C /* tabBar */,
 				8844D0971DE2E35F009E84AE /* rateView */,
@@ -701,7 +713,6 @@
 				88C6EA731DD039DF0087FE9C /* pickerActionView */,
 				88C6EA761DD039DF0087FE9C /* playerView */,
 				88C6EA791DD039DF0087FE9C /* sessionControlView */,
-				8809DE981E02C9CA000CD20D /* basic_accessory_view.xib */,
 			);
 			name = uiviews;
 			path = views/uiviews;
@@ -1029,11 +1040,11 @@
 				88C6EA8E1DD039DF0087FE9C /* eng_dic_view_cell.xib in Resources */,
 				8852AB351E038BAF001C3951 /* SpeakingTubeRegister.storyboard in Resources */,
 				8845230E1DBF55BD00802510 /* SessionFeed.storyboard in Resources */,
+				8880D5441E042F9000747761 /* basic_accessory_view.xib in Resources */,
 				88048D341E026ABF00C5F4AA /* Register.storyboard in Resources */,
 				88064FF21DD2FE0800084C6A /* sessionFilterHeader.xib in Resources */,
 				88C6EA991DD039DF0087FE9C /* session_nav_view.xib in Resources */,
 				88C6EA921DD039DF0087FE9C /* pattern_view.xib in Resources */,
-				8809DE991E02C9CA000CD20D /* basic_accessory_view.xib in Resources */,
 				8844D0991DE2E37A009E84AE /* rate_view.xib in Resources */,
 				880FC9C01DE7356600BDF70C /* tab_bar.xib in Resources */,
 				88DEDF091DB7794300781123 /* SessionMain.storyboard in Resources */,
@@ -1181,6 +1192,7 @@
 				88048D361E026B3300C5F4AA /* RegisterController.swift in Sources */,
 				88C6EA8F1DD039DF0087FE9C /* hEnglishDictionaryView.swift in Sources */,
 				887933611DB861F3001CB925 /* TubeUserInfo.swift in Sources */,
+				8880D5461E042FB000747761 /* BasicInputAccessory.swift in Sources */,
 				887933741DB8A56A001CB925 /* PATTERN+CoreDataProperties.swift in Sources */,
 				88CDBA191D92CB350058ECFE /* WorkBookController.swift in Sources */,
 				88DEDEEB1DB4BC1200781123 /* TIME_LOG+CoreDataProperties.swift in Sources */,

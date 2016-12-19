@@ -19,6 +19,7 @@ let kSuccessLoginCompletion = Notification.Name("kSuccessLoginCompletion")
 
 let kGuestId = "guest"
 let kTokenKey = "deviceToken"
+let kDefaultProfileImage = "https://ssl.pstatic.net/static/pwe/address/nodata_45x45.gif"
 let kMaxPopoverViewWidth: CGFloat = 420
 
 let preTimeMargin = CMTimeMakeWithSeconds(0.2, 600)

@@ -12,19 +12,19 @@ class SpeakingTubeLogin: LoginProtocol {
     
     private var latestUser: User? = nil
     
+    var loginType: LoginType = .email
+    
     var completion: ((User?) -> Void)? = nil
     
     init() {
         NotificationCenter.default.addObserver(forName: kSuccessLoginCompletion, object: nil, queue: nil, using: { (notif) in
-            if let data = notif.object as? [String: String] {
-                if let callback = self.completion {
-                    if let user = User(data: data, loginType: .email) {
-                        self.latestUser = user
-                        callback(user)
-                    } else {
-                        callback(nil)
-                    }
-                }
+            let callback = self.completion ?? {(_)in}
+            
+            if let user = notif.object as? User {
+                self.latestUser = user
+                callback(user)
+            } else {
+                callback(nil)
             }
         })
     }

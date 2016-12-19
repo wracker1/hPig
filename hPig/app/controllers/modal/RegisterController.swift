@@ -23,30 +23,36 @@ class RegisterController: UIViewController {
     @IBOutlet weak var serviceAgree: UISwitch!
     @IBOutlet weak var personalInfoAgree: UISwitch!
     @IBOutlet weak var registerButton: UIButton!
-    @IBOutlet var basicAccessory: UIView!
     
     var user: User? = nil
+    var email: String? = nil
     var isSocialLogin = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Bundle.main.loadNibNamed("basic_accessory_view", owner: self, options: nil)
-        
         profileImageView.clipsToBounds = true
         profileImageView.layer.cornerRadius = 50
         profileImageView.layer.borderColor = secondPointColor.cgColor
         profileImageView.layer.borderWidth = 3.0
-        
-        var rect = basicAccessory.frame
-        rect.size.height = 50
-        basicAccessory.frame = rect
-        nameField.inputAccessoryView = basicAccessory
-        
+
+        tubeMailField.text = email
         socialProfileWrap.isHidden = !isSocialLogin
         tubeProfileWrap.isHidden = isSocialLogin
         
         registerButton.cornerRadiusly()
+        
+        let inputAccessoryView = BasicInputAccessory(frame: self.view.bounds)
+        inputAccessoryView.closeButton.addTarget(self, action: #selector(self.resignNameField(_:)), for: .touchUpInside)
+        nameField.inputAccessoryView = inputAccessoryView
+        
+        let tubeMailAccessoryView = BasicInputAccessory(frame: self.view.bounds)
+        tubeMailAccessoryView.closeButton.addTarget(self, action: #selector(self.resignTubeMailField), for: .touchUpInside)
+        tubeMailField.inputAccessoryView = tubeMailAccessoryView
+        
+        let tubeNameAccessoryView = BasicInputAccessory(frame: self.view.bounds)
+        tubeNameAccessoryView.closeButton.addTarget(self, action: #selector(self.resignTubeNameField), for: .touchUpInside)
+        tubeNameField.inputAccessoryView = tubeNameAccessoryView
         
         if let userData = user {
             
@@ -58,6 +64,14 @@ class RegisterController: UIViewController {
             
             nameField.placeholder = userData.name
         }
+    }
+    
+    func resignTubeMailField() {
+        tubeMailField.resignFirstResponder()
+    }
+    
+    func resignTubeNameField() {
+        tubeNameField.resignFirstResponder()
     }
     
     @IBAction func dismiss(_ sender: Any) {
@@ -122,21 +136,15 @@ class RegisterController: UIViewController {
         if let email = tubeMailField.text, let name = tubeNameField.text {
             validate(email: email, name: name, completion: { (isValid) in
                 if isValid {
-                    let data: [String: Any] = ["id": email,
-                                               "name": name,
-                                               "profile_image": "https://ssl.pstatic.net/static/pwe/address/nodata_45x45.gif"]
+                    let user = User(id: email, name: name, loginType: .email, profileImage: kDefaultProfileImage)
                     
-                    let item = User(data: data, loginType: .email)
-                    
-                    if let user = item {
-                        AuthenticateService.shared.joinUser(user: user, name: name, completion: { (success) in
-                            if success {
-                                NotificationCenter.default.post(name: kRegisterCompletion, object: user, userInfo: nil)
-                                
-                                self.dismiss(animated: true, completion: nil)
-                            }
-                        })
-                    }
+                    AuthenticateService.shared.joinUser(user: user, name: name, completion: { (success) in
+                        if success {
+                            NotificationCenter.default.post(name: kRegisterCompletion, object: user, userInfo: nil)
+                            
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                    })
                 }
             })
         }

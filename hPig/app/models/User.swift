@@ -150,4 +150,18 @@ class User: NSObject, NSCoding {
         self.loginType = .kakaoTalk
         
     }
+    
+    init(id: String, name: String?, loginType: LoginType, profileImage: String?) {
+        self.id = id
+        self.loginType = loginType
+        self.profileImage = profileImage
+        self.name = name
+        self.nickname = name
+        self.email = id
+        self.encId = nil
+        self.age = nil
+        self.gender = nil
+        self.birthDay = nil
+        self.accountId = nil
+    }
 }

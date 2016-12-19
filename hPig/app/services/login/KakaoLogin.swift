@@ -81,6 +81,8 @@ class KakaoLogin: LoginProtocol {
         }
     }
     
+    var loginType: LoginType = .kakaoTalk
+    
     func isOn() -> Bool {
         return currentUser() != nil
     }
