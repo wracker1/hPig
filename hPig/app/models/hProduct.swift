@@ -50,6 +50,13 @@ struct hPass: ResponseObjectSerializable, ResponseCollectionSerializable, Custom
         self.passType = representation["passType"] as? String
     }
     
+    init(id: String, name: String, value: String, passType: String?) {
+        self.id = id
+        self.name = name
+        self.value = value
+        self.passType = passType
+    }
+    
     func tubePassType() -> String {
         if let type = passType {
             return type

@@ -26,7 +26,7 @@ class SessionFeedController: UICollectionViewController, UICollectionViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.titleView = UIImageView(image: UIImage(named: "speaking_tube"))
+        self.navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "speaking_tube"))
 //        self.collectionView!.register(SessionFeedCell.self, forCellWithReuseIdentifier: "sessionFeedCell")
         
         flowLayout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
@@ -176,26 +176,17 @@ class SessionFeedController: UICollectionViewController, UICollectionViewDataSou
             
             self.isLoading = true
             
-            NetService.shared.getCollection(path: "/svc/api/list/\(sort)/\(category)/\(level)/\(page)", completionHandler: { (res: DataResponse<[Session]>) in
+            ApiService.shared.timeLineSessions(sort: sort, category: category, level: level, page: page, completion: { (items) in
+                self.hasNext = items.count > 9
                 
-                if let items = res.result.value?.filter({ (session) -> Bool in
-                    return session.status == "Y"
-                }) {
-                    self.hasNext = items.count > 9
-                    
-//                    let current = self.sessions.count
-                    
-                    if page == 1 {
-                        self.sessions = items
-                        self.collectionView?.reloadData()
-                    } else {
-                        self.sessions += items
-//                        self.insertRows(from: current, size: items.count)
-                    }
-                }
+                //                    let current = self.sessions.count
                 
-                if let callback = completion {
-                    callback()
+                if page == 1 {
+                    self.sessions = items
+                    self.collectionView?.reloadData()
+                } else {
+                    self.sessions += items
+                    //                        self.insertRows(from: current, size: items.count)
                 }
                 
                 self.sort = sort
@@ -203,6 +194,10 @@ class SessionFeedController: UICollectionViewController, UICollectionViewDataSou
                 self.level = level
                 self.currentPage = page
                 self.isLoading = false
+                
+                if let callback = completion {
+                    callback()
+                }
             })
         } else if let callback = completion {
             callback()

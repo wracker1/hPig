@@ -33,6 +33,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     private var btnReading: UIBarButtonItem? = nil
     private var startStudyTime: Date? = nil
     private var endTimer: Timer? = nil
+    private var cellCheckTimer: Timer? = nil
     private var duration: CMTime? = nil
     
     @IBOutlet weak var channelButton: UIButton!
@@ -105,7 +106,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         self.isPresentingAlert = false
         
         if let id = session?.id, let part = session?.part {
-            NetService.shared.get(path: "/svc/api/video/update/playcnt?id=\(id)&part=\(part)")
+            ApiService.shared.updatePlayCount(vid: id, part: part)
         }
     }
     
@@ -117,17 +118,19 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         }
         
         if let time = startStudyTime {
-            AuthenticateService.shared.userId(completion: { (userId) in
-                let (entity, ctx) = CoreDataService.shared.entityDescription("time_log")
-                let log = TIME_LOG(entity: entity!, insertInto: ctx)
-                let id = self.session?.id ?? ""
-                
-                log.mutating(userId: userId, vid: id, startTime: time, type: "basic")
-                CoreDataService.shared.save()
-            
-                let studySec = Int(time.timeIntervalSinceNow * -1)
-                NetService.shared.get(path: "/svc/api/user/update/studytime?id=\(userId)&time=\(studySec)")
-            })
+            LoginService.shared.user { (_, u) in
+                if let user = u {
+                    let (entity, ctx) = CoreDataService.shared.entityDescription("time_log")
+                    let log = TIME_LOG(entity: entity!, insertInto: ctx)
+                    let id = self.session?.id ?? ""
+                    
+                    log.mutating(userId: user.id, vid: id, startTime: time, type: "basic")
+                    CoreDataService.shared.save()
+                    
+                    let studySec = Int(time.timeIntervalSinceNow * -1)
+                    ApiService.shared.updateStudyTime(user.id, loginType: user.loginType, sec: studySec)
+                }
+            }
         }
         
         playerView.stopVideo()
@@ -136,7 +139,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     
     private func saveStudyLog() {
         if let item = session {
-            AuthenticateService.shared.userId(completion: { (userId) in
+            LoginService.shared.userId(completion: { (userId) in
                 let req: NSFetchRequest<HISTORY> = HISTORY.fetchRequest()
                 let query = "uid = '\(userId)' AND vid = '\(item.id)' AND part = '\(item.part)'"
                 req.predicate = NSPredicate(format: query)
@@ -175,8 +178,8 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
                 let endTime = service.timeFromFloat(seconds: sec)
                 let time = service.timeStringFromCMTime(time: endTime)
                 self.duration = endTime
-
-                SubtitleService.shared.subtitleData(id, part: part, duration: time, completion: { (data) in
+                
+                ApiService.shared.basicStudySubtitleData(id: id, part: part, duration: time, completion: { (data) in
                     self.subtitles = data
                     self.subtitleTableView.reloadData()
                     
@@ -188,7 +191,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
                     
                     if let endStartTime = self.subtitles.last?.startTime, let lastStartTime = service.stringToCMTime(endStartTime) {
                         let diff = endTime - lastStartTime
-                        self.needToStopOnPlaying = service.secondsFromCMTime(time: diff) > 3.0
+                        self.needToStopOnPlaying = service.secondsFromCMTime(time: diff) > 10.0
                     }
                 })
             }
@@ -276,17 +279,16 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     
     private func showCaption(at index: Int) {
         self.currentIndex = index
+        let indexPath = IndexPath(row: index, section: 0)
+        
+        if useAutoScroll {
+            subtitleTableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+        }
         
         if let subtitle = subtitles.get(index) {
             self.englishSubLabel.text = subtitle.english
             self.englishSubLabel.desc = subtitle.korean
             self.koreanSubLabel.text = subtitle.korean
-            
-            if useAutoScroll {
-                let indexPath = IndexPath(row: index, section: 0)
-                self.subtitleTableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
-                NotificationCenter.default.post(name: kSelectCellWithIndexPath, object: nil, userInfo: ["indexPath": indexPath])
-            }
         }
         
         let maxIndex = subtitles.count - 1
@@ -296,8 +298,7 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
             index,
             length: subtitles.count,
             prevButton: sessionControlView.prevButton,
-            nextButton: sessionControlView.nextButton
-        )
+            nextButton: sessionControlView.nextButton)
     }
     
     func currentIndex(_ time: CMTime) -> Int {
@@ -393,8 +394,6 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
                 playerView.seek(toTime: time.start)
             }
         }
-     
-        NotificationCenter.default.post(name: kSelectCellWithIndexPath, object: nil, userInfo: ["indexPath": indexPath])
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -420,11 +419,18 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
             if isActiveSubtitles {
                 self.currentSubtitleView.isHidden = true
                 self.subtitleTableView.isHidden = false
-                btn.setImage(UIImage(named: "btn_subtitles_on"), for: .normal)
+                btn.setImage(#imageLiteral(resourceName: "btn_subtitles_on"), for: .normal)
+                
+                self.cellCheckTimer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true, block: { (_) in
+                    NotificationCenter.default.post(name: kSelectCellWithIndexPath, object: nil, userInfo: nil)
+                })
             } else {
                 self.currentSubtitleView.isHidden = false
                 self.subtitleTableView.isHidden = true
-                btn.setImage(UIImage(named: "btn_subtitles_off"), for: .normal)
+                btn.setImage(#imageLiteral(resourceName: "btn_subtitles_off"), for: .normal)
+                
+                cellCheckTimer?.invalidate()
+                cellCheckTimer?.fire()
             }
         }
     }
@@ -436,9 +442,9 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         
         if let btn = btnKorean?.customView as? UIButton {
             if isActiveKorean {
-                btn.setImage(UIImage(named: "btn_korean_on"), for: .normal)
+                btn.setImage(#imageLiteral(resourceName: "btn_korean_on"), for: .normal)
             } else {
-                btn.setImage(UIImage(named: "btn_korean_off"), for: .normal)
+                btn.setImage(#imageLiteral(resourceName: "btn_korean_off"), for: .normal)
             }
         }
         
@@ -452,9 +458,9 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         
         if let btn = btnEnglish?.customView as? UIButton {
             if isActiveEnglish {
-                btn.setImage(UIImage(named: "btn_english_on"), for: .normal)
+                btn.setImage(#imageLiteral(resourceName: "btn_english_on"), for: .normal)
             } else {
-                btn.setImage(UIImage(named: "btn_english_off"), for: .normal)
+                btn.setImage(#imageLiteral(resourceName: "btn_english_off"), for: .normal)
             }
         }
         

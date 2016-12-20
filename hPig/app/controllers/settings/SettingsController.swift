@@ -26,18 +26,21 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
     }
     
     private func cellIds() -> [String : [String]] {
-        if AuthenticateService.shared.isOn() {
+        // "withdrawalCell" -> 탈퇴기능셀, 탈퇴를 하고 새로가입하면 무료로 다시 이용가능하기 때문에 임시로 뺀다.
+        
+        if LoginService.shared.isOn() {
             return [
-                "pass": ["purchaseCell", "couponRegisterCell"],
-                "info": ["faqCell", "mailCell"],
-                "my": ["versionCell", "pushCell", "delDataCell", "loginCell"]
+                "pass": ["purchaseCell"],
+                "my": ["versionCell", "pushCell", "delDataCell", "loginCell", "withdrawalCell"],
+                "info": ["faqCell", "mailCell"]
+                
             ]
-            
         } else {
             return [
-                "pass": ["purchaseCell", "couponRegisterCell"],
-                "info": ["faqCell", "mailCell"],
-                "my": ["versionCell", "delDataCell", "loginCell"]
+                "pass": ["purchaseCell"],
+                "my": ["versionCell", "delDataCell", "loginCell", "withdrawalCell"],
+                "info": ["faqCell", "mailCell"]
+                
             ]
         }
     }
@@ -48,10 +51,10 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
             return "이용권"
             
         case 1:
-            return "이용 안내"
+            return "내 정보"
             
         case 2:
-            return "내 정보"
+            return "이용 안내"
             
         default:
             return nil
@@ -63,9 +66,9 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
         case 0:
             return cellIds()["pass"] ?? [String]()
         case 1:
-            return cellIds()["info"] ?? [String]()
-        case 2:
             return cellIds()["my"] ?? [String]()
+        case 2:
+            return cellIds()["info"] ?? [String]()
         default:
             return [String]()
         }
@@ -94,7 +97,7 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
             return cell
             
         case "loginCell":
-            cell.textLabel?.text = AuthenticateService.shared.isOn() ? "로그아웃" : "로그인"
+            cell.textLabel?.text = LoginService.shared.isOn() ? "로그아웃" : "로그인"
             return cell
             
         default:
@@ -107,10 +110,21 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
         
         switch id {
         case "loginCell":
-            toggleLogin()
+            toggleLogin(tableView.cellForRow(at: indexPath))
+            
+        case "withdrawalCell":
+            withdrawalUser()
             
         case "couponRegisterCell":
-            presentRegisterCouponAlert()
+            if LoginService.shared.isOn() {
+                presentRegisterCouponAlert()
+            } else {
+                LoginService.shared.tryLogin(self,
+                                             sourceView: tableView.cellForRow(at: indexPath),
+                                             completion: { (_) in
+                    self.presentRegisterCouponAlert()
+                })
+            }
             
         case "mailCell":
             if MFMailComposeViewController.canSendMail() {
@@ -125,9 +139,31 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    private func withdrawalUser() {
+        let alert = AlertService.shared.confirm(self, title: "회원탈퇴", message: "정말 탈퇴하시려고요? ㅠㅠ", cancel: nil, confirm: {
+            LoginService.shared.user({ (_, u) in
+                if let user = u {
+                    ApiService.shared.withdrawalUser(user.id, loginType: user.loginType, completion: { (success) in
+                        if success {
+                            CoreDataService.shared.deleteUserData(user.id)
+                            
+                            self.view.presentToast("탈퇴 하였습니다.")
+                        }
+                        
+                        LoginService.shared.logout(completion: {
+                            self.tableView.reloadData()
+                        })
+                    })
+                }
+            })
+        })
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     private func presentRegisterCouponAlert() {
-        AuthenticateService.shared.user({ (userInfo) in
-            if let user = userInfo {
+        LoginService.shared.user({ (tuser, user) in
+            if let uData = user {
                 let alert = UIAlertController(title: "쿠폰 등록", message: "ㆍ쿠폰 번호를 입력해주세요.\nㆍ쿠폰 번호는 10자리입니다.\nㆍ쿠폰 패스 내역이 통합되어 반영됩니다.", preferredStyle: .alert)
                 
                 alert.messageLabel()?.textAlignment = .left
@@ -142,25 +178,8 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
                     if let couponNumber = alert.textFields?.first?.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) {
                         
                         if couponNumber.characters.count == 10 {
-                            let params = ["id": user.id, "coupon": couponNumber.uppercased()]
-                            
-                            NetService.shared.get(path: "/svc/api/user/update/coupon", parameters: params).responseString(completionHandler: { (res) in
-                                if let result = res.result.value {
-                                    switch result.lowercased() {
-                                        case "success":
-                                        AuthenticateService.shared.updateTubeUserInfo(user.id, completion: nil)
-                                        self.view.presentToast("등록 하였습니다.")
-
-                                        case "duplicated":
-                                        self.view.presentToast("이미 등록된 쿠폰 번호입니다.")
-                                        
-                                        case "not_available":
-                                        self.view.presentToast("유효하지 않은 쿠폰 번호입니다.")
-                                        
-                                        default:
-                                        self.view.presentToast("등록에 실패하였습니다. 다시 시도해주세요.")
-                                    }
-                                }
+                            ApiService.shared.registerCoupon(uData.id, loginType: uData.loginType, coupon: couponNumber, completion: { (message) in
+                                self.view.presentToast(message)
                             })
                         } else {
                             self.view.presentToast("정확한 쿠폰번호를 입력해주세요.")
@@ -175,18 +194,9 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
     
     @IBAction func updatePushNotiSetting(_ sender: AnyObject) {
         if let sw = sender as? UISwitch {
-            AuthenticateService.shared.user({ (user) in
-                if let tubeUser = user {
-                    let param = [
-                        "id": tubeUser.id,
-                        "pushyn": sw.isOn ? "Y" : "N"
-                    ]
-                    
-                    NetService.shared.get(path: "/svc/api/user/update/pushyn", parameters: param).responseString(completionHandler: { (res) in
-                        if let message = res.result.value {
-                            print(message)
-                        }
-                    })
+            LoginService.shared.user({ (_, u) in
+                if let user = u {
+                    ApiService.shared.updateRemotePushSetting(user.id, loginType: user.loginType, isOn: sw.isOn)
                 }
             })
         }
@@ -196,14 +206,14 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
         controller.dismiss(animated: true, completion: nil)
     }
     
-    private func toggleLogin() {
-        let authenticate = AuthenticateService.shared
+    private func toggleLogin(_ cell: UITableViewCell?) {
+        let authenticate = LoginService.shared
         if authenticate.isOn() {
             authenticate.logout {
                 self.tableView.reloadData()
             }
         } else {
-            authenticate.tryLogin(self) { (user) in
+            authenticate.tryLogin(self, sourceView: cell) { (user) in
                 if user != nil {
                     self.tableView.reloadData()
                 }

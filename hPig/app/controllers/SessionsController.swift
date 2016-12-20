@@ -31,7 +31,7 @@ class SessionsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.titleView = UIImageView(image: UIImage(named: "speaking_tube"))
+        self.navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "speaking_tube"))
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 400
         self.tableView.estimatedSectionHeaderHeight = 40
@@ -90,22 +90,18 @@ class SessionsController: UITableViewController {
         if hasNext && !isLoading {
             
             self.isLoading = true
-    
-            NetService.shared.getCollection(path: "/svc/api/list/\(sort)/\(category)/\(level)/\(page)", completionHandler: { (res: DataResponse<[Session]>) in
-                if let items = res.result.value?.filter({ (session) -> Bool in
-                    return session.status == "Y"
-                }) {
-                    self.hasNext = items.count > 9
-                    
-                    let current = self.sessions.count
-                    
-                    if page == 1 {
-                        self.sessions = items
-                        self.tableView.reloadData()
-                    } else {
-                        self.sessions += items
-                        self.insertRows(from: current, size: items.count)
-                    }
+            
+            ApiService.shared.timeLineSessions(sort: sort, category: category, level: level, page: page, completion: { (items) in
+                self.hasNext = items.count > 9
+                
+                let current = self.sessions.count
+                
+                if page == 1 {
+                    self.sessions = items
+                    self.tableView.reloadData()
+                } else {
+                    self.sessions += items
+                    self.insertRows(from: current, size: items.count)
                 }
                 
                 self.filterData(sort, category: category, level: level)

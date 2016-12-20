@@ -68,12 +68,10 @@ class CategoryService: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
             picker.pickerView?.closeButton.addTarget(self, action: #selector(self.cancel), for: .touchUpInside)
             picker.pickerView?.confirmButton.addTarget(self, action: #selector(self.done), for: .touchUpInside)
             
-            NetService.shared.getCollection(path: "/svc/api/category", completionHandler: { (res: DataResponse<[Category]>) in
-                if let data = res.result.value {
-                    self.categories = data
-                    self.initialized = true
-                    completion()
-                }
+            ApiService.shared.categories(completion: { (categories) in
+                self.categories = categories
+                self.initialized = true
+                completion()
             })
         }
     }

@@ -19,6 +19,7 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet var patternView: UIView!
     @IBOutlet weak var ptScrollContentView: UIView!
     @IBOutlet weak var ptScrollViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var sentenceWrap: UIView!
     @IBOutlet weak var ptEnglishLabel: UILabel!
     @IBOutlet weak var ptKoreanLabel: UILabel!
     @IBOutlet weak var ptMeaningLabel: UILabel!
@@ -28,6 +29,7 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet var sentenceView: UIView!
     @IBOutlet weak var stSentenceLabel: UILabel!
+    @IBOutlet weak var englishSentenceWrap: UIView!
     @IBOutlet weak var stWordLabel: UILabel!
     @IBOutlet weak var stPlayButton: UIButton!
     @IBOutlet weak var stCloseButton: UIButton!
@@ -48,14 +50,20 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
         Bundle.main.loadNibNamed("pattern_view", owner: self, options: nil)
         Bundle.main.loadNibNamed("sentence_layer", owner: self, options: nil)
         
+        sentenceWrap.cornerRadiusly()
+        
         patternTableView.backgroundView = emptyPatternView
         wordTableView.backgroundView = emptyWordView
         
-        ptCloseButton.layer.borderColor = secondPointColor.cgColor
-        ptCloseButton.layer.borderWidth = 1.0
+        ptCloseButton.border()
+        ptCloseButton.cornerRadiusly()
+        ptPlayButton.cornerRadiusly()
         
-        stCloseButton.layer.borderColor = secondPointColor.cgColor
-        stCloseButton.layer.borderWidth = 1.0
+        englishSentenceWrap.cornerRadiusly()
+        stCloseButton.border()
+        stCloseButton.cornerRadiusly()
+        stPlayButton.cornerRadiusly()
+        
         
         ptCloseButton.addTarget(self, action: #selector(self.closeModal), for: .touchUpInside)
         stCloseButton.addTarget(self, action: #selector(self.closeModal), for: .touchUpInside)
@@ -293,7 +301,7 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     private func loadPatternData(completion: (() -> Void)?) {
-        AuthenticateService.shared.userId { (userId) in
+        LoginService.shared.userId { (userId) in
             let dataService = CoreDataService.shared
             let req: NSFetchRequest<PATTERN> = PATTERN.fetchRequest()
             req.sortDescriptors = [NSSortDescriptor(key: "regdt", ascending: false)]
@@ -314,7 +322,7 @@ class WorkBookController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     private func loadWordData(completion: (() -> Void)?) {
-        AuthenticateService.shared.userId { (userId) in
+        LoginService.shared.userId { (userId) in
             let dataService = CoreDataService.shared
             let req: NSFetchRequest<WORD> = WORD.fetchRequest()
             let query = "uid = '\(userId)'"

@@ -12,22 +12,25 @@ class DataDeleteController: UITableViewController {
     
     private let ids = ["delHistory", "delTimelog", "delPattern", "delWord"]
     private var switches = [String: UISwitch]()
-    private var userId = ""
+    private var userId: String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let delButton = UIButton(type: .system)
         delButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        delButton.setTitleColor(UIColor.red, for: .normal)
+        delButton.setTitleColor(secondPointColor, for: .normal)
         delButton.setTitle("삭제", for: .normal)
         delButton.addTarget(self, action: #selector(self.del), for: .touchUpInside)
+        delButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: delButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        AuthenticateService.shared.userId { (id) in
-            self.userId = id
+        LoginService.shared.user { (_, u) in
+            if let user = u {
+                self.userId = user.name
+            }
         }
     }
 
@@ -54,8 +57,12 @@ class DataDeleteController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {   
-        return "\(self.userId)의 데이터만 삭제 됩니다."
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let name = userId {
+            return "\(name)의 데이터만 삭제 됩니다."
+        } else {
+            return "\(kGuestId)의 데이터만 삭제 됩니다."
+        }
     }
     
     func del() {
@@ -68,8 +75,8 @@ class DataDeleteController: UITableViewController {
                                                 message: nil,
                                                 cancel: nil,
                                                 confirm: {
-                                                    AuthenticateService.shared.user { (user) in
-                                                        CoreDataService.shared.deleteUserData(user, itemIds: targetIds)
+                                                    LoginService.shared.user { (tuser, _) in
+                                                        CoreDataService.shared.deleteUserData(tuser?.id, itemIds: targetIds)
                                                         self.view.presentToast("삭제 하였습니다.")
                                                     }
         })

@@ -51,6 +51,7 @@ class hYTPlayerView: WKYTPlayerView, WKYTPlayerViewDelegate {
         self.backgroundColor = UIColor.black
 //        self.webView?.allowsInlineMediaPlayback = true
         self.delegate = self
+        
     }
     
     deinit {

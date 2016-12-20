@@ -42,14 +42,14 @@ class hEnglishDictionaryView: UIView {
     }
     
     private func setup() {
-        closeButton.layer.borderWidth = 1.0
-        closeButton.layer.borderColor = secondPointColor.cgColor
+        closeButton.border()
+        closeButton.cornerRadiusly()
     }
     
     func update(data: WordData, completion: (() -> Void)?) {
         self.data = data
         
-        AuthenticateService.shared.userId { (uid) in
+        LoginService.shared.userId { (uid) in
             if let item = self.data {
                 let req: NSFetchRequest<WORD> = WORD.fetchRequest()
                 let wordId = WORD.wordId(item: item.word)
@@ -58,7 +58,7 @@ class hEnglishDictionaryView: UIView {
                 
                 CoreDataService.shared.select(request: req) { (items, error) in
                     let hasWord = items.count != 0
-                    self.saveButton.setImage(UIImage(named: hasWord ? "btn_bookmark_enable" : "btn_bookmark_disable"), for: .normal)
+                    self.saveButton.setImage(hasWord ? #imageLiteral(resourceName: "btn_bookmark_enable") : #imageLiteral(resourceName: "btn_bookmark_disable"), for: .normal)
 
                     let pron = data.pronunciation as NSString
                     let regex = try! NSRegularExpression(pattern: "<[^>]*?>", options: .caseInsensitive)
@@ -91,13 +91,9 @@ class hEnglishDictionaryView: UIView {
     }
 
     @IBAction func playSound(_ sender: AnyObject) {
-        if let item = self.data, let url = URL(string: item.soundUrl) {
-            let req = URLRequest(url: url)
-            
-            NetService.shared.get(req: req).responseData(completionHandler: { (res) in
-                print(res.description)
-                
-                if let data = res.result.value {
+        if let item = self.data {
+            ApiService.shared.wordSoundData(word: item, completion: { (res) in
+                if let data = res {
                     DispatchQueue.main.async {
                         do {
                             self.audioPlayer = try AVAudioPlayer(data: data, fileTypeHint: AVFileTypeMPEGLayer3)
@@ -117,7 +113,7 @@ class hEnglishDictionaryView: UIView {
     }
     
     @IBAction func save(_ sender: AnyObject) {
-        AuthenticateService.shared.userId { (uid) in
+        LoginService.shared.userId { (uid) in
             if let item = self.data, let superview = self.superview {
                 let req: NSFetchRequest<WORD> = WORD.fetchRequest()
                 let wordId = WORD.wordId(item: item.word)
@@ -140,7 +136,7 @@ class hEnglishDictionaryView: UIView {
                     CoreDataService.shared.save()
                     
                     self.saveButton.setImage(
-                        UIImage(named: hasWord ? "btn_bookmark_disable" : "btn_bookmark_enable"),
+                        hasWord ? #imageLiteral(resourceName: "btn_bookmark_disable") : #imageLiteral(resourceName: "btn_bookmark_enable"),
                         for: .normal
                     )
                 }

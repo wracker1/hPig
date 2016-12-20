@@ -15,7 +15,6 @@ class TubeUserInfo: NSObject, ResponseObjectSerializable {
     let passType: String
     let pushYn: String
     let onService: String
-    let enddt: String?
     let gender: String?
     let age: String?
     let image: String?
@@ -24,6 +23,7 @@ class TubeUserInfo: NSObject, ResponseObjectSerializable {
     let regdt: String?
     let startdt: String?
     let token: String?
+    let enddt: String?
     
     required init?(response: HTTPURLResponse, representation: Any) {
         guard

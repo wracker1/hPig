@@ -16,6 +16,7 @@ class PurchaseController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var passDueLabel: UILabel!
+    @IBOutlet weak var faqButton: UIButton!
     
     private let purchaseService = PurchaseService.shared
     private var passes = [hPass]()
@@ -26,11 +27,13 @@ class PurchaseController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.title = "패스 구매"
         
-        AuthenticateService.shared.user { (user) in
-            if let info = user, let enddt = info.enddt {
+        LoginService.shared.user { (t, u) in
+            if let info = t, let enddt = info.enddt {
                 self.passDueLabel.text = "토탈패스 \(enddt) 까지"
             }
         }
+        
+        faqButton.cornerRadiusly()
     }
     
     @IBAction func dismiss(_ sender: Any) {
@@ -78,14 +81,16 @@ class PurchaseController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let pass = passes[indexPath.row]
         if let payment = payments[pass.id] {
-            purchaseService.purchase(self, payment: payment, completion: { (userId, error) in
+            let cell = tableView.cellForRow(at: indexPath)
+            
+            purchaseService.purchase(self, sourceView: cell, payment: payment, completion: { (u, error) in
                 if let reason = error {
                     self.view.presentToast(reason.localizedDescription)
-                } else if let id = userId {
-                    AuthenticateService.shared.updateTubeUserInfo(id, completion: nil)
-                    
-                    self.view.presentToast("패스 구매가 완료되었습니다.", completion: { 
-                        self.dismiss(animated: true, completion: nil)
+                } else if let user = u {
+                    LoginService.shared.tubeUserInfoFromServer(user.id, loginType: user.loginType, completion: { (_) in
+                        self.view.presentToast("패스 구매가 완료되었습니다.", completion: {
+                            self.dismiss(animated: true, completion: nil)
+                        })
                     })
                 }
                 

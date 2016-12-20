@@ -43,18 +43,12 @@ class SubtitleCell: UITableViewCell {
         NotificationCenter.default.removeObserver(self)
     }
     
-    override func prepareForReuse() {
-        self.indexPath = nil
-        
-        toggleLabelColor(false)
-        
-        super.prepareForReuse()
-    }
-    
     func update(_ subtitle: BasicStudy, indexPath: IndexPath) {
         self.indexPath = indexPath
         self.englishLabel.text = subtitle.english
         self.koreanLabel.text = subtitle.korean
+        
+        toggleLabelColor(self.isSelected)
     }
     
     func didReceiveToggleKoreanLabelEvent(notif: NSNotification) {
@@ -74,23 +68,17 @@ class SubtitleCell: UITableViewCell {
     }
     
     func cellSelected(notif: NSNotification) {
-        if let userInfo = notif.userInfo,
-            let selected = userInfo["indexPath"] as? IndexPath,
-            let selfIndexPath = indexPath {
-            
-            toggleLabelColor(selfIndexPath == selected)
-        }
+        toggleLabelColor(self.isSelected)
     }
     
-    func toggleLabelColor(_ isActive: Bool) {
-        if isActive {
+    func toggleLabelColor(_ selected: Bool) {
+        if selected {
             englishLabel.textColor = SubtitlePointColor
             koreanLabel.textColor = UIColor.white
         } else {
             englishLabel.textColor = UIColor.black
             koreanLabel.textColor = UIColor.black
         }
-        
     }
 }
 

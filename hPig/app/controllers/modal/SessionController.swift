@@ -63,7 +63,7 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
                 loadRelatedSessions(category: category)
             }
             
-            SubtitleService.shared.subtitleData(item.id, part: Int(item.part) ?? 0, duration: session?.duration, completion: { (data) in
+            ApiService.shared.basicStudySubtitleData(id: item.id, part: Int(item.part) ?? 0, duration: session?.duration, completion: { (data) in
                 if let subtitle = data.first {
                     self.startTimeLabel.text = subtitle.startTime
                 }
@@ -73,20 +73,20 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
         descriptionLabel.text = session?.sessionDescription
         durationLabel.text = session?.duration
         
-        basicExButton.layer.cornerRadius = 3
-        basicExButton.layer.masksToBounds = true
+        basicExButton.cornerRadiusly()
+//        basicExButton.layer.masksToBounds = true
         
-        patternExButton.layer.cornerRadius = 3
-        patternExButton.layer.masksToBounds = true
+        patternExButton.cornerRadiusly()
+//        patternExButton.layer.masksToBounds = true
         
-        completionLabel.layer.borderColor = UIColor.red.cgColor
+        completionLabel.layer.borderColor = secondPointColor.cgColor
         completionLabel.layer.borderWidth = 1.0
-        completionLabel.layer.cornerRadius = 5.0
+        completionLabel.cornerRadiusly()
         
     }
     
     private func loadHistory(session: Session) {
-        AuthenticateService.shared.userId { (userId) in
+        LoginService.shared.userId { (userId) in
             let req: NSFetchRequest<HISTORY> = HISTORY.fetchRequest()
             
             let query = "uid = '\(userId)' AND vid = '\(session.id)' AND part = '\(session.part)'"
@@ -112,14 +112,10 @@ class SessionController: UIViewController, UICollectionViewDataSource, UICollect
     }
     
     private func loadRelatedSessions(category: String) {
-        NetService.shared.getCollection(path: "/svc/api/list/new/\(category)/0/1") { (res: DataResponse<[Session]>) in
-            if let current = self.session, let items = res.result.value?.filter({ (item) -> Bool in
-                return item.status == "Y" && item.id != current.id
-            }) {
-                self.relatedSessions = items
-                self.relatedSessionsView.reloadData()
-            }
-        }
+        ApiService.shared.latestCategorySessions(category: category, excludeId: self.session?.id, completion: { (sessions) in
+            self.relatedSessions = sessions
+            self.relatedSessionsView.reloadData()
+        })
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

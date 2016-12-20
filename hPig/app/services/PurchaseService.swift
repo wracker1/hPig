@@ -14,13 +14,19 @@ class PurchaseService: NSObject, SKPaymentTransactionObserver, SKProductsRequest
         return PurchaseService()
     }()
     
+    private let passConvertMap = ["1month": "oneMonth",
+                                  "3month": "threeMonth",
+                                  "6month": "sixMonth",
+                                  "12month": "yearPass"]
+    
     private let paymentQueue = SKPaymentQueue.default()
     private var passes = [hPass]()
     private var payments = [SKPayment]()
+    private weak var viewController: UIViewController? = nil
     
     private let keyUnprocessedTransaction = "unprocessedTransaction"
     private var paymentCompletion: (([SKPayment]) -> Void)? = nil
-    private var purchaseCompletion: ((String?, Error?) -> Void)? = nil
+    private var purchaseCompletion: ((User?, Error?) -> Void)? = nil
     
     override init() {
         super.init()
@@ -38,23 +44,21 @@ class PurchaseService: NSObject, SKPaymentTransactionObserver, SKProductsRequest
                 callback(passes)
             }
         } else {
-            DispatchQueue.global().async {
-                NetService.shared.get(path: "/svc/api/purchase/ios/item").responseJSON { (res) in
-                    if let data = res.result.value as? [String: Any], let items = data["items"] as? [Any] {
-                        let passes = items.flatMap({ (item) -> hPass? in
-                            return hPass(item)
-                        })
-                        
-                        if let callback = completion {
-                            self.passes = passes
-                            
-                            DispatchQueue.main.async {
-                                callback(passes)
-                            }
-                        }
+            ApiService.shared.appStorePurchaseItems(completion: { (passes) in
+                let items = passes.map({ (pass) -> hPass in
+                    if let id = self.passConvertMap[pass.id] {
+                        return hPass(id: id, name: pass.name, value: pass.value, passType: pass.passType)
+                    } else {
+                        return pass
                     }
+                })
+                
+                self.passes = items
+                
+                if let callback = completion {
+                    callback(items)
                 }
-            }
+            })
         }
     }
 
@@ -72,6 +76,9 @@ class PurchaseService: NSObject, SKPaymentTransactionObserver, SKProductsRequest
                     req.delegate = self
                     req.start()
                 } else if let callback = completion {
+                    
+                    self.viewController?.view.presentToast("구매를 할 수 없는 상태입니다")
+                    
                     DispatchQueue.main.async {
                         callback(self.payments)
                     }
@@ -86,10 +93,12 @@ class PurchaseService: NSObject, SKPaymentTransactionObserver, SKProductsRequest
         })
     }
     
-    func purchase(_ viewController: UIViewController, payment: SKPayment, completion: ((String?, Error?) -> Void)?) {
-        AuthenticateService.shared.user({ (data) in
-            if data == nil {
-                AuthenticateService.shared.confirmLogin(viewController, completion: nil)
+    func purchase(_ viewController: UIViewController, sourceView: UIView?, payment: SKPayment, completion: ((User?, Error?) -> Void)?) {
+        self.viewController = viewController
+        
+        LoginService.shared.user({ (tuser, user) in
+            if tuser == nil {
+                AuthenticateService.shared.confirmLogin(viewController, sourceView: sourceView, completion: nil)
             } else {
                 DispatchQueue.global().async {
                     self.purchaseCompletion = completion
@@ -112,18 +121,25 @@ class PurchaseService: NSObject, SKPaymentTransactionObserver, SKProductsRequest
     }
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        AuthenticateService.shared.user({ (data) in
+        LoginService.shared.user({ (tuser, user) in
             for transaction in transactions {
                 switch transaction.transactionState {
                 case .purchased:
-                    self.updatePassInfo(data?.id, transaction: transaction)
+                    if let uData = user {
+                        self.updatePassInfo(uData, transaction: transaction)
+                    }
+                    
+                case .restored:
+                    if let uData = user {
+                        self.saveTransaction(uData, transaction: transaction)
+                    }
                     
                 case .failed:
                     queue.finishTransaction(transaction)
 
                     if let callback = self.purchaseCompletion {
                         DispatchQueue.main.async {
-                            callback(data?.id, transaction.error)
+                            callback(user, transaction.error)
                         }
                     }
                 default:
@@ -133,19 +149,30 @@ class PurchaseService: NSObject, SKPaymentTransactionObserver, SKProductsRequest
         })
     }
     
-    private func updatePassInfo(_ userId: String?, transaction: SKPaymentTransaction) {
+    @discardableResult private func saveTransaction(_ user: User, transaction: SKPaymentTransaction) -> hPass? {
         var passMap: [String : hPass] = [:]
-
+        
         passes.forEach { (pass) in
             passMap[pass.id] = pass
         }
         
-        if let id = userId, let pass = passMap[transaction.payment.productIdentifier] {
-            let params: [String : String] = ["id": id, "passtype": pass.tubePassType()]
+        if let pass = passMap[transaction.payment.productIdentifier] {
+            let params: [String : String] = ["id": user.id,
+                                             "passtype": pass.tubePassType(),
+                                             "loginType": user.loginType.rawValue]
+            
             UserDefaults.standard.set(params, forKey: self.keyUnprocessedTransaction)
             UserDefaults.standard.synchronize()
             
-            self.requestUpdatePassType(params: params, completion: { (error) in
+            return pass
+        } else {
+            return nil
+        }
+    }
+    
+    private func updatePassInfo(_ user: User, transaction: SKPaymentTransaction) {
+        if let pass = saveTransaction(user, transaction: transaction) {
+            self.requestUpdatePassType(user.id, loginType: user.loginType, passType: pass.tubePassType(), completion: { (error) in
                 if error == nil {
                     self.paymentQueue.finishTransaction(transaction)
                 } else {
@@ -154,24 +181,24 @@ class PurchaseService: NSObject, SKPaymentTransactionObserver, SKProductsRequest
                 
                 if let callback = self.purchaseCompletion {
                     DispatchQueue.main.async {
-                        callback(id, error)
+                        callback(user, error)
                     }
                 }
             })
+        } else {
+            viewController?.view.presentToast("구매정보를 찾을 수 없습니다.")
         }
     }
     
-    private func requestUpdatePassType(params: [String : String], completion: ((Error?) -> Void)?) {
-        NetService.shared.post(path: "/svc/api/user/update/pass", parameters: params).responseString(completionHandler: { (res) in
-            if res.result.value != nil {
+    private func requestUpdatePassType(_ id: String, loginType: LoginType, passType: String, completion: ((Error?) -> Void)?) {
+        ApiService.shared.registerPass(id, loginType: loginType, passType: passType, completion: { (res) in
+            if res == nil {
                 UserDefaults.standard.removeObject(forKey: self.keyUnprocessedTransaction)
                 UserDefaults.standard.synchronize()
             }
             
             if let callback = completion {
-                DispatchQueue.main.async {       
-                    callback(res.result.error)
-                }
+                callback(res)
             }
         })
     }
@@ -185,9 +212,13 @@ class PurchaseService: NSObject, SKPaymentTransactionObserver, SKProductsRequest
     }
     
     @discardableResult func processPastPurchase() -> PurchaseService {
-        
-        if let params = UserDefaults.standard.value(forKey: keyUnprocessedTransaction) as? [String : String] {
-            requestUpdatePassType(params: params, completion: nil)
+        if let params = UserDefaults.standard.value(forKey: keyUnprocessedTransaction) as? [String : String],
+            let id = params["id"],
+            let passType = params["passtype"],
+            let raw = params["loginType"],
+            let loginType = LoginType(rawValue: raw) {
+            
+            requestUpdatePassType(id, loginType: loginType, passType: passType, completion: nil)
         }
         
         return self

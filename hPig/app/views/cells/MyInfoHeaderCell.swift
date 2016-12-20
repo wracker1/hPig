@@ -68,11 +68,24 @@ class MyInfoHeaderCell: UICollectionViewCell {
     private func loadPersonalInfoView(_ user: TubeUserInfo?) {
         let name = user?.nickname ?? "게스트"
         let id = user?.id ?? kGuestId
-        let url = user?.image ?? "https://ssl.pstatic.net/static/pwe/address/nodata_45x45.gif"
 
-        nameLabel.text = "\(name) 님"
-        idLabel.text = "| \(id)"
-
+        nameLabel.text = "\(name)"
+        
+        if let loginType = LoginService.shared.loginType() {
+            idLabel.text = "| \(id)"
+            idLabel.isHidden = loginType != .naver
+        } else {
+            idLabel.isHidden = true
+        }
+        
+        if let url = user?.image, !url.isEmpty {
+            loadProfileImage(url)
+        } else {
+            loadProfileImage(kDefaultProfileImage)
+        }
+    }
+    
+    private func loadProfileImage(_ url: String) {
         ImageDownloadService.shared.get(
             url: url,
             filter: nil,
@@ -162,9 +175,9 @@ class MyInfoHeaderCell: UICollectionViewCell {
     
     func login() {
         if let controller = viewController {
-            AuthenticateService.shared.tryLogin(controller) { (user) in
+            LoginService.shared.tryLogin(controller, sourceView: loginButton, completion: { (user) in
                 self.loadUserInfo(user)
-            }
+            })
         }
     }
 
@@ -178,7 +191,7 @@ class MyInfoHeaderCell: UICollectionViewCell {
         }
 
         let chartDataSet = BarChartDataSet(values: dataEntries, label: "학습시간(분)")
-        chartDataSet.colors = [pointColor]
+        chartDataSet.colors = [secondPointColor]
 
         let chartData = BarChartData(dataSet: chartDataSet)
         chartView.data = chartData

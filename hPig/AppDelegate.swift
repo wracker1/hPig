@@ -1,4 +1,4 @@
-               //
+           //
 //  AppDelegate.swift
 //  hPig
 //
@@ -12,6 +12,7 @@ import Toast_Swift
 import UserNotifications
 import Fabric
 import Crashlytics
+import AVFoundation
                
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,26 +27,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().tintColor = UIColor.black
         
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         Fabric.with([Crashlytics.self])
         
         ToastManager.shared.style.verticalPadding = 10
+        
+        executeBatchTask()
         
         return true
     }
     
     func logUser(_ item: TubeUserInfo?) {
-        if let token = AuthenticateService.shared.accessToken(),
-            let naverInfo = AuthenticateService.shared.naverUser(token),
-            let email = naverInfo.email,
-            let accountId = naverInfo.accountId,
-            let name = naverInfo.name {
-            
-            Crashlytics.sharedInstance().setUserEmail(email)
-            Crashlytics.sharedInstance().setUserIdentifier(accountId)
-            Crashlytics.sharedInstance().setUserName(name)
-        }
+//        if let token = LoginService.shared.accessToken(),
+//            let naverInfo = AuthenticateService.shared.naverUser(token),
+//            let email = naverInfo.email,
+//            let accountId = naverInfo.accountId,
+//            let name = naverInfo.name {
+//            
+//            Crashlytics.sharedInstance().setUserEmail(email)
+//            Crashlytics.sharedInstance().setUserIdentifier(accountId)
+//            Crashlytics.sharedInstance().setUserName(name)
+//        }
     }
-
+    
+    func executeBatchTask() {
+        PurchaseService.shared.processPastPurchase().update()
+        
+        AuthenticateService.shared.updateVisitCount({ (user) in
+            self.logUser(user)
+        })
+    }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         AuthenticateService.shared.registerAPNSToken(deviceToken.reduce("", {$0 + String(format: "%02X", $1)}))
@@ -63,21 +75,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        KOSession.handleDidEnterBackground()
+        
         self.saveContext()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        
+        executeBatchTask()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        PurchaseService.shared.processPastPurchase().update()
+        FBSDKAppEvents.activateApp()
         
-        AuthenticateService.shared.prepare().updateVisitCount({ (user) in
-            self.logUser(user)
-        })
+        KOSession.handleDidBecomeActive()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -87,7 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        return AuthenticateService.shared.processAccessToken(url: url)
+        return LoginService.shared.process(app, open: url, options: options)
     }
 
     // MARK: - Core Data stack

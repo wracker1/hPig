@@ -31,8 +31,8 @@ class ChannelController: UIViewController, UICollectionViewDelegate, UICollectio
         flowLayout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
         
         if let channelId = id {
-            NetService.shared.getObject(path: "/svc/api/channel/\(channelId)", completionHandler: { (res: DataResponse<Channel>) in
-                self.data = res.result.value
+            ApiService.shared.channelData(channelId: channelId, completion: { (res) in
+                self.data = res
                 self.sessionsView.reloadData()
             })
         }
@@ -74,11 +74,17 @@ class ChannelController: UIViewController, UICollectionViewDelegate, UICollectio
         }
     }
     
-    private func initHeader(_ item: ChannelInfoCell) {
-        if channelHeader == nil, let channel = data {
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        initHeader(channelHeader)
+    }
+    
+    private func initHeader(_ item: ChannelInfoCell?) {
+        if let channel = data {
             self.channelHeader = item
             
-            item.loadData(channel, completion: { (height) in
+            item?.loadData(channel, completion: { (height) in
                 var size = self.flowLayout.headerReferenceSize
                 size.height = height
                 self.flowLayout.headerReferenceSize = size

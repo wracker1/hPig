@@ -244,6 +244,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="faqButton" destination="9gc-4o-kXV" id="jb1-s6-tmk"/>
                         <outlet property="passDueLabel" destination="rLs-Fn-GNQ" id="RzF-Up-lsJ"/>
                         <outlet property="tableView" destination="7W3-Df-tnh" id="qrS-sv-9dO"/>
                         <outlet property="tableViewHeight" destination="sWF-rF-G1x" id="kw2-Bu-DMq"/>

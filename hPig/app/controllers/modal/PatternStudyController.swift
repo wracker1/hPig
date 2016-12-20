@@ -71,7 +71,7 @@ class PatternStudyController: UIViewController {
         self.startStudyTime = Date()
         
         if let id = session?.id, let part = session?.part {
-            NetService.shared.get(path: "/svc/api/video/update/playcnt?id=\(id)&part=\(part)")
+            ApiService.shared.updatePlayCount(vid: id, part: part)
         }
     }
     
@@ -79,18 +79,20 @@ class PatternStudyController: UIViewController {
         super.viewWillDisappear(animated)
         
         if let time = startStudyTime {
-            AuthenticateService.shared.userId(completion: { (userId) in
-                let dataService = CoreDataService.shared
-                let (entity, ctx) = dataService.entityDescription("time_log")
-                let log = TIME_LOG(entity: entity!, insertInto: ctx)
-                let vid = self.session?.id ?? ""
-                
-                log.mutating(userId: userId, vid: vid, startTime: time, type: "pattern")
-                dataService.save()
-                
-                let studySec = Int(time.timeIntervalSinceNow * -1)
-                NetService.shared.get(path: "/svc/api/user/update/studytime?id=\(userId)&time=\(studySec)")
-            })
+            LoginService.shared.user { (_, u) in
+                if let user = u {
+                    let dataService = CoreDataService.shared
+                    let (entity, ctx) = dataService.entityDescription("time_log")
+                    let log = TIME_LOG(entity: entity!, insertInto: ctx)
+                    let vid = self.session?.id ?? ""
+                    
+                    log.mutating(userId: user.id, vid: vid, startTime: time, type: "pattern")
+                    dataService.save()
+                    
+                    let studySec = Int(time.timeIntervalSinceNow * -1)
+                    ApiService.shared.updateStudyTime(user.id, loginType: user.loginType, sec: studySec)
+                }
+            }
         }
         
         playerView.stopVideo()
@@ -101,8 +103,9 @@ class PatternStudyController: UIViewController {
     }
     
     private func play(id: String, part: Int) {
-        SubtitleService.shared.patternStudyData(id, part: part, completion: { (data) in
+        ApiService.shared.patternStudySubtitleData(id: id, part: part, completion: { (data) in
             self.patternStudyData = data
+            
             self.playerView.prepareToPlay(id, completion: { (_, error) in
                 if let cause = error {
                     self.view.presentToast("playing video error: \(cause)")
@@ -185,7 +188,7 @@ class PatternStudyController: UIViewController {
     
     func savePattern() {
         if let item = session, let currentPattern = patternStudyData.get(self.currentIndex) {
-            AuthenticateService.shared.userId(completion: { (userId) in
+            LoginService.shared.userId(completion: { (userId) in
                 let dataService = CoreDataService.shared
                 let req: NSFetchRequest<PATTERN> = PATTERN.fetchRequest()
                 let query = "uid = '\(userId)' AND vid = '\(item.id)' AND part = '\(item.part)' AND position = '\(self.currentIndex)'"
