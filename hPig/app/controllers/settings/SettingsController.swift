@@ -38,7 +38,7 @@ class SettingsController: UITableViewController, MFMailComposeViewControllerDele
         } else {
             return [
                 "pass": ["purchaseCell"],
-                "my": ["versionCell", "delDataCell", "loginCell", "withdrawalCell"],
+                "my": ["versionCell", "delDataCell", "loginCell"],
                 "info": ["faqCell", "mailCell"]
                 
             ]
