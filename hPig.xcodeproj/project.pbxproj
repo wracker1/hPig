@@ -26,6 +26,9 @@
 		881263881DFE9F9D002E8200 /* KakaoLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881263871DFE9F9D002E8200 /* KakaoLogin.swift */; };
 		8812638B1DFFDFDB002E8200 /* login_view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8812638A1DFFDFDB002E8200 /* login_view.xib */; };
 		8812638D1DFFE8E5002E8200 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8812638C1DFFE8E5002E8200 /* LoginView.swift */; };
+		88151F771E0C3B9F00D6D4B8 /* Feeds.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88151F761E0C3B9F00D6D4B8 /* Feeds.storyboard */; };
+		88151F791E0C3BFB00D6D4B8 /* FeedsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88151F781E0C3BFB00D6D4B8 /* FeedsController.swift */; };
+		88151F7D1E0C3F9700D6D4B8 /* hCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88151F7C1E0C3F9700D6D4B8 /* hCollectionViewLayout.swift */; };
 		881ED0041D93AB6400D612EF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0031D93AB6400D612EF /* Category.swift */; };
 		881ED0061D93AC0100D612EF /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0051D93AC0100D612EF /* CategoryService.swift */; };
 		881ED0081D93AEA200D612EF /* LayoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0071D93AEA200D612EF /* LayoutService.swift */; };
@@ -190,6 +193,9 @@
 		881263871DFE9F9D002E8200 /* KakaoLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KakaoLogin.swift; path = login/KakaoLogin.swift; sourceTree = "<group>"; };
 		8812638A1DFFDFDB002E8200 /* login_view.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = login_view.xib; path = loginView/login_view.xib; sourceTree = "<group>"; };
 		8812638C1DFFE8E5002E8200 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = loginView/LoginView.swift; sourceTree = "<group>"; };
+		88151F761E0C3B9F00D6D4B8 /* Feeds.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Feeds.storyboard; sourceTree = "<group>"; };
+		88151F781E0C3BFB00D6D4B8 /* FeedsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedsController.swift; path = hPig/app/controllers/FeedsController.swift; sourceTree = SOURCE_ROOT; };
+		88151F7C1E0C3F9700D6D4B8 /* hCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hCollectionViewLayout.swift; sourceTree = "<group>"; };
 		881A76E91DB4633A00CF6409 /* youtube_ios_player_helper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = youtube_ios_player_helper.framework; path = "Pods/../build/Debug-iphoneos/youtube-ios-player-helper/youtube_ios_player_helper.framework"; sourceTree = "<group>"; };
 		881A76EB1DB464FC00CF6409 /* YouTubePlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YouTubePlayer.framework; path = "Pods/../build/Debug-iphoneos/YouTubePlayer/YouTubePlayer.framework"; sourceTree = "<group>"; };
 		881A76EF1DB465C100CF6409 /* youtube_ios_player_helper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = youtube_ios_player_helper.framework; path = "../../../Library/Developer/Xcode/DerivedData/hPig-byqselxxffzlqhcolurdyikdjjha/Build/Products/Debug-iphonesimulator/youtube-ios-player-helper/youtube_ios_player_helper.framework"; sourceTree = "<group>"; };
@@ -564,6 +570,7 @@
 				88DEDEFD1DB7637B00781123 /* ChannelMain.storyboard */,
 				88048D331E026ABF00C5F4AA /* Register.storyboard */,
 				8852AB341E038BAF001C3951 /* SpeakingTubeRegister.storyboard */,
+				88151F761E0C3B9F00D6D4B8 /* Feeds.storyboard */,
 			);
 			path = storyboards;
 			sourceTree = "<group>";
@@ -838,6 +845,7 @@
 				88468A241DC344D800ACC60D /* SessionController.swift */,
 				881076C41DBC76500038C21C /* SessionsController.swift */,
 				88CDBA1B1D92CB4A0058ECFE /* MyInfoController.swift */,
+				88151F781E0C3BFB00D6D4B8 /* FeedsController.swift */,
 				881235BD1DC7466C002EC49A /* hTabBarController.swift */,
 			);
 			path = controllers;
@@ -892,6 +900,7 @@
 				882CD2E91DC8607600BB611A /* PurchaseService.swift */,
 				881263801DFA75B4002E8200 /* ApiService.swift */,
 				88330E201DFBB71F00DBF427 /* LoginService.swift */,
+				88151F7C1E0C3F9700D6D4B8 /* hCollectionViewLayout.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -962,7 +971,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = wearespeakingtube;
 				TargetAttributes = {
 					88CDB9E81D92BDA30058ECFE = {
@@ -1030,6 +1039,7 @@
 				880FC9C81DEB062100BDF70C /* WKYTPlayerView.bundle in Resources */,
 				8859B2031DFEFE22008B2FCA /* localization.strings in Resources */,
 				88DEDEF41DB5ED7300781123 /* BasicStudy.storyboard in Resources */,
+				88151F771E0C3B9F00D6D4B8 /* Feeds.storyboard in Resources */,
 				88DEDEFE1DB7637B00781123 /* ChannelMain.storyboard in Resources */,
 				88C6EA8E1DD039DF0087FE9C /* eng_dic_view_cell.xib in Resources */,
 				8852AB351E038BAF001C3951 /* SpeakingTubeRegister.storyboard in Resources */,
@@ -1159,6 +1169,7 @@
 				88C6EA891DD039DF0087FE9C /* hYTPlayerView.swift in Sources */,
 				881ED0081D93AEA200D612EF /* LayoutService.swift in Sources */,
 				88C6EA831DD039DF0087FE9C /* RelatedSessionCell.swift in Sources */,
+				88151F7D1E0C3F9700D6D4B8 /* hCollectionViewLayout.swift in Sources */,
 				88C6EA7E1DD039DF0087FE9C /* ChannelSessionCell.swift in Sources */,
 				88C6EA821DD039DF0087FE9C /* PaymentCell.swift in Sources */,
 				881ED0181D93B2B300D612EF /* YoutubeService.swift in Sources */,
@@ -1204,6 +1215,7 @@
 				88C6EA861DD039DF0087FE9C /* SessionFeedCell.swift in Sources */,
 				8860852E1D97D435009A9B3C /* Global.swift in Sources */,
 				88C6EA8C1DD039DF0087FE9C /* ChannelButton.swift in Sources */,
+				88151F791E0C3BFB00D6D4B8 /* FeedsController.swift in Sources */,
 				889BCF401DD45E830023031C /* UIAlertControllerOps.swift in Sources */,
 				881263881DFE9F9D002E8200 /* KakaoLogin.swift in Sources */,
 				8845230A1DBF44CF00802510 /* HISTORY+CoreDataProperties.swift in Sources */,
