@@ -38,6 +38,7 @@
 		881ED01E1D93B92100D612EF /* ArrayOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED01D1D93B92100D612EF /* ArrayOps.swift */; };
 		881ED0251D93D07400D612EF /* OptionOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881ED0241D93D07400D612EF /* OptionOps.swift */; };
 		8829124E1DAFD32700E5B6E4 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8829124D1DAFD32700E5B6E4 /* AlertService.swift */; };
+		882CA76D1E62A4BD00A1FC3C /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882CA76C1E62A4BD00A1FC3C /* SearchController.swift */; };
 		882CD2EA1DC8607600BB611A /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882CD2E91DC8607600BB611A /* PurchaseService.swift */; };
 		882F92061DFD2FCD00151F23 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882F92051DFD2FCD00151F23 /* Social.framework */; };
 		882F920C1DFD35D400151F23 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882F92081DFD35D400151F23 /* Bolts.framework */; };
@@ -73,6 +74,7 @@
 		8852AB351E038BAF001C3951 /* SpeakingTubeRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8852AB341E038BAF001C3951 /* SpeakingTubeRegister.storyboard */; };
 		8852AB371E038FB9001C3951 /* SpeakingTubeRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852AB361E038FB9001C3951 /* SpeakingTubeRegisterController.swift */; };
 		8853766C1DB65C5D0076D1BF /* WordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8853766B1DB65C5D0076D1BF /* WordData.swift */; };
+		8855615C1E62D0C500446DB6 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8855615B1E62D0C500446DB6 /* SearchCell.swift */; };
 		885731511E03E230006888CC /* AuthCodeLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885731501E03E230006888CC /* AuthCodeLoginController.swift */; };
 		8859B2031DFEFE22008B2FCA /* localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8859B2051DFEFE22008B2FCA /* localization.strings */; };
 		886085291D97D393009A9B3C /* BasicStudy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886085281D97D393009A9B3C /* BasicStudy.swift */; };
@@ -151,6 +153,7 @@
 		88CDBA291D92D34F0058ECFE /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA271D92D34E0058ECFE /* Session.swift */; };
 		88CDBA2B1D92D6EE0058ECFE /* NetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA2A1D92D6EE0058ECFE /* NetService.swift */; };
 		88CDBA2C1D92D6EE0058ECFE /* NetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDBA2A1D92D6EE0058ECFE /* NetService.swift */; };
+		88DDE8001E5C76BC00D3ABCB /* SearchSession.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DDE7FF1E5C76BC00D3ABCB /* SearchSession.storyboard */; };
 		88DEDEEA1DB4BC1200781123 /* TIME_LOG+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DEDEE81DB4BC1200781123 /* TIME_LOG+CoreDataClass.swift */; };
 		88DEDEEB1DB4BC1200781123 /* TIME_LOG+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DEDEE91DB4BC1200781123 /* TIME_LOG+CoreDataProperties.swift */; };
 		88DEDEED1DB4CE2F00781123 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DEDEEC1DB4CE2F00781123 /* CoreData.framework */; };
@@ -209,6 +212,7 @@
 		881ED0241D93D07400D612EF /* OptionOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionOps.swift; sourceTree = "<group>"; };
 		8829124D1DAFD32700E5B6E4 /* AlertService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		882912501DAFD85C00E5B6E4 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "../../../../Library/Developer/Xcode/DerivedData/hPig-cgamwanqckhvsufhcxkvajblacum/Build/Products/Debug-iphonesimulator/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
+		882CA76C1E62A4BD00A1FC3C /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		882CD2E91DC8607600BB611A /* PurchaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseService.swift; sourceTree = "<group>"; };
 		882F92051DFD2FCD00151F23 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		882F92081DFD35D400151F23 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -255,6 +259,7 @@
 		885376671DB12FBC0076D1BF /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "Pods/../build/Debug-iphoneos/RealmSwift/RealmSwift.framework"; sourceTree = "<group>"; };
 		8853766B1DB65C5D0076D1BF /* WordData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordData.swift; sourceTree = "<group>"; };
 		885376731DB67C770076D1BF /* hPig.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = hPig.entitlements; sourceTree = "<group>"; };
+		8855615B1E62D0C500446DB6 /* SearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchCell.swift; path = views/cells/search/SearchCell.swift; sourceTree = "<group>"; };
 		885731501E03E230006888CC /* AuthCodeLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthCodeLoginController.swift; sourceTree = "<group>"; };
 		8858D26F1E00623300483DFF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/localization.strings; sourceTree = "<group>"; };
 		8859B2061DFEFE25008B2FCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/localization.strings; sourceTree = "<group>"; };
@@ -335,6 +340,7 @@
 		88CDBA251D92D2340058ECFE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../Library/Developer/Xcode/DerivedData/hPig-cgamwanqckhvsufhcxkvajblacum/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		88CDBA271D92D34E0058ECFE /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		88CDBA2A1D92D6EE0058ECFE /* NetService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetService.swift; sourceTree = "<group>"; };
+		88DDE7FF1E5C76BC00D3ABCB /* SearchSession.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchSession.storyboard; sourceTree = "<group>"; };
 		88DEDEE81DB4BC1200781123 /* TIME_LOG+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TIME_LOG+CoreDataClass.swift"; sourceTree = "<group>"; };
 		88DEDEE91DB4BC1200781123 /* TIME_LOG+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TIME_LOG+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		88DEDEEC1DB4CE2F00781123 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -515,6 +521,7 @@
 		88468A1E1DC344D800ACC60D /* modal */ = {
 			isa = PBXGroup;
 			children = (
+				882CA76C1E62A4BD00A1FC3C /* SearchController.swift */,
 				88468A2B1DC3451F00ACC60D /* PurchaseController.swift */,
 				88468A1F1DC344D800ACC60D /* BasicStudyController.swift */,
 				88468A211DC344D800ACC60D /* hActionPickerController.swift */,
@@ -524,6 +531,14 @@
 				885731501E03E230006888CC /* AuthCodeLoginController.swift */,
 			);
 			path = modal;
+			sourceTree = "<group>";
+		};
+		8855615A1E62D06700446DB6 /* search */ = {
+			isa = PBXGroup;
+			children = (
+				8855615B1E62D0C500446DB6 /* SearchCell.swift */,
+			);
+			name = search;
 			sourceTree = "<group>";
 		};
 		8860852C1D97D416009A9B3C /* etc */ = {
@@ -561,6 +576,7 @@
 				8877415E1DB0738C00198666 /* MyInfo.storyboard */,
 				887741601DB0738C00198666 /* PatternStudy.storyboard */,
 				887741621DB0738C00198666 /* Sessions.storyboard */,
+				88DDE7FF1E5C76BC00D3ABCB /* SearchSession.storyboard */,
 				88DEDF081DB7794300781123 /* SessionMain.storyboard */,
 				88DEDEF31DB5ED7300781123 /* BasicStudy.storyboard */,
 				887741631DB0738C00198666 /* Settings.storyboard */,
@@ -602,6 +618,7 @@
 		88C6EA4D1DD039CE0087FE9C /* views */ = {
 			isa = PBXGroup;
 			children = (
+				8855615A1E62D06700446DB6 /* search */,
 				88C6EA4E1DD039DF0087FE9C /* cells */,
 				88C6EA631DD039DF0087FE9C /* hYTPlayer */,
 				88C6EA681DD039DF0087FE9C /* uiviews */,
@@ -1031,6 +1048,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				887741671DB0738C00198666 /* Main.storyboard in Resources */,
+				88DDE8001E5C76BC00D3ABCB /* SearchSession.storyboard in Resources */,
 				887741681DB0738C00198666 /* MyInfo.storyboard in Resources */,
 				88468A1D1DC343C100ACC60D /* Purchase.storyboard in Resources */,
 				88C6EA951DD039DF0087FE9C /* picker_action_view.xib in Resources */,
@@ -1180,9 +1198,11 @@
 				88468A2C1DC3451F00ACC60D /* PurchaseController.swift in Sources */,
 				8829124E1DAFD32700E5B6E4 /* AlertService.swift in Sources */,
 				88CDBA1C1D92CB4A0058ECFE /* MyInfoController.swift in Sources */,
+				882CA76D1E62A4BD00A1FC3C /* SearchController.swift in Sources */,
 				88C6EA7C1DD039DF0087FE9C /* SubtitleCell.swift in Sources */,
 				881235BE1DC7466C002EC49A /* hTabBarController.swift in Sources */,
 				88C6EA841DD039DF0087FE9C /* BannerCell.swift in Sources */,
+				8855615C1E62D0C500446DB6 /* SearchCell.swift in Sources */,
 				886085301D97D74B009A9B3C /* SubtitleService.swift in Sources */,
 				882CD2EA1DC8607600BB611A /* PurchaseService.swift in Sources */,
 				88CDBA281D92D34F0058ECFE /* Session.swift in Sources */,

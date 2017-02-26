@@ -30,4 +30,29 @@ extension String {
         let predicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
         return predicate.evaluate(with: self)
     }
+    
+    func attributedString(with pattern: String) -> NSMutableAttributedString {
+        let results = matchesInStringWithRegex(pattern, string: self)
+        let attributedString = NSMutableAttributedString(string: self)
+        
+        results.forEach { (result) in
+            print(result.numberOfRanges)
+            let range = result.rangeAt(0)
+            
+            attributedString.addAttributes([NSForegroundColorAttributeName: SubtitlePointColor],
+                                           range: NSRange(location: range.location, length: range.length))
+        }
+        
+        return attributedString
+    }
+
+    private func matchesInStringWithRegex(_ regex: String, string: String) -> [NSTextCheckingResult] {
+        do {
+            let regex = try NSRegularExpression(pattern: regex, options: .caseInsensitive)
+            return regex.matches(in: string, options: .reportProgress, range: NSMakeRange(0, string.characters.count))
+        } catch {
+            print(error)
+            return []
+        }
+    }
 }

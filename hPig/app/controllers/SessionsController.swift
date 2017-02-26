@@ -201,13 +201,12 @@ class SessionsController: UITableViewController {
             let session = button.session {
             
             channelController.id = session.channelId
-        } else {
+        } else if let sessionController = segue.destination as? SessionController{
             let index = self.tableView.indexPathForSelectedRow?.row
             let session = self.sessions[index!]
             
             if let type = session.type?.lowercased(), type != "banner" {
-                let vc = segue.destination as! SessionController
-                vc.session = session
+                sessionController.session = session
             }
         }
     }

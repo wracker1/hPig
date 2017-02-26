@@ -388,4 +388,19 @@ class ApiService {
             }
         }
     }
+    
+    func search(_ keyword: String, completion: (([Session]) -> Void)?) {
+        NetService.shared.post(path: "/svc/api/search/video", parameters: ["keyword" : keyword]).responseCollection { (res: DataResponse<[Session]>) in
+            
+            if let callback = completion {
+                //                let items = res.result.value?.filter({ (session) -> Bool in
+                //                    return (session.status ?? "N") == "Y"
+                //                }) ?? [Session]()
+                
+                let items = res.result.value ?? [Session]()
+                
+                callback(items)
+            }
+        }
+    }
 }
