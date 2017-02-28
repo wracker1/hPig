@@ -26,6 +26,7 @@ class SessionCell: UITableViewCell, hTableViewCell {
     @IBOutlet weak var levelLabel: UILabel!
     
     private var constCateImage: NSLayoutConstraint? = nil
+    private var keyword: String? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -62,6 +63,12 @@ class SessionCell: UITableViewCell, hTableViewCell {
         return "ㆍ 난이도 \(filled)\(empty)"
     }
     
+    @discardableResult func update(_ item: Session, with keyword: String) -> UITableViewCell {
+        self.keyword = keyword
+        
+        return self.update(data: item)
+    }
+    
     func update(data item: Session) -> UITableViewCell {
         self.channelButton.session = item
         
@@ -77,9 +84,15 @@ class SessionCell: UITableViewCell, hTableViewCell {
             }
         }
         
-        self.titleLabel.text = item.title
+        if let key = keyword {
+            self.titleLabel.attributedText = item.title?.attributedString(with: key)
+            self.descriptionLabel.attributedText = item.sessionDescription?.attributedString(with: key)
+        } else {
+            self.titleLabel.text = item.title
+            self.descriptionLabel.text = item.sessionDescription
+        }
+        
         self.channelNameLabel.text = item.channelName
-        self.descriptionLabel.text = item.sessionDescription
         
         if let category = item.categoryName,
             let cateImage = UIImage(named: "cate_\(category.lowercased())") {
