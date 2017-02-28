@@ -247,7 +247,7 @@
                         <barButtonItem key="leftBarButtonItem" image="list_filter" id="ngh-7u-B7h">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="Uo4-m5-g7e">
+                        <barButtonItem key="rightBarButtonItem" image="ico_search" id="Uo4-m5-g7e">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="nZg-JE-111" kind="show" id="f3j-KI-N02"/>
@@ -295,6 +295,7 @@
     </scenes>
     <resources>
         <image name="cate_beauty" width="62" height="20"/>
+        <image name="ico_search" width="22" height="22"/>
         <image name="list_filter" width="33" height="33"/>
         <image name="view_count" width="30" height="19"/>
     </resources>
