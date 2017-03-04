@@ -21,7 +21,7 @@ class SessionsController: UITableViewController {
     private var level = "0"
     private var tableViewVelocity: CGPoint? = nil
     
-    private let filterHeaderViewHeight: CGFloat = 25
+    private let filterHeaderViewHeight: CGFloat = 30
     
     @IBOutlet var filterHeaderView: UIView!
     @IBOutlet weak var filterHeaderButton: UIButton!

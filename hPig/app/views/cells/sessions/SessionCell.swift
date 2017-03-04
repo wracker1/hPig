@@ -24,6 +24,8 @@ class SessionCell: UITableViewCell, hTableViewCell {
     @IBOutlet weak var viewCountLabel: UILabel!
     @IBOutlet weak var categoryImageView: UIImageView!
     @IBOutlet weak var levelLabel: UILabel!
+    @IBOutlet weak var cateWidth: NSLayoutConstraint!
+    @IBOutlet weak var cateHeight: NSLayoutConstraint!
     
     private var constCateImage: NSLayoutConstraint? = nil
     private var keyword: String? = nil
@@ -36,7 +38,7 @@ class SessionCell: UITableViewCell, hTableViewCell {
         contentWrapView.layer.shadowOffset = CGSize(width: 0.1, height: 0.1)
         
         channelButton.contentMode = .scaleAspectFill
-        channelButton.layer.cornerRadius = 20.0
+        channelButton.layer.cornerRadius = 22.0
     }
     
     override func prepareForReuse() {
@@ -94,9 +96,16 @@ class SessionCell: UITableViewCell, hTableViewCell {
         
         self.channelNameLabel.text = item.channelName
         
-        if let category = item.categoryName,
-            let cateImage = UIImage(named: "cate_\(category.lowercased())") {
-            self.categoryImageView.image = cateImage
+        if let category = item.categoryName {
+            let cateName = "cate_\(category.lowercased())"
+            let cateImageOpt = UIImage(named: cateName)
+            
+            if let cateImage = cateImageOpt {
+                let ratio = cateImage.size.width / cateImage.size.height
+                cateWidth.constant = cateHeight.constant * ratio
+                
+                self.categoryImageView.image = cateImage
+            }
         }
         
         if let level = item.level {

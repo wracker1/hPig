@@ -28,7 +28,7 @@ let postTimeMargin = CMTimeMakeWithSeconds(0.3, 600)
 let SubtitlePointColor = RGBA(213, g: 135, b: 125, a: 1)
 
 let pointColor = RGBA(246, g: 0, b: 29, a: 1)
-let secondPointColor = RGBA(252, g: 86, b: 97, a: 1.0)
+let secondPointColor = RGBA(255, g: 74, b: 90, a: 1.0)
 let CGRectZero = CGRectFromString("{{0, 0}, {0, 0}}")
 
 func presentController(viewController: UIViewController) -> UIViewController? {

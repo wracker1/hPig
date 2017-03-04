@@ -40,7 +40,7 @@ class RegisterController: UIViewController {
         socialProfileWrap.isHidden = !isSocialLogin
         tubeProfileWrap.isHidden = isSocialLogin
         
-        registerButton.cornerRadiusly()
+//        registerButton.cornerRadiusly()
         
         let inputAccessoryView = BasicInputAccessory(frame: self.view.bounds)
         inputAccessoryView.closeButton.addTarget(self, action: #selector(self.resignNameField(_:)), for: .touchUpInside)

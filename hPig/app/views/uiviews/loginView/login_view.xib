@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E175b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -29,23 +30,35 @@
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hDz-cs-LoM">
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="hDz-cs-LoM">
                     <rect key="frame" x="40" y="105.5" width="295" height="481.5"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qVl-71-Uvr">
-                            <rect key="frame" x="0.0" y="211.5" width="66.5" height="59"/>
+                            <rect key="frame" x="0.0" y="208.5" width="65" height="64.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="qVl-71-Uvr" secondAttribute="height" multiplier="1:1" id="6Fv-ai-z4m"/>
+                            </constraints>
                             <state key="normal" image="kakao_login_circle"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3o-Ja-FoB">
-                            <rect key="frame" x="76.5" y="211.5" width="66" height="59"/>
+                            <rect key="frame" x="77" y="208" width="64.5" height="65.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="F3o-Ja-FoB" secondAttribute="height" multiplier="1:1" id="enP-AS-ApB"/>
+                            </constraints>
                             <state key="normal" image="facebook_login_circle"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cvg-is-akh">
-                            <rect key="frame" x="152.5" y="211.5" width="66.5" height="59"/>
+                            <rect key="frame" x="153.5" y="208.5" width="65" height="64.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="Cvg-is-akh" secondAttribute="height" multiplier="1:1" id="gck-e1-IvP"/>
+                            </constraints>
                             <state key="normal" image="naver_login_circle"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EdO-Cv-aQL">
-                            <rect key="frame" x="229" y="211" width="66" height="60"/>
+                            <rect key="frame" x="230.5" y="208" width="64.5" height="65.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="EdO-Cv-aQL" secondAttribute="height" multiplier="1:1" id="K4a-hl-n3E"/>
+                            </constraints>
                             <state key="normal" image="tube_ico"/>
                         </button>
                     </subviews>

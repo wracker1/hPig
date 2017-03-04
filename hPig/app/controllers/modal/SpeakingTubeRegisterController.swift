@@ -18,10 +18,9 @@ class SpeakingTubeRegisterController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        registerButton.cornerRadiusly()
-        
-        loginButton.border()
-        loginButton.cornerRadiusly()
+//        registerButton.cornerRadiusly()
+//        loginButton.border()
+//        loginButton.cornerRadiusly()
         
         let inputAccessoryView = BasicInputAccessory(frame: self.view.bounds)
         inputAccessoryView.closeButton.addTarget(self, action: #selector(self.resignEmailField), for: .touchUpInside)

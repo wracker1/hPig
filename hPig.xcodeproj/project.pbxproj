@@ -633,11 +633,11 @@
 			children = (
 				88C6EA541DD039DF0087FE9C /* hTableViewCell.swift */,
 				88C6EA571DD039DF0087FE9C /* MyInfoHeaderCell.swift */,
+				88C6EA5A1DD039DF0087FE9C /* session */,
 				88C6EA4F1DD039DF0087FE9C /* basicStudy */,
 				88C6EA511DD039DF0087FE9C /* channel */,
 				88C6EA551DD039DF0087FE9C /* myinfo */,
 				88C6EA581DD039DF0087FE9C /* purchase */,
-				88C6EA5A1DD039DF0087FE9C /* session */,
 				88C6EA5C1DD039DF0087FE9C /* sessions */,
 				88C6EA601DD039DF0087FE9C /* workBook */,
 			);

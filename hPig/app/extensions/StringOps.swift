@@ -38,7 +38,7 @@ extension String {
         results.forEach { (result) in
             let range = result.rangeAt(0)
             
-            attributedString.addAttributes([NSForegroundColorAttributeName: SubtitlePointColor],
+            attributedString.addAttributes([NSForegroundColorAttributeName: secondPointColor],
                                            range: NSRange(location: range.location, length: range.length))
         }
         

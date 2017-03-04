@@ -21,7 +21,7 @@ class MyInfoHeaderCell: UICollectionViewCell {
     @IBOutlet weak var totalDurationLabel: UILabel!
     @IBOutlet weak var numberOfVideoLabel: UILabel!
     @IBOutlet weak var historySegControl: UISegmentedControl!
-    @IBOutlet weak var chartView: BarChartView!
+    @IBOutlet weak var chartView: LineChartView!
     @IBOutlet weak var passInfoTitleLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var passInfoView: UIStackView!
@@ -66,7 +66,7 @@ class MyInfoHeaderCell: UICollectionViewCell {
     }
     
     private func loadPersonalInfoView(_ user: TubeUserInfo?) {
-        let name = user?.nickname ?? "게스트"
+        let name = user?.nickname ?? "Guest"
         let id = user?.id ?? kGuestId
 
         nameLabel.text = "\(name)"
