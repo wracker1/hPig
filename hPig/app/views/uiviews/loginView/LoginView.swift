@@ -32,8 +32,8 @@ class LoginView: UIView {
     private func loadNib() {
         LayoutService.shared.layoutXibView(superview: self, nibName: "login_view")
         
-        closeButton.layer.borderColor = secondPointColor.cgColor
-        closeButton.layer.borderWidth = 1.0
-        closeButton.cornerRadiusly()
-    }    
+//        closeButton.layer.borderColor = secondPointColor.cgColor
+//        closeButton.layer.borderWidth = 1.0
+//        closeButton.cornerRadiusly()
+    }
 }

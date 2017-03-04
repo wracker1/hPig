@@ -119,7 +119,7 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="45" id="wth-fI-pEu"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                                         <state key="normal" title="기본학습"/>
                                                                         <connections>
                                                                             <segue destination="Vf4-EU-5mT" kind="presentation" identifier="basicStudyFromSessionMain" id="9ko-gp-5Mj"/>
@@ -146,6 +146,7 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="Znd-CR-cxP"/>
                                                                         </constraints>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                                         <state key="normal" title="패턴학습">
                                                                             <color key="titleColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>

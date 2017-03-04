@@ -41,7 +41,7 @@
                             <state key="normal" image="kakao_login_circle"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3o-Ja-FoB">
-                            <rect key="frame" x="77" y="208" width="64.5" height="65.5"/>
+                            <rect key="frame" x="77" y="208.5" width="64.5" height="64.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="F3o-Ja-FoB" secondAttribute="height" multiplier="1:1" id="enP-AS-ApB"/>
                             </constraints>
@@ -55,7 +55,7 @@
                             <state key="normal" image="naver_login_circle"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EdO-Cv-aQL">
-                            <rect key="frame" x="230.5" y="208" width="64.5" height="65.5"/>
+                            <rect key="frame" x="230.5" y="208.5" width="64.5" height="64.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="EdO-Cv-aQL" secondAttribute="height" multiplier="1:1" id="K4a-hl-n3E"/>
                             </constraints>
@@ -74,13 +74,13 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ymM-sg-Mv6">
                     <rect key="frame" x="10" y="617" width="355" height="40"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.98431372549999996" green="0.2274509804" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="f8T-gk-D5d"/>
                     </constraints>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                     <state key="normal" title="확인">
-                        <color key="titleColor" red="0.98823529409999999" green="0.33725490200000002" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
             </subviews>
