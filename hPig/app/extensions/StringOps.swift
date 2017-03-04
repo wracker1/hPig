@@ -36,7 +36,6 @@ extension String {
         let attributedString = NSMutableAttributedString(string: self)
         
         results.forEach { (result) in
-            print(result.numberOfRanges)
             let range = result.rangeAt(0)
             
             attributedString.addAttributes([NSForegroundColorAttributeName: SubtitlePointColor],
