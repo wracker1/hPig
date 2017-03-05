@@ -23,6 +23,12 @@ class SearchController: UITableViewController, UISearchBarDelegate {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 400
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        searchBar.becomeFirstResponder()
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1

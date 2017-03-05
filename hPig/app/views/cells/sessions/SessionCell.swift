@@ -97,8 +97,8 @@ class SessionCell: UITableViewCell, hTableViewCell {
         self.channelNameLabel.text = item.channelName
         
         if let category = item.categoryName {
-            let cateName = "cate_\(category.lowercased())"
-            let cateImageOpt = UIImage(named: cateName)
+            let cateName = "cate_\(category.lowercased())".replacingOccurrences(of: " ", with: "_")
+            let cateImageOpt = UIImage(named: cateName) 
             
             if let cateImage = cateImageOpt {
                 let ratio = cateImage.size.width / cateImage.size.height

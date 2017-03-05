@@ -110,12 +110,14 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        toggleSubtitleTableTimer(isActiveSubtitles)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        if let timer = endTimer, timer.isValid {
-            timer.invalidate()
-        }
         
         if let time = startStudyTime {
             LoginService.shared.user { (_, u) in
@@ -135,6 +137,12 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
         
         playerView.stopVideo()
         saveStudyLog()
+        
+        expireSubtitleTableCheckerTimer()
+        
+        if let timer = endTimer, timer.isValid {
+            timer.invalidate()
+        }
     }
     
     private func saveStudyLog() {
@@ -415,24 +423,33 @@ class BasicStudyController: UIViewController, UITableViewDataSource, UITableView
     func toggleSubtitlesView(sender: AnyObject) {
         isActiveSubtitles = !isActiveSubtitles
         
+        self.currentSubtitleView.isHidden = isActiveSubtitles
+        self.subtitleTableView.isHidden = !isActiveSubtitles
+        
         if let btn = btnSubtitles?.customView as? UIButton {
-            if isActiveSubtitles {
-                self.currentSubtitleView.isHidden = true
-                self.subtitleTableView.isHidden = false
-                btn.setImage(#imageLiteral(resourceName: "btn_subtitles_on"), for: .normal)
-                
-                self.cellCheckTimer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true, block: { (_) in
+            let subButtonImage = isActiveSubtitles ? #imageLiteral(resourceName: "btn_subtitles_on") : #imageLiteral(resourceName: "btn_subtitles_off")
+            btn.setImage(subButtonImage, for: .normal)
+        }
+        
+        toggleSubtitleTableTimer(isActiveSubtitles)
+    }
+    
+    private func toggleSubtitleTableTimer(_ isActiveSubtitles: Bool) {
+        if isActiveSubtitles {
+            if cellCheckTimer == nil {
+                self.cellCheckTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (_) in
                     NotificationCenter.default.post(name: kSelectCellWithIndexPath, object: nil, userInfo: nil)
                 })
-            } else {
-                self.currentSubtitleView.isHidden = false
-                self.subtitleTableView.isHidden = true
-                btn.setImage(#imageLiteral(resourceName: "btn_subtitles_off"), for: .normal)
-                
-                cellCheckTimer?.invalidate()
-                cellCheckTimer?.fire()
             }
+        } else {
+            expireSubtitleTableCheckerTimer()
         }
+    }
+    
+    private func expireSubtitleTableCheckerTimer() {
+        cellCheckTimer?.invalidate()
+        cellCheckTimer?.fire()
+        cellCheckTimer = nil
     }
     
     func toggleKoreanSubtitle(sender: AnyObject) {
