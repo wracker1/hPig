@@ -27,7 +27,9 @@ class SearchController: UITableViewController, UISearchBarDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        searchBar.becomeFirstResponder()
+        if results == nil {
+            searchBar.becomeFirstResponder()
+        }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
